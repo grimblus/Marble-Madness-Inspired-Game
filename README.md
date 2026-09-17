@@ -1,18 +1,18 @@
 # Marble Madness 3D Clone
 
-A 3D clone of *Marble Madness* built in Godot 4.7.2 (.NET / C#) for COSC2349 Games Studio 2, Assignment 3.
+A 3D clone of *Marble Madness* built in Godot 4.7.1 (.NET / C#) for COSC2349 Games Studio 2, Assignment 3.
 
 See [docs/requirements.md](docs/requirements.md) for the full requirements spec and [docs/project-plan-responsibilities.md](docs/project-plan-responsibilities.md) for team roles and the milestone schedule.
 
 ## Requirements
 
-- [Godot 4.7.2 .NET/Mono build](https://godotengine.org/download) (not the standard build — C# support requires the .NET version)
+- [Godot 4.7.1 .NET/Mono build](https://godotengine.org/download) (not the standard build — C# support requires the .NET version)
 - [.NET SDK 8.0](https://dotnet.microsoft.com/download/dotnet/8.0) or later
 
 ## Setup
 
 1. Clone the repository.
-2. Open Godot 4.7.2 (.NET), choose **Import**, and select this folder's `project.godot`.
+2. Open Godot 4.7.1 (.NET), choose **Import**, and select this folder's `project.godot`.
 3. On first open, Godot will prompt to build the C# solution (`MarbleMadness3D.sln`) — accept this, or run `dotnet build` from the repo root.
 4. Press **Run Project** (F5) to launch from the `Main` scene.
 

@@ -12,6 +12,7 @@ bin/
 obj/
 *.tmp
 *.user
+*.csproj.old
 
 # IDE
 .vs/

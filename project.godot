@@ -21,7 +21,3 @@ project/assembly_name="MarbleMadness3D"
 [physics]
 
 common/physics_ticks_per_second=120
-
-[rendering]
-
-renderer/rendering_method="forward_plus"
