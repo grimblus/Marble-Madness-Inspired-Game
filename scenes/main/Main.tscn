@@ -1,3 +1,35 @@
-[gd_scene format=3]
+[gd_scene format=3 uid="uid://dy3yuv5jodaps"]
 
-[node name="Main" type="Node3D"]
+[ext_resource type="PackedScene" uid="uid://326c4t3v8td" path="res://scenes/marble/Marble.tscn" id="1_u1xfj"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_u1xfj"]
+size = Vector3(20, 1, 20)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_3ewea"]
+
+[sub_resource type="Environment" id="Environment_3ewea"]
+background_mode = 2
+
+[node name="Main" type="Node3D" unique_id=2133792107]
+
+[node name="Marble" parent="." unique_id=240693826 instance=ExtResource("1_u1xfj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75324976, 0)
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1659997214]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7740127, 1.4894037)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=2026305978]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=870218432]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+shape = SubResource("BoxShape3D_u1xfj")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D" unique_id=2136697646]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0)
+mesh = SubResource("PlaneMesh_3ewea")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=38329964]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 10, 0)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1833478838]
+environment = SubResource("Environment_3ewea")

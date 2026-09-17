@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://326c4t3v8td"]
+
+[ext_resource type="Script" uid="uid://udkiyrc5ejs0" path="res://scripts/Marble/MarbleController.cs" id="1_wjyll"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_3xk2s"]
+bounce = 0.5
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_3ewea"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_3ewea"]
+
+[node name="Marble" type="RigidBody3D" unique_id=240693826]
+physics_material_override = SubResource("PhysicsMaterial_3xk2s")
+continuous_cd = true
+script = ExtResource("1_wjyll")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=584625236]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+shape = SubResource("SphereShape3D_3ewea")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=211921915]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+mesh = SubResource("SphereMesh_3ewea")
