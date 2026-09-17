@@ -1,0 +1,28 @@
+# Godot 4+ specific ignores
+.godot/
+/android/
+
+# Mono-specific ignores
+.mono/
+data_*/
+mono_crash.*.json
+
+# .NET / C# build output
+bin/
+obj/
+*.tmp
+*.user
+*.csproj.old
+
+# IDE
+.vs/
+.idea/
+*.suo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Export artifacts (game is assessed via local Godot project, not exported builds)
+/export/
+export_presets.cfg
