@@ -1,0 +1,7 @@
+schema: "classroom50/repo-config/v1"
+classroom: "games-studio-2-cosc2349"
+assignment: "assignment-3-marble-madness"
+owner:
+  username: "4029371"
+  id: 167720619
+  accepted_at: "2026-09-19T23:38:58Z"
