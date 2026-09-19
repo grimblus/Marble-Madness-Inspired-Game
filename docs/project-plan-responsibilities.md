@@ -14,21 +14,13 @@
 - Coordinates milestone presentation content and final documentation compilation
 
 ### Aaron Tran — Technical Lead / Level Systems
-- Owns the modular tile/level system architecture (tile pieces, connection convention, level assembly)
-- Owns repo/build hygiene — clean project structure, correct `.gitignore`, confirms the project runs cleanly from a fresh clone (relevant since the Classroom50 link points straight to the repo)
-- Git/repo management: branch strategy, PR review, merge conflict resolution
-- Integration point for all systems coming together into playable levels
+- Placeholder
 
 ### Andrew Loi — Gameplay Systems (Hazards, Timer, Checkpoints)
-- Owns hazard implementation: moving and environmental hazards per level
-- Owns timer, checkpoint, and respawn logic
-- Owns win/lose state transitions and their triggers
+- Placeholder
 
 ### Jayden Bach — Polish, UI & Support
-- Owns UI/HUD implementation (timer display, menus, victory/game-over screens)
-- Owns audio integration: SFX and music hookup (assets can be sourced from free libraries — flag if original composition is wanted)
-- Supports README and design document drafting
-- Playtesting pass in Week 4–5
+- Placeholder
 
 **Note:** every system above has a documented owner but nothing is a single point of failure — see §3.
 

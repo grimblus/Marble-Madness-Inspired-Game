@@ -47,3 +47,9 @@ Folder-to-system mapping follows [docs/requirements.md §3](docs/requirements.md
 ## Known Issues
 
 _None yet — project scaffolding only, no gameplay implemented._
+
+## Team
+- Aaron Tran
+- Andrew Loi
+- Donovan Ong
+- Jayden Bach
