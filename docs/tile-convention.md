@@ -28,18 +28,45 @@ Each value is marked **Locked** (build against it) or **Tentative** (expected to
 - File names use PascalCase, `Tile` prefix, type then variant: `TileFlat.tscn`, `TileRamp.tscn`, `TileHole.tscn`, `TileArch.tscn`, `TileCurve.tscn`, `TileBridge.tscn`.
 - Themed variants add a suffix: `TileFlat_Stone.tscn`, `TileFlat_Ice.tscn`.
 - Level scenes go in `scenes/levels/level_XX/` and only *instance* tile scenes. No level-specific geometry is built directly in a level scene, except temporary experiments.
-- Tile visuals and physics live inside the tile scene, so swapping CSG for a Blender mesh only changes the internals of the tile and nothing that instances it.
+- Tile visuals and physics live inside the tile scene, so changing how a tile is built (CSG, baked mesh or Blender mesh) only changes the internals of the tile and nothing that instances it.
 
-## 4. Greybox (CSG) rules
+## 4. CSG tiles and materials
+
+Tiles are built from CSG nodes. There are two ways to ship them, and a level can mix both since levels only instance tile scenes:
+
+- **Final CSG + material pass:** keep the CSG geometry and make it look finished with PBR materials and scene lighting (§4.2).
+- **Blender replacement:** swap the tile's internals for a modelled mesh (§5) where CSG geometry is not good enough.
+
+### 4.1 CSG construction rules
 
 - Use `CSGBox3D`/`CSGPolygon3D` inside the tile scene, with **Use Collision** on.
 - Only combine CSG shapes within the same tile scene. Never combine across tiles.
+- Cutting shapes (subtraction) should be taller or larger than the shape they cut, so their faces do not coincide with the surface they cut through.
 - Moving or rotating tiles need an `AnimatableBody3D` parent with Use Collision off on the CSG child and a separate collision shape.
-- CSG is for prototyping only. Tiles are baked to static meshes with proper collision before the final build (performance target: 60 FPS, see requirements §3).
+
+### 4.2 Material pass
+
+- Every tile references a shared material resource in `assets/materials/`, never a per-tile material. Themed variants swap the material, not the geometry.
+- For a textured look, use a `StandardMaterial3D` with albedo, roughness and normal maps from a CC0 PBR set (for example ambientCG or Poly Haven), stored in `assets/textures/`.
+- Turn on **UV1 → Triplanar** so the texture maps consistently on any CSG shape without UV setup. Leave **World Triplanar** off so the texture stays fixed to the tile when it is moved or rotated.
+- Set **UV1 Scale** for a consistent texel density across tile types, roughly one repeat per 1-2 m.
+- Keep tile types distinguishable (a tint or accent per type), since the placeholder colours currently do that job.
+- Record the source and licence of every texture set used (a note in the docs is enough).
+- Scene lighting (`WorldEnvironment` with SSAO, glow and sky, plus shadows on the directional light) is part of the look and is set in the level or main scene, not per tile.
+
+### 4.3 Limits of CSG, and when to move to Blender
+
+CSG gives hard 90° edges with no bevels, faceted curves, and stretched texture on cut surfaces. Use a Blender model for a tile when the material pass cannot fix that (curves, bridges, bevelled edges, organic pieces).
+
+### 4.4 Shipping CSG in the final build
+
+CSG tiles may stay in the final build if the game holds the 60 FPS target (see requirements §3) and scene load time stays acceptable on a full level. Check both with the largest level.
+
+If either target is missed, bake the affected tiles to static meshes with proper collision (CSG menu → **Bake Static Mesh**), or replace them with Blender models. Because the tile scene is the boundary, this does not change the levels.
 
 ## 5. Blender / final asset export
 
-Applies once the dimensions above are settled.
+Applies to tiles that are replaced by a modelled mesh (see §4.3), once the dimensions above are settled.
 
 - Model at real-world scale: 1 Blender unit = 1 m, with the origin at the tile centre and the walking surface at y = 0.
 - Apply scale and rotation before export, and export as `.glb`.
