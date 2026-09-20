@@ -12,8 +12,8 @@ Each value is marked **Locked** (build against it) or **Tentative** (expected to
 | Tile origin | Centre of the footprint, at the tile's base height | Locked | Centre origins make 90° rotation in place safe: a rotated tile still occupies the same cell. |
 | Flat tile surface | y = 0 (top of the walking surface) | Locked | Levels stack tiles by elevation offset, so a consistent reference height is needed. |
 | Flat tile thickness | 0.5 m (surface at y = 0, underside at y = -0.5) | Tentative | Thick enough that fast-moving marbles do not tunnel through. |
-| Elevation step | 0.5 m | Tentative | A ramp spanning one tile (2 m run) rises 0.5 m, about 14°, which keeps the slope gentle enough to climb easily at the current move force. A 1 m step over a 2 m run would be about 27° and should be its own steeper tile variant. Steeper or shallower ramps should be new tile variants, not ad-hoc rotations. |
-| Grid unit | 2 m for X/Z, 0.5 m for Y | Tentative | Set the editor's snap step to these values when placing tiles. |
+| Elevation step | 1 m | Tentative | A ramp spanning one tile (2 m run) rises 1 m, a 2:1 slope of about 27°. This is steep, so check it against the current move force during tuning. Steeper or shallower ramps should be new tile variants, not ad-hoc rotations. |
+| Grid unit | 2 m for X/Z, 1 m for Y | Tentative | Set the editor's snap step to these values when placing tiles. |
 
 ## 2. Connection points
 
@@ -25,7 +25,7 @@ Each value is marked **Locked** (build against it) or **Tentative** (expected to
 ## 3. Scene structure and naming
 
 - One tile = one `.tscn` in `scenes/tiles/`, root node is a `Node3D` named after the file.
-- File names use PascalCase, `Tile` prefix, type then variant: `TileFlat.tscn`, `TileRamp.tscn`, `TileCurve.tscn`, `TileGap.tscn`, `TileBridge.tscn`.
+- File names use PascalCase, `Tile` prefix, type then variant: `TileFlat.tscn`, `TileRamp.tscn`, `TileHole.tscn`, `TileArch.tscn`, `TileCurve.tscn`, `TileBridge.tscn`.
 - Themed variants add a suffix: `TileFlat_Stone.tscn`, `TileFlat_Ice.tscn`.
 - Level scenes go in `scenes/levels/level_XX/` and only *instance* tile scenes. No level-specific geometry is built directly in a level scene, except temporary experiments.
 - Tile visuals and physics live inside the tile scene, so swapping CSG for a Blender mesh only changes the internals of the tile and nothing that instances it.
