@@ -8,16 +8,16 @@ Each value is marked **Locked** (build against it) or **Tentative** (expected to
 
 | Item | Value | Status | Rationale |
 |---|---|---|---|
-| Tile footprint | 4 m × 4 m (X × Z) | Tentative | The marble is 0.5 m across (radius 0.25 m), so a tile is 8 marble-widths: wide enough for forks and hazards, small enough to assemble quickly. |
+| Tile footprint | 2 m × 2 m (X × Z) | Locked | The marble is 0.5 m across (radius 0.25 m), so a tile is 4 marble-widths: fine-grained enough to build curves, forks and narrow paths from many small pieces. Wider features are made by placing tiles side by side. |
 | Tile origin | Centre of the footprint, at the tile's base height | Locked | Centre origins make 90° rotation in place safe: a rotated tile still occupies the same cell. |
 | Flat tile surface | y = 0 (top of the walking surface) | Locked | Levels stack tiles by elevation offset, so a consistent reference height is needed. |
 | Flat tile thickness | 0.5 m (surface at y = 0, underside at y = -0.5) | Tentative | Thick enough that fast-moving marbles do not tunnel through. |
-| Elevation step | 1 m | Tentative | A ramp spanning one tile (4 m run) rises 1 m, about 14°. Steeper or shallower ramps should be new tile variants, not ad-hoc rotations. |
-| Grid unit | 4 m for X/Z, 1 m for Y | Tentative | Set the editor's snap step to these values when placing tiles. |
+| Elevation step | 0.5 m | Tentative | A ramp spanning one tile (2 m run) rises 0.5 m, about 14°, which keeps the slope gentle enough to climb easily at the current move force. A 1 m step over a 2 m run would be about 27° and should be its own steeper tile variant. Steeper or shallower ramps should be new tile variants, not ad-hoc rotations. |
+| Grid unit | 2 m for X/Z, 0.5 m for Y | Tentative | Set the editor's snap step to these values when placing tiles. |
 
 ## 2. Connection points
 
-- Tiles connect along the **edges** of the footprint, at X = ±2 m or Z = ±2 m from the origin.
+- Tiles connect along the **edges** of the footprint, at X = ±1 m or Z = ±1 m from the origin.
 - At an open edge, the walking surface must meet the edge flush, with full-width track and no lip. The neighbouring tile's surface height at the shared edge must match, or differ by exactly one elevation step (a ramp joins levels).
 - Tiles may only be rotated in **90° steps around Y**. Never scale a tile in the level scene; make a new tile variant instead.
 - Tiles should not overlap the neighbouring cell. Decorative overhang is fine only if it has no collision.
@@ -76,6 +76,5 @@ Tentative until the control feel is tuned on ramps and gaps in the greybox.
 
 ## 8. Open questions
 
-- Confirm the 4 m footprint with Aaron (tile system owner) before many tiles exist.
-- Track width: full width of the tile, or a narrower path with edges for the marble to fall off? This affects the fall/respawn design.
+- Track width: a single 2 m tile is only 4 marble-widths across. Are lanes one tile wide, or do levels use two-tile-wide tracks? Do tiles have a narrower path with edges to fall off? This affects the fall/respawn design.
 - Wall or rail pieces: separate tiles, or part of each tile?
