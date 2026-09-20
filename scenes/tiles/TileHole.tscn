@@ -12,5 +12,5 @@ material = ExtResource("1_x4biy")
 
 [node name="CSGCylinder3D" type="CSGCylinder3D" parent="CSGBox3D" unique_id=2099836981]
 operation = 2
-height = 0.5
+height = 1.0
 sides = 50
