@@ -2,7 +2,7 @@
 
 A 3D clone of *Marble Madness* built in Godot 4.7.1 (.NET / C#) for COSC2349 Games Studio 2, Assignment 3.
 
-See [docs/requirements.md](docs/requirements.md) for the full requirements spec and [docs/project-plan-responsibilities.md](docs/project-plan-responsibilities.md) for team roles and the milestone schedule.
+See [docs/requirements.md](docs/requirements.md) for the full requirements spec, [docs/project-plan-responsibilities.md](docs/project-plan-responsibilities.md) for team roles and the milestone schedule, and [docs/tile-convention.md](docs/tile-convention.md) for the tile grid and level-building rules.
 
 ## Requirements
 
@@ -18,7 +18,11 @@ See [docs/requirements.md](docs/requirements.md) for the full requirements spec 
 
 ## Controls
 
-_To be finalized during Week 1 prototyping — see [docs/requirements.md §7](docs/requirements.md#7-open-items-to-confirm)._
+| Input | Action |
+|---|---|
+| WASD / arrow keys | Roll the marble |
+
+Full control scheme still to be finalized — see [docs/requirements.md §7](docs/requirements.md#7-open-items-to-confirm).
 
 ## Project Structure
 
@@ -46,9 +50,12 @@ Folder-to-system mapping follows [docs/requirements.md §3](docs/requirements.md
 
 ## Known Issues
 
-_None yet — project scaffolding only, no gameplay implemented._
+- Only a greybox prototype exists: the marble rolls around a CSG-built test course (`scenes/levels/level_01/Level01.tscn`). No hazards, timer, checkpoints, win/lose states, UI or audio yet.
+- The camera is a fixed angled `Camera3D` and does not follow the marble yet.
+- Tiles are CSG placeholders and will be replaced by final modelled assets.
 
 ## Team
+
 - Aaron Tran
 - Andrew Loi
 - Donovan Ong
