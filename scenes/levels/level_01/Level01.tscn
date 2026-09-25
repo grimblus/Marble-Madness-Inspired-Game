@@ -1,11 +1,12 @@
 [gd_scene format=3 uid="uid://b02swvmgd2beh"]
 
-[ext_resource type="PackedScene" uid="uid://cuy33vmoay3gb" path="res://scenes/tiles/TileFlat.tscn" id="1_f30rv"]
-[ext_resource type="PackedScene" uid="uid://deaymk1cjwgwu" path="res://scenes/tiles/TileRamp.tscn" id="2_tqp01"]
-[ext_resource type="PackedScene" uid="uid://cikijnjtc4k60" path="res://scenes/tiles/TileHole.tscn" id="3_2bx3l"]
-[ext_resource type="PackedScene" uid="uid://cxsy5njxunxnn" path="res://scenes/tiles/TileArch.tscn" id="4_0nn33"]
+[ext_resource type="PackedScene" uid="uid://cuy33vmoay3gb" path="res://scenes/tiles/Tile_Flat.tscn" id="1_f30rv"]
+[ext_resource type="PackedScene" uid="uid://deaymk1cjwgwu" path="res://scenes/tiles/Tile_Ramp.tscn" id="2_tqp01"]
+[ext_resource type="PackedScene" uid="uid://cikijnjtc4k60" path="res://scenes/tiles/Tile_Hole.tscn" id="3_2bx3l"]
+[ext_resource type="PackedScene" uid="uid://cxsy5njxunxnn" path="res://scenes/tiles/Tile_Arch.tscn" id="4_0nn33"]
 [ext_resource type="PackedScene" uid="uid://cs7s117m5vfg4" path="res://assets/models/props/Aurelius2.glb" id="5_ro5ca"]
 [ext_resource type="PackedScene" uid="uid://dg6i6cewlrmw0" path="res://assets/models/props/Horsey.glb" id="6_i5t0w"]
+[ext_resource type="MeshLibrary" uid="uid://cdtfa8a8p0yyb" path="res://assets/libraries/tile_library.tres" id="7_e2p1h"]
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_e2p1h"]
 points = PackedVector3Array(1.3923986, 3.052319, 0.62239593, -3.0040298, -1.1761546, -0.646177, -3.0355618, -1.1908988, -0.40389696, 1.1307715, -4.006667, 0.62239593, 2.1070766, -0.18219228, -1.3490949, -0.7890383, 3.6317556, -1.1412822, -1.2214661, 3.575662, 1.2765234, -0.30667362, -2.8289409, 1.6688001, -0.69881344, -4.006667, -1.2072308, -2.6595125, 0.30702126, -1.5995076, 2.8304453, -1.1303289, 0.23045191, -2.2630699, -2.1592817, 1.1994717, 0.47760606, 3.7058833, 1.4069495, -1.4824917, -4.006667, 0.62239593, 1.0002587, -4.006667, -0.6841951, 1.3923986, -0.7372075, 1.4069495, 0.8082377, 3.6072834, -0.7657511, -1.7441188, 3.4446213, 0.7531549, 2.7923894, -0.8114759, -0.8950148, 0.47760606, -4.006667, 1.4069495, 0.66069466, 0.2950704, -1.574295, -0.6786078, 4.2165604, 0.22115862, -0.051004287, 3.1751556, -1.3501694, 0.34649184, -4.006667, -1.2072308, -0.8293263, 2.0064523, 1.5380411, -1.4824917, -4.006667, -0.42267728, 2.7868662, -1.5488129, -0.27706653, -2.953339, -0.4271988, -1.2403644, 0.5815158, 4.078439, 0.09454492, 2.160341, -2.2780643, 0.70567304, -1.2660859, 3.5836732, -0.6389809, -0.30667362, 3.575662, 1.5380411)
@@ -86,7 +87,7 @@ transform = Transform3D(0.84332144, 0, -0.5374095, 0, 1, 0, 0.5374095, 0, 0.8433
 shape = SubResource("ConvexPolygonShape3D_e2p1h")
 
 [node name="Horsey" parent="." unique_id=1166454701 instance=ExtResource("6_i5t0w")]
-transform = Transform3D(1.9604902, 0, 0.39557287, 0, 2, 0, -0.39557287, 0, 1.9604902, 0.07558584, 2.4859524, 5.291969)
+transform = Transform3D(1.7908636, 0, -0.8903972, 0, 2, 0, 0.8903972, 0, 1.7908636, 3.3044353, 3.5118542, 4.062439)
 
 [node name="Sketchfab_model" parent="Horsey" index="0" unique_id=1763571366]
 transform = Transform3D(-0.9148959, 0, 0.4036901, 0, 1, 0, -0.4036901, 0, -0.9148959, -0.05573371, 0, 0.2762208)
@@ -95,6 +96,10 @@ transform = Transform3D(-0.9148959, 0, 0.4036901, 0, 1, 0, -0.4036901, 0, -0.914
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Horsey/Sketchfab_model/both_obj_cleaner_gles/Object_2/StaticBody3D" unique_id=491464103]
 shape = SubResource("ConvexPolygonShape3D_lra2u")
+
+[node name="GridMap" type="GridMap" parent="." unique_id=1576276520]
+mesh_library = ExtResource("7_e2p1h")
+cell_size = Vector3(2, 0.5, 2)
 
 [editable path="Aurelius2"]
 [editable path="Horsey"]
