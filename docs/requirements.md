@@ -8,7 +8,7 @@
 - **Type:** Group project, with individually assessed contribution
 - **Due:** Monday, Week 14 — **25 October, 11:59pm AEDT**
 - **Submission format:** A Classroom50 invite link to the repository — the game runs locally from the project/repo, no web export or hosting required
-- **Engine:** Godot 4.5
+- **Engine:** Godot 4.7.1 (.NET build), with gameplay code written in C#
 - **Scope target:** 2–3 fully polished levels, prioritizing depth and quality over quantity
 
 ## 2. Rubric-to-Feature Mapping
@@ -71,7 +71,7 @@ Every requirement below is written to satisfy the top rubric band. Anything mark
 ### 3.6 Submission & Repository
 
 - Submission is a **Classroom50 invite link** to the team repository — the game is assessed by running the Godot project locally, not via a hosted web build. No web/HTML5 export is required.
-- Repository must be self-contained and runnable by a marker who clones it fresh: correct `.gitignore` (exclude `.godot/`, build artifacts), a pinned/documented Godot version (4.5), and a clear entry-point scene set as the project's main scene.
+- Repository must be self-contained and runnable by a marker who clones it fresh: correct `.gitignore` (exclude `.godot/`, build artifacts), a pinned/documented Godot version (4.7.1 .NET) and .NET SDK version, and a clear entry-point scene set as the project's main scene.
 - Keep the repo clean before submission — no dead branches left as the default, no broken commits on main, no missing assets (check nothing needed is gitignored by accident).
 
 ### 3.7 UI / HUD
@@ -91,7 +91,7 @@ Every requirement below is written to satisfy the top rubric band. Anything mark
 - **Performance:** stable 60 FPS running locally from the editor/exported desktop build on a standard laptop — this is explicitly graded, so profile with Godot's built-in profiler regularly, not only at the end.
 - **Code structure:** clear separation between player controller, level/tile system, camera, hazards, UI, and audio as independent, decoupled scripts/nodes. Avoid god-objects (e.g. one script controlling marble, camera, and UI all together).
 - **Version control:** feature branches per system, pull requests before merging to main, no direct commits to main in the final 48 hours before submission.
-- **Code style:** agree on a shared GDScript style convention (naming, typing, signal usage) before heavy implementation begins, since four people will be touching the codebase.
+- **Code style:** agree on a shared C# style convention (naming, typing, signal/event usage) before heavy implementation begins, since four people will be touching the codebase.
 - **[Stretch]** Object pooling for frequently spawned objects (particles, hazard instances) if profiling shows GC/instantiation cost.
 - **[Stretch]** Automated or documented QA checklist run before each milestone submission.
 
@@ -101,7 +101,7 @@ All four are individually graded rubric items — none can be skipped or left th
 
 1. **Design document** — concept, level design rationale, physics/control design decisions, team role breakdown, playtesting notes and what changed as a result.
 2. **README** — setup/run instructions (Godot version, how to open and run the project), controls, known issues.
-3. **Milestone presentation** — format/date to be confirmed from course materials; prepare a short deck covering progress, design decisions, and demo footage.
+3. **Milestone presentation** — details to be released by the course coordinator at a later stage; prepare a short deck covering progress, design decisions, and demo footage.
 4. **Video demonstration** — clean, edited gameplay footage covering all levels, narrated or captioned to explain features being shown (not a raw unedited screen recording).
 
 ## 6. Out of Scope (explicitly, to protect timeline)
@@ -112,6 +112,5 @@ All four are individually graded rubric items — none can be skipped or left th
 
 ## 7. Open Items to Confirm
 
-- Exact milestone presentation date/format (check course materials/Canvas)
 - Confirmed Classroom50 repo/invite-link setup process
 - Final choice of control scheme (tilt-world vs. direct-force) — should be locked in during Week 1 prototyping
