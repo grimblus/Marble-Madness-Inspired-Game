@@ -17,6 +17,7 @@ config/features=PackedStringArray("4.7", "C#", "Forward Plus")
 [autoload]
 
 CheckpointManager="*res://scripts/Core/CheckpointManager.cs"
+GameStateManager="*res://scripts/Core/GameStateManager.cs"
 
 [dotnet]
 
