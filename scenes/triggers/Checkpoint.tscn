@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://byxgfkifyqgjg"]
+
+[ext_resource type="Script" uid="uid://cgxjufyyydt1i" path="res://scripts/Level/Checkpoint.cs" id="1_23fhq"]
+[ext_resource type="Material" uid="uid://dpwc7cfqbndv3" path="res://assets/materials/Triggers.tres" id="2_g5urn"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3ewea"]
+size = Vector3(2, 3, 0.5)
+
+[sub_resource type="BoxMesh" id="BoxMesh_3ewea"]
+material = ExtResource("2_g5urn")
+size = Vector3(2, 3, 0.5)
+
+[node name="Checkpoint" type="Area3D" unique_id=1005557379]
+collision_layer = 8
+collision_mask = 2
+script = ExtResource("1_23fhq")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1510804554]
+shape = SubResource("BoxShape3D_3ewea")
+debug_color = Color(0.6887336, 0.38043454, 0.82330185, 1)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=474267370]
+mesh = SubResource("BoxMesh_3ewea")

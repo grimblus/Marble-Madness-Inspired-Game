@@ -3,6 +3,8 @@
 [ext_resource type="PackedScene" uid="uid://b02swvmgd2beh" path="res://scenes/levels/level_01/Level01.tscn" id="1_nha0i"]
 [ext_resource type="PackedScene" uid="uid://326c4t3v8td" path="res://scenes/marble/Marble.tscn" id="1_u1xfj"]
 [ext_resource type="PackedScene" uid="uid://jndpq1r8a76l" path="res://scenes/camera/CameraRig.tscn" id="3_q24mn"]
+[ext_resource type="PackedScene" uid="uid://bugcc03pvuea" path="res://scenes/triggers/KillZone.tscn" id="4_gyg6b"]
+[ext_resource type="PackedScene" uid="uid://byxgfkifyqgjg" path="res://scenes/triggers/Checkpoint.tscn" id="5_dc040"]
 
 [node name="Main" type="Node3D" unique_id=2133792107]
 
@@ -19,3 +21,10 @@ TargetPath = NodePath("../Marble")
 PitchDegrees = -30.0
 Distance = 120.0
 OrthographicSize = 15.0
+
+[node name="KillZone" parent="." unique_id=1018422379 instance=ExtResource("4_gyg6b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -5, 0)
+
+[node name="Checkpoint" parent="." unique_id=1005557379 instance=ExtResource("5_dc040")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 3)
+visible = false
