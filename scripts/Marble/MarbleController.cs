@@ -10,6 +10,8 @@ public partial class MarbleController : RigidBody3D
 	// the death (a kill zone today, a hazard later).
 	[Signal] public delegate void DiedEventHandler();
 
+	private bool _controlsLocked = false;
+
 	public override void _Ready()
 	{
 		AddToGroup("marble");
@@ -20,10 +22,26 @@ public partial class MarbleController : RigidBody3D
 		var checkpoints = GetNode<CheckpointManager>("/root/CheckpointManager");
 		checkpoints.Reset();
 		checkpoints.SetStartPoint(GlobalPosition);
+
+		// Stop responding to input once the level has ended, win or lose,
+		// so the marble doesn't keep rolling around behind a win/lose screen.
+		var gameState = GetNode<GameStateManager>("/root/GameStateManager");
+		gameState.LevelWon += OnLevelEnded;
+		gameState.LevelLost += OnLevelEnded;
+	}
+
+	private void OnLevelEnded()
+	{
+		_controlsLocked = true;
 	}
 
 	public override void _PhysicsProcess(double delta)
 	{
+		if (_controlsLocked)
+		{
+			return;
+		}
+
 		Vector2 input = Input.GetVector("move_left", "move_right", "move_forward", "move_back");
 		Vector3 force = new Vector3(input.X, 0, input.Y) * MoveForce;
 
