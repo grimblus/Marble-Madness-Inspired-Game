@@ -5,6 +5,8 @@
 [ext_resource type="PackedScene" uid="uid://jndpq1r8a76l" path="res://scenes/camera/CameraRig.tscn" id="3_q24mn"]
 [ext_resource type="PackedScene" uid="uid://bugcc03pvuea" path="res://scenes/triggers/KillZone.tscn" id="4_gyg6b"]
 [ext_resource type="PackedScene" uid="uid://byxgfkifyqgjg" path="res://scenes/triggers/Checkpoint.tscn" id="5_dc040"]
+[ext_resource type="PackedScene" uid="uid://di3r1eaoorp6y" path="res://scenes/triggers/Goal.tscn" id="6_sjxhf"]
+[ext_resource type="PackedScene" uid="uid://d0sumnbepcruv" path="res://scenes/ui/menus/WinMessage.tscn" id="7_ko0rf"]
 
 [node name="Main" type="Node3D" unique_id=2133792107]
 
@@ -28,3 +30,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -5, 0)
 [node name="Checkpoint" parent="." unique_id=1005557379 instance=ExtResource("5_dc040")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 3)
 visible = false
+
+[node name="Goal" parent="." unique_id=701960724 instance=ExtResource("6_sjxhf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 4)
+
+[node name="WinMessage" parent="." unique_id=729918560 instance=ExtResource("7_ko0rf")]
