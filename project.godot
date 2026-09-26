@@ -14,6 +14,10 @@ config/name="MarbleMadness3D"
 run/main_scene="res://scenes/main/Main.tscn"
 config/features=PackedStringArray("4.7", "C#", "Forward Plus")
 
+[autoload]
+
+CheckpointManager="*res://scripts/Core/CheckpointManager.cs"
+
 [dotnet]
 
 project/assembly_name="MarbleMadness3D"
