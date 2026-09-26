@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://di3r1eaoorp6y"]
+
+[ext_resource type="Material" uid="uid://conlo3we8cvs5" path="res://assets/materials/Goal.tres" id="1_7n0sd"]
+[ext_resource type="Script" uid="uid://dj20fqhwaoccw" path="res://scripts/Level/Goal.cs" id="1_o04jb"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3ewea"]
+size = Vector3(2, 1, 2)
+
+[sub_resource type="BoxMesh" id="BoxMesh_3ewea"]
+material = ExtResource("1_7n0sd")
+size = Vector3(2, 1, 2)
+
+[node name="Goal" type="Area3D" unique_id=701960724]
+collision_layer = 8
+collision_mask = 2
+script = ExtResource("1_o04jb")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1241094612]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("BoxShape3D_3ewea")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1863390837]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+mesh = SubResource("BoxMesh_3ewea")
