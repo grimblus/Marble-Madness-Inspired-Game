@@ -13,6 +13,17 @@ public partial class WinMessage : CanvasLayer
 		GetNode<GameStateManager>("/root/GameStateManager").LevelWon += OnLevelWon;
 	}
 
+	// Autoloads outlive a scene reload (Retry), so drop this subscription
+	// when the message goes away rather than leaving a stale handler behind.
+	public override void _ExitTree()
+	{
+		var gameState = GetNodeOrNull<GameStateManager>("/root/GameStateManager");
+		if (gameState != null)
+		{
+			gameState.LevelWon -= OnLevelWon;
+		}
+	}
+
 	private void OnLevelWon()
 	{
 		Visible = true;

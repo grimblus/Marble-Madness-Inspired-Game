@@ -10,12 +10,17 @@ public partial class GameStateManager : Node
 {
 	[Signal] public delegate void LevelWonEventHandler();
 
-	// Not raised by anything yet - reserved for the timer's lose condition
-	// (requirements.md §3.5) so that system can plug in without touching
-	// this class again.
+	// Raised by LevelTimer when time runs out (requirements.md §3.5); any
+	// future lose condition (e.g. a hazard) can call Lose() the same way.
 	[Signal] public delegate void LevelLostEventHandler();
 
 	private bool _hasEnded = false;
+
+	// True once the level has been won or lost. Systems that must stop
+	// acting after the end (marble input, respawning) should check this
+	// directly instead of caching their own copy from the signals, so they
+	// can never be out of step with it.
+	public bool IsEnded => _hasEnded;
 
 	public void Win()
 	{
@@ -39,10 +44,19 @@ public partial class GameStateManager : Node
 		EmitSignal(SignalName.LevelLost);
 	}
 
-	// Levels aren't reloaded/transitioned yet; once they are, whatever
-	// loads a fresh attempt should call this so it can end again.
+	// Clears the ended state so a fresh attempt can win or lose again.
 	public void Reset()
 	{
 		_hasEnded = false;
+	}
+
+	// Restarts the current level from scratch. Reloading the scene recreates
+	// the marble (which resets its checkpoint), the timer and the HUD, so
+	// this only has to clear the win/lose state first. Any screen offering a
+	// retry (game over, later the win screen or a pause menu) calls this.
+	public void Retry()
+	{
+		Reset();
+		GetTree().ReloadCurrentScene();
 	}
 }

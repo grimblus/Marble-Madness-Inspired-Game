@@ -10,7 +10,7 @@ public partial class MarbleController : RigidBody3D
 	// the death (a kill zone today, a hazard later).
 	[Signal] public delegate void DiedEventHandler();
 
-	private bool _controlsLocked = false;
+	private GameStateManager _gameState;
 
 	public override void _Ready()
 	{
@@ -23,21 +23,14 @@ public partial class MarbleController : RigidBody3D
 		checkpoints.Reset();
 		checkpoints.SetStartPoint(GlobalPosition);
 
-		// Stop responding to input once the level has ended, win or lose,
-		// so the marble doesn't keep rolling around behind a win/lose screen.
-		var gameState = GetNode<GameStateManager>("/root/GameStateManager");
-		gameState.LevelWon += OnLevelEnded;
-		gameState.LevelLost += OnLevelEnded;
-	}
-
-	private void OnLevelEnded()
-	{
-		_controlsLocked = true;
+		_gameState = GetNode<GameStateManager>("/root/GameStateManager");
 	}
 
 	public override void _PhysicsProcess(double delta)
 	{
-		if (_controlsLocked)
+		// Stop responding to input once the level has ended, win or lose,
+		// so the marble doesn't keep rolling around behind a win/lose screen.
+		if (_gameState.IsEnded)
 		{
 			return;
 		}
@@ -56,6 +49,14 @@ public partial class MarbleController : RigidBody3D
 	// body.Call("Die") if it only holds a Node3D reference.
 	public void Die()
 	{
+		// Once the level has ended (win or lose) the marble stays put.
+		// Without this, a fall at the moment time runs out respawns the
+		// marble behind the game over screen as if the run were still live.
+		if (_gameState.IsEnded)
+		{
+			return;
+		}
+
 		var checkpoints = GetNode<CheckpointManager>("/root/CheckpointManager");
 		Vector3 respawnPosition = checkpoints.GetRespawnPosition();
 
