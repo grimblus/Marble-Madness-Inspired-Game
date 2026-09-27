@@ -7,6 +7,9 @@
 [ext_resource type="PackedScene" uid="uid://byxgfkifyqgjg" path="res://scenes/triggers/Checkpoint.tscn" id="5_dc040"]
 [ext_resource type="PackedScene" uid="uid://di3r1eaoorp6y" path="res://scenes/triggers/Goal.tscn" id="6_sjxhf"]
 [ext_resource type="PackedScene" uid="uid://d0sumnbepcruv" path="res://scenes/ui/menus/WinMessage.tscn" id="7_ko0rf"]
+[ext_resource type="Script" uid="uid://chxvwrt37f2ci" path="res://scripts/Level/LevelTimer.cs" id="8_ostsq"]
+[ext_resource type="PackedScene" uid="uid://le0asy7w1two" path="res://scenes/ui/hud/TimerDisplay.tscn" id="9_3km4f"]
+[ext_resource type="PackedScene" uid="uid://dcsxu1uc6mnry" path="res://scenes/ui/menus/GameOverMessage.tscn" id="10_3km4f"]
 
 [node name="Main" type="Node3D" unique_id=2133792107]
 
@@ -35,3 +38,12 @@ visible = false
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 4)
 
 [node name="WinMessage" parent="." unique_id=729918560 instance=ExtResource("7_ko0rf")]
+
+[node name="LevelTimer" type="Node" parent="." unique_id=1489709857]
+script = ExtResource("8_ostsq")
+StartSeconds = 5.0
+
+[node name="TimerDisplay" parent="." unique_id=1204011393 instance=ExtResource("9_3km4f")]
+TimerPath = NodePath("../LevelTimer")
+
+[node name="GameOverMessage" parent="." unique_id=1128760967 instance=ExtResource("10_3km4f")]
