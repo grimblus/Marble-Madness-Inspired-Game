@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://ddgurlhw8wqaj"]
+
+[ext_resource type="Script" uid="uid://wry5fe8ntr0t" path="res://scenes/hazards/SekhmetHazard.cs" id="1_chwjj"]
+[ext_resource type="PackedScene" uid="uid://c5jj21fbcq6oc" path="res://assets/models/hazards/DecimatedSekhmet.glb" id="1_lbjb3"]
+
+[sub_resource type="Curve3D" id="Curve3D_chwjj"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_44oka"]
+
+[sub_resource type="Curve3D" id="Curve3D_qkm1d"]
+closed = true
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -0.0018735975, 0.14674267, 0.0028152498, 0, 0, 0, 0, 0, 0, -0.0018735975, 0.14672852, 0.99745786, 0, 0, 0, 0, 0, 0, -0.006741628, 0.14672852, 1.9899215),
+"tilts": PackedFloat32Array(0, 0, 0)
+}
+point_count = 3
+
+[node name="SekhmetHazard" type="RigidBody3D" unique_id=905371289 node_paths=PackedStringArray("PatternPath")]
+script = ExtResource("1_chwjj")
+Pattern = SubResource("Curve3D_chwjj")
+PatternPath = NodePath("Path3D")
+
+[node name="DecimatedSekhmet" parent="." unique_id=2105645718 instance=ExtResource("1_lbjb3")]
+transform = Transform3D(0.91579366, 0, -0.40164912, 0, 1, 0, 0.40164912, 0, 0.91579366, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=584763044]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, -0.25325733, 0)
+shape = SubResource("CapsuleShape3D_44oka")
+
+[node name="Path3D" type="Path3D" parent="." unique_id=264172916]
+curve = SubResource("Curve3D_qkm1d")
