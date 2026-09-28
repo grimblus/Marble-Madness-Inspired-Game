@@ -27,7 +27,7 @@ Full control scheme still to be finalized — see [docs/requirements.md §7](doc
 ## Project Structure
 
 ```
-assets/      Art, models, textures, materials, audio
+assets/      Art, models, textures, materials, audio, fonts
 resources/   Data resources (level layouts, tile definitions)
 scenes/      .tscn scene files, grouped by system
 scripts/     C# scripts, grouped by system
