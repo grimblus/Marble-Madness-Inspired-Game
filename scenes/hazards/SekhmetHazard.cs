@@ -24,11 +24,16 @@ public partial class SekhmetHazard : RigidBody3D
 			patternLength = Pattern.GetBakedLength();
 		}
 		
+		Freeze = true;
+		FreezeMode = RigidBody3D.FreezeModeEnum.Kinematic;
+		ContactMonitor = true;
+		MaxContactsReported = 4;
+		
 		spawnPosition = GlobalPosition;
 		spawnRotation = GlobalRotation.Y;
 		
 		marble = GetNode<MarbleController>("/root/Main/Marble");
-		
+				
 		AddToGroup("enemies");
 	}
 	
@@ -54,5 +59,13 @@ public partial class SekhmetHazard : RigidBody3D
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
+	}
+	
+	private void OnBodyEntered(Node3D body)
+	{
+		if (body is MarbleController marbleController)
+		{
+			marbleController.GetHit();
+		}
 	}
 }

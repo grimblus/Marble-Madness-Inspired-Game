@@ -23,6 +23,10 @@ GameStateManager="*res://scripts/Core/GameStateManager.cs"
 
 project/assembly_name="MarbleMadness3D"
 
+[global_group]
+
+enemies=""
+
 [input]
 
 move_forward={
