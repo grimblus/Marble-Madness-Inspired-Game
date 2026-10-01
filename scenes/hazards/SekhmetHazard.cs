@@ -65,7 +65,7 @@ public partial class SekhmetHazard : RigidBody3D
 	{
 		if (body is MarbleController marbleController)
 		{
-			marbleController.GetHit();
+			marbleController.GetHitPhys(GlobalPosition);
 		}
 	}
 }

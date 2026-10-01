@@ -17,7 +17,6 @@ point_count = 3
 
 [node name="SekhmetHazard" type="RigidBody3D" unique_id=341274520 node_paths=PackedStringArray("PatternPath") groups=["enemies"]]
 collision_layer = 256
-collision_mask = 2
 script = ExtResource("1_chwjj")
 Pattern = SubResource("Curve3D_chwjj")
 PatternPath = NodePath("Path3D")

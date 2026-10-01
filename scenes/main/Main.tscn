@@ -18,7 +18,6 @@
 
 [node name="SekhmetHazard" parent="." unique_id=1874972322 instance=ExtResource("11_qkm1d")]
 transform = Transform3D(0.009962305, 0, -0.99995035, 0, 1, 0, 0.99995035, 0, 0.009962305, 0.753778, 0.78196883, -0.7771944)
-collision_layer = 128
 
 [node name="Marble" parent="." unique_id=240693826 instance=ExtResource("1_u1xfj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75324976, 0)

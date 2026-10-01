@@ -4,7 +4,8 @@ public partial class MarbleController : RigidBody3D
 {
 	[Export] public float MoveForce = 12.0f;
 	[Export] public float MaxSpeed = 8.0f;
-	[Export] public float SpinoutTime = 2.0f;
+	[Export] public float SpinoutTime = 0.6f;
+	[Export] public float KnockbackForce = 2.0f;
 
 	// Raised whenever the marble is sent back to a checkpoint. Listen to
 	// this for respawn SFX/UI rather than coupling to whatever triggered
@@ -51,7 +52,7 @@ public partial class MarbleController : RigidBody3D
 		}
 	}
 	
-	public void GetHit()
+	public void GetHitPhys(Vector3 hazardPosition)
 	{
 		if (_gameState.IsEnded) 
 		{
@@ -62,8 +63,20 @@ public partial class MarbleController : RigidBody3D
 		{
 			return;
 		}
-		
 		_inSpinout = true;
+		
+		//Gets pushed directly away when touching physical hazard
+		Vector3 pushDirection = GlobalPosition - hazardPosition;
+		pushDirection.Y = 0;
+		if (pushDirection.LengthSquared() > 0.0001f)
+		{
+			pushDirection = pushDirection.Normalized();
+		}
+		else
+		{
+			pushDirection = Vector3.Forward;
+		}
+		ApplyCentralImpulse(pushDirection * KnockbackForce);
 		
 		GetTree().CreateTimer(SpinoutTime).Timeout += () =>
 		{
@@ -73,13 +86,13 @@ public partial class MarbleController : RigidBody3D
 	
 	private void HurtboxAreaHit(Area3D area) {
 		if (area.IsInGroup("enemies")) {
-			GetHit();
+			GetHitPhys(area.GlobalPosition);
 		}
 	}
 	
 	private void HurtboxBodyHit(Node3D body) {
 		if (body.IsInGroup("enemies")) {
-			GetHit();
+			GetHitPhys(body.GlobalPosition);
 		}
 	}
 
