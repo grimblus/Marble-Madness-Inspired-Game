@@ -1,0 +1,38 @@
+[gd_scene format=3 uid="uid://slvvt4aqofbh"]
+
+[ext_resource type="Material" uid="uid://cv2pmrrev8auq" path="res://assets/materials/WhiteStone.tres" id="1_rf07r"]
+
+[node name="Column" type="Node3D" unique_id=1444429344]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=1391237540]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.5, 0)
+size = Vector3(4, 15, 4)
+material = ExtResource("1_rf07r")
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="CSGBox3D" unique_id=837095144]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0)
+operation = 2
+radius = 1.0
+height = 17.0
+sides = 20
+
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="CSGBox3D" unique_id=915774538]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 0)
+operation = 2
+radius = 1.0
+height = 17.0
+sides = 20
+
+[node name="CSGCylinder3D3" type="CSGCylinder3D" parent="CSGBox3D" unique_id=508174884]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2)
+operation = 2
+radius = 1.0
+height = 17.0
+sides = 20
+
+[node name="CSGCylinder3D4" type="CSGCylinder3D" parent="CSGBox3D" unique_id=338247343]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2)
+operation = 2
+radius = 1.0
+height = 17.0
+sides = 20

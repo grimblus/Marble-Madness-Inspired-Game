@@ -78,7 +78,8 @@ transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 3, 1
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 1, 3)
 
 [node name="Aurelius2" parent="." unique_id=465196340 instance=ExtResource("5_ro5ca")]
-transform = Transform3D(0.84332144, 0, -0.5374095, 0, 1, 0, 0.5374095, 0, 0.84332144, 4.733566, 2.7842145, -4.6233015)
+transform = Transform3D(0.73736537, 0, 0.6754941, 0, 1, 0, -0.6754941, 0, 0.73736537, 4.733566, 2.7842145, -4.6233015)
+visible = false
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Aurelius2/Sketchfab_model/MARCUS_FINAL_obj_cleaner_materialmerger_gles" parent_id_path=PackedInt32Array(465196340, 1369911756) index="1" unique_id=1039771136]
 
@@ -86,7 +87,8 @@ transform = Transform3D(0.84332144, 0, -0.5374095, 0, 1, 0, 0.5374095, 0, 0.8433
 shape = SubResource("ConvexPolygonShape3D_e2p1h")
 
 [node name="Horsey" parent="." unique_id=1166454701 instance=ExtResource("6_i5t0w")]
-transform = Transform3D(1.9604902, 0, 0.39557287, 0, 2, 0, -0.39557287, 0, 1.9604902, 0.07558584, 2.4859524, 5.291969)
+transform = Transform3D(-0.63766885, 0, -1.8956208, 0, 2, 0, 1.8956208, 0, -0.63766885, 2.0755858, 2.4859524, 6.291969)
+visible = false
 
 [node name="Sketchfab_model" parent="Horsey" index="0" unique_id=1763571366]
 transform = Transform3D(-0.9148959, 0, 0.4036901, 0, 1, 0, -0.4036901, 0, -0.9148959, -0.05573371, 0, 0.2762208)

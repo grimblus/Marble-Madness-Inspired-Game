@@ -10,6 +10,8 @@
 [ext_resource type="Script" uid="uid://chxvwrt37f2ci" path="res://scripts/Level/LevelTimer.cs" id="8_ostsq"]
 [ext_resource type="PackedScene" uid="uid://le0asy7w1two" path="res://scenes/ui/hud/TimerDisplay.tscn" id="9_3km4f"]
 [ext_resource type="PackedScene" uid="uid://dcsxu1uc6mnry" path="res://scenes/ui/menus/GameOverMessage.tscn" id="10_3km4f"]
+[ext_resource type="Environment" uid="uid://b4j8oqqcgmbb6" path="res://resources/environments/Gallery.tres" id="11_qkm1d"]
+[ext_resource type="PackedScene" uid="uid://c2kcjgtq0tdvd" path="res://scenes/environment/Backdrop.tscn" id="12_p5fgu"]
 
 [node name="Main" type="Node3D" unique_id=2133792107]
 
@@ -19,12 +21,20 @@
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75324976, 0)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=38329964]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 10, 0)
+transform = Transform3D(-0.4601997, -0.57067674, 0.68010604, 0, 0.76604444, 0.6427876, -0.8878154, 0.29581067, -0.35253343, 0, 10, 0)
+light_color = Color(1, 0.9098039, 0.78039217, 1)
+light_energy = 2.0
+shadow_enabled = true
+shadow_bias = 0.09
+shadow_normal_bias = 1.0
+directional_shadow_blend_splits = true
+directional_shadow_max_distance = 40.0
+directional_shadow_pancake_size = 2.0
 
 [node name="CameraRig" parent="." unique_id=1938777184 instance=ExtResource("3_q24mn")]
 TargetPath = NodePath("../Marble")
 PitchDegrees = -30.0
-Distance = 120.0
+Distance = 15.0
 OrthographicSize = 15.0
 
 [node name="KillZone" parent="." unique_id=1018422379 instance=ExtResource("4_gyg6b")]
@@ -41,9 +51,15 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 4)
 
 [node name="LevelTimer" type="Node" parent="." unique_id=1489709857]
 script = ExtResource("8_ostsq")
-StartSeconds = 5.0
+StartSeconds = 100.0
 
 [node name="TimerDisplay" parent="." unique_id=1204011393 instance=ExtResource("9_3km4f")]
 TimerPath = NodePath("../LevelTimer")
 
 [node name="GameOverMessage" parent="." unique_id=1128760967 instance=ExtResource("10_3km4f")]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1363924070]
+environment = ExtResource("11_qkm1d")
+
+[node name="Backdrop" parent="." unique_id=1520341271 instance=ExtResource("12_p5fgu")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -17.703941, -40, 0)

@@ -60,3 +60,9 @@ move_right={
 [physics]
 
 common/physics_ticks_per_second=120
+
+[rendering]
+
+lights_and_shadows/directional_shadow/soft_shadow_filter_quality=4
+lights_and_shadows/positional_shadow/soft_shadow_filter_quality=4
+anti_aliasing/quality/msaa_3d=2
