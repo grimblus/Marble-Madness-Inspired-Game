@@ -81,7 +81,7 @@ transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 1
 [node name="Aurelius2" parent="." unique_id=465196340 instance=ExtResource("5_ro5ca")]
 transform = Transform3D(0.84332144, 0, -0.5374095, 0, 1, 0, 0.5374095, 0, 0.84332144, 4.733566, 2.7842145, -4.6233015)
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Aurelius2/Sketchfab_model/MARCUS_FINAL_obj_cleaner_materialmerger_gles" parent_id_path=PackedInt32Array(465196340, 1369911756) index="1" unique_id=1039771136]
+[node name="StaticBody3D" type="StaticBody3D" parent="Aurelius2/Sketchfab_model/MARCUS_FINAL_obj_cleaner_materialmerger_gles" parent_id_path=PackedInt32Array(465196340, 1264061530) index="1" unique_id=1039771136]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Aurelius2/Sketchfab_model/MARCUS_FINAL_obj_cleaner_materialmerger_gles/StaticBody3D" unique_id=777875930]
 shape = SubResource("ConvexPolygonShape3D_e2p1h")
@@ -89,10 +89,10 @@ shape = SubResource("ConvexPolygonShape3D_e2p1h")
 [node name="Horsey" parent="." unique_id=1166454701 instance=ExtResource("6_i5t0w")]
 transform = Transform3D(1.7908636, 0, -0.8903972, 0, 2, 0, 0.8903972, 0, 1.7908636, 3.3044353, 3.5118542, 4.062439)
 
-[node name="Sketchfab_model" parent="Horsey" index="0" unique_id=1763571366]
+[node name="Sketchfab_model" parent="Horsey" index="0" unique_id=2066777213]
 transform = Transform3D(-0.9148959, 0, 0.4036901, 0, 1, 0, -0.4036901, 0, -0.9148959, -0.05573371, 0, 0.2762208)
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Horsey/Sketchfab_model/both_obj_cleaner_gles/Object_2" parent_id_path=PackedInt32Array(1166454701, 1691869439) index="1" unique_id=2126057403]
+[node name="StaticBody3D" type="StaticBody3D" parent="Horsey/Sketchfab_model/both_obj_cleaner_gles/Object_2" parent_id_path=PackedInt32Array(1166454701, 715447057) index="1" unique_id=2126057403]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Horsey/Sketchfab_model/both_obj_cleaner_gles/Object_2/StaticBody3D" unique_id=491464103]
 shape = SubResource("ConvexPolygonShape3D_lra2u")
@@ -100,6 +100,9 @@ shape = SubResource("ConvexPolygonShape3D_lra2u")
 [node name="GridMap" type="GridMap" parent="." unique_id=1576276520]
 mesh_library = ExtResource("7_e2p1h")
 cell_size = Vector3(2, 0.5, 2)
+data = {
+"cells": PackedInt32Array(65534, 65535, 4, 3, 1, 4, 3, 0, 4)
+}
 
 [editable path="Aurelius2"]
 [editable path="Horsey"]
