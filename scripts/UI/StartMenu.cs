@@ -2,7 +2,9 @@ using Godot;
 
 // Start menu (scenes/ui/menus/startMenu.tscn).
 // - Start Game / How to Play / Settings / Quit
-// - Slowly crossfades through the images in Backgrounds (level screenshots)
+// - Slowly crossfades through the images in Backgrounds (level screenshots) (Adding this later on
+// once the levels have all been made)
+
 public partial class StartMenu : Control
 {
 	// Scene the Start Game button loads.
@@ -81,7 +83,7 @@ public partial class StartMenu : Control
 		}
 	}
 
-	// ---------- Navigation ----------
+	// navigation
 
 	private void OnStartPressed()
 	{
@@ -101,7 +103,7 @@ public partial class StartMenu : Control
 		focusTarget.GrabFocus();
 	}
 
-	// ---------- Settings ----------
+	// Settings area
 
 	private void InitSettings()
 	{
@@ -130,7 +132,7 @@ public partial class StartMenu : Control
 			: DisplayServer.WindowMode.Windowed);
 	}
 
-	// ---------- Level background slideshow ----------
+	// Levels and background slideshow
 
 	private void InitBackgrounds()
 	{

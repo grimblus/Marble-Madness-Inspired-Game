@@ -1,6 +1,8 @@
 [gd_scene format=3 uid="uid://mpyxjhaf3q4l"]
 
 [ext_resource type="Script" uid="uid://bo2da3m3gppue" path="res://scripts/UI/StartMenu.cs" id="1_menu"]
+[ext_resource type="FontFile" uid="uid://c1hb3k6qg3qqj" path="res://assets/fonts/diffusion-bold.ttf" id="2_ivugx"]
+[ext_resource type="FontFile" uid="uid://bkjvmn2gq25su" path="res://assets/fonts/diffusion-regular.ttf" id="3_qggtv"]
 
 [sub_resource type="StyleBoxFlat" id="Btn_focus"]
 draw_center = false
@@ -205,6 +207,7 @@ theme_override_constants/separation = 12
 
 [node name="Title" type="Label" parent="Center/MainPanel/VBox" unique_id=419645234]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("2_ivugx")
 theme_override_font_sizes/font_size = 36
 text = "MUSEUM MARBLE"
 horizontal_alignment = 1
@@ -212,6 +215,7 @@ horizontal_alignment = 1
 [node name="Subtitle" type="Label" parent="Center/MainPanel/VBox" unique_id=1891209911]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.4, 0.36, 0.3, 1)
+theme_override_fonts/font = ExtResource("3_qggtv")
 theme_override_font_sizes/font_size = 13
 text = "ROLL THROUGH THE GALLERY"
 horizontal_alignment = 1
@@ -227,6 +231,7 @@ theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
 theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
 theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("3_qggtv")
 theme_override_styles/normal = SubResource("Gold_normal")
 theme_override_styles/pressed = SubResource("Gold_pressed")
 theme_override_styles/hover = SubResource("Gold_hover")
@@ -235,16 +240,19 @@ text = "START GAME"
 [node name="HowToButton" type="Button" parent="Center/MainPanel/VBox" unique_id=1765979005]
 unique_name_in_owner = true
 layout_mode = 2
+theme_override_fonts/font = ExtResource("3_qggtv")
 text = "HOW TO PLAY"
 
 [node name="SettingsButton" type="Button" parent="Center/MainPanel/VBox" unique_id=1979449816]
 unique_name_in_owner = true
 layout_mode = 2
+theme_override_fonts/font = ExtResource("3_qggtv")
 text = "SETTINGS"
 
 [node name="QuitButton" type="Button" parent="Center/MainPanel/VBox" unique_id=821580612]
 unique_name_in_owner = true
 layout_mode = 2
+theme_override_fonts/font = ExtResource("3_qggtv")
 text = "QUIT"
 
 [node name="HowToPanel" type="PanelContainer" parent="Center" unique_id=1919820722]
