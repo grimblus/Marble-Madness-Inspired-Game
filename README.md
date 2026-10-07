@@ -54,6 +54,10 @@ Folder-to-system mapping follows [docs/requirements.md §3](docs/requirements.md
 - The camera is a fixed angled `Camera3D` and does not follow the marble yet.
 - Tiles are CSG placeholders and will be replaced by final modelled assets.
 
+## Credits
+
+Third-party art assets (3D models, fonts) and their licences are recorded in [docs/credits.md](docs/credits.md).
+
 ## Team
 
 - Aaron Tran
