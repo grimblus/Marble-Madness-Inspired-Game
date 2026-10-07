@@ -10,6 +10,8 @@
 [ext_resource type="Script" uid="uid://chxvwrt37f2ci" path="res://scripts/Level/LevelTimer.cs" id="8_ostsq"]
 [ext_resource type="PackedScene" uid="uid://le0asy7w1two" path="res://scenes/ui/hud/TimerDisplay.tscn" id="9_3km4f"]
 [ext_resource type="PackedScene" uid="uid://dcsxu1uc6mnry" path="res://scenes/ui/menus/GameOverMessage.tscn" id="10_3km4f"]
+[ext_resource type="PackedScene" uid="uid://ch72h63cbdnl3" path="res://scenes/ui/menus/PauseMenu.tscn" id="11_qkm1d"]
+[ext_resource type="Script" uid="uid://bdgoxojt8l6g2" path="res://scripts/UI/PauseMenu.cs" id="12_p5fgu"]
 
 [node name="Main" type="Node3D" unique_id=2133792107]
 
@@ -46,3 +48,6 @@ script = ExtResource("8_ostsq")
 TimerPath = NodePath("../LevelTimer")
 
 [node name="GameOverMessage" parent="." unique_id=1128760967 instance=ExtResource("10_3km4f")]
+
+[node name="PauseMenu" parent="." unique_id=905981829 instance=ExtResource("11_qkm1d")]
+script = ExtResource("12_p5fgu")
