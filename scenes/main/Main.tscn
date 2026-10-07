@@ -41,7 +41,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 4)
 
 [node name="LevelTimer" type="Node" parent="." unique_id=1489709857]
 script = ExtResource("8_ostsq")
-StartSeconds = 5.0
 
 [node name="TimerDisplay" parent="." unique_id=1204011393 instance=ExtResource("9_3km4f")]
 TimerPath = NodePath("../LevelTimer")
