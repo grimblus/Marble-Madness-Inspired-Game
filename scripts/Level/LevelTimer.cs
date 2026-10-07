@@ -1,22 +1,25 @@
 using Godot;
 
-// Per-level countdown. Ticks down from StartSeconds and calls
-// GameStateManager.Lose() when it hits zero (requirements.md §3.5). It
-// only owns the time; anything that wants to display it (the HUD)
-// subscribes to TimeChanged instead of this node knowing about the UI.
+// Per-level stopwatch. Counts up from 0 and reports the elapsed time through
+// TimeChanged. It only owns the time; anything that wants to display it (the
+// HUD) subscribes to TimeChanged instead of this node knowing about the UI.
 // It stops on win or lose, so the clock freezes when the level ends.
+// Optional: set TimeLimitSeconds above 0 to call GameStateManager.Lose()
+// when that time is reached (0 = no limit).
+
 public partial class LevelTimer : Node
 {
-	[Signal] public delegate void TimeChangedEventHandler(float secondsRemaining);
+	[Signal] public delegate void TimeChangedEventHandler(float secondsElapsed);
 
-	[Export] public float StartSeconds = 60.0f;
+	[Export] public float TimeLimitSeconds = 0.0f;
 
-	private float _remaining;
+	private float _elapsed;
 	private bool _running = true;
 
 	public override void _Ready()
 	{
-		_remaining = StartSeconds;
+		_elapsed = 0.0f;
+		EmitSignal(SignalName.TimeChanged, _elapsed);
 
 		var gameState = GetNode<GameStateManager>("/root/GameStateManager");
 		gameState.LevelWon += Stop;
@@ -42,10 +45,10 @@ public partial class LevelTimer : Node
 			return;
 		}
 
-		_remaining = Mathf.Max(0.0f, _remaining - (float)delta);
-		EmitSignal(SignalName.TimeChanged, _remaining);
+		_elapsed += (float)delta;
+		EmitSignal(SignalName.TimeChanged, _elapsed);
 
-		if (_remaining <= 0.0f)
+		if (TimeLimitSeconds > 0.0f && _elapsed >= TimeLimitSeconds)
 		{
 			_running = false;
 			GetNode<GameStateManager>("/root/GameStateManager").Lose();

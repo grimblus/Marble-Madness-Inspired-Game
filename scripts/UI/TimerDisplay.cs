@@ -20,10 +20,10 @@ public partial class TimerDisplay : CanvasLayer
 		}
 	}
 
-	private void OnTimeChanged(float secondsRemaining)
+	private void OnTimeChanged(float secondsElapsed)
 	{
-		// Round up so the display reads 0:01 until time has truly run out.
-		int totalSeconds = Mathf.CeilToInt(secondsRemaining);
+		// round down so the display shows whole seconds that have fully passed
+		int totalSeconds = Mathf.FloorToInt(secondsElapsed);
 		_label.Text = $"{totalSeconds / 60}:{totalSeconds % 60:00}";
 	}
 }
