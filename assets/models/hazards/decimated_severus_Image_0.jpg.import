@@ -2,20 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cx1i5lyhxf8q"
-path.s3tc="res://.godot/imported/DecimatedSekhmet_Image_0.jpg-b5fc5056d6f917c204a48099e706b5c0.s3tc.ctex"
+uid="uid://b6y4mg102as72"
+path.s3tc="res://.godot/imported/decimated_severus_Image_0.jpg-6d44f0b9d84e56974e003ab7c7499fd0.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "c9b06f4e79806e68911cb5a7b4ba11c7"
+"md5": "6c1379637c89e20956b6a21b963bbe10"
 }
 
 [deps]
 
-source_file="res://assets/models/hazards/DecimatedSekhmet_Image_0.jpg"
-dest_files=["res://.godot/imported/DecimatedSekhmet_Image_0.jpg-b5fc5056d6f917c204a48099e706b5c0.s3tc.ctex"]
+source_file="res://assets/models/hazards/decimated_severus_Image_0.jpg"
+dest_files=["res://.godot/imported/decimated_severus_Image_0.jpg-6d44f0b9d84e56974e003ab7c7499fd0.s3tc.ctex"]
 
 [params]
 

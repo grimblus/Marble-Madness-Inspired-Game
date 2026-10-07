@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://ddgurlhw8wqaj"]
 
-[ext_resource type="Script" uid="uid://wry5fe8ntr0t" path="res://scenes/hazards/SekhmetHazard.cs" id="1_chwjj"]
-[ext_resource type="PackedScene" uid="uid://c5jj21fbcq6oc" path="res://assets/models/hazards/DecimatedSekhmet.glb" id="1_lbjb3"]
+[ext_resource type="Script" uid="uid://wry5fe8ntr0t" path="res://scripts/Hazards/MovingHazard.cs" id="1_chwjj"]
+[ext_resource type="PackedScene" uid="uid://whqf5ufqq46i" path="res://assets/models/hazards/decimated_severus.glb" id="2_chwjj"]
 
 [sub_resource type="Curve3D" id="Curve3D_chwjj"]
 
@@ -15,14 +15,14 @@ _data = {
 }
 point_count = 3
 
-[node name="SekhmetHazard" type="RigidBody3D" unique_id=341274520 node_paths=PackedStringArray("PatternPath") groups=["enemies"]]
+[node name="MovingHazard" type="RigidBody3D" unique_id=341274520 node_paths=PackedStringArray("PatternPath") groups=["enemies"]]
 collision_layer = 256
 script = ExtResource("1_chwjj")
 Pattern = SubResource("Curve3D_chwjj")
 PatternPath = NodePath("Path3D")
 
-[node name="DecimatedSekhmet" parent="." unique_id=2105645718 instance=ExtResource("1_lbjb3")]
-transform = Transform3D(0.91579366, 0, -0.40164912, 0, 1, 0, 0.40164912, 0, 0.91579366, 0, 0, 0)
+[node name="decimated_severus" parent="." unique_id=2082336849 instance=ExtResource("2_chwjj")]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, -0.3226471, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=584763044]
 transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, -0.2814632, 0)

@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://c5jj21fbcq6oc"
-path="res://.godot/imported/DecimatedSekhmet.glb-00838752d9de9de02ca1377cc013b5a9.scn"
+uid="uid://whqf5ufqq46i"
+path="res://.godot/imported/decimated_severus.glb-5e89bf61637137abaa217ca4361ca421.scn"
 
 [deps]
 
-source_file="res://assets/models/hazards/DecimatedSekhmet.glb"
-dest_files=["res://.godot/imported/DecimatedSekhmet.glb-00838752d9de9de02ca1377cc013b5a9.scn"]
+source_file="res://assets/models/hazards/decimated_severus.glb"
+dest_files=["res://.godot/imported/decimated_severus.glb-5e89bf61637137abaa217ca4361ca421.scn"]
 
 [params]
 

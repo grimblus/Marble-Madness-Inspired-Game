@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public partial class SekhmetHazard : RigidBody3D
+public partial class MovingHazard : RigidBody3D
 {
 	[Export] public Curve3D Pattern;
 	[Export] public float PatternSpeed = 0.75f;

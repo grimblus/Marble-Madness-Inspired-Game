@@ -10,14 +10,11 @@
 [ext_resource type="Script" uid="uid://chxvwrt37f2ci" path="res://scripts/Level/LevelTimer.cs" id="8_ostsq"]
 [ext_resource type="PackedScene" uid="uid://le0asy7w1two" path="res://scenes/ui/hud/TimerDisplay.tscn" id="9_3km4f"]
 [ext_resource type="PackedScene" uid="uid://dcsxu1uc6mnry" path="res://scenes/ui/menus/GameOverMessage.tscn" id="10_3km4f"]
-[ext_resource type="PackedScene" uid="uid://ddgurlhw8wqaj" path="res://scenes/hazards/sekhmet_hazard.tscn" id="11_qkm1d"]
+[ext_resource type="PackedScene" uid="uid://ddgurlhw8wqaj" path="res://scenes/hazards/moving_hazard.tscn" id="11_qkm1d"]
 
 [node name="Main" type="Node3D" unique_id=2133792107]
 
 [node name="Level01" parent="." unique_id=617545788 instance=ExtResource("1_nha0i")]
-
-[node name="SekhmetHazard" parent="." unique_id=1874972322 instance=ExtResource("11_qkm1d")]
-transform = Transform3D(0.009962305, 0, -0.99995035, 0, 1, 0, 0.99995035, 0, 0.009962305, 0.753778, 0.78196883, -0.7771944)
 
 [node name="Marble" parent="." unique_id=240693826 instance=ExtResource("1_u1xfj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75324976, 0)
@@ -51,3 +48,6 @@ StartSeconds = 5.0
 TimerPath = NodePath("../LevelTimer")
 
 [node name="GameOverMessage" parent="." unique_id=1128760967 instance=ExtResource("10_3km4f")]
+
+[node name="MovingHazard" parent="." unique_id=341274520 instance=ExtResource("11_qkm1d")]
+transform = Transform3D(0.033652946, 0, -0.9994336, 0, 1, 0, 0.9994336, 0, 0.033652946, 0.82059, 0.70637274, -0.6968145)
