@@ -11,5 +11,5 @@ mesh = SubResource("PlaceholderMesh_sej5q")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 1)
 material_override = ExtResource("1_c6ck7")
 use_collision = true
-polygon = PackedVector2Array(0, -0.5, 2, -0.5, 2, 1.75, 0, 0)
+polygon = PackedVector2Array(0, -0.5, 2, -0.5, 2, 2, 0, 0)
 depth = 2.0

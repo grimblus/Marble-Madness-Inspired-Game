@@ -8,6 +8,7 @@
 mesh = SubResource("PlaceholderMesh_xs8wh")
 
 [node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=1244788249]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 material_override = ExtResource("1_m7ej7")
 use_collision = true
 size = Vector3(2, 2, 2)
@@ -16,3 +17,8 @@ size = Vector3(2, 2, 2)
 transform = Transform3D(-1.7484555e-07, -1.005, 0, 4, -4.3929944e-08, 0, 0, 0, 4, 0, 1, 1)
 operation = 2
 sides = 50
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="CSGBox3D" unique_id=1603518143]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.25, 0)
+material_override = ExtResource("1_m7ej7")
+size = Vector3(2, 0.5, 2)
