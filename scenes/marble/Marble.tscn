@@ -11,6 +11,8 @@ bounce = 0.5
 [sub_resource type="SphereMesh" id="SphereMesh_3ewea"]
 
 [node name="Marble" type="RigidBody3D" unique_id=240693826]
+collision_layer = 2
+collision_mask = 5
 physics_material_override = SubResource("PhysicsMaterial_3xk2s")
 continuous_cd = true
 script = ExtResource("1_wjyll")

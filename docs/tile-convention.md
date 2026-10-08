@@ -75,16 +75,25 @@ Applies to tiles that are replaced by a modelled mesh (see §4.3), once the dime
 
 ## 6. Physics layers
 
-Not yet applied in the project (everything is on the default layer 1). Proposed once hazards and triggers exist:
+The layers are named in Project Settings → Layer Names → 3D Physics (`project.godot`). Tiles, hazards and triggers must use them as below.
 
-| Layer | Name |
-|---|---|
-| 1 | World (tiles) |
-| 2 | Marble |
-| 3 | Hazards |
-| 4 | Triggers (goal, checkpoints, kill zones) |
+| Layer | Name | Used by |
+|---|---|---|
+| 1 | World | Tiles and level geometry |
+| 2 | Marble | The marble |
+| 3 | Hazards | Moving and environmental hazards |
+| 4 | Triggers | Goal, checkpoints, kill zones |
 
-**Tentative.** Agree this with Andrew (hazards, checkpoints) before applying it.
+**Layer and mask per object** (layer = what it is, mask = what it detects or collides with):
+
+| Object | Layer | Mask | Notes |
+|---|---|---|---|
+| Marble | 2 | 1 + 3 | Collides with the world and hazards. Already set on `Marble.tscn` (layer 2, mask 5). |
+| Tiles | 1 | none | Static geometry. CSG `Use Collision` defaults to layer 1, so leave it. |
+| Hazards | 3 | 2 | Reacts to the marble. |
+| Triggers | 4 | 2 | `Area3D` nodes that only detect the marble. |
+
+Status: layer names and the marble's layer and mask are applied. Hazards and triggers have not been built yet, so set their layer and mask to the table above when they are, and tell Andrew (hazards, checkpoints) if any change is needed.
 
 ## 7. Marble parameters tiles depend on
 

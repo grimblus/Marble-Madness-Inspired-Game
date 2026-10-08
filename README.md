@@ -27,7 +27,7 @@ Full control scheme still to be finalized — see [docs/requirements.md §7](doc
 ## Project Structure
 
 ```
-assets/      Art, models, textures, materials, audio
+assets/      Art, models, textures, materials, audio, fonts
 resources/   Data resources (level layouts, tile definitions)
 scenes/      .tscn scene files, grouped by system
 scripts/     C# scripts, grouped by system
@@ -53,6 +53,10 @@ Folder-to-system mapping follows [docs/requirements.md §3](docs/requirements.md
 - Only a greybox prototype exists: the marble rolls around a CSG-built test course (`scenes/levels/level_01/Level01.tscn`). No hazards, timer, checkpoints, win/lose states, UI or audio yet.
 - The camera is a fixed angled `Camera3D` and does not follow the marble yet.
 - Tiles are CSG placeholders and will be replaced by final modelled assets.
+
+## Credits
+
+Third-party art assets (3D models, fonts) and their licences are recorded in [docs/credits.md](docs/credits.md).
 
 ## Team
 

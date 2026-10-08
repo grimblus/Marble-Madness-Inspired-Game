@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://le0asy7w1two"]
+
+[ext_resource type="Script" uid="uid://3hlt6y5lrem" path="res://scripts/UI/TimerDisplay.cs" id="1_etntq"]
+
+[node name="TimerDisplay" type="CanvasLayer" unique_id=332213405]
+script = ExtResource("1_etntq")
+
+[node name="Label" type="Label" parent="." unique_id=86753480]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -48.0
+offset_right = 48.0
+offset_bottom = 67.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 48
+text = "1:00"
