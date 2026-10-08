@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://le0asy7w1two" path="res://scenes/ui/hud/TimerDisplay.tscn" id="9_3km4f"]
 [ext_resource type="PackedScene" uid="uid://dcsxu1uc6mnry" path="res://scenes/ui/menus/GameOverMessage.tscn" id="10_3km4f"]
 [ext_resource type="PackedScene" uid="uid://ddgurlhw8wqaj" path="res://scenes/hazards/moving_hazard.tscn" id="11_qkm1d"]
+[ext_resource type="PackedScene" uid="uid://bwg0tt0ohoa3v" path="res://scenes/hazards/vacuum_hazard.tscn" id="12_p5fgu"]
 
 [node name="Main" type="Node3D" unique_id=2133792107]
 
@@ -51,3 +52,6 @@ TimerPath = NodePath("../LevelTimer")
 
 [node name="MovingHazard" parent="." unique_id=341274520 instance=ExtResource("11_qkm1d")]
 transform = Transform3D(0.033652946, 0, -0.9994336, 0, 1, 0, 0.9994336, 0, 0.033652946, 0.82059, 0.70637274, -0.6968145)
+
+[node name="VacuumHazard" parent="." unique_id=832618694 instance=ExtResource("12_p5fgu")]
+transform = Transform3D(-0.13022967, 0.9914838, 0, -0.9914838, -0.13022967, 0, 0, 0, 1, -3.400222, 0.70312357, 0.14159489)

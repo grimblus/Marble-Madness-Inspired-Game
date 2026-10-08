@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://ddgurlhw8wqaj"]
 
 [ext_resource type="Script" uid="uid://wry5fe8ntr0t" path="res://scripts/Hazards/MovingHazard.cs" id="1_chwjj"]
-[ext_resource type="PackedScene" uid="uid://whqf5ufqq46i" path="res://assets/models/hazards/decimated_severus.glb" id="2_chwjj"]
+[ext_resource type="PackedScene" uid="uid://bj6gc7erkft2f" path="res://assets/models/hazards/decimated_severus.glb" id="2_chwjj"]
 
 [sub_resource type="Curve3D" id="Curve3D_chwjj"]
 
@@ -21,8 +21,8 @@ script = ExtResource("1_chwjj")
 Pattern = SubResource("Curve3D_chwjj")
 PatternPath = NodePath("Path3D")
 
-[node name="decimated_severus" parent="." unique_id=2082336849 instance=ExtResource("2_chwjj")]
-transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, -0.3226471, 0)
+[node name="decimated_severus" parent="." unique_id=292716963 instance=ExtResource("2_chwjj")]
+transform = Transform3D(0.086669855, 0, -0.024255618, 0, 0.089999996, 0, 0.024255618, 0, 0.086669855, 0, -0.2906952, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=584763044]
 transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, -0.2814632, 0)
