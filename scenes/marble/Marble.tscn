@@ -34,9 +34,10 @@ mesh = SubResource("SphereMesh_3ewea")
 stream = ExtResource("4_roll")
 script = ExtResource("3_roll")
 FullVolumeSpeed = 10.0
-MaxVolume = 1.25
+MaxVolume = 0.75
 
 [node name="ImpactSound" type="AudioStreamPlayer" parent="." unique_id=1093482756]
 stream = ExtResource("6_drop")
 max_polyphony = 3
 script = ExtResource("5_drop")
+MaxVolume = 0.25
