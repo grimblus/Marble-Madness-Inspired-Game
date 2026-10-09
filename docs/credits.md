@@ -29,6 +29,12 @@ All recordings sourced from [Musopen](https://musopen.org). The compositions the
 | `assets/audio/music/2491_gnossienne.mp3` | Gnossienne No. 1 | Erik Satie | *not in file tags, check source page* | [Musopen](https://musopen.org/music/44070-gnossiennes-no-1/) | *to confirm* | Not yet assigned |
 | `assets/audio/music/13_pavane.mp3` | Pavane pour une infante défunte | Maurice Ravel | Felipe Sarro (2009) | [Musopen](https://musopen.org/music/4709-pavane-for-a-dead-princess/) | *to confirm* | Not yet assigned |
 
+## Sound Effects
+
+| Local file | Description | Source | Licence | Used in |
+|---|---|---|---|---|
+| `assets/audio/sfx/661650__solar01__glass-marbles-rolling-on-wood.wav` | Glass Marbles Rolling on Wood | [Freesound #661650](https://freesound.org/people/solar01/sounds/661650/) by Solar01 | [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/) (no attribution required) | Marble rolling loop (`Marble.tscn` → `RollSound`) |
+
 ## Fonts
 
 - `assets/fonts/diffusion-bold.ttf`, `assets/fonts/diffusion-regular.ttf` — source/licence not yet recorded. *(Whoever added these to `scenes/ui/menus/startMenu.tscn`, please fill in the source and licence here.)*
