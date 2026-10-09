@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cseonhr6s161h" path="res://scripts/Hazards/VacuumHazard.cs" id="1_hloo7"]
 [ext_resource type="PackedScene" uid="uid://vuy40tqed518" path="res://assets/models/hazards/decimated_well.glb" id="1_nos7g"]
-[ext_resource type="PackedScene" uid="uid://cldml487x68oe" path="res://assets/materials/cone.tscn" id="3_2noby"]
+[ext_resource type="PackedScene" uid="uid://cldml487x68oe" path="res://scenes/hazards/cone.tscn" id="3_2noby"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_voxn2"]
 radius = 0.95
@@ -14,7 +14,7 @@ points = PackedVector3Array(-0.00019574165, 1, -0.00019574165, 0.19498825, -1, -
 script = ExtResource("1_hloo7")
 VacuumArea = NodePath("VacuumArea")
 
-[node name="decimated_well" parent="." unique_id=318409693 instance=ExtResource("1_nos7g")]
+[node name="decimated_well" type="Node3D" parent="." unique_id=318409693 instance=ExtResource("1_nos7g")]
 transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0)
 
 [node name="WellCollision" type="CollisionShape3D" parent="." unique_id=404016361]
