@@ -4,6 +4,8 @@
 [ext_resource type="Material" uid="uid://cc7i3rdd381j4" path="res://assets/materials/GreyboxTile.tres" id="2_85gcn"]
 [ext_resource type="Script" uid="uid://dqqueywnfbfib" path="res://scripts/Audio/MarbleRollSound.cs" id="3_roll"]
 [ext_resource type="AudioStream" uid="uid://g60of011a2cn" path="res://assets/audio/sfx/661650__solar01__glass-marbles-rolling-on-wood.wav" id="4_roll"]
+[ext_resource type="Script" uid="uid://5tdd8jdo4srk" path="res://scripts/Audio/MarbleImpactSound.cs" id="5_drop"]
+[ext_resource type="AudioStream" uid="uid://b0cvlnsmpj0kc" path="res://assets/audio/sfx/240313__dsg__marble-drop.wav" id="6_drop"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_3xk2s"]
 bounce = 0.5
@@ -31,5 +33,10 @@ mesh = SubResource("SphereMesh_3ewea")
 [node name="RollSound" type="AudioStreamPlayer" parent="." unique_id=1730452196]
 stream = ExtResource("4_roll")
 script = ExtResource("3_roll")
-FullVolumeSpeed = 5.0
-MaxVolume = 2.0
+FullVolumeSpeed = 10.0
+MaxVolume = 1.25
+
+[node name="ImpactSound" type="AudioStreamPlayer" parent="." unique_id=1093482756]
+stream = ExtResource("6_drop")
+max_polyphony = 3
+script = ExtResource("5_drop")
