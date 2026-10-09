@@ -1,0 +1,34 @@
+[gd_scene format=3 uid="uid://ddgurlhw8wqaj"]
+
+[ext_resource type="Script" uid="uid://wry5fe8ntr0t" path="res://scripts/Hazards/MovingHazard.cs" id="1_chwjj"]
+[ext_resource type="PackedScene" uid="uid://bj6gc7erkft2f" path="res://assets/models/hazards/decimated_severus.glb" id="2_chwjj"]
+
+[sub_resource type="Curve3D" id="Curve3D_chwjj"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_44oka"]
+
+[sub_resource type="Curve3D" id="Curve3D_qkm1d"]
+closed = true
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -0.0018735975, 0.14674267, 0.0028152498, 0, 0, 0, 0, 0, 0, -0.0018735975, 0.14672852, 0.99745786, 0, 0, 0, 0, 0, 0, -0.006741628, 0.14672852, 1.9899215),
+"tilts": PackedFloat32Array(0, 0, 0)
+}
+point_count = 3
+
+[node name="MovingHazard" type="RigidBody3D" unique_id=341274520 node_paths=PackedStringArray("PatternPath") groups=["enemies"]]
+collision_layer = 256
+script = ExtResource("1_chwjj")
+Pattern = SubResource("Curve3D_chwjj")
+PatternPath = NodePath("Path3D")
+
+[node name="decimated_severus" parent="." unique_id=292716963 instance=ExtResource("2_chwjj")]
+transform = Transform3D(0.086669855, 0, -0.024255618, 0, 0.089999996, 0, 0.024255618, 0, 0.086669855, 0, -0.2906952, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=584763044]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, -0.2814632, 0)
+shape = SubResource("CapsuleShape3D_44oka")
+
+[node name="Path3D" type="Path3D" parent="." unique_id=264172916]
+curve = SubResource("Curve3D_qkm1d")
+
+[connection signal="body_entered" from="." to="." method="OnBodyEntered"]
