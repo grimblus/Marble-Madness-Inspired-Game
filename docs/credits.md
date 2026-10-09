@@ -18,6 +18,17 @@ Both are 3D scans of objects in the British Museum's collection, published via t
 
 No modifications have been made to the geometry of either model; only material/texture overrides (see [tile-convention.md §4](tile-convention.md), CSG/material conventions apply to tiles, not these props) have been applied where used in-scene.
 
+## Music
+
+All recordings sourced from [Musopen](https://musopen.org). The compositions themselves are public domain; each recording's licence is set per recording on its Musopen page and still needs to be recorded below. Performers are taken from each file's embedded tags, where present.
+
+| Local file | Piece | Composer | Performer | Source | Licence | Used in |
+|---|---|---|---|---|---|---|
+| `assets/audio/music/349_gymnopedie-no-1.mp3` | Gymnopédie No. 1 | Erik Satie | *not in file tags, check source page* | [Musopen](https://musopen.org/music/8010-3-gymnopedies/) | *to confirm* | Start menu |
+| `assets/audio/music/2411_arabesque-no-1mp3.mp3` | Arabesque No. 1 | Claude Debussy | Gerlüz (2010, Chicken House Records) | [Musopen](https://musopen.org/music/2491-two-arabesques-deux-arabesques-l-66/) | *to confirm* | Level 1 |
+| `assets/audio/music/2491_gnossienne.mp3` | Gnossienne No. 1 | Erik Satie | *not in file tags, check source page* | [Musopen](https://musopen.org/music/44070-gnossiennes-no-1/) | *to confirm* | Not yet assigned |
+| `assets/audio/music/13_pavane.mp3` | Pavane pour une infante défunte | Maurice Ravel | Felipe Sarro (2009) | [Musopen](https://musopen.org/music/4709-pavane-for-a-dead-princess/) | *to confirm* | Not yet assigned |
+
 ## Fonts
 
 - `assets/fonts/diffusion-bold.ttf`, `assets/fonts/diffusion-regular.ttf` — source/licence not yet recorded. *(Whoever added these to `scenes/ui/menus/startMenu.tscn`, please fill in the source and licence here.)*
