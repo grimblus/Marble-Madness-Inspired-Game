@@ -8,15 +8,19 @@ Third-party art assets used in the project, their source, author and licence. Re
 |---|---|---|---|---|
 | `assets/models/props/Aurelius2.glb` | [Sketchfab](https://sketchfab.com/3d-models/marcus-aurelius-36fd581851294110a7eda08ec2a20748) | Marcus Aurelius | The British Museum (photogrammetry by Daniel Pett) | [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/) |
 | `assets/models/props/Horsey.glb` | [Sketchfab](https://sketchfab.com/3d-models/horse-head-british-museum-c004350560b74b2c8dca5d7b1d2228d4) | Horse Head, British Museum | The British Museum (photogrammetry by Daniel Pett) | [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/) |
+| `assets/models/props/decimated_amenemhat.glb` | [Sketchfab](https://sketchfab.com/3d-models/granite-head-of-amenemhat-iii-64d0b7662b59417986e9d693624de97a) | Granite head of Amenemhat III | The British Museum (scan by Thomas Flynn) | [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/) |
+| `assets/models/props/decimated_egyptian_head.glb` | [Sketchfab](https://sketchfab.com/3d-models/egyptian-head-3fb673e1a8314a4bab529f61726e53ce) | Egyptian Head | IU Indianapolis University Library | [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) |
 
-Both are 3D scans of objects in the British Museum's collection, published via the museum's Sketchfab account.
+The first three are 3D scans of objects in the British Museum's collection, published via the museum's Sketchfab account. The Egyptian Head is a scan of an object from the Indianapolis Public Library collection, published by IU Indianapolis University Library.
 
-**CC BY-NC-SA 4.0 terms to keep in mind:**
-- **Attribution** — credit given above; keep this file if either model ships in the final build.
+**CC BY-NC-SA 4.0 terms to keep in mind** (Marcus Aurelius, Horse Head, Amenemhat III):
+- **Attribution** — credit given above; keep this file if any of these models ships in the final build.
 - **NonCommercial** — fine for this assignment (an academic, non-commercial submission).
 - **ShareAlike** — any adaptation of these specific model files (re-texturing, remeshing, etc.) should carry the same licence if shared or redistributed on its own.
 
-No modifications have been made to the geometry of either model; only material/texture overrides (see [tile-convention.md §4](tile-convention.md), CSG/material conventions apply to tiles, not these props) have been applied where used in-scene.
+**CC BY 4.0** (Egyptian Head) only requires attribution, given above.
+
+**Modifications:** Marcus Aurelius and the Horse Head are unmodified in geometry; only material/texture overrides (see [tile-convention.md §4](tile-convention.md), CSG/material conventions apply to tiles, not these props) have been applied where used in-scene. The two `decimated_` models have been reduced in polygon count in Blender for performance. Those are adaptations, so the Amenemhat III file stays under CC BY-NC-SA 4.0, and both credits should note that the model was modified.
 
 ## Music
 

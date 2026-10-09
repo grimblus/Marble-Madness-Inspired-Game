@@ -5,6 +5,8 @@
 [ext_resource type="PackedScene" uid="uid://y1uc8mo16h1d" path="res://scenes/environment/Arch.tscn" id="3_ku8sh"]
 [ext_resource type="PackedScene" uid="uid://cs7s117m5vfg4" path="res://assets/models/props/Aurelius2.glb" id="4_as1im"]
 [ext_resource type="PackedScene" uid="uid://dg6i6cewlrmw0" path="res://assets/models/props/Horsey.glb" id="5_my2lr"]
+[ext_resource type="PackedScene" uid="uid://53251d8f23c0" path="res://assets/models/props/decimated_egyptian_head.glb" id="6_l25f7"]
+[ext_resource type="PackedScene" uid="uid://gj3ihcr7g0tt" path="res://assets/models/props/decimated_amenemhat.glb" id="7_bfluf"]
 
 [node name="Backdrop" type="Node3D" unique_id=1520341271]
 
@@ -33,3 +35,9 @@ transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, 6, 18, -9.5)
 
 [node name="Horsey" parent="." unique_id=1166454701 instance=ExtResource("5_my2lr")]
 transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, -4, 16.5, -6)
+
+[node name="decimated_egyptian_head" parent="." unique_id=631109766 instance=ExtResource("6_l25f7")]
+transform = Transform3D(0.04, 0, 0, 0, 0.04, 0, 0, 0, 0.04, 3, 15, -27)
+
+[node name="decimated_amenemhat" parent="." unique_id=121913221 instance=ExtResource("7_bfluf")]
+transform = Transform3D(-2, 0, -3.019916e-07, 0, 2, 0, 3.019916e-07, 0, -2, -11, 13, -15)
