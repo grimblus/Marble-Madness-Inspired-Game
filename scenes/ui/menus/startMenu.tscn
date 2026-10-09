@@ -3,6 +3,8 @@
 [ext_resource type="Script" uid="uid://cm8secbs8s3os" path="res://scripts/UI/StartMenu.cs" id="1_menu"]
 [ext_resource type="FontFile" uid="uid://c1hb3k6qg3qqj" path="res://assets/fonts/diffusion-bold.ttf" id="2_ivugx"]
 [ext_resource type="FontFile" uid="uid://bkjvmn2gq25su" path="res://assets/fonts/diffusion-regular.ttf" id="3_qggtv"]
+[ext_resource type="Script" uid="uid://6jo57s1f4ybg" path="res://scripts/Audio/MusicCue.cs" id="4_mcue"]
+[ext_resource type="AudioStream" uid="uid://d28vhgd0d205h" path="res://assets/audio/music/349_gymnopedie-no-1.mp3" id="5_gymn"]
 
 [node name="StartMenu" type="Control" unique_id=2011335304]
 layout_mode = 3
@@ -67,3 +69,7 @@ custom_minimum_size = Vector2(0, 56)
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
 text = "Quit"
+
+[node name="MusicCue" type="Node" parent="." unique_id=1546820937]
+script = ExtResource("4_mcue")
+Track = ExtResource("5_gymn")
