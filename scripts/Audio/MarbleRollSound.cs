@@ -37,7 +37,7 @@ public partial class MarbleRollSound : AudioStreamPlayer
 	public override void _Ready()
 	{
 		_marble = GetParent<RigidBody3D>();
-		_radius = GetMarbleRadius();
+		_radius = MarbleGroundCheck.GetRadius(_marble);
 
 		VolumeLinear = 0.0f;
 		Play();
@@ -49,7 +49,7 @@ public partial class MarbleRollSound : AudioStreamPlayer
 		// speed of a landing shouldn't make a burst of rolling sound, but
 		// rolling down a ramp still should.
 		float speed = 0.0f;
-		if (TryGetGroundNormal(out Vector3 normal))
+		if (MarbleGroundCheck.TryGetGroundNormal(_marble, _radius + GroundCheckMargin, out Vector3 normal))
 		{
 			Vector3 velocity = _marble.LinearVelocity;
 			speed = (velocity - normal * velocity.Dot(normal)).Length();
@@ -69,33 +69,4 @@ public partial class MarbleRollSound : AudioStreamPlayer
 		PitchScale = Mathf.Lerp(MinPitch, MaxPitch, speedFraction);
 	}
 
-	// Short ray straight down from the marble's centre, against whatever
-	// the marble itself collides with. Returns the surface normal if it hits.
-	private bool TryGetGroundNormal(out Vector3 normal)
-	{
-		Vector3 from = _marble.GlobalPosition;
-		Vector3 to = from + Vector3.Down * (_radius + GroundCheckMargin);
-
-		var query = PhysicsRayQueryParameters3D.Create(from, to, _marble.CollisionMask);
-		query.Exclude = new Godot.Collections.Array<Rid> { _marble.GetRid() };
-
-		var hit = _marble.GetWorld3D().DirectSpaceState.IntersectRay(query);
-		normal = hit.Count > 0 ? (Vector3)hit["normal"] : Vector3.Up;
-		return hit.Count > 0;
-	}
-
-	// Reads the radius from the marble's sphere collider (including its
-	// scale), so swapping the marble's size doesn't break the ground check.
-	private float GetMarbleRadius()
-	{
-		foreach (Node child in _marble.GetChildren())
-		{
-			if (child is CollisionShape3D { Shape: SphereShape3D sphere } shape)
-			{
-				return sphere.Radius * shape.Scale.X;
-			}
-		}
-
-		return 0.25f;
-	}
 }
