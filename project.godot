@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="MarbleMadness3D"
-run/main_scene="uid://bjy54fg0bv7fg"
+run/main_scene="res://scenes/ui/menus/startMenu.tscn"
 config/features=PackedStringArray("4.7", "C#", "Forward Plus")
 
 [autoload]
