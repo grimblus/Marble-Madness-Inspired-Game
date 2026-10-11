@@ -1,5 +1,7 @@
 [gd_scene format=3 uid="uid://ch72h63cbdnl3"]
 
+[ext_resource type="Script" uid="uid://bdgoxojt8l6g2" path="res://scripts/UI/PauseMenu.cs" id="1_vl6nt"]
+
 [sub_resource type="StyleBoxFlat" id="Btn_focus"]
 draw_center = false
 border_width_left = 2
@@ -127,6 +129,7 @@ corner_radius_bottom_left = 8
 process_mode = 3
 layer = 10
 visible = false
+script = ExtResource("1_vl6nt")
 
 [node name="Root" type="Control" parent="." unique_id=973850831]
 layout_mode = 3

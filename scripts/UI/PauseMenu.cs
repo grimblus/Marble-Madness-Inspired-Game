@@ -1,11 +1,10 @@
 using Godot;
 
-// Pause screen (scenes/ui/menus/PauseMenu.tscn). 
-// Esc pauses and resumes. The scene runs with Process Mode = Always so it keeps working while the rest of the game is
+// Pause screen (scenes/ui/menus/PauseMenu.tscn). Add it as a child of the
+// level scene (Main.tscn). Esc pauses and resumes. The scene runs with
+// Process Mode = Always so it keeps working while the rest of the game is
 // frozen, which also freezes the LevelTimer. The level stays visible behind
-// a dimmed overlay.
-// Pausing is blocked once the level has been won or lost.
-
+// a dimmed overlay. Pausing is blocked once the level has been won or lost.
 public partial class PauseMenu : CanvasLayer
 {
 	// Scene the Main Menu button loads.
@@ -76,7 +75,7 @@ public partial class PauseMenu : CanvasLayer
 
 	private void Pause()
 	{
-		// mouse detection
+		// Remember the cursor mode so a captured mouse comes back on resume.
 		_previousMouseMode = Input.MouseMode;
 		Input.MouseMode = Input.MouseModeEnum.Visible;
 
