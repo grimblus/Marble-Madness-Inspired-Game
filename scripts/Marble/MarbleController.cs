@@ -4,6 +4,8 @@ public partial class MarbleController : RigidBody3D
 {
 	[Export] public float MoveForce = 12.0f;
 	[Export] public float MaxSpeed = 8.0f;
+	[Export] public float SpinoutTime = 0.6f;
+	[Export] public float KnockbackForce = 2.0f;
 
 	// Raised whenever the marble is sent back to a checkpoint. Listen to
 	// this for respawn SFX/UI rather than coupling to whatever triggered
@@ -11,6 +13,7 @@ public partial class MarbleController : RigidBody3D
 	[Signal] public delegate void DiedEventHandler();
 
 	private GameStateManager _gameState;
+	private bool _inSpinout = false;
 
 	public override void _Ready()
 	{
@@ -35,12 +38,83 @@ public partial class MarbleController : RigidBody3D
 			return;
 		}
 
+		if (_inSpinout) 
+		{
+			return;
+		}
+		
 		Vector2 input = Input.GetVector("move_left", "move_right", "move_forward", "move_back");
-		Vector3 force = new Vector3(input.X, 0, input.Y) * MoveForce;
+		Vector3 force = GetCameraRelativeDirection(input) * MoveForce;
 
 		if (LinearVelocity.Length() < MaxSpeed)
 		{
 			ApplyCentralForce(force);
+		}
+	}
+	
+	// Maps input onto the ground plane relative to the active camera, so W
+	// rolls the marble up the screen rather than along world -Z (which reads
+	// as diagonal under the rig's 45-degree isometric yaw). The camera's
+	// forward/right are flattened to XZ so its downward pitch doesn't push
+	// the marble into the floor. Falls back to world axes with no camera,
+	// e.g. when the marble scene is run on its own.
+	private Vector3 GetCameraRelativeDirection(Vector2 input)
+	{
+		Camera3D camera = GetViewport().GetCamera3D();
+		if (camera == null)
+		{
+			return new Vector3(input.X, 0, input.Y);
+		}
+
+		Basis basis = camera.GlobalBasis;
+		Vector3 forward = new Vector3(-basis.Z.X, 0, -basis.Z.Z).Normalized();
+		Vector3 right = new Vector3(basis.X.X, 0, basis.X.Z).Normalized();
+
+		// input.Y is negative for move_forward, hence the subtraction.
+		return right * input.X - forward * input.Y;
+	}
+
+	public void GetHitPhys(Vector3 hazardPosition)
+	{
+		if (_gameState.IsEnded) 
+		{
+			return;
+		}
+		
+		if (_inSpinout) 
+		{
+			return;
+		}
+		_inSpinout = true;
+		
+		//Gets pushed directly away when touching physical hazard
+		Vector3 pushDirection = GlobalPosition - hazardPosition;
+		pushDirection.Y = 0;
+		if (pushDirection.LengthSquared() > 0.0001f)
+		{
+			pushDirection = pushDirection.Normalized();
+		}
+		else
+		{
+			pushDirection = Vector3.Forward;
+		}
+		ApplyCentralImpulse(pushDirection * KnockbackForce);
+		
+		GetTree().CreateTimer(SpinoutTime).Timeout += () =>
+		{
+			_inSpinout = false;
+		};
+	}
+	
+	private void HurtboxAreaHit(Area3D area) {
+		if (area.IsInGroup("enemies")) {
+			GetHitPhys(area.GlobalPosition);
+		}
+	}
+	
+	private void HurtboxBodyHit(Node3D body) {
+		if (body.IsInGroup("enemies")) {
+			GetHitPhys(body.GlobalPosition);
 		}
 	}
 
@@ -64,6 +138,7 @@ public partial class MarbleController : RigidBody3D
 		LinearVelocity = Vector3.Zero;
 		AngularVelocity = Vector3.Zero;
 		Sleeping = false;
+		_inSpinout = false;
 
 		EmitSignal(SignalName.Died);
 	}

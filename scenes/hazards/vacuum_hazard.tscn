@@ -1,0 +1,36 @@
+[gd_scene format=3 uid="uid://bwg0tt0ohoa3v"]
+
+[ext_resource type="Script" uid="uid://cseonhr6s161h" path="res://scripts/Hazards/VacuumHazard.cs" id="1_hloo7"]
+[ext_resource type="PackedScene" uid="uid://vuy40tqed518" path="res://assets/models/hazards/decimated_well.glb" id="1_nos7g"]
+[ext_resource type="PackedScene" uid="uid://cldml487x68oe" path="res://scenes/hazards/cone.tscn" id="3_2noby"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_voxn2"]
+radius = 0.95
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_mykdv"]
+points = PackedVector3Array(-0.00019574165, 1, -0.00019574165, 0.19498825, -1, -0.9808144, -0.00019574165, -1, -1, -0.19518405, -1, -0.9808144, -0.382733, -1, -0.92404073, -0.5555991, -1, -0.83163667, -0.7071261, -1, -0.7071261, -0.83163667, -1, -0.5555991, -0.92404073, -1, -0.382733, -0.9808144, -1, -0.19518405, -1, -1, -0.00019574165, -0.9808144, -1, 0.19498825, -0.92404073, -1, 0.38253725, -0.83163667, -1, 0.55540323, -0.7071261, -1, 0.7069303, -0.5555991, -1, 0.8314409, -0.382733, -1, 0.92384493, -0.19518405, -1, 0.9806186, -0.00019574165, -1, 1, 0.19498825, -1, 0.9806186, 0.38253725, -1, 0.92384493, 0.55540323, -1, 0.8314409, 0.7069303, -1, 0.7069303, 0.8314409, -1, 0.55540323, 0.92384493, -1, 0.38253725, 0.9806186, -1, 0.19498825, 1, -1, -0.00019574165, 0.9806186, -1, -0.19518405, 0.92384493, -1, -0.382733, 0.8314409, -1, -0.5555991, 0.7069303, -1, -0.7071261, 0.55540323, -1, -0.83163667, 0.38253725, -1, -0.92404073)
+
+[node name="VacuumHazard" type="RigidBody3D" unique_id=832618694 node_paths=PackedStringArray("VacuumArea")]
+script = ExtResource("1_hloo7")
+VacuumArea = NodePath("VacuumArea")
+
+[node name="decimated_well" type="Node3D" parent="." unique_id=318409693 instance=ExtResource("1_nos7g")]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0)
+
+[node name="WellCollision" type="CollisionShape3D" parent="." unique_id=404016361]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.018298745, 0.040141106, 0)
+shape = SubResource("CylinderShape3D_voxn2")
+
+[node name="VacuumArea" type="Area3D" parent="." unique_id=1818991285]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.018298745, 0.040141106, 0)
+
+[node name="Cone" parent="VacuumArea" unique_id=1360984917 instance=ExtResource("3_2noby")]
+transform = Transform3D(2, 0, 0, 0, -2, 3.019916e-07, 0, -3.019916e-07, -2, 0.018298745, 2.4126909, 0)
+visible = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="VacuumArea" unique_id=561210245]
+transform = Transform3D(2, 0, 0, 0, -2, 3.019916e-07, 0, -3.019916e-07, -2, 0.018, 2.413, 0)
+shape = SubResource("ConvexPolygonShape3D_mykdv")
+
+[connection signal="body_entered" from="VacuumArea" to="." method="OnVacuumEnter"]
+[connection signal="body_exited" from="VacuumArea" to="." method="OnVacuumExit"]
