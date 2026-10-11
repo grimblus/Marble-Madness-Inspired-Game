@@ -1,0 +1,162 @@
+[gd_scene format=3 uid="uid://x48s1hv4dsd0"]
+
+[ext_resource type="Script" uid="uid://dy7gj7sxrf2sg" path="res://scripts/UI/GameHud.cs" id="1_hud"]
+
+[sub_resource type="StyleBoxFlat" id="Pill"]
+content_margin_left = 18.0
+content_margin_top = 8.0
+content_margin_right = 18.0
+content_margin_bottom = 8.0
+bg_color = Color(0.145, 0.145, 0.145, 0.42)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="Hint"]
+content_margin_left = 14.0
+content_margin_top = 8.0
+content_margin_right = 14.0
+content_margin_bottom = 8.0
+bg_color = Color(0.97, 0.96, 0.94, 0.92)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.84, 0.8, 0.73, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[node name="GameHud" type="CanvasLayer" unique_id=1392022552]
+script = ExtResource("1_hud")
+TimerPath = NodePath("../LevelTimer")
+
+[node name="Root" type="Control" parent="." unique_id=433990087]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="LevelPill" type="PanelContainer" parent="Root" unique_id=1281067161]
+layout_mode = 1
+offset_left = 28.0
+offset_top = 24.0
+offset_right = 170.0
+offset_bottom = 64.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("Pill")
+
+[node name="LevelLabel" type="Label" parent="Root/LevelPill" unique_id=2014236286]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 18
+text = "GALLERY 01"
+
+[node name="TimerPill" type="PanelContainer" parent="Root" unique_id=1020735216]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -188.0
+offset_top = 24.0
+offset_right = -28.0
+offset_bottom = 66.0
+grow_horizontal = 0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("Pill")
+
+[node name="TimeLabel" type="Label" parent="Root/TimerPill" unique_id=2097048654]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(130, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 26
+text = "00:00.00"
+horizontal_alignment = 1
+
+[node name="Objective" type="PanelContainer" parent="Root" unique_id=138677690]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -150.0
+offset_top = -64.0
+offset_right = 150.0
+offset_bottom = -28.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("Pill")
+
+[node name="Row" type="HBoxContainer" parent="Root/Objective" unique_id=1890496719]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 14
+alignment = 1
+
+[node name="LineLeft" type="ColorRect" parent="Root/Objective/Row" unique_id=1880766448]
+custom_minimum_size = Vector2(36, 2)
+layout_mode = 2
+size_flags_vertical = 4
+mouse_filter = 2
+color = Color(0.72, 0.6, 0.39, 1)
+
+[node name="ObjectiveLabel" type="Label" parent="Root/Objective/Row" unique_id=592168139]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 14
+text = "REACH THE EXIT"
+
+[node name="LineRight" type="ColorRect" parent="Root/Objective/Row" unique_id=2013944554]
+custom_minimum_size = Vector2(36, 2)
+layout_mode = 2
+size_flags_vertical = 4
+mouse_filter = 2
+color = Color(0.72, 0.6, 0.39, 1)
+
+[node name="LossHint" type="PanelContainer" parent="Root" unique_id=982300438]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -200.0
+offset_top = -88.0
+offset_right = -28.0
+offset_bottom = -28.0
+grow_horizontal = 0
+grow_vertical = 0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("Hint")
+
+[node name="Box" type="VBoxContainer" parent="Root/LossHint" unique_id=1791920994]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 2
+
+[node name="HintTitle" type="Label" parent="Root/LossHint/Box" unique_id=909320540]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.42, 0.39, 0.34, 1)
+theme_override_font_sizes/font_size = 11
+text = "LOSS CONDITION"
+horizontal_alignment = 1
+
+[node name="HintBody" type="Label" parent="Root/LossHint/Box" unique_id=1017337788]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.145, 0.145, 0.145, 1)
+theme_override_font_sizes/font_size = 14
+text = "TIMER EXPIRES"
+horizontal_alignment = 1

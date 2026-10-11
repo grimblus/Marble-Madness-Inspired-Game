@@ -8,12 +8,12 @@
 [ext_resource type="PackedScene" uid="uid://di3r1eaoorp6y" path="res://scenes/triggers/Goal.tscn" id="6_sjxhf"]
 [ext_resource type="PackedScene" uid="uid://d0sumnbepcruv" path="res://scenes/ui/menus/WinMessage.tscn" id="7_ko0rf"]
 [ext_resource type="Script" uid="uid://chxvwrt37f2ci" path="res://scripts/Level/LevelTimer.cs" id="8_ostsq"]
-[ext_resource type="PackedScene" uid="uid://le0asy7w1two" path="res://scenes/ui/hud/TimerDisplay.tscn" id="9_3km4f"]
 [ext_resource type="PackedScene" uid="uid://dcsxu1uc6mnry" path="res://scenes/ui/menus/GameOverMessage.tscn" id="10_3km4f"]
 [ext_resource type="Environment" uid="uid://b4j8oqqcgmbb6" path="res://resources/environments/Gallery.tres" id="11_qkm1d"]
 [ext_resource type="PackedScene" uid="uid://c2kcjgtq0tdvd" path="res://scenes/environment/Backdrop.tscn" id="12_p5fgu"]
 [ext_resource type="PackedScene" uid="uid://ddgurlhw8wqaj" path="res://scenes/hazards/moving_hazard.tscn" id="13_hzmov"]
 [ext_resource type="PackedScene" uid="uid://bwg0tt0ohoa3v" path="res://scenes/hazards/vacuum_hazard.tscn" id="14_hzvac"]
+[ext_resource type="PackedScene" uid="uid://x48s1hv4dsd0" path="res://scenes/ui/hud/GameHud.tscn" id="14_jsdfw"]
 [ext_resource type="PackedScene" uid="uid://ch72h63cbdnl3" path="res://scenes/ui/menus/PauseMenu.tscn" id="15_u8lgh"]
 
 [node name="Main" type="Node3D" unique_id=2133792107]
@@ -52,12 +52,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 4)
 
 [node name="WinMessage" parent="." unique_id=729918560 instance=ExtResource("7_ko0rf")]
 
-[node name="LevelTimer" type="Node" parent="." unique_id=1489709857]
-script = ExtResource("8_ostsq")
-
-[node name="TimerDisplay" parent="." unique_id=1204011393 instance=ExtResource("9_3km4f")]
-TimerPath = NodePath("../LevelTimer")
-
 [node name="GameOverMessage" parent="." unique_id=1128760967 instance=ExtResource("10_3km4f")]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1363924070]
@@ -73,3 +67,8 @@ transform = Transform3D(0.033652946, 0, -0.9994336, 0, 1, 0, 0.9994336, 0, 0.033
 transform = Transform3D(-0.13022967, 0.9914838, 0, -0.9914838, -0.13022967, 0, 0, 0, 1, -6.400222, 4.7031236, 0.14159489)
 
 [node name="PauseMenu" parent="." unique_id=905981829 instance=ExtResource("15_u8lgh")]
+
+[node name="LevelTimer" type="Node" parent="." unique_id=971373241]
+script = ExtResource("8_ostsq")
+
+[node name="GameHud" parent="." unique_id=1392022552 instance=ExtResource("14_jsdfw")]
