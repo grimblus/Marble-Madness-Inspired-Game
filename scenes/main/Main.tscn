@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://ddgurlhw8wqaj" path="res://scenes/hazards/moving_hazard.tscn" id="13_hzmov"]
 [ext_resource type="PackedScene" uid="uid://bwg0tt0ohoa3v" path="res://scenes/hazards/vacuum_hazard.tscn" id="14_hzvac"]
 [ext_resource type="PackedScene" uid="uid://x48s1hv4dsd0" path="res://scenes/ui/hud/GameHud.tscn" id="14_jsdfw"]
+[ext_resource type="PackedScene" uid="uid://bv4xq4p8dlk4w" path="res://scenes/ui/menus/ResultScreen.tscn" id="14_tck0d"]
 [ext_resource type="PackedScene" uid="uid://ch72h63cbdnl3" path="res://scenes/ui/menus/PauseMenu.tscn" id="15_u8lgh"]
 
 [node name="Main" type="Node3D" unique_id=2133792107]
@@ -66,3 +67,5 @@ transform = Transform3D(-0.13022967, 0.9914838, 0, -0.9914838, -0.13022967, 0, 0
 script = ExtResource("8_ostsq")
 
 [node name="GameHud" parent="." unique_id=1392022552 instance=ExtResource("14_jsdfw")]
+
+[node name="ResultScreen" parent="." unique_id=488044686 instance=ExtResource("14_tck0d")]
