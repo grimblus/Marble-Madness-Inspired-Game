@@ -14,11 +14,11 @@ points = PackedVector3Array(-0.00019574165, 1, -0.00019574165, 0.19498825, -1, -
 script = ExtResource("1_hloo7")
 VacuumArea = NodePath("VacuumArea")
 
-[node name="decimated_well" type="Node3D" parent="." unique_id=318409693 instance=ExtResource("1_nos7g")]
+[node name="decimated_well" parent="." unique_id=318409693 instance=ExtResource("1_nos7g")]
 transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0)
 
 [node name="WellCollision" type="CollisionShape3D" parent="." unique_id=404016361]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.018298745, 0.040141106, 0)
+transform = Transform3D(0.62, 0, 0, 0, 0.62, 0, 0, 0, 0.62, -0.018298745, 0.040141106, 0)
 shape = SubResource("CylinderShape3D_voxn2")
 
 [node name="VacuumArea" type="Area3D" parent="." unique_id=1818991285]

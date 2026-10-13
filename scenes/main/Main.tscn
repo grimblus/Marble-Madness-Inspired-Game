@@ -15,6 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://ddgurlhw8wqaj" path="res://scenes/hazards/moving_hazard.tscn" id="13_hzmov"]
 [ext_resource type="PackedScene" uid="uid://bwg0tt0ohoa3v" path="res://scenes/hazards/vacuum_hazard.tscn" id="14_hzvac"]
 [ext_resource type="PackedScene" uid="uid://ch72h63cbdnl3" path="res://scenes/ui/menus/PauseMenu.tscn" id="15_u8lgh"]
+[ext_resource type="PackedScene" uid="uid://bfanh2jadvega" path="res://scenes/hazards/stationary_hazard.tscn" id="16_u8lgh"]
 
 [node name="Main" type="Node3D" unique_id=2133792107]
 
@@ -73,3 +74,6 @@ transform = Transform3D(0.033652946, 0, -0.9994336, 0, 1, 0, 0.9994336, 0, 0.033
 transform = Transform3D(-0.13022967, 0.9914838, 0, -0.9914838, -0.13022967, 0, 0, 0, 1, -6.400222, 4.7031236, 0.14159489)
 
 [node name="PauseMenu" parent="." unique_id=905981829 instance=ExtResource("15_u8lgh")]
+
+[node name="StationaryHazard" parent="." unique_id=249923646 instance=ExtResource("16_u8lgh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3088297, 1.3000625, -3.6961079)

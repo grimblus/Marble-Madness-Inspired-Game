@@ -4,7 +4,8 @@ public partial class MarbleController : RigidBody3D
 {
 	[Export] public float MoveForce = 12.0f;
 	[Export] public float MaxSpeed = 8.0f;
-	[Export] public float SpinoutTime = 0.6f;
+	//just the default value, the real value is in each gethit method
+	[Export] public float SpinoutTime = 0.0f;
 	[Export] public float KnockbackForce = 2.0f;
 
 	// Raised whenever the marble is sent back to a checkpoint. Listen to
@@ -100,6 +101,29 @@ public partial class MarbleController : RigidBody3D
 		}
 		ApplyCentralImpulse(pushDirection * KnockbackForce);
 		
+		SpinoutTime = 0.6f;
+		
+		GetTree().CreateTimer(SpinoutTime).Timeout += () =>
+		{
+			_inSpinout = false;
+		};
+	}
+	
+	public void GetHit()
+	{
+		if (_gameState.IsEnded) 
+		{
+			return;
+		}
+		
+		if (_inSpinout) 
+		{
+			return;
+		}
+		_inSpinout = true;
+		
+		SpinoutTime = 1.0f;
+		
 		GetTree().CreateTimer(SpinoutTime).Timeout += () =>
 		{
 			_inSpinout = false;
@@ -107,13 +131,23 @@ public partial class MarbleController : RigidBody3D
 	}
 	
 	private void HurtboxAreaHit(Area3D area) {
-		if (area.IsInGroup("enemies")) {
+		if (area.IsInGroup("enemies") && area.IsInGroup("stationary"))
+		{
+			GetHit();
+		}
+		else if (area.IsInGroup("enemies"))
+		{
 			GetHitPhys(area.GlobalPosition);
 		}
 	}
 	
 	private void HurtboxBodyHit(Node3D body) {
-		if (body.IsInGroup("enemies")) {
+		if (body.IsInGroup("enemies") && body.IsInGroup("stationary"))
+		{
+			GetHit();
+		}
+		else if (body.IsInGroup("enemies"))
+		{
 			GetHitPhys(body.GlobalPosition);
 		}
 	}
