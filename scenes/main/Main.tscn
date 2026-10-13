@@ -6,9 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://bugcc03pvuea" path="res://scenes/triggers/KillZone.tscn" id="4_gyg6b"]
 [ext_resource type="PackedScene" uid="uid://byxgfkifyqgjg" path="res://scenes/triggers/Checkpoint.tscn" id="5_dc040"]
 [ext_resource type="PackedScene" uid="uid://di3r1eaoorp6y" path="res://scenes/triggers/Goal.tscn" id="6_sjxhf"]
-[ext_resource type="PackedScene" uid="uid://d0sumnbepcruv" path="res://scenes/ui/menus/WinMessage.tscn" id="7_ko0rf"]
 [ext_resource type="Script" uid="uid://chxvwrt37f2ci" path="res://scripts/Level/LevelTimer.cs" id="8_ostsq"]
-[ext_resource type="PackedScene" uid="uid://dcsxu1uc6mnry" path="res://scenes/ui/menus/GameOverMessage.tscn" id="10_3km4f"]
 [ext_resource type="Environment" uid="uid://b4j8oqqcgmbb6" path="res://resources/environments/Gallery.tres" id="11_qkm1d"]
 [ext_resource type="PackedScene" uid="uid://c2kcjgtq0tdvd" path="res://scenes/environment/Backdrop.tscn" id="12_p5fgu"]
 [ext_resource type="PackedScene" uid="uid://ddgurlhw8wqaj" path="res://scenes/hazards/moving_hazard.tscn" id="13_hzmov"]
@@ -49,10 +47,6 @@ visible = false
 
 [node name="Goal" parent="." unique_id=701960724 instance=ExtResource("6_sjxhf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 4)
-
-[node name="WinMessage" parent="." unique_id=729918560 instance=ExtResource("7_ko0rf")]
-
-[node name="GameOverMessage" parent="." unique_id=1128760967 instance=ExtResource("10_3km4f")]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1363924070]
 environment = ExtResource("11_qkm1d")
