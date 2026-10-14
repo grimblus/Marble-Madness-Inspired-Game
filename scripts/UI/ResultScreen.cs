@@ -224,6 +224,13 @@ public partial class ResultScreen : CanvasLayer
 		SetChip(2, "3 STARS", "UNDER " + ShortTime(ThreeStarSeconds), stars == 3);
 
 		Reveal(_winPanel);
+
+		// Earned stars pop in one after another, then keep shining.
+		for (int i = 0; i < stars; i++)
+		{
+			_stars[i].PlayShine(0.4f + 0.3f * i);
+		}
+
 		(_nextButton.Disabled ? _retryButton : _nextButton).GrabFocus();
 	}
 
