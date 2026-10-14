@@ -2,6 +2,8 @@
 
 [ext_resource type="Script" uid="uid://ca8efcxc2wo5w" path="res://scripts/UI/ResultScreen.cs" id="1_result"]
 [ext_resource type="Script" uid="uid://c4igst8qdtjct" path="res://scripts/UI/StarIcon.cs" id="2_star"]
+[ext_resource type="FontFile" uid="uid://bkjvmn2gq25su" path="res://assets/fonts/diffusion-regular.ttf" id="3_g2sqp"]
+[ext_resource type="FontFile" uid="uid://c1hb3k6qg3qqj" path="res://assets/fonts/diffusion-bold.ttf" id="3_vru3b"]
 
 [sub_resource type="StyleBoxFlat" id="Btn_disabled"]
 content_margin_left = 16.0
@@ -265,6 +267,7 @@ script = ExtResource("2_star")
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_colors/font_color = Color(0.29, 0.27, 0.23, 1)
+theme_override_fonts/font = ExtResource("3_vru3b")
 theme_override_font_sizes/font_size = 20
 text = "A flawless roll."
 horizontal_alignment = 1
@@ -272,6 +275,7 @@ horizontal_alignment = 1
 [node name="TimeCaption" type="Label" parent="Root/Center/WinPanel/VBox" unique_id=273594179]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.42, 0.39, 0.34, 1)
+theme_override_fonts/font = ExtResource("3_g2sqp")
 theme_override_font_sizes/font_size = 11
 text = "YOUR TIME"
 horizontal_alignment = 1
@@ -279,6 +283,7 @@ horizontal_alignment = 1
 [node name="WinTimeLabel" type="Label" parent="Root/Center/WinPanel/VBox" unique_id=125040365]
 unique_name_in_owner = true
 layout_mode = 2
+theme_override_fonts/font = ExtResource("3_g2sqp")
 theme_override_font_sizes/font_size = 48
 text = "00:00.00"
 horizontal_alignment = 1
@@ -287,6 +292,7 @@ horizontal_alignment = 1
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_colors/font_color = Color(0.42, 0.39, 0.34, 1)
+theme_override_fonts/font = ExtResource("3_g2sqp")
 theme_override_font_sizes/font_size = 12
 text = "BEST --:--.--"
 horizontal_alignment = 1
@@ -304,6 +310,7 @@ theme_override_styles/panel = SubResource("Chip")
 [node name="Chip3Label" type="Label" parent="Root/Center/WinPanel/VBox/Chips/Chip3" unique_id=1674260175]
 unique_name_in_owner = true
 layout_mode = 2
+theme_override_fonts/font = ExtResource("3_g2sqp")
 theme_override_font_sizes/font_size = 11
 text = "3 STARS
 UNDER 0:30"
@@ -318,6 +325,7 @@ theme_override_styles/panel = SubResource("Chip")
 [node name="Chip2Label" type="Label" parent="Root/Center/WinPanel/VBox/Chips/Chip2" unique_id=1914636042]
 unique_name_in_owner = true
 layout_mode = 2
+theme_override_fonts/font = ExtResource("3_g2sqp")
 theme_override_font_sizes/font_size = 11
 text = "2 STARS
 UNDER 1:00"
@@ -332,6 +340,7 @@ theme_override_styles/panel = SubResource("Chip")
 [node name="Chip1Label" type="Label" parent="Root/Center/WinPanel/VBox/Chips/Chip1" unique_id=832895862]
 unique_name_in_owner = true
 layout_mode = 2
+theme_override_fonts/font = ExtResource("3_g2sqp")
 theme_override_font_sizes/font_size = 11
 text = "1 STAR
 UNDER 1:30"
@@ -345,6 +354,7 @@ theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
 theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
 theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("3_g2sqp")
 theme_override_styles/normal = SubResource("Gold_normal")
 theme_override_styles/pressed = SubResource("Gold_pressed")
 theme_override_styles/hover = SubResource("Gold_hover")
@@ -359,6 +369,7 @@ unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 42)
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("3_g2sqp")
 theme_override_font_sizes/font_size = 13
 text = "PREVIOUS"
 
@@ -367,6 +378,7 @@ unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 42)
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("3_g2sqp")
 theme_override_font_sizes/font_size = 13
 text = "RETRY"
 
@@ -375,6 +387,7 @@ unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 42)
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("3_g2sqp")
 theme_override_font_sizes/font_size = 13
 text = "LEVEL SELECT"
 
