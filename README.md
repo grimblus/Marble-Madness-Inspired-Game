@@ -20,9 +20,9 @@ See [docs/requirements.md](docs/requirements.md) for the full requirements spec,
 
 | Input | Action |
 |---|---|
-| WASD / arrow keys | Roll the marble |
-
-Full control scheme still to be finalized — see [docs/requirements.md §7](docs/requirements.md#7-open-items-to-confirm).
+| WASD / arrow keys | Roll the marble (relative to the camera: W is up the screen) |
+| Mouse wheel / Q, E | Zoom out / in (five zoom levels) |
+| Esc | Pause / resume |
 
 ## Project Structure
 
@@ -50,9 +50,12 @@ Folder-to-system mapping follows [docs/requirements.md §3](docs/requirements.md
 
 ## Known Issues
 
-- Only a greybox prototype exists: the marble rolls around a CSG-built test course (`scenes/levels/level_01/Level01.tscn`). No hazards, timer, checkpoints, win/lose states, UI or audio yet.
-- The camera is a fixed angled `Camera3D` and does not follow the marble yet.
-- Tiles are CSG placeholders and will be replaced by final modelled assets.
+- Only Level 1 is playable on `main`. Some work is still on unmerged branches:
+  - Level 2 and the expanded tile kit: `experiment/gridmap-tile-library`
+  - the results screen, level select and HUD update: `all_menus`
+  - the stationary hazard and vacuum wind VFX: `feature/hazards`
+- Tiles are CSG greybox placeholders and will be replaced by final modelled assets.
+- The source and licence of the menu fonts aren't recorded yet (see [docs/credits.md](docs/credits.md)).
 
 ## Credits
 
