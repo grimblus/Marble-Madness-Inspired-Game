@@ -2,13 +2,10 @@
 
 [ext_resource type="Material" uid="uid://conlo3we8cvs5" path="res://assets/materials/Goal.tres" id="1_7n0sd"]
 [ext_resource type="Script" uid="uid://dj20fqhwaoccw" path="res://scripts/Level/Goal.cs" id="1_o04jb"]
+[ext_resource type="Material" uid="uid://cv2pmrrev8auq" path="res://assets/materials/WhiteStone.tres" id="3_i4b20"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_3ewea"]
-size = Vector3(2, 1, 2)
-
-[sub_resource type="BoxMesh" id="BoxMesh_3ewea"]
-material = ExtResource("1_7n0sd")
-size = Vector3(2, 1, 2)
+size = Vector3(1, 0.5, 1)
 
 [node name="Goal" type="Area3D" unique_id=701960724]
 collision_layer = 8
@@ -16,9 +13,26 @@ collision_mask = 2
 script = ExtResource("1_o04jb")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1241094612]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
 shape = SubResource("BoxShape3D_3ewea")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1863390837]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
-mesh = SubResource("BoxMesh_3ewea")
+[node name="Node3D" type="Node3D" parent="." unique_id=1802873940]
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="Node3D" unique_id=2088501627]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0)
+radius = 0.03
+height = 1.5
+material = ExtResource("3_i4b20")
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="Node3D/CSGCylinder3D" unique_id=171383086]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0)
+radius = 0.05
+radial_segments = 20
+rings = 20
+material = ExtResource("3_i4b20")
+
+[node name="CSGPolygon3D" type="CSGPolygon3D" parent="Node3D/CSGCylinder3D" unique_id=836680897]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.275, 0)
+polygon = PackedVector2Array(0, 0.5, 0, 1, 0.75, 0.75)
+depth = 0.01
+material = ExtResource("1_7n0sd")
