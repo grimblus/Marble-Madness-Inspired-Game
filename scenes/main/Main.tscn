@@ -1,17 +1,14 @@
 [gd_scene format=3 uid="uid://dy3yuv5jodaps"]
 
-[ext_resource type="PackedScene" uid="uid://b02swvmgd2beh" path="res://scenes/levels/level_01/Level01.tscn" id="1_nha0i"]
 [ext_resource type="PackedScene" uid="uid://326c4t3v8td" path="res://scenes/marble/Marble.tscn" id="1_u1xfj"]
 [ext_resource type="PackedScene" uid="uid://jndpq1r8a76l" path="res://scenes/camera/CameraRig.tscn" id="3_q24mn"]
-[ext_resource type="PackedScene" uid="uid://bugcc03pvuea" path="res://scenes/triggers/KillZone.tscn" id="4_gyg6b"]
-[ext_resource type="PackedScene" uid="uid://byxgfkifyqgjg" path="res://scenes/triggers/Checkpoint.tscn" id="5_dc040"]
-[ext_resource type="PackedScene" uid="uid://di3r1eaoorp6y" path="res://scenes/triggers/Goal.tscn" id="6_sjxhf"]
 [ext_resource type="PackedScene" uid="uid://d0sumnbepcruv" path="res://scenes/ui/menus/WinMessage.tscn" id="7_ko0rf"]
 [ext_resource type="Script" uid="uid://chxvwrt37f2ci" path="res://scripts/Level/LevelTimer.cs" id="8_ostsq"]
 [ext_resource type="PackedScene" uid="uid://le0asy7w1two" path="res://scenes/ui/hud/TimerDisplay.tscn" id="9_3km4f"]
 [ext_resource type="PackedScene" uid="uid://dcsxu1uc6mnry" path="res://scenes/ui/menus/GameOverMessage.tscn" id="10_3km4f"]
 [ext_resource type="Environment" uid="uid://b4j8oqqcgmbb6" path="res://resources/environments/Gallery.tres" id="11_qkm1d"]
 [ext_resource type="PackedScene" uid="uid://c2kcjgtq0tdvd" path="res://scenes/environment/Backdrop.tscn" id="12_p5fgu"]
+[ext_resource type="PackedScene" uid="uid://dbqjpchxcopoa" path="res://scenes/levels/level_02/Level02.tscn" id="13_2tpxt"]
 [ext_resource type="PackedScene" uid="uid://ddgurlhw8wqaj" path="res://scenes/hazards/moving_hazard.tscn" id="13_hzmov"]
 [ext_resource type="PackedScene" uid="uid://bwg0tt0ohoa3v" path="res://scenes/hazards/vacuum_hazard.tscn" id="14_hzvac"]
 [ext_resource type="PackedScene" uid="uid://ch72h63cbdnl3" path="res://scenes/ui/menus/PauseMenu.tscn" id="15_u8lgh"]
@@ -19,10 +16,8 @@
 
 [node name="Main" type="Node3D" unique_id=2133792107]
 
-[node name="Level01" parent="." unique_id=617545788 instance=ExtResource("1_nha0i")]
-
 [node name="Marble" parent="." unique_id=240693826 instance=ExtResource("1_u1xfj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75324976, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.395908, 0.7532493, 36.300217)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=38329964]
 transform = Transform3D(-0.4601997, -0.57067674, 0.68010604, 0, 0.76604444, 0.6427876, -0.8878154, 0.29581067, -0.35253343, 0, 10, 0)
@@ -39,17 +34,6 @@ directional_shadow_pancake_size = 2.0
 TargetPath = NodePath("../Marble")
 PitchDegrees = -30.0
 Distance = 15.0
-OrthographicSize = 15.0
-
-[node name="KillZone" parent="." unique_id=1018422379 instance=ExtResource("4_gyg6b")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -5, 0)
-
-[node name="Checkpoint" parent="." unique_id=1005557379 instance=ExtResource("5_dc040")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 3)
-visible = false
-
-[node name="Goal" parent="." unique_id=701960724 instance=ExtResource("6_sjxhf")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 4.5495543)
 
 [node name="WinMessage" parent="." unique_id=729918560 instance=ExtResource("7_ko0rf")]
 
@@ -77,6 +61,8 @@ transform = Transform3D(-0.13022967, 0.9914838, 0, -0.9914838, -0.13022967, 0, 0
 
 [node name="StationaryHazard" parent="." unique_id=249923646 instance=ExtResource("16_u8lgh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3088297, 1.3000625, -3.6961079)
+
+[node name="Level02" parent="." unique_id=617545788 instance=ExtResource("13_2tpxt")]
 
 [editable path="VacuumHazard"]
 [editable path="VacuumHazard/VacuumArea/VFX_VacuumWind"]
