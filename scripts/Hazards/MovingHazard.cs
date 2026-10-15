@@ -12,9 +12,22 @@ public partial class MovingHazard : RigidBody3D
 	private float patternLength;
 	private MarbleController marble;
 	
+	//so the path3d increases with scale
+	private Transform3D pathTransform;
+	
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
+		if (PatternPath != null && PatternPath.Curve != null)
+		{
+			Pattern = PatternPath.Curve;
+			pathTransform = PatternPath.GlobalTransform; // capture once, before the hazard moves
+		}
+		else
+		{
+			pathTransform = GlobalTransform;
+		}
+		
 		if (Pattern != null)
 			patternLength = Pattern.GetBakedLength();
 			
@@ -53,7 +66,8 @@ public partial class MovingHazard : RigidBody3D
 		Vector3 localOffset = Pattern.SampleBaked(distanceTravelled);
 		Vector3 rotatedOffset = localOffset.Rotated(Vector3.Up, spawnRotation);
 
-		GlobalPosition = spawnPosition + rotatedOffset;
+		//GlobalPosition = spawnPosition + rotatedOffset;
+		GlobalPosition = pathTransform * Pattern.SampleBaked(distanceTravelled);
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.

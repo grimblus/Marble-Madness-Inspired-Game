@@ -60,7 +60,7 @@ script = ExtResource("8_ostsq")
 LevelSelectScenePath = "uid://b6gxh3ddrqwbp"
 
 [node name="StationaryHazard" parent="." unique_id=249923646 instance=ExtResource("16_u8lgh")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3088297, 1.3000625, -3.6961079)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3088297, 0.2922175, -3.6961079)
 
 [editable path="VacuumHazard"]
 [editable path="VacuumHazard/VacuumArea/VFX_VacuumWind"]

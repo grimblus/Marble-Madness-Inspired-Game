@@ -6,10 +6,10 @@
 [sub_resource type="Curve3D" id="Curve3D_chwjj"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_44oka"]
-height = 6.0
+height = 5.225
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_voxn2"]
-height = 1.0
+height = 0.45
 
 [sub_resource type="Curve3D" id="Curve3D_qkm1d"]
 closed = true

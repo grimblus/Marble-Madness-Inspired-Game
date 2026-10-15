@@ -37,24 +37,20 @@ visible = false
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -45.061783, -6.2323313, -35.98738)
 
 [node name="MovingHazard" parent="." unique_id=341274520 instance=ExtResource("5_cs3t4")]
-transform = Transform3D(5.005, 0, 0, 0, 5.005, 0, 0, 0, 5.005, -24.631283, -0.7948427, -41.27121)
-PatternSpeed = 2.0
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -25.976, -1.25, -41.271)
+PatternSpeed = 1.5
 
 [node name="MovingHazard2" parent="." unique_id=2089880379 instance=ExtResource("5_cs3t4")]
-transform = Transform3D(5.005, 0, 0, 0, 5.005, 0, 0, 0, 5.005, -30.454521, -0.7948427, -41.27121)
-PatternSpeed = 2.0
-
-[node name="MovingHazard3" parent="." unique_id=1300804686 instance=ExtResource("5_cs3t4")]
-transform = Transform3D(5.005, 0, 0, 0, 5.005, 0, 0, 0, 5.005, -35.34387, -0.7948427, -41.27121)
-PatternSpeed = 2.0
+transform = Transform3D(5.005, 0, 0, 0, 5.005, 0, 0, 0, 5.005, -31.976, -1.25, -41.271)
+PatternSpeed = 1.5
 
 [node name="MovingHazard4" parent="." unique_id=603429204 instance=ExtResource("5_cs3t4")]
-transform = Transform3D(-5.005, 0, -4.37551e-07, 0, 5.005, 0, 4.37551e-07, 0, -5.005, -33.40273, -0.7948427, -30.951012)
-PatternSpeed = 2.0
+transform = Transform3D(-5.005, 0, -4.37551e-07, 0, 5.005, 0, 4.37551e-07, 0, -5.005, -35.056, -1.25, -30.951)
+PatternSpeed = 1.5
 
 [node name="MovingHazard5" parent="." unique_id=85083422 instance=ExtResource("5_cs3t4")]
-transform = Transform3D(-5.005, 0, -4.37551e-07, 0, 5.005, 0, 4.37551e-07, 0, -5.005, -27.446001, -0.7948427, -30.951012)
-PatternSpeed = 2.0
+transform = Transform3D(-5.005, 0, -4.37551e-07, 0, 5.005, 0, 4.37551e-07, 0, -5.005, -29.008, -1.25, -30.951)
+PatternSpeed = 1.5
 
 [node name="VacuumHazard" parent="." unique_id=832618694 instance=ExtResource("6_mqcmt")]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, -6.539501, 0, -41.41778)
