@@ -23,7 +23,6 @@ transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 1
 TargetPath = NodePath("../Marble")
 PitchDegrees = -30.0
 Distance = 120.0
-OrthographicSize = 15.0
 
 [node name="KillZone" parent="." unique_id=1018422379 instance=ExtResource("4_gyg6b")]
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, -12.328338, 17.092863)
@@ -33,7 +32,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 3)
 visible = false
 
 [node name="Goal" parent="." unique_id=701960724 instance=ExtResource("6_sjxhf")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16, -8, 52)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 52, -8, 17)
 
 [node name="WinMessage" parent="." unique_id=729918560 instance=ExtResource("7_ko0rf")]
 
@@ -46,4 +45,4 @@ TimerPath = NodePath("../LevelTimer")
 [node name="GameOverMessage" parent="." unique_id=1128760967 instance=ExtResource("10_3km4f")]
 
 [node name="Level01" parent="." unique_id=617545788 instance=ExtResource("10_qkm1d")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, 7)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, 7)
