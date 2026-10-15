@@ -14,13 +14,31 @@
 - Coordinates milestone presentation content and final documentation compilation
 
 ### Aaron Tran — Technical Lead / Level Systems
-- Placeholder
+- Owns the tile/level system: the modular tile kit and the GridMap mesh libraries that levels are built from
+- Extended the starting greybox tiles with curve, half-height, ramp-corner, steep-ramp, wall and goal pieces, in three themed sets (default, Marble, Sand), each with its own mesh library
+- Owns level layout and integration: rebuilt Level 1 on a GridMap (keeping the original CSG layout as `Level01Old`) and built Level 2
+- Keeps levels to the shared grid and connection rules in [tile-convention.md](tile-convention.md)
+- The tile sets and both GridMap levels are on `experiment/gridmap-tile-library`, not yet merged
 
 ### Andrew Loi — Gameplay Systems (Hazards, Timer, Checkpoints)
-- Placeholder
+- Owns hazards and obstacles. Built so far:
+  - the Sekhmet **moving hazard**, which follows a configurable Path3D patrol route
+  - the **vacuum hazard**, which pulls the marble in with an area force and has wind VFX
+  - a **stationary puddle hazard** that spins the marble out
+- Owns how the marble reacts to hazards: on contact, the marble briefly loses control and gets knocked away
+- Sourced the hazard models (Severus bust, well)
+- Owns the timer, checkpoint and win/lose rules. The base versions were built early by Donovan to unblock testing (see [contributions-donovan.md](contributions-donovan.md))
+- The stationary hazard and the wind VFX are on `feature/hazards`, not yet merged
 
 ### Jayden Bach — Polish, UI & Support
-- Placeholder
+- Owns all UI and menus:
+  - the start menu (museum-themed redesign and fonts)
+  - the pause menu (Esc; resume, restart and main menu; disabled once the level ends)
+  - the in-level HUD
+- Changed the level timer from a countdown to a stopwatch, with an optional time limit
+- Building the results screen (1–3 stars by completion time, with each level's best time and stars saved) and level select with level previews
+- The HUD update, results screen and level select are on `all_menus`, not yet merged
+- Owns audio. Donovan's Week 4 music player and marble sounds are the starting point for the audio polish pass
 
 **Note:** every system above has a documented owner but nothing is a single point of failure — see §3.
 
