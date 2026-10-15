@@ -1,0 +1,43 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://scenes/environment/Backdrop.tscn" id="1_backdrop"]
+[ext_resource type="Script" path="res://scripts/UI/MenuCameraDrift.cs" id="2_drift"]
+
+[sub_resource type="Environment" id="Env_menu"]
+background_mode = 1
+background_color = Color(0.93, 0.91, 0.85, 1)
+ambient_light_source = 2
+ambient_light_color = Color(1, 0.98, 0.95, 1)
+ambient_light_energy = 0.9
+
+[node name="MenuBackdrop3D" type="SubViewportContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+stretch = true
+
+[node name="SubViewport" type="SubViewport" parent="."]
+own_world_3d = true
+handle_input_locally = false
+size = Vector2i(1152, 648)
+render_target_update_mode = 4
+
+[node name="World" type="Node3D" parent="SubViewport"]
+
+[node name="Backdrop" parent="SubViewport/World" instance=ExtResource("1_backdrop")]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="SubViewport/World"]
+environment = SubResource("Env_menu")
+
+[node name="Sun" type="DirectionalLight3D" parent="SubViewport/World"]
+transform = Transform3D(0.866025, -0.409576, 0.286788, 0.000000, 0.573576, 0.819152, -0.500000, -0.709406, 0.496732, 0, 8, 0)
+shadow_enabled = true
+
+[node name="Camera3D" type="Camera3D" parent="SubViewport/World"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 10)
+current = true
+fov = 55.0
+script = ExtResource("2_drift")
