@@ -50,12 +50,11 @@ Folder-to-system mapping follows [docs/requirements.md §3](docs/requirements.md
 
 ## Known Issues
 
-- Only Level 1 is playable on `main`. Some work is still on unmerged branches:
-  - Level 2 and the expanded tile kit: `experiment/gridmap-tile-library`
-  - the results screen, level select and HUD update: `all_menus`
-  - the stationary hazard and vacuum wind VFX: `feature/hazards`
+- Levels 1 and 2 are playable. Level 3 is not built yet and shows as "Coming soon" in the level select.
+- Star times (30 / 60 / 90 s) are shared by every level, and finishing at 90 s or later counts as a game over.
+- Sound effects so far cover only marble rolling and impacts. Hazard, checkpoint, victory and UI sounds are still to come.
 - Tiles are CSG greybox placeholders and will be replaced by final modelled assets.
-- The source and licence of the menu fonts aren't recorded yet (see [docs/credits.md](docs/credits.md)).
+- Some licences aren't recorded yet in [docs/credits.md](docs/credits.md): the menu fonts, the Musopen recordings and the marble-drop sound effect.
 
 ## Credits
 

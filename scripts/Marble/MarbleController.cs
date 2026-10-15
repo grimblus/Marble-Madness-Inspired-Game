@@ -27,7 +27,11 @@ public partial class MarbleController : RigidBody3D
 		checkpoints.Reset();
 		checkpoints.SetStartPoint(GlobalPosition);
 
+		// The win/lose flag lives on an autoload, so it survives the scene
+		// change from a result screen (retry, level select, menu). Clear it
+		// here too, or the next level starts already "ended" and frozen.
 		_gameState = GetNode<GameStateManager>("/root/GameStateManager");
+		_gameState.Reset();
 	}
 
 	public override void _PhysicsProcess(double delta)
