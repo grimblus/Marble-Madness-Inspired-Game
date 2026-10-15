@@ -54,7 +54,7 @@ Folder-to-system mapping follows [docs/requirements.md §3](docs/requirements.md
 - Star times (30 / 60 / 90 s) are shared by every level, and finishing at 90 s or later counts as a game over.
 - Sound effects so far cover only marble rolling and impacts. Hazard, checkpoint, victory and UI sounds are still to come.
 - Tiles are CSG greybox placeholders and will be replaced by final modelled assets.
-- Some licences aren't recorded yet in [docs/credits.md](docs/credits.md): the menu fonts, the Musopen recordings and the marble-drop sound effect.
+- Some licences aren't recorded yet in [docs/credits.md](docs/credits.md): the menu fonts and the marble-drop sound effect.
 
 ## Credits
 
