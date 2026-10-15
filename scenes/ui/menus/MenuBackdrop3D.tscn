@@ -1,7 +1,7 @@
-[gd_scene format=3]
+[gd_scene format=3 uid="uid://dox7avdesvti1"]
 
-[ext_resource type="PackedScene" path="res://scenes/environment/Backdrop.tscn" id="1_backdrop"]
-[ext_resource type="Script" path="res://scripts/UI/MenuCameraDrift.cs" id="2_drift"]
+[ext_resource type="PackedScene" uid="uid://c2kcjgtq0tdvd" path="res://scenes/environment/Backdrop.tscn" id="1_backdrop"]
+[ext_resource type="Script" uid="uid://3aoj2mc073nx" path="res://scripts/UI/MenuCameraDrift.cs" id="2_drift"]
 
 [sub_resource type="Environment" id="Env_menu"]
 background_mode = 1
@@ -10,7 +10,7 @@ ambient_light_source = 2
 ambient_light_color = Color(1, 0.98, 0.95, 1)
 ambient_light_energy = 0.9
 
-[node name="MenuBackdrop3D" type="SubViewportContainer"]
+[node name="MenuBackdrop3D" type="SubViewportContainer" unique_id=61255013]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -19,25 +19,25 @@ grow_vertical = 2
 mouse_filter = 2
 stretch = true
 
-[node name="SubViewport" type="SubViewport" parent="."]
+[node name="SubViewport" type="SubViewport" parent="." unique_id=458927649]
 own_world_3d = true
 handle_input_locally = false
 size = Vector2i(1152, 648)
 render_target_update_mode = 4
 
-[node name="World" type="Node3D" parent="SubViewport"]
+[node name="World" type="Node3D" parent="SubViewport" unique_id=2064406473]
 
-[node name="Backdrop" parent="SubViewport/World" instance=ExtResource("1_backdrop")]
+[node name="Backdrop" parent="SubViewport/World" unique_id=118345614 instance=ExtResource("1_backdrop")]
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="SubViewport/World"]
+[node name="WorldEnvironment" type="WorldEnvironment" parent="SubViewport/World" unique_id=1017942744]
 environment = SubResource("Env_menu")
 
-[node name="Sun" type="DirectionalLight3D" parent="SubViewport/World"]
-transform = Transform3D(0.866025, -0.409576, 0.286788, 0.000000, 0.573576, 0.819152, -0.500000, -0.709406, 0.496732, 0, 8, 0)
+[node name="Sun" type="DirectionalLight3D" parent="SubViewport/World" unique_id=949580107]
+transform = Transform3D(0.866025, -0.409576, 0.286788, 0, 0.573576, 0.819152, -0.5, -0.709406, 0.496732, 0, 8, 0)
 shadow_enabled = true
 
-[node name="Camera3D" type="Camera3D" parent="SubViewport/World"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 10)
+[node name="Camera3D" type="Camera3D" parent="SubViewport/World" unique_id=179665719]
+transform = Transform3D(1, 0, 0, 0, 0.9063078, 0.42261833, 0, -0.42261833, 0.9063078, 40.005463, 31.40863, 59.986824)
 current = true
 fov = 55.0
 script = ExtResource("2_drift")
