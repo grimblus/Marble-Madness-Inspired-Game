@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://cm7k25tx7k3hn"]
+
+[ext_resource type="Material" uid="uid://c1qhebexsr7s0" path="res://assets/materials/MarbleTile.tres" id="1_yknjy"]
+
+[sub_resource type="PlaceholderMesh" id="PlaceholderMesh_e3tdd"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hj1jt"]
+
+[node name="Marble_Flat" type="MeshInstance3D" unique_id=1998203284]
+mesh = SubResource("PlaceholderMesh_e3tdd")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=1615348148]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, 0)
+material_override = ExtResource("1_yknjy")
+size = Vector3(2, 0.5, 2)
+material = SubResource("StandardMaterial3D_hj1jt")

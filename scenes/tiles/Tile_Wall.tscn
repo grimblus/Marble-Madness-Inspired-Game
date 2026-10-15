@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://cp1lel6nm51dv"]
+
+[ext_resource type="Material" uid="uid://b4w8vtjak5wqf" path="res://assets/materials/YellowboxTile.tres" id="1_qhb5w"]
+
+[sub_resource type="PlaceholderMesh" id="PlaceholderMesh_daxe4"]
+
+[node name="Tile_Wall" type="MeshInstance3D" unique_id=1317104053]
+mesh = SubResource("PlaceholderMesh_daxe4")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=111031982]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.125, 0.5, 0)
+material_override = ExtResource("1_qhb5w")
+size = Vector3(0.25, 1, 2)

@@ -4,6 +4,7 @@
 
 [node name="CameraRig" type="Node3D" unique_id=949015987]
 script = ExtResource("1_hqrhs")
+OrthographicSize = 15.0
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=1626228356]
 projection = 1

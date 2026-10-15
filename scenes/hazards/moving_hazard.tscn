@@ -1,11 +1,15 @@
 [gd_scene format=3 uid="uid://ddgurlhw8wqaj"]
 
 [ext_resource type="Script" uid="uid://wry5fe8ntr0t" path="res://scripts/Hazards/MovingHazard.cs" id="1_chwjj"]
-[ext_resource type="PackedScene" uid="uid://bj6gc7erkft2f" path="res://assets/models/hazards/decimated_severus.glb" id="2_chwjj"]
+[ext_resource type="PackedScene" uid="uid://dw34yxg31am1t" path="res://assets/models/hazards/photorealistic_statue_of_kariatida.glb" id="2_fetpp"]
 
 [sub_resource type="Curve3D" id="Curve3D_chwjj"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_44oka"]
+height = 6.0
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_voxn2"]
+height = 1.0
 
 [sub_resource type="Curve3D" id="Curve3D_qkm1d"]
 closed = true
@@ -16,19 +20,25 @@ _data = {
 point_count = 3
 
 [node name="MovingHazard" type="RigidBody3D" unique_id=341274520 node_paths=PackedStringArray("PatternPath") groups=["enemies"]]
-collision_layer = 256
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
+collision_layer = 4
+collision_mask = 2
 script = ExtResource("1_chwjj")
 Pattern = SubResource("Curve3D_chwjj")
 PatternPath = NodePath("Path3D")
 
-[node name="decimated_severus" parent="." unique_id=292716963 instance=ExtResource("2_chwjj")]
-transform = Transform3D(0.086669855, 0, -0.024255618, 0, 0.089999996, 0, 0.024255618, 0, 0.086669855, 0, -0.2906952, 0)
-
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=584763044]
-transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, -0.2814632, 0)
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -0.0048010945, -0.10628158, 0)
 shape = SubResource("CapsuleShape3D_44oka")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="." unique_id=725854854]
+transform = Transform3D(0.28, 0, 0, 0, 0.28, 0, 0, 0, 0.28, 0, -0.5726191, 0)
+shape = SubResource("CylinderShape3D_voxn2")
 
 [node name="Path3D" type="Path3D" parent="." unique_id=264172916]
 curve = SubResource("Curve3D_qkm1d")
+
+[node name="photorealistic_statue_of_kariatida" parent="." unique_id=2041163934 instance=ExtResource("2_fetpp")]
+transform = Transform3D(-0.74101764, 0, -0.5107767, 0, 0.9, 0, 0.5107767, 0, -0.74101764, -0.055083275, -0.63773715, 0)
 
 [connection signal="body_entered" from="." to="." method="OnBodyEntered"]

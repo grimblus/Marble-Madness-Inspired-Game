@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://de54b3ms2yoih"]
+
+[ext_resource type="MeshLibrary" uid="uid://cnbcfa551x5eq" path="res://assets/libraries/sand_library.tres" id="1_au4iq"]
+
+[node name="Level03" type="Node3D" unique_id=548064579]
+
+[node name="GridMap" type="GridMap" parent="." unique_id=1986639425]
+mesh_library = ExtResource("1_au4iq")
+cell_size = Vector3(1, 0.5, 1)
+cell_center_x = false
+cell_center_y = false
+cell_center_z = false

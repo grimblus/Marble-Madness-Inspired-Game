@@ -43,3 +43,12 @@ All recordings sourced from [Musopen](https://musopen.org). The compositions the
 ## Fonts
 
 - `assets/fonts/diffusion-bold.ttf`, `assets/fonts/diffusion-regular.ttf` — source/licence not yet recorded. *(Whoever added these to `scenes/ui/menus/startMenu.tscn`, please fill in the source and licence here.)*
+
+
+## Textures
+| Local file | Source | Title | Author | Licence |
+|---|---|---|---|---|
+| `assets/textures/marble_107-1K/` | [ShareTextures](https://www.sharetextures.com/textures/floor/marble-107) | Marble 107 | M.Tolga Arslan | [CC0] |
+| `assets/textures/ground_4-1K/` | [ShareTextures](https://www.sharetextures.com/textures/ground/ground-4) | Ground 4 | M.Tolga Arslan | [CC0] |
+| `assets/textures/stone_wall_texture_2-1K/` | [ShareTextures](https://www.sharetextures.com/textures/wall/stone-wall-2) | Stone Wall Texture 2 | M.Tolga Arslan | [CC0] |
+| `assets/textures/pexels-this-and-no-internet-25-288559-35336001` | [Pexels](https://www.pexels.com/photo/modern-art-gallery-with-abstract-blue-paintings-35336001/) | This And No Internet 25 | photoholic | [Pexels License] |

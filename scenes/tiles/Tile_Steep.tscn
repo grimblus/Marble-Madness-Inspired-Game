@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://mn4mugonq5xd"]
+
+[ext_resource type="Material" uid="uid://bsauc828hr8dj" path="res://assets/materials/PurpleboxTile.tres" id="1_ucx1y"]
+
+[sub_resource type="PlaceholderMesh" id="PlaceholderMesh_sej5q"]
+
+[node name="Tile_Steep" type="MeshInstance3D" unique_id=441673735]
+mesh = SubResource("PlaceholderMesh_sej5q")
+
+[node name="CSGPolygon3D" type="CSGPolygon3D" parent="." unique_id=655299201]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 1)
+material_override = ExtResource("1_ucx1y")
+use_collision = true
+polygon = PackedVector2Array(0, -0.5, 2, -0.5, 2, 2, 0, 0)
+depth = 2.0

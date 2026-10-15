@@ -1,0 +1,7 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://boxupmh23jsvn"]
+
+[ext_resource type="Texture2D" uid="uid://dn511rn3dfj5n" path="res://assets/textures/marble_107-1K/marble_107_basecolor-1K.png" id="1_a43ne"]
+
+[resource]
+albedo_color = Color(0.3180198, 0.31801978, 0.31801975, 1)
+albedo_texture = ExtResource("1_a43ne")
