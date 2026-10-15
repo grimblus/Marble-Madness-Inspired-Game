@@ -30,8 +30,8 @@ All recordings sourced from [Musopen](https://musopen.org). The compositions the
 |---|---|---|---|---|---|---|
 | `assets/audio/music/349_gymnopedie-no-1.mp3` | Gymnopédie No. 1 | Erik Satie | Anonymous | [Musopen](https://musopen.org/music/8010-3-gymnopedies/) | [CC BY-NC-SA 3.0](https://creativecommons.org/licenses/by-nc-sa/3.0/) | Start menu |
 | `assets/audio/music/2411_arabesque-no-1mp3.mp3` | Arabesque No. 1 | Claude Debussy | Gerlüz (2010, Chicken House Records) | [Musopen](https://musopen.org/music/2491-two-arabesques-deux-arabesques-l-66/) | [CC BY-NC-SA 3.0](https://creativecommons.org/licenses/by-nc-sa/3.0/) | Level 1 |
-| `assets/audio/music/2491_gnossienne.mp3` | Gnossienne No. 1 | Erik Satie | Edward Rosser | [Musopen](https://musopen.org/music/44070-gnossiennes-no-1/) | [Public Domain Mark 1.0](https://creativecommons.org/publicdomain/mark/1.0/) | Not yet assigned |
-| `assets/audio/music/13_pavane.mp3` | Pavane pour une infante défunte | Maurice Ravel | Felipe Sarro (2009) | [Musopen](https://musopen.org/music/4709-pavane-for-a-dead-princess/) | [CC BY-NC-SA 3.0](https://creativecommons.org/licenses/by-nc-sa/3.0/) | Not yet assigned |
+| `assets/audio/music/2491_gnossienne.mp3` | Gnossienne No. 1 | Erik Satie | Edward Rosser | [Musopen](https://musopen.org/music/44070-gnossiennes-no-1/) | [Public Domain Mark 1.0](https://creativecommons.org/publicdomain/mark/1.0/) | Level 2 |
+| `assets/audio/music/13_pavane.mp3` | Pavane pour une infante défunte | Maurice Ravel | Felipe Sarro (2009) | [Musopen](https://musopen.org/music/4709-pavane-for-a-dead-princess/) | [CC BY-NC-SA 3.0](https://creativecommons.org/licenses/by-nc-sa/3.0/) | Level 3 |
 
 **CC BY-NC-SA 3.0 terms** (Gymnopédie No. 1, Arabesque No. 1, Pavane): credit the recording as above, non-commercial use only (fine for this assignment), and any edited version of a recording (trimmed, looped, remixed) must be shared under the same licence.
 

@@ -1,8 +1,14 @@
 [gd_scene format=3 uid="uid://de54b3ms2yoih"]
 
 [ext_resource type="MeshLibrary" uid="uid://cnbcfa551x5eq" path="res://assets/libraries/sand_library.tres" id="1_au4iq"]
+[ext_resource type="Script" uid="uid://6jo57s1f4ybg" path="res://scripts/Audio/MusicCue.cs" id="8_mcue"]
+[ext_resource type="AudioStream" uid="uid://djoltxw54l5qj" path="res://assets/audio/music/13_pavane.mp3" id="9_pava"]
 
 [node name="Level03" type="Node3D" unique_id=548064579]
+
+[node name="MusicCue" type="Node" parent="." unique_id=902713554]
+script = ExtResource("8_mcue")
+Track = ExtResource("9_pava")
 
 [node name="GridMap" type="GridMap" parent="." unique_id=1986639425]
 mesh_library = ExtResource("1_au4iq")
