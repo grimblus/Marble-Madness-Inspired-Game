@@ -48,7 +48,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 3)
 visible = false
 
 [node name="Goal" parent="." unique_id=701960724 instance=ExtResource("6_sjxhf")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 4)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 4.5495543)
 
 [node name="WinMessage" parent="." unique_id=729918560 instance=ExtResource("7_ko0rf")]
 
