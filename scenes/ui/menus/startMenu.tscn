@@ -1,28 +1,195 @@
-[gd_scene format=3 uid="uid://bjy54fg0bv7fg"]
+[gd_scene format=3 uid="uid://mpyxjhaf3q4l"]
 
-[ext_resource type="Script" uid="uid://cm8secbs8s3os" path="res://scripts/UI/StartMenu.cs" id="1_menu"]
+[ext_resource type="Script" uid="uid://bo2da3m3gppue" path="res://scripts/UI/StartMenu.cs" id="1_menu"]
 [ext_resource type="FontFile" uid="uid://c1hb3k6qg3qqj" path="res://assets/fonts/diffusion-bold.ttf" id="2_ivugx"]
 [ext_resource type="FontFile" uid="uid://bkjvmn2gq25su" path="res://assets/fonts/diffusion-regular.ttf" id="3_qggtv"]
+[ext_resource type="Script" uid="uid://6jo57s1f4ybg" path="res://scripts/Audio/MusicCue.cs" id="4_mcue"]
+[ext_resource type="AudioStream" uid="uid://d28vhgd0d205h" path="res://assets/audio/music/349_gymnopedie-no-1.mp3" id="5_gymn"]
 
-[node name="StartMenu" type="Control" unique_id=2011335304]
+[sub_resource type="StyleBoxFlat" id="Btn_focus"]
+draw_center = false
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.3, 0.25, 0.15, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="Btn_hover"]
+content_margin_left = 16.0
+content_margin_top = 12.0
+content_margin_right = 16.0
+content_margin_bottom = 12.0
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.72, 0.58, 0.3, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="Btn_normal"]
+content_margin_left = 16.0
+content_margin_top = 12.0
+content_margin_right = 16.0
+content_margin_bottom = 12.0
+bg_color = Color(1, 1, 1, 0.88)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.82, 0.78, 0.7, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="Btn_pressed"]
+content_margin_left = 16.0
+content_margin_top = 12.0
+content_margin_right = 16.0
+content_margin_bottom = 12.0
+bg_color = Color(0.93, 0.9, 0.84, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.72, 0.58, 0.3, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="Theme" id="Theme_menu"]
+Button/colors/font_color = Color(0.2, 0.17, 0.13, 1)
+Button/colors/font_focus_color = Color(0.2, 0.17, 0.13, 1)
+Button/colors/font_hover_color = Color(0.2, 0.17, 0.13, 1)
+Button/colors/font_pressed_color = Color(0.2, 0.17, 0.13, 1)
+Button/font_sizes/font_size = 18
+Button/styles/focus = SubResource("Btn_focus")
+Button/styles/hover = SubResource("Btn_hover")
+Button/styles/normal = SubResource("Btn_normal")
+Button/styles/pressed = SubResource("Btn_pressed")
+CheckButton/colors/font_color = Color(0.2, 0.17, 0.13, 1)
+CheckButton/colors/font_focus_color = Color(0.2, 0.17, 0.13, 1)
+CheckButton/colors/font_hover_color = Color(0.2, 0.17, 0.13, 1)
+CheckButton/colors/font_hover_pressed_color = Color(0.2, 0.17, 0.13, 1)
+CheckButton/colors/font_pressed_color = Color(0.2, 0.17, 0.13, 1)
+Label/colors/font_color = Color(0.2, 0.17, 0.13, 1)
+
+[sub_resource type="StyleBoxFlat" id="Panel_card"]
+content_margin_left = 44.0
+content_margin_top = 36.0
+content_margin_right = 44.0
+content_margin_bottom = 36.0
+bg_color = Color(1, 1, 1, 0.8)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 1, 1, 0.95)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+shadow_color = Color(0, 0, 0, 0.18)
+shadow_size = 28
+
+[sub_resource type="StyleBoxFlat" id="Gold_normal"]
+content_margin_left = 16.0
+content_margin_top = 12.0
+content_margin_right = 16.0
+content_margin_bottom = 12.0
+bg_color = Color(0.72, 0.58, 0.3, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="Gold_pressed"]
+content_margin_left = 16.0
+content_margin_top = 12.0
+content_margin_right = 16.0
+content_margin_bottom = 12.0
+bg_color = Color(0.62, 0.5, 0.25, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="Gold_hover"]
+content_margin_left = 16.0
+content_margin_top = 12.0
+content_margin_right = 16.0
+content_margin_bottom = 12.0
+bg_color = Color(0.79, 0.65, 0.36, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[node name="StartMenu" type="Control" unique_id=457163750]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = SubResource("Theme_menu")
 script = ExtResource("1_menu")
 
-[node name="Background" type="ColorRect" parent="." unique_id=421625021]
+[node name="Fallback" type="ColorRect" parent="." unique_id=1144550930]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.09, 0.11, 0.18, 1)
+mouse_filter = 2
+color = Color(0.93, 0.9, 0.84, 1)
 
-[node name="Center" type="CenterContainer" parent="." unique_id=1167526523]
+[node name="BackgroundA" type="TextureRect" parent="." unique_id=280094711]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+expand_mode = 1
+stretch_mode = 6
+
+[node name="BackgroundB" type="TextureRect" parent="." unique_id=404176595]
+unique_name_in_owner = true
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+expand_mode = 1
+stretch_mode = 6
+
+[node name="Tint" type="ColorRect" parent="." unique_id=1516258020]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(1, 1, 1, 0.12)
+
+[node name="Center" type="CenterContainer" parent="." unique_id=63484035]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -30,40 +197,147 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBox" type="VBoxContainer" parent="Center" unique_id=1517225745]
-custom_minimum_size = Vector2(320, 0)
+[node name="MainPanel" type="PanelContainer" parent="Center" unique_id=351752385]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(460, 0)
+layout_mode = 2
+theme_override_styles/panel = SubResource("Panel_card")
+
+[node name="VBox" type="VBoxContainer" parent="Center/MainPanel" unique_id=1192660586]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="Title" type="Label" parent="Center/MainPanel/VBox" unique_id=419645234]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_ivugx")
+theme_override_font_sizes/font_size = 36
+text = "MUSEUM MARBLE"
+horizontal_alignment = 1
+
+[node name="Subtitle" type="Label" parent="Center/MainPanel/VBox" unique_id=1891209911]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.4, 0.36, 0.3, 1)
+theme_override_fonts/font = ExtResource("3_qggtv")
+theme_override_font_sizes/font_size = 13
+text = "ROLL THROUGH THE GALLERY"
+horizontal_alignment = 1
+
+[node name="Spacer" type="Control" parent="Center/MainPanel/VBox" unique_id=2004845677]
+custom_minimum_size = Vector2(0, 12)
+layout_mode = 2
+
+[node name="StartButton" type="Button" parent="Center/MainPanel/VBox" unique_id=379057578]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("3_qggtv")
+theme_override_styles/normal = SubResource("Gold_normal")
+theme_override_styles/pressed = SubResource("Gold_pressed")
+theme_override_styles/hover = SubResource("Gold_hover")
+text = "START GAME"
+
+[node name="HowToButton" type="Button" parent="Center/MainPanel/VBox" unique_id=1765979005]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_qggtv")
+text = "HOW TO PLAY"
+
+[node name="SettingsButton" type="Button" parent="Center/MainPanel/VBox" unique_id=1979449816]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_qggtv")
+text = "SETTINGS"
+
+[node name="QuitButton" type="Button" parent="Center/MainPanel/VBox" unique_id=821580612]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_qggtv")
+text = "QUIT"
+
+[node name="HowToPanel" type="PanelContainer" parent="Center" unique_id=1919820722]
+unique_name_in_owner = true
+visible = false
+custom_minimum_size = Vector2(460, 0)
+layout_mode = 2
+theme_override_styles/panel = SubResource("Panel_card")
+
+[node name="VBox" type="VBoxContainer" parent="Center/HowToPanel" unique_id=218156684]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="Heading" type="Label" parent="Center/HowToPanel/VBox" unique_id=447869090]
+layout_mode = 2
+theme_override_font_sizes/font_size = 28
+text = "HOW TO PLAY"
+horizontal_alignment = 1
+
+[node name="Body" type="Label" parent="Center/HowToPanel/VBox" unique_id=675445712]
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "Guide the marble through the gallery and reach the goal as fast as you can.
+
+Move: W A S D or Arrow keys
+
+Avoid hazards and don't roll off the edge. If you fall, hit Retry and try again."
+autowrap_mode = 3
+
+[node name="HowToBackButton" type="Button" parent="Center/HowToPanel/VBox" unique_id=1559225245]
+unique_name_in_owner = true
+layout_mode = 2
+text = "BACK"
+
+[node name="SettingsPanel" type="PanelContainer" parent="Center" unique_id=1800923077]
+unique_name_in_owner = true
+visible = false
+custom_minimum_size = Vector2(460, 0)
+layout_mode = 2
+theme_override_styles/panel = SubResource("Panel_card")
+
+[node name="VBox" type="VBoxContainer" parent="Center/SettingsPanel" unique_id=812169595]
 layout_mode = 2
 theme_override_constants/separation = 16
 
-[node name="Title" type="Label" parent="Center/VBox" unique_id=372091757]
+[node name="Heading" type="Label" parent="Center/SettingsPanel/VBox" unique_id=135993883]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("2_ivugx")
-theme_override_font_sizes/font_size = 64
-text = "MARBLE MADNESS"
+theme_override_font_sizes/font_size = 28
+text = "SETTINGS"
 horizontal_alignment = 1
 
-[node name="Subtitle" type="Label" parent="Center/VBox" unique_id=1957356443]
+[node name="VolumeRow" type="HBoxContainer" parent="Center/SettingsPanel/VBox" unique_id=1789906961]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.7, 0.75, 0.9, 1)
-theme_override_fonts/font = ExtResource("3_qggtv")
-theme_override_font_sizes/font_size = 20
-text = "Roll to the goal before time runs out"
-horizontal_alignment = 1
+theme_override_constants/separation = 16
 
-[node name="Spacer" type="Control" parent="Center/VBox" unique_id=1219695592]
-custom_minimum_size = Vector2(0, 32)
+[node name="VolumeLabel" type="Label" parent="Center/SettingsPanel/VBox/VolumeRow" unique_id=1014695551]
 layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "Volume"
 
-[node name="PlayButton" type="Button" parent="Center/VBox" unique_id=1087129970]
+[node name="VolumeSlider" type="HSlider" parent="Center/SettingsPanel/VBox/VolumeRow" unique_id=1171731484]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(0, 56)
+custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
-theme_override_font_sizes/font_size = 24
-text = "Play"
+size_flags_horizontal = 3
+size_flags_vertical = 4
+max_value = 1.0
+step = 0.05
+value = 1.0
 
-[node name="QuitButton" type="Button" parent="Center/VBox" unique_id=1320329791]
+[node name="FullscreenCheck" type="CheckButton" parent="Center/SettingsPanel/VBox" unique_id=234363594]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(0, 56)
 layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "Fullscreen"
+
+[node name="SettingsBackButton" type="Button" parent="Center/SettingsPanel/VBox" unique_id=1537405392]
+unique_name_in_owner = true
+layout_mode = 2
+text = "BACK"
 theme_override_font_sizes/font_size = 24
 text = "Quit"
+
+[node name="MusicCue" type="Node" parent="." unique_id=1546820937]
+script = ExtResource("4_mcue")
+Track = ExtResource("5_gymn")
