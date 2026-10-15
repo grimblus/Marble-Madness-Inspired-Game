@@ -1,0 +1,52 @@
+[gd_scene format=3 uid="uid://bfanh2jadvega"]
+
+[ext_resource type="Script" uid="uid://dg18ox34y4xyj" path="res://scripts/Hazards/StationaryHazard.cs" id="1_2wkuj"]
+[ext_resource type="PackedScene" uid="uid://01641v77mtwf" path="res://assets/models/hazards/wet_floor_sign.glb" id="1_is51q"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_2wkuj"]
+points = PackedVector3Array(0, 0.5, 0.5, 0.5, -0.5, 0.5, 0, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5)
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_44oka"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_8qqct"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_pmhb3"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dveib"]
+albedo_color = Color(0, 0.7294118, 1, 0.9843137)
+metallic_specular = 1.0
+roughness = 0.0
+normal_enabled = true
+normal_scale = 0.69
+normal_texture = SubResource("NoiseTexture2D_pmhb3")
+
+[node name="StationaryHazard" type="Node3D" unique_id=249923646]
+script = ExtResource("1_2wkuj")
+
+[node name="WetFloorSign" type="RigidBody3D" parent="." unique_id=1704472615]
+collision_layer = 4
+collision_mask = 3
+mass = 0.15
+
+[node name="wet_floor_sign" parent="WetFloorSign" unique_id=542248263 instance=ExtResource("1_is51q")]
+transform = Transform3D(0.01, 0, 0, 0, 0.01, 0, 0, 0, 0.01, 0, 0, 0)
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="WetFloorSign" unique_id=1340480687]
+transform = Transform3D(0.32999998, 0, 0, 0, 0.57, 0, 0, 0, 0.32999998, 0, -0.003487058, 0)
+shape = SubResource("ConvexPolygonShape3D_2wkuj")
+
+[node name="Puddle" type="Area3D" parent="." unique_id=1339410679 groups=["enemies", "stationary"]]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0.14810961, 0)
+collision_layer = 256
+collision_mask = 2
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Puddle" unique_id=73088745]
+transform = Transform3D(4, 0, 0, 0, 0.05, 0, 0, 0, 4, 0, -1.44, 0)
+shape = SubResource("CylinderShape3D_44oka")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Puddle" unique_id=1693555418]
+transform = Transform3D(4, 0, 0, 0, 0.01, 0, 0, 0, 4, 0, -1.45, 0)
+mesh = SubResource("CylinderMesh_8qqct")
+surface_material_override/0 = SubResource("StandardMaterial3D_dveib")
+
+[connection signal="body_entered" from="Puddle" to="." method="OnPuddleEnter"]

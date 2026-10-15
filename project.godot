@@ -27,6 +27,7 @@ project/assembly_name="MarbleMadness3D"
 [global_group]
 
 enemies=""
+stationary=""
 
 [input]
 
