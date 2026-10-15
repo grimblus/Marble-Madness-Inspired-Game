@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://mpyxjhaf3q4l"]
 
 [ext_resource type="Script" uid="uid://bo2da3m3gppue" path="res://scripts/UI/StartMenu.cs" id="1_menu"]
-[ext_resource type="PackedScene" path="res://scenes/ui/menus/MenuBackdrop3D.tscn" id="2_ca6as"]
+[ext_resource type="PackedScene" uid="uid://dox7avdesvti1" path="res://scenes/ui/menus/MenuBackdrop3D.tscn" id="2_ca6as"]
 [ext_resource type="FontFile" uid="uid://c1hb3k6qg3qqj" path="res://assets/fonts/diffusion-bold.ttf" id="2_ivugx"]
 [ext_resource type="FontFile" uid="uid://bkjvmn2gq25su" path="res://assets/fonts/diffusion-regular.ttf" id="3_qggtv"]
 [ext_resource type="Script" uid="uid://6jo57s1f4ybg" path="res://scripts/Audio/MusicCue.cs" id="4_mcue"]
@@ -287,6 +287,7 @@ theme_override_font_sizes/font_size = 16
 text = "Guide the marble through the gallery and reach the goal as fast as you can.
 
 Move: W A S D or Arrow keys
+Zoom: Q and E and mouse wheel
 
 Avoid hazards and don't roll off the edge."
 autowrap_mode = 3
