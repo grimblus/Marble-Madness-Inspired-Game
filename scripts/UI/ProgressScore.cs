@@ -7,6 +7,8 @@ public static class ProgressStore
 {
 	private const string SavePath = "user://progress.cfg";
 
+	private static bool _resetThisLaunch;
+
 	// Best (lowest) time in seconds, or null if the level has never been beaten.
 	public static float? GetBestTime(string levelId)
 	{
@@ -46,6 +48,28 @@ public static class ProgressStore
 		}
 
 		cfg.Save(SavePath);
+	}
+
+	// Deletes all saved stars and best times.
+	public static void ResetAll()
+	{
+		if (FileAccess.FileExists(SavePath))
+		{
+			DirAccess.RemoveAbsolute(SavePath);
+		}
+	}
+
+	// Resets progress the first time it is called after the game launches, and does
+	// nothing on later calls (the start menu is shown many times per run).
+	public static void ResetOncePerLaunch()
+	{
+		if (_resetThisLaunch)
+		{
+			return;
+		}
+
+		_resetThisLaunch = true;
+		ResetAll();
 	}
 
 	private static ConfigFile Load()

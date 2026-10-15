@@ -1,7 +1,7 @@
 using Godot;
 
 // Start menu (scenes/ui/menus/startMenu.tscn).
-// - Start Game / How to Play / Settings / Quit
+// - Start Game / Level Select / How to Play / Settings / Quit
 // - Slowly crossfades through the images in Backgrounds (level screenshots) (Adding this later on
 // once the levels have all been made)
 
@@ -10,6 +10,13 @@ public partial class StartMenu : Control
 	// Scene the Start Game button loads.
 	[Export(PropertyHint.File, "*.tscn")]
 	public string GameScenePath { get; set; } = "res://scenes/main/Main.tscn";
+
+	// Scene the Level Select button opens.
+	[Export(PropertyHint.File, "*.tscn")]
+	public string LevelSelectScenePath { get; set; } = "res://scenes/ui/menus/LevelSelect.tscn";
+
+	// Tick this to wipe saved stars and times each time the game launches (for testing).
+	[Export] public bool ResetProgressOnLaunch { get; set; } = false;
 
 	[ExportGroup("Level Backgrounds")]
 	// Drag one screenshot per level into this array in the Inspector.
@@ -27,6 +34,7 @@ public partial class StartMenu : Control
 	private PanelContainer _howToPanel;
 	private PanelContainer _settingsPanel;
 	private Button _startButton;
+	private Button _levelSelectButton;
 	private Button _howToButton;
 	private Button _settingsButton;
 	private Button _quitButton;
@@ -41,6 +49,12 @@ public partial class StartMenu : Control
 
 	public override void _Ready()
 	{
+		// Wipes saved progress once per game launch (not every time the menu loads).
+		if (ResetProgressOnLaunch)
+		{
+			ProgressStore.ResetOncePerLaunch();
+		}
+
 		// Returning from a win/lose screen: make sure nothing is left paused
 		// and the cursor is usable.
 		GetTree().Paused = false;
@@ -52,6 +66,7 @@ public partial class StartMenu : Control
 		_howToPanel = GetNode<PanelContainer>("%HowToPanel");
 		_settingsPanel = GetNode<PanelContainer>("%SettingsPanel");
 		_startButton = GetNode<Button>("%StartButton");
+		_levelSelectButton = GetNode<Button>("%LevelSelectButton");
 		_howToButton = GetNode<Button>("%HowToButton");
 		_settingsButton = GetNode<Button>("%SettingsButton");
 		_quitButton = GetNode<Button>("%QuitButton");
@@ -61,6 +76,7 @@ public partial class StartMenu : Control
 		_fullscreenCheck = GetNode<CheckButton>("%FullscreenCheck");
 
 		_startButton.Pressed += OnStartPressed;
+		_levelSelectButton.Pressed += OnLevelSelectPressed;
 		_quitButton.Pressed += () => GetTree().Quit();
 		_howToButton.Pressed += () => ShowPanel(_howToPanel, _howToBackButton);
 		_settingsButton.Pressed += () => ShowPanel(_settingsPanel, _settingsBackButton);
@@ -93,6 +109,16 @@ public partial class StartMenu : Control
 		{
 			GD.PushError($"StartMenu: could not load '{GameScenePath}' ({error}). " +
 				"Set Game Scene Path on the StartMenu node.");
+		}
+	}
+
+	private void OnLevelSelectPressed()
+	{
+		var error = GetTree().ChangeSceneToFile(LevelSelectScenePath);
+		if (error != Error.Ok)
+		{
+			GD.PushError($"StartMenu: could not load '{LevelSelectScenePath}' ({error}). " +
+				"Set Level Select Scene Path on the StartMenu node.");
 		}
 	}
 
