@@ -87,6 +87,7 @@ public partial class StartMenu : Control
 
 	private void OnStartPressed()
 	{
+		GameSession.Clear();
 		var error = GetTree().ChangeSceneToFile(GameScenePath);
 		if (error != Error.Ok)
 		{

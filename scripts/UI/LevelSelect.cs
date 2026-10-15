@@ -14,23 +14,29 @@ public partial class LevelSelect : Control
 
 	private static readonly LevelEntry[] Levels =
 	{
-		new("level_01", "GALLERY 01", "res://scenes/main/Main.tscn"),
-		new("level_02", "GALLERY 02", ""),
-		new("level_03", "GALLERY 03", ""),
-		new("level_04", "GALLERY 04", ""),
-		new("level_05", "GALLERY 05", "")
+		// Each path is the level's own scene (tiles, goal, hazards), not Main.tscn.
+		// Main.tscn is the shared scene the chosen level gets loaded into.
+		new("level_01", "GALLERY 01", "res://scenes/levels/level_01/Level01.tscn"),
+		// Check this path: right-click your playable level 2 scene > Copy Path.
+		new("level_02", "GALLERY 02", "res://scenes/levels/level_02/Level02.tscn"),
+		// Work in progress: add the scene path here when level 3 is ready.
+		new("level_03", "GALLERY 03", "")
 	};
 
 	// Fake progress used while ShowSampleProgress is on, so you can check how
 	// every state looks before the real levels exist.
-	private static readonly int[] SampleStars = { 3, 2, 0, 0, 0 };
-	private static readonly float?[] SampleTimes = { 28.40f, 52.10f, null, null, null };
+	private static readonly int[] SampleStars = { 3, 2, 0 };
+	private static readonly float?[] SampleTimes = { 28.40f, 52.10f, null };
 
 	[Export(PropertyHint.File, "*.tscn")]
 	public string MainMenuScenePath { get; set; } = "res://scenes/ui/menus/startMenu.tscn";
 
-	// Turn this off once real levels exist, so the screen shows your saved progress.
-	[Export] public bool ShowSampleProgress { get; set; } = true;
+	// The shared scene every level is played in (marble, camera, HUD).
+	[Export(PropertyHint.File, "*.tscn")]
+	public string GameScenePath { get; set; } = "res://scenes/main/Main.tscn";
+
+	// Off = show your real saved stars and times. Turn on to preview fake progress.
+	[Export] public bool ShowSampleProgress { get; set; } = false;
 
 	// Optional: one screenshot per level, in the same order as Levels.
 	// Levels without one show the stylised placeholder picture.
@@ -154,10 +160,13 @@ public partial class LevelSelect : Control
 			return;
 		}
 
-		var error = GetTree().ChangeSceneToFile(level.ScenePath);
+		// Remember the choice, then open the shared scene. The LevelLoader in
+		// Main.tscn reads GameSession and loads this level into it.
+		GameSession.Select(level.ScenePath, level.Id, level.Label);
+		var error = GetTree().ChangeSceneToFile(GameScenePath);
 		if (error != Error.Ok)
 		{
-			GD.PushError($"LevelSelect: could not load '{level.ScenePath}' ({error}).");
+			GD.PushError($"LevelSelect: could not load '{GameScenePath}' ({error}).");
 		}
 	}
 
