@@ -1,6 +1,9 @@
 [gd_scene format=3 uid="uid://b6gxh3ddrqwbp"]
 
+[ext_resource type="Script" uid="uid://bnlpltint1ou8" path="res://scripts/UI/LevelSelect.cs" id="1_select"]
 [ext_resource type="Script" uid="uid://c4igst8qdtjct" path="res://scripts/UI/StarIcon.cs" id="2_star"]
+[ext_resource type="Script" uid="uid://bo4oex41yk611" path="res://scripts/UI/LevelPreview.cs" id="3_preview"]
+[ext_resource type="Script" uid="uid://jhp8gu780bxo" path="res://scripts/UI/GalleryBackdrop.cs" id="4_backdrop"]
 
 [sub_resource type="StyleBoxFlat" id="Btn_disabled"]
 content_margin_left = 16.0
@@ -238,6 +241,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = SubResource("Theme_menu")
+script = ExtResource("1_select")
 
 [node name="Backdrop" type="Control" parent="." unique_id=1327654333]
 layout_mode = 1
@@ -247,6 +251,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+script = ExtResource("4_backdrop")
 
 [node name="Veil" type="ColorRect" parent="." unique_id=572602821]
 layout_mode = 1
@@ -322,6 +327,7 @@ theme_override_styles/panel = SubResource("PreviewFrame")
 [node name="Preview" type="Control" parent="Layout/Row/Card/VBox/PreviewFrame" unique_id=1738370047]
 unique_name_in_owner = true
 layout_mode = 2
+script = ExtResource("3_preview")
 
 [node name="TitleLabel" type="Label" parent="Layout/Row/Card/VBox" unique_id=1932782590]
 unique_name_in_owner = true

@@ -69,3 +69,4 @@ script = ExtResource("8_ostsq")
 [node name="GameHud" parent="." unique_id=1392022552 instance=ExtResource("14_jsdfw")]
 
 [node name="ResultScreen" parent="." unique_id=488044686 instance=ExtResource("14_tck0d")]
+LevelSelectScenePath = "uid://b6gxh3ddrqwbp"
