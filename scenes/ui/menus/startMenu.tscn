@@ -345,8 +345,8 @@ value = 1.0
 [node name="SettingsBackButton" type="Button" parent="Center/SettingsPanel/VBox" unique_id=1537405392]
 unique_name_in_owner = true
 layout_mode = 2
-theme_override_font_sizes/font_size = 24
-text = "Quit"
+theme_override_fonts/font = ExtResource("3_qggtv")
+text = "BACK"
 
 [node name="MusicCue" type="Node" parent="." unique_id=1546820937]
 script = ExtResource("4_mcue")

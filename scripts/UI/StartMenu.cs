@@ -73,7 +73,8 @@ public partial class StartMenu : Control
 		_howToBackButton = GetNode<Button>("%HowToBackButton");
 		_settingsBackButton = GetNode<Button>("%SettingsBackButton");
 		_volumeSlider = GetNode<HSlider>("%VolumeSlider");
-		_fullscreenCheck = GetNode<CheckButton>("%FullscreenCheck");
+		// Optional: the settings panel may not have a fullscreen toggle.
+		_fullscreenCheck = GetNodeOrNull<CheckButton>("%FullscreenCheck");
 
 		_startButton.Pressed += OnStartPressed;
 		_levelSelectButton.Pressed += OnLevelSelectPressed;
@@ -135,21 +136,27 @@ public partial class StartMenu : Control
 	private void InitSettings()
 	{
 		// Set starting values first, then connect, so setup doesn't fire the handlers.
-		_volumeSlider.Value = Mathf.DbToLinear(AudioServer.GetBusVolumeDb(0));
-		var mode = DisplayServer.WindowGetMode();
-		_fullscreenCheck.ButtonPressed =
-			mode == DisplayServer.WindowMode.Fullscreen
-			|| mode == DisplayServer.WindowMode.ExclusiveFullscreen;
-
+		_volumeSlider.Value = Mathf.Sqrt(Mathf.DbToLinear(AudioServer.GetBusVolumeDb(0)));
 		_volumeSlider.ValueChanged += OnVolumeChanged;
-		_fullscreenCheck.Toggled += OnFullscreenToggled;
+
+		if (_fullscreenCheck != null)
+		{
+			var mode = DisplayServer.WindowGetMode();
+			_fullscreenCheck.ButtonPressed =
+				mode == DisplayServer.WindowMode.Fullscreen
+				|| mode == DisplayServer.WindowMode.ExclusiveFullscreen;
+			_fullscreenCheck.Toggled += OnFullscreenToggled;
+		}
 	}
 
+	// The slider is squared before it becomes a volume, because loudness isn't
+	// linear: with the raw value, the top half of the slider only spanned -6 dB
+	// and sounded like it did nothing. Squared, halfway is about -12 dB.
 	private void OnVolumeChanged(double value)
 	{
 		float v = (float)value;
 		AudioServer.SetBusMute(0, v <= 0.001f);
-		AudioServer.SetBusVolumeDb(0, Mathf.LinearToDb(Mathf.Max(v, 0.001f)));
+		AudioServer.SetBusVolumeDb(0, Mathf.LinearToDb(Mathf.Max(v * v, 0.000001f)));
 	}
 
 	private void OnFullscreenToggled(bool on)
