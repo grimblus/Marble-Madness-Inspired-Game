@@ -10,17 +10,22 @@ Third-party art assets used in the project, their source, author and licence. Re
 | `assets/models/props/Horsey.glb` | [Sketchfab](https://sketchfab.com/3d-models/horse-head-british-museum-c004350560b74b2c8dca5d7b1d2228d4) | Horse Head, British Museum | The British Museum (photogrammetry by Daniel Pett) | [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/) |
 | `assets/models/props/decimated_amenemhat.glb` | [Sketchfab](https://sketchfab.com/3d-models/granite-head-of-amenemhat-iii-64d0b7662b59417986e9d693624de97a) | Granite head of Amenemhat III | The British Museum (scan by Thomas Flynn) | [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/) |
 | `assets/models/props/decimated_egyptian_head.glb` | [Sketchfab](https://sketchfab.com/3d-models/egyptian-head-3fb673e1a8314a4bab529f61726e53ce) | Egyptian Head | IU Indianapolis University Library | [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) |
+| `assets/models/hazards/decimated_well.glb` | [Sketchfab](https://sketchfab.com/3d-models/roman-well-head-d7bce96df89c4ba58c18116aba7cd2f4) | Roman Well-head | The British Museum (scan by Daniel Pett) | [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/) |
+| `assets/models/hazards/photorealistic_statue_of_kariatida.glb` | [Sketchfab](https://sketchfab.com/3d-models/photorealistic-statue-of-kariatida-4e5ac10fb8c347e0a6d7e2610a28cd39) | Photorealistic Statue of Kariatida | Soul_Warriors | [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) |
+| `assets/models/hazards/wet_floor_sign.glb` | [Sketchfab](https://sketchfab.com/3d-models/wet-floor-sign-d340f904c4684645a4e5282b5fbe963b) | Wet Floor Sign | louis-muir | [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) |
 
-The first three are 3D scans of objects in the British Museum's collection, published via the museum's Sketchfab account. The Egyptian Head is a scan of an object from the Indianapolis Public Library collection, published by IU Indianapolis University Library.
+Marcus Aurelius, the Horse Head, Amenemhat III and the Roman Well-head are 3D scans of objects in the British Museum's collection, published via the museum's Sketchfab account. The Egyptian Head is a scan of an object from the Indianapolis Public Library collection, published by IU Indianapolis University Library.
 
-**CC BY-NC-SA 4.0 terms to keep in mind** (Marcus Aurelius, Horse Head, Amenemhat III):
+The `hazards/` models are used by the hazards: the Roman Well-head by the vacuum hazard (`vacuum_hazard.tscn`), the Kariatida statue by the moving hazard (`moving_hazard.tscn`), and the Wet Floor Sign by the stationary hazard (`stationary_hazard.tscn`).
+
+**CC BY-NC-SA 4.0 terms to keep in mind** (Marcus Aurelius, Horse Head, Amenemhat III, Roman Well-head):
 - **Attribution** — credit given above; keep this file if any of these models ships in the final build.
 - **NonCommercial** — fine for this assignment (an academic, non-commercial submission).
 - **ShareAlike** — any adaptation of these specific model files (re-texturing, remeshing, etc.) should carry the same licence if shared or redistributed on its own.
 
-**CC BY 4.0** (Egyptian Head) only requires attribution, given above.
+**CC BY 4.0** (Egyptian Head, Kariatida statue, Wet Floor Sign) only requires attribution, given above.
 
-**Modifications:** Marcus Aurelius and the Horse Head are unmodified in geometry; only material/texture overrides (see [tile-convention.md §4](tile-convention.md), CSG/material conventions apply to tiles, not these props) have been applied where used in-scene. The two `decimated_` models have been reduced in polygon count in Blender for performance. Those are adaptations, so the Amenemhat III file stays under CC BY-NC-SA 4.0, and both credits should note that the model was modified.
+**Modifications:** Marcus Aurelius and the Horse Head are unmodified in geometry; only material/texture overrides (see [tile-convention.md §4](tile-convention.md), CSG/material conventions apply to tiles, not these props) have been applied where used in-scene. The three `decimated_` models (Amenemhat III, Egyptian Head, Roman Well-head) have been reduced in polygon count in Blender for performance. Those are adaptations, so the Amenemhat III and Roman Well-head files stay under CC BY-NC-SA 4.0, and all three credits should note that the model was modified.
 
 ## Music
 
@@ -51,3 +56,11 @@ All recordings sourced from [Musopen](https://musopen.org). The compositions the
 | `assets/textures/ground_4-1K/` | [ShareTextures](https://www.sharetextures.com/textures/ground/ground-4) | Ground 4 | M.Tolga Arslan | [CC0] |
 | `assets/textures/stone_wall_texture_2-1K/` | [ShareTextures](https://www.sharetextures.com/textures/wall/stone-wall-2) | Stone Wall Texture 2 | M.Tolga Arslan | [CC0] |
 | `assets/textures/pexels-this-and-no-internet-25-288559-35336001` | [Pexels](https://www.pexels.com/photo/modern-art-gallery-with-abstract-blue-paintings-35336001/) | This And No Internet 25 | photoholic | [Pexels License] |
+
+## Fonts
+
+| Local file | Source | Title | Author | Licence | Used in |
+|---|---|---|---|---|---|
+| `assets/fonts/diffusion-regular.ttf`, `assets/fonts/diffusion-bold.ttf` | [itch.io](https://amorphous.itch.io/diffusion) | Diffusion | Amorphous (a custom build of [Iosevka](https://github.com/be5invis/Iosevka)) | [SIL Open Font License 1.1](https://openfontlicense.org/) | Start menu, result screen |
+
+**SIL OFL 1.1:** free to use and bundle in a game, including commercially. The font files can't be sold on their own, and any modified version of the font must be renamed.
