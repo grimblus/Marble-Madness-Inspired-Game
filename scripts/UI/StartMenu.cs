@@ -41,7 +41,6 @@ public partial class StartMenu : Control
 	private Button _howToBackButton;
 	private Button _settingsBackButton;
 	private HSlider _volumeSlider;
-	private CheckButton _fullscreenCheck;
 
 	// B sits on top of A. When true, B is the visible layer.
 	private bool _bTop;
@@ -73,8 +72,6 @@ public partial class StartMenu : Control
 		_howToBackButton = GetNode<Button>("%HowToBackButton");
 		_settingsBackButton = GetNode<Button>("%SettingsBackButton");
 		_volumeSlider = GetNode<HSlider>("%VolumeSlider");
-		// Optional: the settings panel may not have a fullscreen toggle.
-		_fullscreenCheck = GetNodeOrNull<CheckButton>("%FullscreenCheck");
 
 		_startButton.Pressed += OnStartPressed;
 		_levelSelectButton.Pressed += OnLevelSelectPressed;
@@ -135,18 +132,9 @@ public partial class StartMenu : Control
 
 	private void InitSettings()
 	{
-		// Set starting values first, then connect, so setup doesn't fire the handlers.
+		// Set the starting value first, then connect, so setup doesn't fire the handler.
 		_volumeSlider.Value = Mathf.Sqrt(Mathf.DbToLinear(AudioServer.GetBusVolumeDb(0)));
 		_volumeSlider.ValueChanged += OnVolumeChanged;
-
-		if (_fullscreenCheck != null)
-		{
-			var mode = DisplayServer.WindowGetMode();
-			_fullscreenCheck.ButtonPressed =
-				mode == DisplayServer.WindowMode.Fullscreen
-				|| mode == DisplayServer.WindowMode.ExclusiveFullscreen;
-			_fullscreenCheck.Toggled += OnFullscreenToggled;
-		}
 	}
 
 	// The slider is squared before it becomes a volume, because loudness isn't
@@ -157,13 +145,6 @@ public partial class StartMenu : Control
 		float v = (float)value;
 		AudioServer.SetBusMute(0, v <= 0.001f);
 		AudioServer.SetBusVolumeDb(0, Mathf.LinearToDb(Mathf.Max(v * v, 0.000001f)));
-	}
-
-	private void OnFullscreenToggled(bool on)
-	{
-		DisplayServer.WindowSetMode(on
-			? DisplayServer.WindowMode.Fullscreen
-			: DisplayServer.WindowMode.Windowed);
 	}
 
 	// Levels and background slideshow
