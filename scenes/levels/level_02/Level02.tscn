@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://bwg0tt0ohoa3v" path="res://scenes/hazards/vacuum_hazard.tscn" id="6_mqcmt"]
 [ext_resource type="Script" uid="uid://6jo57s1f4ybg" path="res://scripts/Audio/MusicCue.cs" id="8_mcue"]
 [ext_resource type="AudioStream" uid="uid://cj7qaeo78k2l7" path="res://assets/audio/music/13_pavane.mp3" id="9_gnos"]
+[ext_resource type="PackedScene" uid="uid://0bvqjtmyqqw1" path="res://scenes/hazards/blower_hazard.tscn" id="9_il7rs"]
 
 [node name="Level02" type="Node3D" unique_id=617545788]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
@@ -63,3 +64,6 @@ PatternSpeed = 1.5
 
 [node name="VacuumHazard" parent="." unique_id=832618694 instance=ExtResource("6_mqcmt")]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, -6.539501, 0, -41.41778)
+
+[node name="BlowerHazard" parent="." unique_id=631380854 instance=ExtResource("9_il7rs")]
+transform = Transform3D(0.008203333, -0.07698851, 0.9969983, -0.99437124, -0.105952986, 0, 0.10563493, -0.9913863, -0.07742434, 8.506807, 0.69263697, 13.952003)

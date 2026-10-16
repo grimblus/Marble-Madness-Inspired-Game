@@ -21,7 +21,7 @@ public partial class MovingHazard : RigidBody3D
 		if (PatternPath != null && PatternPath.Curve != null)
 		{
 			Pattern = PatternPath.Curve;
-			pathTransform = PatternPath.GlobalTransform; // capture once, before the hazard moves
+			pathTransform = PatternPath.GlobalTransform;
 		}
 		else
 		{

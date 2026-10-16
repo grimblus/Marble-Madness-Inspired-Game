@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://0bvqjtmyqqw1"]
+
+[ext_resource type="Script" uid="uid://dqf4gf8pht5fa" path="res://scripts/Hazards/BlowerHazard.cs" id="1_k6kd8"]
+[ext_resource type="PackedScene" uid="uid://vuy40tqed518" path="res://assets/models/hazards/decimated_well.glb" id="2_sag4y"]
+[ext_resource type="PackedScene" uid="uid://b427ksvcju8c5" path="res://scenes/hazards/vfx_vacuum_wind.tscn" id="3_d4baf"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_voxn2"]
+radius = 0.95
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_mykdv"]
+points = PackedVector3Array(-0.00019574165, 1, -0.00019574165, 0.19498825, -1, -0.9808144, -0.00019574165, -1, -1, -0.19518405, -1, -0.9808144, -0.382733, -1, -0.92404073, -0.5555991, -1, -0.83163667, -0.7071261, -1, -0.7071261, -0.83163667, -1, -0.5555991, -0.92404073, -1, -0.382733, -0.9808144, -1, -0.19518405, -1, -1, -0.00019574165, -0.9808144, -1, 0.19498825, -0.92404073, -1, 0.38253725, -0.83163667, -1, 0.55540323, -0.7071261, -1, 0.7069303, -0.5555991, -1, 0.8314409, -0.382733, -1, 0.92384493, -0.19518405, -1, 0.9806186, -0.00019574165, -1, 1, 0.19498825, -1, 0.9806186, 0.38253725, -1, 0.92384493, 0.55540323, -1, 0.8314409, 0.7069303, -1, 0.7069303, 0.8314409, -1, 0.55540323, 0.92384493, -1, 0.38253725, 0.9806186, -1, 0.19498825, 1, -1, -0.00019574165, 0.9806186, -1, -0.19518405, 0.92384493, -1, -0.382733, 0.8314409, -1, -0.5555991, 0.7069303, -1, -0.7071261, 0.55540323, -1, -0.83163667, 0.38253725, -1, -0.92404073)
+
+[node name="BlowerHazard" type="RigidBody3D" unique_id=832618694]
+script = ExtResource("1_k6kd8")
+
+[node name="decimated_well" parent="." unique_id=318409693 instance=ExtResource("2_sag4y")]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0)
+
+[node name="WellCollision" type="CollisionShape3D" parent="." unique_id=404016361]
+transform = Transform3D(0.62, 0, 0, 0, 0.62, 0, 0, 0, 0.62, -0.018298745, 0.040141106, 0)
+shape = SubResource("CylinderShape3D_voxn2")
+
+[node name="BlowArea" type="Area3D" parent="." unique_id=1818991285]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.018298745, 0.040141106, 0)
+
+[node name="VFX_VacuumWind" parent="BlowArea" unique_id=1389202507 instance=ExtResource("3_d4baf")]
+transform = Transform3D(1.2, 0, 0, 0, 0.0067307553, -1.1999812, 0, 1.1999812, 0.0067307553, -0.015124679, 1.9423659, 4.7683716e-07)
+
+[node name="AnimationPlayer" parent="BlowArea/VFX_VacuumWind" index="1" unique_id=118210307]
+autoplay = &"Blow"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BlowArea" unique_id=561210245]
+transform = Transform3D(2, 0, 0, 0, -2, 3.019916e-07, 0, -3.019916e-07, -2, 0.018, 2.413, 0)
+shape = SubResource("ConvexPolygonShape3D_mykdv")
+
+[connection signal="body_entered" from="BlowArea" to="." method="OnBlowerEnter"]
+[connection signal="body_exited" from="BlowArea" to="." method="OnBlowerExit"]
+
+[editable path="BlowArea/VFX_VacuumWind"]
