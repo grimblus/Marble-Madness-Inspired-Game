@@ -44,11 +44,6 @@ All recordings sourced from [Musopen](https://musopen.org). The compositions the
 | `assets/audio/sfx/661650__solar01__glass-marbles-rolling-on-wood.wav` | Glass Marbles Rolling on Wood | [Freesound #661650](https://freesound.org/people/solar01/sounds/661650/) by Solar01 | [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/) (no attribution required) | Marble rolling loop (`Marble.tscn` → `RollSound`) |
 | `assets/audio/sfx/240313__dsg__marble-drop.wav` | marble drop | [Freesound #240313](https://freesound.org/s/240313/) by D.S.G. | [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/) (no attribution required) | Marble landing clunk (`Marble.tscn` → `ImpactSound`) |
 
-## Fonts
-
-- `assets/fonts/diffusion-bold.ttf`, `assets/fonts/diffusion-regular.ttf` — source/licence not yet recorded. *(Whoever added these to `scenes/ui/menus/startMenu.tscn`, please fill in the source and licence here.)*
-
-
 ## Textures
 | Local file | Source | Title | Author | Licence |
 |---|---|---|---|---|
