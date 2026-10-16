@@ -4,11 +4,15 @@
 [ext_resource type="PackedScene" uid="uid://byxgfkifyqgjg" path="res://scenes/triggers/Checkpoint.tscn" id="3_ro5ca"]
 [ext_resource type="PackedScene" uid="uid://bugcc03pvuea" path="res://scenes/triggers/KillZone.tscn" id="4_i5t0w"]
 [ext_resource type="MeshLibrary" uid="uid://cdtfa8a8p0yyb" path="res://assets/libraries/tile_library.tres" id="7_e2p1h"]
+[ext_resource type="PackedScene" uid="uid://slvvt4aqofbh" path="res://scenes/environment/Column_Big.tscn" id="7_fleky"]
+[ext_resource type="PackedScene" uid="uid://d1rfy4i8rha8p" path="res://scenes/environment/Column.tscn" id="8_k1epx"]
 [ext_resource type="Script" uid="uid://6jo57s1f4ybg" path="res://scripts/Audio/MusicCue.cs" id="8_mcue"]
 [ext_resource type="AudioStream" uid="uid://b8rghbc36fh1a" path="res://assets/audio/music/2411_arabesque-no-1mp3.mp3" id="9_arab"]
-[ext_resource type="PackedScene" uid="uid://ddgurlhw8wqaj" path="res://scenes/hazards/moving_hazard.tscn" id="10_hzmov"]
-[ext_resource type="PackedScene" uid="uid://bwg0tt0ohoa3v" path="res://scenes/hazards/vacuum_hazard.tscn" id="11_hzvac"]
-[ext_resource type="PackedScene" uid="uid://bfanh2jadvega" path="res://scenes/hazards/stationary_hazard.tscn" id="12_hzsta"]
+[ext_resource type="PackedScene" uid="uid://y1uc8mo16h1d" path="res://scenes/environment/Arch.tscn" id="9_cbfyu"]
+[ext_resource type="PackedScene" uid="uid://cs7s117m5vfg4" path="res://assets/models/props/Aurelius2.glb" id="10_hk1yi"]
+[ext_resource type="PackedScene" uid="uid://dg6i6cewlrmw0" path="res://assets/models/props/Horsey.glb" id="11_c8b0n"]
+[ext_resource type="PackedScene" uid="uid://53251d8f23c0" path="res://assets/models/props/decimated_egyptian_head.glb" id="12_67k2q"]
+[ext_resource type="PackedScene" uid="uid://gj3ihcr7g0tt" path="res://assets/models/props/decimated_amenemhat.glb" id="13_8a3aa"]
 
 [node name="Level01" type="Node3D" unique_id=617545788]
 
@@ -32,8 +36,7 @@ data = {
 metadata/_editor_floor_ = Vector3(0, -1, 0)
 
 [node name="Goal" parent="." unique_id=701960724 instance=ExtResource("2_0nn33")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 44.878487, -9.167931, 9.815096)
-visible = false
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 45, -9, 10)
 
 [node name="Checkpoint" parent="." unique_id=1005557379 instance=ExtResource("3_ro5ca")]
 transform = Transform3D(-1.3047848e-07, 0, 1, 0, 1.91, 0, -2.985, 0, -4.371139e-08, 27.355255, 0, 5.0832176)
@@ -43,14 +46,38 @@ visible = false
 transform = Transform3D(3.67, 0, 0, 0, 3.67, 0, 0, 0, 3.67, 0, -27.264576, 0)
 visible = false
 
-[node name="MovingHazard" parent="." unique_id=341274520 instance=ExtResource("10_hzmov")]
-transform = Transform3D(0.033652946, 0, -0.9994336, 0, 1, 0, 0.9994336, 0, 0.033652946, 0.82059, 0.70637274, -0.6968145)
+[node name="Node3D" type="Node3D" parent="." unique_id=1919178764]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 33)
 
-[node name="VacuumHazard" parent="." unique_id=832618694 instance=ExtResource("11_hzvac")]
-transform = Transform3D(-0.13022967, 0.9914838, 0, -0.9914838, -0.13022967, 0, 0, 0, 1, -6.400222, 4.7031236, 0.14159489)
+[node name="Column5" parent="Node3D" unique_id=1444429344 instance=ExtResource("7_fleky")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.5, -20, -22)
 
-[node name="StationaryHazard" parent="." unique_id=249923646 instance=ExtResource("12_hzsta")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3088297, 0.2922175, -3.6961079)
+[node name="Column4" parent="Node3D" unique_id=954783373 instance=ExtResource("7_fleky")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, -20, -22.5)
 
-[editable path="VacuumHazard"]
-[editable path="VacuumHazard/VacuumArea/VFX_VacuumWind"]
+[node name="Column" parent="Node3D" unique_id=1284362008 instance=ExtResource("8_k1epx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -20, -5)
+
+[node name="Column2" parent="Node3D" unique_id=398963752 instance=ExtResource("8_k1epx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, -20, -18)
+
+[node name="Column3" parent="Node3D" unique_id=184813140 instance=ExtResource("8_k1epx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, -20, -20)
+
+[node name="Column6" parent="Node3D" unique_id=1798241605 instance=ExtResource("9_cbfyu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, -20, -15)
+
+[node name="Column7" parent="Node3D" unique_id=2052161874 instance=ExtResource("9_cbfyu")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 13.5, -20, -7.5)
+
+[node name="Aurelius2" parent="Node3D" unique_id=465196340 instance=ExtResource("10_hk1yi")]
+transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, 2.5, -2, -23)
+
+[node name="Horsey" parent="Node3D" unique_id=1166454701 instance=ExtResource("11_c8b0n")]
+transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 16.5, -3.5, -22)
+
+[node name="decimated_egyptian_head" parent="Node3D" unique_id=1155987405 instance=ExtResource("12_67k2q")]
+transform = Transform3D(0.04, 0, 0, 0, 0.04, 0, 0, 0, 0.04, 12.5, -5, -7.5)
+
+[node name="decimated_amenemhat" parent="Node3D" unique_id=121913221 instance=ExtResource("13_8a3aa")]
+transform = Transform3D(-2, 0, -3.019916e-07, 0, 2, 0, 3.019916e-07, 0, -2, -11, -7, -17)
