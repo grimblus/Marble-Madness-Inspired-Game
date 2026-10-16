@@ -16,7 +16,7 @@
 ### Aaron Tran — Technical Lead / Level Systems
 - Owns the tile/level system: the modular tile kit and the GridMap mesh libraries that levels are built from
 - Extended the starting greybox tiles with curve, half-height, ramp-corner, steep-ramp, wall and goal pieces, in three themed sets (default, Marble, Sand), each with its own mesh library
-- Owns level layout and integration: rebuilt Level 1 on a GridMap (keeping the original CSG layout as `Level01Old`) and built Level 2
+- Owns level layout and integration: rebuilt Level 1 on a GridMap and built Level 2
 - Keeps levels to the shared grid and connection rules in [tile-convention.md](tile-convention.md)
 - The tile sets and both GridMap levels are on `experiment/gridmap-tile-library`, not yet merged
 
@@ -26,7 +26,7 @@
   - the **vacuum hazard**, which pulls the marble in with an area force and has wind VFX
   - a **stationary puddle hazard** that spins the marble out
 - Owns how the marble reacts to hazards: on contact, the marble briefly loses control and gets knocked away
-- Sourced the hazard models (Severus bust, well)
+- Sourced the hazard models (Roman well-head, Kariatida statue, wet floor sign)
 - Owns the timer, checkpoint and win/lose rules. The base versions were built early by Donovan to unblock testing (see [contributions-donovan.md](contributions-donovan.md))
 - The stationary hazard and the wind VFX are on `feature/hazards`, not yet merged
 
