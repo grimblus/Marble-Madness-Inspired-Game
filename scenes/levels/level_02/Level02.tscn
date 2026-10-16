@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://ddgurlhw8wqaj" path="res://scenes/hazards/moving_hazard.tscn" id="5_cs3t4"]
 [ext_resource type="PackedScene" uid="uid://bwg0tt0ohoa3v" path="res://scenes/hazards/vacuum_hazard.tscn" id="6_mqcmt"]
 [ext_resource type="Script" uid="uid://6jo57s1f4ybg" path="res://scripts/Audio/MusicCue.cs" id="8_mcue"]
-[ext_resource type="AudioStream" uid="uid://cj7qaeo78k2l7" path="res://assets/audio/music/2491_gnossienne.mp3" id="9_gnos"]
+[ext_resource type="AudioStream" uid="uid://cj7qaeo78k2l7" path="res://assets/audio/music/13_pavane.mp3" id="9_gnos"]
 
 [node name="Level02" type="Node3D" unique_id=617545788]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
@@ -43,7 +43,7 @@ transform = Transform3D(2.985, 0, 0, 0, 1.91, 0, 0, 0, 1, -6.477108, 0, -12.3723
 visible = false
 
 [node name="Goal" parent="." unique_id=701960724 instance=ExtResource("4_cs3t4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -45.061783, -6.2323313, -35.98738)
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -45.061783, -6.2323313, -35.98738)
 
 [node name="MovingHazard" parent="." unique_id=341274520 instance=ExtResource("5_cs3t4")]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -25.976, -1.25, -41.271)
