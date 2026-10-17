@@ -19,6 +19,7 @@ config/features=PackedStringArray("4.7", "C#", "Forward Plus")
 CheckpointManager="*res://scripts/Core/CheckpointManager.cs"
 GameStateManager="*res://scripts/Core/GameStateManager.cs"
 MusicPlayer="*res://scripts/Audio/MusicPlayer.cs"
+UiSounds="*res://scripts/Audio/UiSounds.cs"
 
 [dotnet]
 

@@ -43,7 +43,7 @@ See [docs/design-document.md](docs/design-document.md) for the game design, [doc
 - Moving, suction and stationary hazards, checkpoints, a stopwatch with star grades, and saved best times
 - Knock-over physics props
 - Start menu, level select, pause menu, HUD and results screen
-- Music per scene with crossfades, plus speed-based rolling and landing sounds
+- Music per scene with crossfades, speed-based rolling and landing sounds, prop impact sounds and menu clicks
 
 ## Videos and presentation
 
@@ -81,7 +81,7 @@ Folder-to-system mapping follows [docs/requirements.md §3](docs/requirements.md
 - Levels 1 and 2 are playable. Level 3 is not built yet and shows as "Coming soon" in the level select.
 - Level 1 has no hazards placed yet, only knock-over vases.
 - Star times (30 / 60 s for 3 / 2 stars) are shared by every level; per-level times are planned. Every level has a 5-minute limit.
-- Sound effects so far cover only marble rolling and landing. Hazard, checkpoint, victory and UI sounds are still to come.
+- Sound effects cover marble rolling and landing, prop impacts and menu clicks. Hazard, checkpoint and victory sounds are still to come.
 - Gallery 01 still uses the colour-coded greybox tile materials. Gallery 02 has its final marble materials.
 - Saved stars and best times live in Godot's user data folder (`user://progress.cfg`). Delete that file to reset progress.
 

@@ -124,7 +124,7 @@ The spec above is kept as written. This section records where the game differs f
 | 3.5 | Countdown timer; losing when it reaches zero | **Changed by design.** A stopwatch with three-star grades and saved best times, plus a hard 5-minute limit that ends the run in a game over. Time pressure stays, but faster play is rewarded with a grade. See the design document §8 and §13. |
 | 3.4 | At least one moving and one environmental hazard per level | Gallery 02 meets it. **In progress:** Gallery 01's hazards (currently knock-over vases only) and Gallery 03. |
 | 3.3 | 2–3 levels, each with a distinct theme | Galleries 01 and 02 are playable. **In progress:** Gallery 03, and Gallery 01's final limestone materials. |
-| 3.8 | Sound effects for hazard death, checkpoint, victory and UI | **In progress.** Rolling and landing sounds and per-scene music are done. |
+| 3.8 | Sound effects for hazard death, checkpoint, victory and UI | **In progress.** Rolling, landing, prop impact and UI click sounds and per-scene music are done; hazard, checkpoint and victory sounds remain. |
 | 4 | Agree a shared C# style | Written up in [code-style.md](code-style.md). |
 | 4 | Documented QA checklist before submission (stretch) | [qa-checklist.md](qa-checklist.md). |
 | 5 | Milestone presentation and video demonstration | **Not started.** Link both from the README once made. |
