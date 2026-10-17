@@ -154,7 +154,7 @@ Each level holds only its own tiles, triggers, hazards, props and backdrop. The 
 ![Gallery 02 in play](images/gallery-02.png)
 ![Gallery 02 layout, top-down](images/gallery-02-map.png)
 
-- **Theme:** white marble with gold trim.
+- **Theme:** white marble with gold trim, with Greek vases and amphorae in the backdrop.
 - **Layout:**
   1. It opens in a walled maze on the top floor. The player must find the single exit, an arch in one corner.
   2. It then drops 4 m over three tiers to a lower hall.
@@ -310,10 +310,10 @@ Measured on 17 Oct on an Apple M4 laptop (16 GB) at 1920 × 1080 with vsync off,
 | Level | Average FPS | 1% low | Minimum | Draw calls (avg) | Triangles (peak) |
 |---|---|---|---|---|---|
 | Gallery 01 | 162 | 147 | 117 | 129 | 187k |
-| Gallery 02 | 180 | 165 | 121 | 82 | 85k |
+| Gallery 02 | 157 | 133 | 121 | 105 | 241k |
 | Gallery 03 | **In progress:** measure once built | | | | |
 
-Both built levels stay well above the 60 FPS target, even at their worst frame.
+Both built levels stay well above the 60 FPS target, even at their worst frame. Gallery 02 was re-measured after five Greek vase scans were added to its backdrop. Its average went from 180 to 157 FPS. A 181k-triangle Borghese vase scan was swapped for a 2.8k-triangle vase during this pass, and the heaviest remaining scan, the Ancient Greek vase at 99k, is used only once. The triangle column is the peak in any single frame. It isn't the sum of the models: Godot generates lower-detail versions of every imported model and uses them when a model is small on screen, and shadows draw some objects twice, so the count depends on where the camera is. Zoomed out over the whole level, all five vases together cost about 53k triangles.
 
 - **Model budget:** an early measurement found the "decimated" hazard models still had over 1 million triangles each, about ten times the statue props. The well was re-decimated in Blender from 1.25 M to 37.6 k triangles (−97%, 41.8 MB → 1.9 MB) and replaced under the same import ID, so no scenes changed. The largest models in play are now the Marcus Aurelius bust (104k triangles), the horse head (69k) and the caryatid (44k, four of them in Gallery 02). The vases are 1.7k–3.4k each.
 - **GridMap:** levels render tiles in batched octants instead of hundreds of separate nodes, which keeps draw calls low on large layouts.
