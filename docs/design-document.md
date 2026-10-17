@@ -21,7 +21,7 @@ The original game's isometric view, time pressure and hazards that push the marb
 
 - **Look:** a bright, high-key museum gallery: pale stone, gold trim and warm light, so the blue marble and the red goal flag stand out.
 - **Lighting:** one low, warm directional sun (about 40° above the horizon) casts long diagonal shadows across the tiles. A shared environment (`resources/environments/Gallery.tres`) adds a warm procedural sky for ambient and reflected light, SSAO for contact shadows in corners and under arches, a light glow, and height fog so the backdrop below the course fades into haze.
-- **Backdrop:** each level has its own exhibit backdrop below and behind the course: columns, arches and photogrammetry scans (Marcus Aurelius, a horse head, two Egyptian heads).
+- **Backdrop:** each level has its own exhibit backdrop below and behind the course: columns and arches with themed exhibits. Gallery 01 shows classical and Egyptian busts (Marcus Aurelius, a horse head, two Egyptian heads), Gallery 02 Greek vases and amphorae, and Gallery 03 Egyptian sculptures and cat statues. Most are photogrammetry scans.
 - **Readability:** shadows stay sharp because the orthographic camera sits close to the marble and the shadow range is tightened to the play area (§12). Wherever scenery hides the marble, it shows through as a see-through copy of itself (§4).
 
 ## 2. Core loop and controls
@@ -167,9 +167,9 @@ Each level holds only its own tiles, triggers, hazards, props and backdrop. The 
 
 ### Gallery 03: Egyptian Wing (mastery)
 
-**In progress.** `Level03.tscn` currently holds only the sandstone GridMap and its music, and the level select lists it as "Coming soon". The layout, start marker, goal, checkpoints and hazards below are the plan.
+**In progress.** `Level03.tscn` currently holds the sandstone GridMap, its music and its backdrop, and the level select lists it as "Coming soon". The layout, start marker, goal, checkpoints and hazards below are the plan.
 
-- **Theme:** sandstone, with the granite head of Amenemhat III and the Egyptian head scans displayed in the backdrop.
+- **Theme:** sandstone, with Egyptian scans in the backdrop: Priest Ahmose and his mother, an Egyptian sculpture and two cat statues.
 - **Layout:** the tallest and longest course. Steep tiles and ramp corners give fast, committed drops. One-tile bridges with no rails cross open space.
 - **Fork:** midway the route splits around a central obelisk court.
   - The short route crosses a narrow bridge between two vacuum wells.
