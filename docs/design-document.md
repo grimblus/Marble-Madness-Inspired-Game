@@ -172,7 +172,7 @@ Each level holds only its own tiles, triggers and hazards. The marble, camera, H
 | Narrowest path | 2 tiles | 1 tile with rails | 1 tile without rails |
 | Signature feature | Hole tiles | Opening maze | Route fork, steep drops |
 | Checkpoints | 1 | 2 | 3 |
-| 3 / 2 / 1-star times | 30 / 60 / 90 s | 45 / 75 / 120 s | 60 / 100 / 150 s |
+| 3 / 2 / 1-star times | 30 / 60 / 300 s | 45 / 75 / 300 s | 60 / 100 / 300 s |
 
 Levels unlock in order. A gallery opens once the previous one has been cleared with at least one star.
 
@@ -205,7 +205,7 @@ The UI has its own look: cream panels, a muted gold accent, and the Diffusion ty
 |---|---|
 | **Start menu** | A live 3D gallery backdrop with a slowly drifting camera, behind a crossfading slideshow of in-game screenshots from all three galleries. Buttons: Start Game, Level Select, How to Play, Settings (master volume, fullscreen), Quit. |
 | **Level select** | One card per gallery, switched with the arrows, the dots, or left/right keys. Each card shows an in-game screenshot, earned stars, best time, and Play / Play Again / Locked. Locked galleries show a padlock and the requirement to unlock them. A counter shows total stars out of 9. |
-| **HUD** | Gallery name top-left, stopwatch top-right (mm:ss.cc), and a "Reach the exit" objective that fades after six seconds to keep the screen clear. |
+| **HUD** | Gallery name top-left, stopwatch top-right (mm:ss.cc), and a "Reach the goal" objective that fades after six seconds to keep the screen clear. |
 | **Pause** | Esc dims the level and freezes the game, the timer included. Offers Resume, Restart and Main Menu. Disabled once the level has ended. |
 | **Results** | Win panel: animated stars, the time, "NEW BEST" or the previous best, and the three star thresholds with the earned tier highlighted. Game-over panel: the reason and the time. Next, Retry, Level Select and Main Menu are offered as they apply, so no screen is a dead end. |
 

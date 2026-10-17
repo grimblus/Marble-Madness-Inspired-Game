@@ -26,7 +26,7 @@ public partial class ResultScreen : CanvasLayer
 	[Export] public float ThreeStarSeconds { get; set; } = 30.0f;
 	[Export] public float TwoStarSeconds { get; set; } = 60.0f;
 	// Finishing at or after this time is a game over.
-	[Export] public float OneStarSeconds { get; set; } = 90.0f;
+	[Export] public float OneStarSeconds { get; set; } = 300.0f;
 
 	[ExportGroup("Scenes")]
 	[Export(PropertyHint.File, "*.tscn")]
@@ -245,7 +245,7 @@ public partial class ResultScreen : CanvasLayer
 
 		_reasonLabel.Text = expired ? "TIMER EXPIRES" : "MARBLE LOST";
 		_loseMessageLabel.Text = expired
-			? "The gallery closed before you reached the exit."
+			? "The gallery closed before you reached the goal."
 			: "The marble rolled off the edge.";
 		_loseTimeLabel.Text = FormatTime(_lastTime);
 		_loseBestLabel.Text = best.HasValue ? "BEST " + FormatTime(best.Value) : "BEST --:--.--";
@@ -324,7 +324,7 @@ public partial class ResultScreen : CanvasLayer
 		return $"{minutes:00}:{secs:00}.{hundredths:00}";
 	}
 
-	// m:ss, e.g. 1:30
+	// m:ss, e.g. 5:00
 	private static string ShortTime(float seconds)
 	{
 		int total = Mathf.RoundToInt(seconds);

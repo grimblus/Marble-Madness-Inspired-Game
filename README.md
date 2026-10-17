@@ -51,7 +51,7 @@ Folder-to-system mapping follows [docs/requirements.md §3](docs/requirements.md
 ## Known Issues
 
 - Levels 1 and 2 are playable. Level 3 is not built yet and shows as "Coming soon" in the level select.
-- Star times (30 / 60 / 90 s) are shared by every level, and finishing at 90 s or later counts as a game over.
+- Star times (30 / 60 s for 3 / 2 stars) are shared by every level. Every level has a 5-minute limit: the run ends in a game over at 5:00, and any finish under that earns at least 1 star.
 - Sound effects so far cover only marble rolling and impacts. Hazard, checkpoint, victory and UI sounds are still to come.
 - Tiles are CSG greybox placeholders and will be replaced by final modelled assets.
 
