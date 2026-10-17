@@ -1,0 +1,14 @@
+[gd_resource type="StandardMaterial3D" format=3]
+
+[ext_resource type="Texture2D" uid="uid://dn511rn3dfj5n" path="res://assets/textures/marble_107-1K/marble_107_basecolor-1K.png" id="1_tex"]
+
+[resource]
+transparency = 1
+no_depth_test = true
+albedo_color = Color(0, 0.69411767, 1, 0.45)
+albedo_texture = ExtResource("1_tex")
+metallic = 1.0
+roughness = 0.63
+stencil_mode = 3
+stencil_flags = 1
+stencil_compare = 5
