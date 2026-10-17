@@ -56,10 +56,22 @@ All recordings sourced from [Musopen](https://musopen.org). The compositions the
 ## Textures
 | Local file | Source | Title | Author | Licence |
 |---|---|---|---|---|
-| `assets/textures/marble_107-1K/` | [ShareTextures](https://www.sharetextures.com/textures/floor/marble-107) | Marble 107 | M.Tolga Arslan | [CC0] |
-| `assets/textures/ground_4-1K/` | [ShareTextures](https://www.sharetextures.com/textures/ground/ground-4) | Ground 4 | M.Tolga Arslan | [CC0] |
-| `assets/textures/stone_wall_texture_2-1K/` | [ShareTextures](https://www.sharetextures.com/textures/wall/stone-wall-2) | Stone Wall Texture 2 | M.Tolga Arslan | [CC0] |
-| `assets/textures/pexels-this-and-no-internet-25-288559-35336001` | [Pexels](https://www.pexels.com/photo/modern-art-gallery-with-abstract-blue-paintings-35336001/) | This And No Internet 25 | photoholic | [Pexels License] |
+| `assets/textures/marble_107-1K/` | [ShareTextures](https://www.sharetextures.com/textures/floor/marble-107) | Marble 107 | M.Tolga Arslan | [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/) |
+| `assets/textures/ground_4-1K/` | [ShareTextures](https://www.sharetextures.com/textures/ground/ground-4) | Ground 4 | M.Tolga Arslan | [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/) |
+| `assets/textures/stone_wall_texture_2-1K/` | [ShareTextures](https://www.sharetextures.com/textures/wall/stone-wall-2) | Stone Wall Texture 2 | M.Tolga Arslan | [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/) |
+| `assets/textures/pexels-this-and-no-internet-25-288559-35336001` | [Pexels](https://www.pexels.com/photo/modern-art-gallery-with-abstract-blue-paintings-35336001/) | This And No Internet 25 | photoholic | [Pexels License](https://www.pexels.com/license/) (free to use, no attribution required) |
+
+**Not yet used:** the Pexels photo isn't referenced by any scene. Remove it, or note here where it's used once it is.
+
+### VFX textures and meshes (sources needed)
+
+These were added for the hazard visual effects. Their sources and licences aren't recorded yet. **Andrew, please fill these in**, or mark them as made by the team if you created them.
+
+| Local file | Used by | Source | Licence |
+|---|---|---|---|
+| `assets/textures/T_VFX_WindNoise1.png` | Vacuum hazard wind effect (`scenes/hazards/vfx_vacuum_wind.tscn`) | *to confirm* | *to confirm* |
+| `assets/models/hazards/vacuum_wind.obj` | Vacuum hazard wind effect | *to confirm* | *to confirm* |
+| `assets/textures/T_CloudNoise_Tiled.png`, `T_Leaf_001.png`, `T_Leaf_001gray.png`, `T_NHU85.png`, `T_VFX_Noise_531.png`, `T_VFX_SparklesF21.jpg`, `T_arrows21.png` | Not used on `main` (possibly for the blower hazard on `feature/hazards`) | *to confirm* | *to confirm* |
 
 ## Fonts
 
