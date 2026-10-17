@@ -16,6 +16,10 @@ Third-party art assets used in the project, their source, author and licence. Re
 
 Marcus Aurelius, the Horse Head, Amenemhat III and the Roman Well-head are 3D scans of objects in the British Museum's collection, published via the museum's Sketchfab account. The Egyptian Head is a scan of an object from the Indianapolis Public Library collection, published by IU Indianapolis University Library.
 
+| `assets/models/objects/Vase-*.glb` (7 files) | [itch.io](https://pyromaster3000.itch.io/vase-asset-in-blend-file) | Vase-Asset in .blend file | pyromaster3000 | Name-your-own-price; free to use in games. **Uploading and redistribution of the asset are prohibited** (see below) |
+
+The `objects/` vases are used by the knock-over vase props (`scenes/props/vases/`). The author's terms allow using the vases in a game but prohibit uploading or redistributing the asset itself. They're stored in this private team repository only to build the game, so don't make the repository public or share the raw model files elsewhere.
+
 The `hazards/` models are used by the hazards: the Roman Well-head by the vacuum hazard (`vacuum_hazard.tscn`), the Kariatida statue by the moving hazard (`moving_hazard.tscn`), and the Wet Floor Sign by the stationary hazard (`stationary_hazard.tscn`).
 
 **CC BY-NC-SA 4.0 terms to keep in mind** (Marcus Aurelius, Horse Head, Amenemhat III, Roman Well-head):

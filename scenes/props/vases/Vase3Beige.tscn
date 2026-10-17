@@ -1,0 +1,16 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://scenes/props/VaseBase.tscn" id="1_base"]
+[ext_resource type="PackedScene" path="res://assets/models/objects/Vase-3-beige.glb" id="2_model"]
+[ext_resource type="Shape3D" path="res://scenes/props/vases/shapes/Vase3Shape.tres" id="3_shape"]
+
+[node name="Vase3Beige" instance=ExtResource("1_base")]
+mass = 0.8
+ToppleStrength = 0.5
+ToppleHeight = 0.85
+
+[node name="Model" parent="." instance=ExtResource("2_model")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.49447, 0.00039, 0.0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = ExtResource("3_shape")
