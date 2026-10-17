@@ -1,0 +1,15 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/Props/KnockableProp.cs" id="1_prop"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_vase"]
+friction = 0.6
+bounce = 0.1
+
+[node name="VaseBase" type="RigidBody3D"]
+collision_mask = 3
+mass = 0.5
+physics_material_override = SubResource("PhysicsMaterial_vase")
+linear_damp = 0.3
+angular_damp = 3.0
+script = ExtResource("1_prop")
