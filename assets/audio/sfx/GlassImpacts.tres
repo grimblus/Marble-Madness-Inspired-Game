@@ -1,0 +1,13 @@
+[gd_resource type="AudioStreamRandomizer" format=3]
+
+[ext_resource type="AudioStream" path="res://assets/audio/sfx/impactGlass_medium_002.ogg" id="1_58wj0"]
+[ext_resource type="AudioStream" path="res://assets/audio/sfx/impactGlass_medium_003.ogg" id="2_fo1rj"]
+[ext_resource type="AudioStream" path="res://assets/audio/sfx/impactGlass_medium_004.ogg" id="3_fsdp3"]
+
+[resource]
+random_pitch = 1.1
+random_volume_offset_db = 1.5
+streams_count = 3
+stream_0/stream = ExtResource("1_58wj0")
+stream_1/stream = ExtResource("2_fo1rj")
+stream_2/stream = ExtResource("3_fsdp3")

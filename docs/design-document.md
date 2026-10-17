@@ -242,6 +242,7 @@ All screens use Godot containers and anchors, so they scale across common deskto
 |---|---|
 | **Rolling** | A looping glass-on-wood recording whose volume and pitch rise with rolling speed. Only speed along the ground surface counts, so a landing doesn't cause a burst of rolling sound. It is silent while airborne. The loop never stops, only its volume changes, which avoids clicks. |
 | **Landing** | A clunk that plays when the marble goes from airborne to grounded. Its volume scales with impact speed and its pitch varies randomly, so repeated bounces don't sound identical. Respawns are filtered out. |
+| **Props** | Vases play a random glass clink, and the wet-floor sign a soft knock, whenever they're jolted: hit by the marble, hitting the floor as they topple, or bumping each other. Volume scales with the jolt and pitch varies per hit. A prop stays silent until it has first come to rest, so a level full of vases doesn't clink as it loads. |
 | **Hazard, checkpoint, victory, UI** | **In progress**, not implemented yet. Planned as short cues triggered by the existing signals: `MarbleController.Died`, `CheckpointManager.CheckpointReached` and `GameStateManager.LevelWon`, plus button presses. |
 | **Music** | A `MusicPlayer` autoload crossfades between tracks as scenes change, and keeps playing through retries and pauses. Each scene names its track with a `MusicCue` node. |
 
@@ -269,7 +270,7 @@ Each system is a separate script, in a folder named after the system. Systems ta
 | Level | `LevelLoader`, `Checkpoint`, `Goal`, `KillZone`, `LevelTimer` | Calls the autoloads; the timer emits `TimeChanged` |
 | Hazards | `MovingHazard`, `VacuumHazard`, `StationaryHazard` | Call the marble's reaction methods |
 | UI | `StartMenu`, `LevelSelect`, `GameHud`, `PauseMenu`, `ResultScreen` | Listen to `TimeChanged`, `LevelWon` and `LevelLost`; read `ProgressStore` |
-| Audio | `MusicPlayer`, `MusicCue`, `MarbleRollSound`, `MarbleImpactSound` | Child nodes read the marble's physics state; music is cued by scenes |
+| Audio | `MusicPlayer`, `MusicCue`, `MarbleRollSound`, `MarbleImpactSound`, `PropImpactSound` | Child nodes read the marble's physics state; music is cued by scenes |
 | Props | `KnockableProp` | Physics only; recognises the marble by its `marble` group |
 | Core (autoloads) | `GameStateManager`, `CheckpointManager`, `MusicPlayer` | Signals; state shared by the whole level |
 

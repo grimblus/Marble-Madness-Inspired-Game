@@ -1,6 +1,8 @@
 [gd_scene format=3]
 
 [ext_resource type="Script" path="res://scripts/Props/KnockableProp.cs" id="1_prop"]
+[ext_resource type="Script" uid="uid://bcc6b882mhswr" path="res://scripts/Audio/PropImpactSound.cs" id="2_sound"]
+[ext_resource type="AudioStream" path="res://assets/audio/sfx/GlassImpacts.tres" id="3_glass"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_vase"]
 friction = 0.6
@@ -13,3 +15,8 @@ physics_material_override = SubResource("PhysicsMaterial_vase")
 linear_damp = 0.3
 angular_damp = 3.0
 script = ExtResource("1_prop")
+
+[node name="ImpactSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_glass")
+max_polyphony = 3
+script = ExtResource("2_sound")
