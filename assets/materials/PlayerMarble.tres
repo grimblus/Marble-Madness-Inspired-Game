@@ -1,9 +1,13 @@
 [gd_resource type="StandardMaterial3D" format=3 uid="uid://7n81xy2buhpy"]
 
 [ext_resource type="Texture2D" uid="uid://dn511rn3dfj5n" path="res://assets/textures/marble_107-1K/marble_107_basecolor-1K.png" id="1_8smfr"]
+[ext_resource type="Material" path="res://assets/materials/MarbleXRay.tres" id="2_xray"]
 
 [resource]
+next_pass = ExtResource("2_xray")
 albedo_color = Color(0, 0.69411767, 1, 1)
 albedo_texture = ExtResource("1_8smfr")
 metallic = 1.0
 roughness = 0.63
+stencil_mode = 3
+stencil_flags = 2

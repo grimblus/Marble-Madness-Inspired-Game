@@ -13,23 +13,34 @@ Third-party art assets used in the project, their source, author and licence. Re
 | `assets/models/hazards/decimated_well.glb` | [Sketchfab](https://sketchfab.com/3d-models/roman-well-head-d7bce96df89c4ba58c18116aba7cd2f4) | Roman Well-head | The British Museum (scan by Daniel Pett) | [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/) |
 | `assets/models/hazards/photorealistic_statue_of_kariatida.glb` | [Sketchfab](https://sketchfab.com/3d-models/photorealistic-statue-of-kariatida-4e5ac10fb8c347e0a6d7e2610a28cd39) | Photorealistic Statue of Kariatida | Soul_Warriors | [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) |
 | `assets/models/hazards/wet_floor_sign.glb` | [Sketchfab](https://sketchfab.com/3d-models/wet-floor-sign-d340f904c4684645a4e5282b5fbe963b) | Wet Floor Sign | louis-muir | [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) |
+| `assets/models/objects/Vase-*.glb` (7 files) | [itch.io](https://pyromaster3000.itch.io/vase-asset-in-blend-file) | Vase-Asset in .blend file | pyromaster3000 | Name-your-own-price; free to use in games. **Uploading and redistribution of the asset are prohibited** (see below) |
+| `assets/models/props/greek_vase.glb` | [Sketchfab](https://sketchfab.com/3d-models/greek-vase-87317bcc638445ffad519df0e0f6e36b) | Greek Vase | marzipanne | [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) |
+| `assets/models/props/greek_jar.glb` | [Sketchfab](https://sketchfab.com/3d-models/greek-jar-f8d95e9ae0324e69b257a5e50adeca0e) | GREEK JAR | Davide Specchi | [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) |
+| `assets/models/props/ancient_greece_potvase_3d_scan.glb` | [Sketchfab](https://sketchfab.com/3d-models/ancient-greece-potvase-3d-scan-13314d4faeb7481c958dea09f31892bc) | Ancient Greece, Pot/Vase 3D scan | Svardz | [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) |
+| `assets/models/props/ancient_greek_vase.glb` | [Sketchfab](https://sketchfab.com/3d-models/ancient-greek-vase-2a4cb00cb1dc484d8ab8ea2fc87e502d) | Ancient Greek Vase | baemar06 (scanned with Polycam) | [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/) |
+| `assets/models/props/egyptian_sculpture_cat_photogrammetry.glb` | [Sketchfab](https://sketchfab.com/3d-models/egyptian-sculpture-cat-photogrammetry-f1c2824a271e4a9d8c587fdc7e9eaa0a) | Egyptian sculpture cat photogrammetry | vicente betoret ferrero | [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) |
+| `assets/models/props/egyptian_cat_statue.glb` | [Sketchfab](https://sketchfab.com/3d-models/egyptian-cat-statue-6500c27f06fc4ed191fabc9dd0d8b1f2) | Egyptian Cat Statue | dayuchuu | [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) |
+| `assets/models/props/decimated_priest_ahmose.glb` | [Sketchfab](https://sketchfab.com/3d-models/priest-ahmose-3e9b65db4bb14928b75eb8b72feb7491) | Priest Ahmose | Geoffrey Marchal | [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/) |
+| `assets/models/props/decimated_egyptian_sculpture.glb` | [Sketchfab](https://sketchfab.com/3d-models/egyptian-sculpture-8cbce0aa2022498b818de2c3e40ceab0) | Egyptian sculpture | Tim Granlund Marsden (scanned with Scaniverse) | [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/) |
 
 Marcus Aurelius, the Horse Head, Amenemhat III and the Roman Well-head are 3D scans of objects in the British Museum's collection, published via the museum's Sketchfab account. The Egyptian Head is a scan of an object from the Indianapolis Public Library collection, published by IU Indianapolis University Library.
 
-| `assets/models/objects/Vase-*.glb` (7 files) | [itch.io](https://pyromaster3000.itch.io/vase-asset-in-blend-file) | Vase-Asset in .blend file | pyromaster3000 | Name-your-own-price; free to use in games. **Uploading and redistribution of the asset are prohibited** (see below) |
+The Greek Vase, Greek jar, Ancient Greece pot/vase and Ancient Greek vase are backdrop props in Gallery 02. The Greek jar is based on a terracotta amphora (about 530 BC) in the Metropolitan Museum of Art. The Ancient Greece pot/vase and Ancient Greek vase are photogrammetry scans of Greek vases.
+
+The two cat statues, Priest Ahmose and the Egyptian sculpture are backdrop props in Gallery 03. Priest Ahmose is a scan of *The Priest Ahmose and his Mother Baket-re* (18th Dynasty, about 1490–1400 BC) in the Ny Carlsberg Glyptotek, Copenhagen. The Egyptian sculpture cat is a photogrammetry scan; the Egyptian Cat Statue is a modelled asset.
 
 The `objects/` vases are used by the knock-over vase props (`scenes/props/vases/`). The author's terms allow using the vases in a game but prohibit uploading or redistributing the asset itself. They're stored in this private team repository only to build the game, so don't make the repository public or share the raw model files elsewhere.
 
 The `hazards/` models are used by the hazards: the Roman Well-head by the vacuum hazard (`vacuum_hazard.tscn`), the Kariatida statue by the moving hazard (`moving_hazard.tscn`), and the Wet Floor Sign by the stationary hazard (`stationary_hazard.tscn`).
 
-**CC BY-NC-SA 4.0 terms to keep in mind** (Marcus Aurelius, Horse Head, Amenemhat III, Roman Well-head):
+**CC BY-NC-SA 4.0 terms to keep in mind** (Marcus Aurelius, Horse Head, Amenemhat III, Roman Well-head, Ancient Greek Vase, Priest Ahmose, Egyptian sculpture):
 - **Attribution** — credit given above; keep this file if any of these models ships in the final build.
 - **NonCommercial** — fine for this assignment (an academic, non-commercial submission).
 - **ShareAlike** — any adaptation of these specific model files (re-texturing, remeshing, etc.) should carry the same licence if shared or redistributed on its own.
 
-**CC BY 4.0** (Egyptian Head, Kariatida statue, Wet Floor Sign) only requires attribution, given above.
+**CC BY 4.0** (Egyptian Head, Kariatida statue, Wet Floor Sign, Greek Vase, Greek jar, Ancient Greece pot/vase, both Egyptian cat statues) only requires attribution, given above.
 
-**Modifications:** Marcus Aurelius and the Horse Head are unmodified in geometry; only material/texture overrides (see [tile-convention.md §4](tile-convention.md), CSG/material conventions apply to tiles, not these props) have been applied where used in-scene. The three `decimated_` models (Amenemhat III, Egyptian Head, Roman Well-head) have been reduced in polygon count in Blender for performance. Those are adaptations, so the Amenemhat III and Roman Well-head files stay under CC BY-NC-SA 4.0, and all three credits should note that the model was modified.
+**Modifications:** Marcus Aurelius and the Horse Head are unmodified in geometry; only material/texture overrides (see [tile-convention.md §4](tile-convention.md), CSG/material conventions apply to tiles, not these props) have been applied where used in-scene. The five `decimated_` models (Amenemhat III, Egyptian Head, Roman Well-head, Priest Ahmose, Egyptian sculpture) have been reduced in polygon count in Blender for performance. Those are adaptations, so the Amenemhat III, Roman Well-head, Priest Ahmose and Egyptian sculpture files stay under CC BY-NC-SA 4.0, and all five credits should note that the model was modified.
 
 ## Music
 
@@ -51,15 +62,30 @@ All recordings sourced from [Musopen](https://musopen.org). The compositions the
 | Local file | Description | Source | Licence | Used in |
 |---|---|---|---|---|
 | `assets/audio/sfx/661650__solar01__glass-marbles-rolling-on-wood.wav` | Glass Marbles Rolling on Wood | [Freesound #661650](https://freesound.org/people/solar01/sounds/661650/) by Solar01 | [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/) (no attribution required) | Marble rolling loop (`Marble.tscn` → `RollSound`) |
+| `assets/audio/sfx/click_003.ogg` | UI click | [UI Audio](https://kenney.nl/assets/ui-audio) by Kenney | [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/) (no attribution required) | Every menu button (`UiSounds` autoload) |
+| `assets/audio/sfx/impactGlass_medium_002.ogg`, `_003.ogg`, `_004.ogg` | Glass impacts | [Impact Sounds](https://kenney.nl/assets/impact-sounds) by Kenney | [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/) (no attribution required) | Vase impacts (`VaseBase.tscn` → `ImpactSound`, via `GlassImpacts.tres`) |
+| `assets/audio/sfx/impactSoft_medium_004.ogg` | Soft impact | [Impact Sounds](https://kenney.nl/assets/impact-sounds) by Kenney | [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/) (no attribution required) | Wet-floor sign impacts (`stationary_hazard.tscn` → `ImpactSound`, via `SoftImpacts.tres`) |
 | `assets/audio/sfx/240313__dsg__marble-drop.wav` | marble drop | [Freesound #240313](https://freesound.org/s/240313/) by D.S.G. | [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/) (no attribution required) | Marble landing clunk (`Marble.tscn` → `ImpactSound`) |
 
 ## Textures
 | Local file | Source | Title | Author | Licence |
 |---|---|---|---|---|
-| `assets/textures/marble_107-1K/` | [ShareTextures](https://www.sharetextures.com/textures/floor/marble-107) | Marble 107 | M.Tolga Arslan | [CC0] |
-| `assets/textures/ground_4-1K/` | [ShareTextures](https://www.sharetextures.com/textures/ground/ground-4) | Ground 4 | M.Tolga Arslan | [CC0] |
-| `assets/textures/stone_wall_texture_2-1K/` | [ShareTextures](https://www.sharetextures.com/textures/wall/stone-wall-2) | Stone Wall Texture 2 | M.Tolga Arslan | [CC0] |
-| `assets/textures/pexels-this-and-no-internet-25-288559-35336001` | [Pexels](https://www.pexels.com/photo/modern-art-gallery-with-abstract-blue-paintings-35336001/) | This And No Internet 25 | photoholic | [Pexels License] |
+| `assets/textures/marble_107-1K/` | [ShareTextures](https://www.sharetextures.com/textures/floor/marble-107) | Marble 107 | M.Tolga Arslan | [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/) |
+| `assets/textures/ground_4-1K/` | [ShareTextures](https://www.sharetextures.com/textures/ground/ground-4) | Ground 4 | M.Tolga Arslan | [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/) |
+| `assets/textures/stone_wall_texture_2-1K/` | [ShareTextures](https://www.sharetextures.com/textures/wall/stone-wall-2) | Stone Wall Texture 2 | M.Tolga Arslan | [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/) |
+| `assets/textures/pexels-this-and-no-internet-25-288559-35336001` | [Pexels](https://www.pexels.com/photo/modern-art-gallery-with-abstract-blue-paintings-35336001/) | This And No Internet 25 | photoholic | [Pexels License](https://www.pexels.com/license/) (free to use, no attribution required) |
+
+**Not yet used:** the Pexels photo isn't referenced by any scene. Remove it, or note here where it's used once it is.
+
+### VFX textures and meshes (sources needed)
+
+These were added for the hazard visual effects. Their sources and licences aren't recorded yet. **Andrew, please fill these in**, or mark them as made by the team if you created them.
+
+| Local file | Used by | Source | Licence |
+|---|---|---|---|
+| `assets/textures/T_VFX_WindNoise1.png` | Vacuum hazard wind effect (`scenes/hazards/vfx_vacuum_wind.tscn`) | *to confirm* | *to confirm* |
+| `assets/models/hazards/vacuum_wind.obj` | Vacuum hazard wind effect | *to confirm* | *to confirm* |
+| `assets/textures/T_CloudNoise_Tiled.png`, `T_Leaf_001.png`, `T_Leaf_001gray.png`, `T_NHU85.png`, `T_VFX_Noise_531.png`, `T_VFX_SparklesF21.jpg`, `T_arrows21.png` | Not used on `main` (possibly for the blower hazard on `feature/hazards`) | *to confirm* | *to confirm* |
 
 ## Fonts
 

@@ -11,9 +11,9 @@ Each value is marked **Locked** (build against it) or **Tentative** (expected to
 | Tile footprint | 2 m × 2 m (X × Z) | Locked | The marble is 0.5 m across (radius 0.25 m), so a tile is 4 marble-widths: fine-grained enough to build curves, forks and narrow paths from many small pieces. Wider features are made by placing tiles side by side. |
 | Tile origin | Centre of the footprint, at the tile's base height | Locked | Centre origins make 90° rotation in place safe: a rotated tile still occupies the same cell. |
 | Flat tile surface | y = 0 (top of the walking surface) | Locked | Levels stack tiles by elevation offset, so a consistent reference height is needed. |
-| Flat tile thickness | 0.5 m (surface at y = 0, underside at y = -0.5) | Tentative | Thick enough that fast-moving marbles do not tunnel through. |
-| Elevation step | 1 m | Tentative | A ramp spanning one tile (2 m run) rises 1 m, a 2:1 slope of about 27°. This is steep, so check it against the current move force during tuning. Steeper or shallower ramps should be new tile variants, not ad-hoc rotations. |
-| Grid unit | 2 m for X/Z, 1 m for Y | Tentative | Set the editor's snap step to these values when placing tiles. |
+| Flat tile thickness | 0.5 m (surface at y = 0, underside at y = -0.5) | Locked | Thick enough that fast-moving marbles do not tunnel through. |
+| Elevation step | 1 m | Locked | A ramp spanning one tile (2 m run) rises 1 m, a 2:1 slope of about 27°. The marble's 12 N move force climbs it from a standing start. Steeper or shallower ramps are separate tile variants (`Steep`, `Half`), not ad-hoc rotations. |
+| Grid unit | GridMap cell 1 × 0.5 × 1 m | Locked | Levels are painted on a GridMap (§3.1). A tile covers 2 × 2 cells and an elevation step is two cells. |
 
 ## 2. Connection points
 
@@ -24,10 +24,25 @@ Each value is marked **Locked** (build against it) or **Tentative** (expected to
 
 ## 3. Scene structure and naming
 
-- One tile = one `.tscn` in `scenes/tiles/`, root node is a `Node3D` named after the file.
-- File names use PascalCase, `Tile` prefix, type then variant: `TileFlat.tscn`, `TileRamp.tscn`, `TileHole.tscn`, `TileArch.tscn`, `TileCurve.tscn`, `TileBridge.tscn`.
-- Themed variants add a suffix: `TileFlat_Stone.tscn`, `TileFlat_Ice.tscn`.
-- Level scenes go in `scenes/levels/level_XX/` and only *instance* tile scenes. No level-specific geometry is built directly in a level scene, except temporary experiments.
+- One tile = one `.tscn`, root node named after the file.
+- File names are `<Theme>_<Type>.tscn`, with an underscore. The default theme uses the `Tile` prefix: `Tile_Flat.tscn`, `Tile_Ramp.tscn`. Themed sets use their theme name and sit in a subfolder: `Marble/Marble_Flat.tscn`, `Sand/Sand_Flat.tscn`.
+- The ten tile types are Flat, Half, Ramp, Steep, RampCorner, Curve, Hole, Wall, Arch and Goal. Every theme provides all ten.
+- Level scenes go in `scenes/levels/level_XX/`. They're painted onto a GridMap (§3.1) rather than built from hand-placed tile instances. No level-specific geometry is built directly in a level scene, except temporary experiments.
+
+### 3.1 GridMap and mesh libraries
+
+All levels are painted onto a Godot `GridMap`, one per level, using a theme's `MeshLibrary`:
+
+| Theme | Source scene | Mesh library |
+|---|---|---|
+| Default (greybox) | `scenes/tiles/TileMap.tscn` | `assets/libraries/tile_library.tres` |
+| Marble | `scenes/tiles/Marble/MarbleTileMap.tscn` | `assets/libraries/marble_library.tres` |
+| Sand | `scenes/tiles/Sand/SandTileMap.tscn` | `assets/libraries/sand_library.tres` |
+
+- Each source scene holds one `MeshInstance3D` per tile type, each with a `StaticBody3D` and collision shape as a child, so the library carries collision.
+- To update a library, edit the source scene, then use **Scene → Export As → MeshLibrary** and overwrite the `.tres`. Every level using it picks up the change.
+- GridMap settings: **cell size 1 × 0.5 × 1 m** with cell centring off on all axes. A 2 m tile covers 2 × 2 cells, and a 1 m elevation step is two cells.
+- GridMap batches tiles into octants, which keeps draw calls low on large levels.
 - Tile visuals and physics live inside the tile scene, so changing how a tile is built (CSG, baked mesh or Blender mesh) only changes the internals of the tile and nothing that instances it.
 
 ## 4. CSG tiles and materials
@@ -92,12 +107,13 @@ The layers are named in Project Settings → Layer Names → 3D Physics (`projec
 | Tiles | 1 | none | Static geometry. CSG `Use Collision` defaults to layer 1, so leave it. |
 | Hazards | 3 | 2 | Reacts to the marble. |
 | Triggers | 4 | 2 | `Area3D` nodes that only detect the marble. |
+| Knock-over props | 1 | 1 + 2 | Physics props such as vases (`scenes/props/`). They rest on tiles, get hit by the marble, and can knock each other over. |
 
-Status: layer names and the marble's layer and mask are applied. Hazards and triggers have not been built yet, so set their layer and mask to the table above when they are, and tell Andrew (hazards, checkpoints) if any change is needed.
+All of the above are applied in the current scenes.
 
 ## 7. Marble parameters tiles depend on
 
-Current prototype values ([Marble.tscn](../scenes/marble/Marble.tscn), [MarbleController.cs](../scripts/Marble/MarbleController.cs)). Tile dimensions such as gap width, ramp steepness and wall height should be designed around these, and revisited if they change.
+Final values ([Marble.tscn](../scenes/marble/Marble.tscn), [MarbleController.cs](../scripts/Marble/MarbleController.cs)). Tile dimensions such as gap width, ramp steepness and wall height are designed around these; revisit them if any of these change.
 
 | Parameter | Value |
 |---|---|
@@ -108,9 +124,7 @@ Current prototype values ([Marble.tscn](../scenes/marble/Marble.tscn), [MarbleCo
 | Max speed | 8 m/s |
 | Continuous CD | On |
 
-Tentative until the control feel is tuned on ramps and gaps in the greybox.
+## 8. Resolved questions
 
-## 8. Open questions
-
-- Track width: a single 2 m tile is only 4 marble-widths across. Are lanes one tile wide, or do levels use two-tile-wide tracks? Do tiles have a narrower path with edges to fall off? This affects the fall/respawn design.
-- Wall or rail pieces: separate tiles, or part of each tile?
+- **Track width:** both are used. Most of the course is two or more tiles wide. One-tile paths appear deliberately as difficulty rises: with rails in Gallery 02, and without rails in Gallery 03 (design document §6).
+- **Walls and rails:** a separate `Wall` tile, placed next to track tiles where a rail is wanted. It's also used to build mazes.

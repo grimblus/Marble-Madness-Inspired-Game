@@ -40,6 +40,7 @@ environment = ExtResource("11_qkm1d")
 
 [node name="LevelTimer" type="Node" parent="." unique_id=971373241]
 script = ExtResource("8_ostsq")
+TimeLimitSeconds = 300.0
 
 [node name="GameHud" parent="." unique_id=1392022552 instance=ExtResource("14_jsdfw")]
 

@@ -13,22 +13,6 @@ corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 
-[sub_resource type="StyleBoxFlat" id="Hint"]
-content_margin_left = 14.0
-content_margin_top = 8.0
-content_margin_right = 14.0
-content_margin_bottom = 8.0
-bg_color = Color(0.97, 0.96, 0.94, 0.92)
-border_width_left = 1
-border_width_top = 1
-border_width_right = 1
-border_width_bottom = 1
-border_color = Color(0.84, 0.8, 0.73, 1)
-corner_radius_top_left = 8
-corner_radius_top_right = 8
-corner_radius_bottom_right = 8
-corner_radius_bottom_left = 8
-
 [node name="GameHud" type="CanvasLayer" unique_id=1392022552]
 script = ExtResource("1_hud")
 TimerPath = NodePath("../LevelTimer")
@@ -115,7 +99,7 @@ unique_name_in_owner = true
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 14
-text = "REACH THE EXIT"
+text = "REACH THE GOAL"
 
 [node name="LineRight" type="ColorRect" parent="Root/Objective/Row" unique_id=2013944554]
 custom_minimum_size = Vector2(36, 2)
@@ -123,40 +107,3 @@ layout_mode = 2
 size_flags_vertical = 4
 mouse_filter = 2
 color = Color(0.72, 0.6, 0.39, 1)
-
-[node name="LossHint" type="PanelContainer" parent="Root" unique_id=982300438]
-unique_name_in_owner = true
-visible = false
-layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -200.0
-offset_top = -88.0
-offset_right = -28.0
-offset_bottom = -28.0
-grow_horizontal = 0
-grow_vertical = 0
-mouse_filter = 2
-theme_override_styles/panel = SubResource("Hint")
-
-[node name="Box" type="VBoxContainer" parent="Root/LossHint" unique_id=1791920994]
-layout_mode = 2
-mouse_filter = 2
-theme_override_constants/separation = 2
-
-[node name="HintTitle" type="Label" parent="Root/LossHint/Box" unique_id=909320540]
-layout_mode = 2
-theme_override_colors/font_color = Color(0.42, 0.39, 0.34, 1)
-theme_override_font_sizes/font_size = 11
-text = "LOSS CONDITION"
-horizontal_alignment = 1
-
-[node name="HintBody" type="Label" parent="Root/LossHint/Box" unique_id=1017337788]
-layout_mode = 2
-theme_override_colors/font_color = Color(0.145, 0.145, 0.145, 1)
-theme_override_font_sizes/font_size = 14
-text = "TIMER EXPIRES"
-horizontal_alignment = 1

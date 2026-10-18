@@ -2,6 +2,8 @@
 
 [ext_resource type="Script" uid="uid://dg18ox34y4xyj" path="res://scripts/Hazards/StationaryHazard.cs" id="1_2wkuj"]
 [ext_resource type="PackedScene" uid="uid://01641v77mtwf" path="res://assets/models/hazards/wet_floor_sign.glb" id="1_is51q"]
+[ext_resource type="Script" uid="uid://bcc6b882mhswr" path="res://scripts/Audio/PropImpactSound.cs" id="3_sound"]
+[ext_resource type="AudioStream" path="res://assets/audio/sfx/SoftImpacts.tres" id="4_soft"]
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_2wkuj"]
 points = PackedVector3Array(0, 0.5, 0.5, 0.5, -0.5, 0.5, 0, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5)
@@ -25,7 +27,7 @@ script = ExtResource("1_2wkuj")
 
 [node name="WetFloorSign" type="RigidBody3D" parent="." unique_id=1704472615]
 collision_layer = 4
-collision_mask = 2
+collision_mask = 3
 mass = 0.15
 
 [node name="wet_floor_sign" parent="WetFloorSign" unique_id=542248263 instance=ExtResource("1_is51q")]
@@ -34,6 +36,11 @@ transform = Transform3D(0.01, 0, 0, 0, 0.01, 0, 0, 0, 0.01, 0, 0, 0)
 [node name="CollisionShape3D3" type="CollisionShape3D" parent="WetFloorSign" unique_id=1340480687]
 transform = Transform3D(0.32999998, 0, 0, 0, 0.57, 0, 0, 0, 0.32999998, 0, -0.003487058, 0)
 shape = SubResource("ConvexPolygonShape3D_2wkuj")
+
+[node name="ImpactSound" type="AudioStreamPlayer" parent="WetFloorSign" unique_id=1584203317]
+stream = ExtResource("4_soft")
+max_polyphony = 3
+script = ExtResource("3_sound")
 
 [node name="Puddle" type="Area3D" parent="." unique_id=1339410679 groups=["enemies", "stationary"]]
 transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0.14810961, 0)
