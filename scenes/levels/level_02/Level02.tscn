@@ -11,7 +11,9 @@
 [ext_resource type="AudioStream" uid="uid://cj7qaeo78k2l7" path="res://assets/audio/music/13_pavane.mp3" id="9_gnos"]
 [ext_resource type="PackedScene" uid="uid://0bvqjtmyqqw1" path="res://scenes/hazards/blower_hazard.tscn" id="9_il7rs"]
 [ext_resource type="PackedScene" uid="uid://d1rfy4i8rha8p" path="res://scenes/environment/Column.tscn" id="10_4afus"]
+[ext_resource type="PackedScene" uid="uid://dt5y5j8mdjqgb" path="res://scenes/hazards/trampoline_hazard.tscn" id="10_gymdo"]
 [ext_resource type="PackedScene" uid="uid://y1uc8mo16h1d" path="res://scenes/environment/Arch.tscn" id="11_gymdo"]
+[ext_resource type="PackedScene" uid="uid://bfanh2jadvega" path="res://scenes/hazards/stationary_hazard.tscn" id="11_p6pub"]
 [ext_resource type="PackedScene" uid="uid://bd2su4dgtqht4" path="res://assets/models/props/ancient_greek_vase.glb" id="13_c4w0k"]
 [ext_resource type="PackedScene" uid="uid://kmylw618uxdp" path="res://assets/models/props/ancient_greece_potvase_3d_scan.glb" id="14_qjw57"]
 [ext_resource type="PackedScene" uid="uid://dqvd753a56e2g" path="res://assets/models/props/greek_jar.glb" id="15_ivhmq"]
@@ -74,6 +76,13 @@ transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, -6.5
 
 [node name="BlowerHazard" parent="." unique_id=631380854 instance=ExtResource("9_il7rs")]
 transform = Transform3D(0.008203333, -0.07698851, 0.9969983, -0.99437124, -0.105952986, 0, 0.10563493, -0.9913863, -0.07742434, 8.506807, 0.69263697, 13.952003)
+
+[node name="TrampolineHazard" parent="." unique_id=1093014393 instance=ExtResource("10_gymdo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.057273, 0.23333493, 3.0165746)
+
+[node name="StationaryHazard" parent="." unique_id=249923646 instance=ExtResource("11_p6pub")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.618845, 0.306135, 2.0053914)
+
 [node name="Backdrop" type="Node3D" parent="." unique_id=817112127]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 33)
 
@@ -154,3 +163,5 @@ transform = Transform3D(-10, 0, -8.742278e-07, 0, 10, 0, 8.742278e-07, 0, -10, -
 
 [node name="Sketchfab_Scene6" parent="Backdrop" unique_id=775220626 instance=ExtResource("15_ncame")]
 transform = Transform3D(-5.2453663e-07, 0, -12, 0, 12, 0, 12, 0, -5.2453663e-07, -6.499996, -5, -38)
+
+[editable path="TrampolineHazard"]

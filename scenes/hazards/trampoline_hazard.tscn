@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://dt5y5j8mdjqgb"]
+
+[ext_resource type="Script" uid="uid://u6ot1n5doe8l" path="res://scripts/Hazards/TrampolineHazard.cs" id="1_i3nyw"]
+[ext_resource type="PackedScene" uid="uid://dp5abeejncg3h" path="res://assets/models/hazards/trampoline.glb" id="2_yr1b0"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_2h47e"]
+height = 0.08
+radius = 0.61
+
+[node name="TrampolineHazard" type="Area3D" unique_id=1093014393]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("1_i3nyw")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=603393775]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.029067978, -0.014393821)
+shape = SubResource("CylinderShape3D_2h47e")
+
+[node name="Sketchfab_Scene" parent="." unique_id=261209560 instance=ExtResource("2_yr1b0")]
+transform = Transform3D(0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, 0, 0, 0)
+
+[connection signal="body_entered" from="." to="." method="OnBodyEntered"]

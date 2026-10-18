@@ -7,6 +7,7 @@ public partial class MarbleController : RigidBody3D
 	//just the default value, the real value is in each gethit method
 	[Export] public float SpinoutTime = 0.0f;
 	[Export] public float KnockbackForce = 2.0f;
+	[Export] public float TrampolineForce = 6.0f;
 
 	// Raised whenever the marble is sent back to a checkpoint. Listen to
 	// this for respawn SFX/UI rather than coupling to whatever triggered
@@ -93,6 +94,7 @@ public partial class MarbleController : RigidBody3D
 		_inSpinout = true;
 		
 		//Gets pushed directly away when touching physical hazard
+		//vector from hazard to marble
 		Vector3 pushDirection = GlobalPosition - hazardPosition;
 		pushDirection.Y = 0;
 		if (pushDirection.LengthSquared() > 0.0001f)
@@ -106,11 +108,46 @@ public partial class MarbleController : RigidBody3D
 		ApplyCentralImpulse(pushDirection * KnockbackForce);
 		
 		SpinoutTime = 0.6f;
-		
+				
 		GetTree().CreateTimer(SpinoutTime).Timeout += () =>
 		{
 			_inSpinout = false;
 		};
+	}
+	
+	public void GetHitTramp(Vector3 hazardPosition)
+	{
+		if (_gameState.IsEnded) 
+		{
+			return;
+		}
+		
+		//vector from hazard to marble
+		Vector3 pushDirection = GlobalPosition - hazardPosition;
+		pushDirection.Y = 0;
+		//slight push so the marble gets moved where it needs to go
+		if (pushDirection.LengthSquared() > 0.0001f)
+		{
+			pushDirection = pushDirection.Normalized() * 0.3f;
+		}
+		else
+		{
+			pushDirection = Vector3.Zero;
+		}
+		
+		//direction where marble will be launched
+		Vector3 launch = (Vector3.Up + pushDirection).Normalized();
+		
+		//makes every bounce the same height
+		Vector3 v = LinearVelocity;
+		if (v.Y < 0)
+		{
+			v.Y = 0;
+		}
+		LinearVelocity = v;
+		
+		Sleeping = false;
+		ApplyCentralImpulse(launch * TrampolineForce);
 	}
 	
 	public void GetHit()
