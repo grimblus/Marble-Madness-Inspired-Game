@@ -50,16 +50,16 @@ metadata/_editor_floor_ = Vector3(0, -8, 0)
 
 [node name="Checkpoint" parent="." unique_id=1005557379 instance=ExtResource("2_wsjjy")]
 transform = Transform3D(0, 0, -1, 0, 1, 0, 1, 0, 0, -23.30621, -0.9616309, -36.17502)
-Size = Vector3(21.3, 5.955, 0.5)
 visible = false
+Size = Vector3(21.3, 5.955, 0.5)
 
 [node name="KillZone" parent="." unique_id=1018422379 instance=ExtResource("3_n7epj")]
 transform = Transform3D(3.67, 0, 0, 0, 3.67, 0, 0, 0, 3.67, 0, -16.068304, 0)
 
 [node name="Checkpoint2" parent="." unique_id=1043883041 instance=ExtResource("2_wsjjy")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.477108, 0, -12.37234)
-Size = Vector3(5.97, 5.73, 0.5)
 visible = false
+Size = Vector3(5.97, 5.73, 0.5)
 
 [node name="Goal" parent="." unique_id=701960724 instance=ExtResource("4_cs3t4")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -45.061783, -6.2323313, -35.98738)

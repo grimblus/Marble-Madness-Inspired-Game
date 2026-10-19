@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://x48s1hv4dsd0" path="res://scenes/ui/hud/GameHud.tscn" id="14_jsdfw"]
 [ext_resource type="PackedScene" uid="uid://bv4xq4p8dlk4w" path="res://scenes/ui/menus/ResultScreen.tscn" id="14_tck0d"]
 [ext_resource type="PackedScene" uid="uid://ch72h63cbdnl3" path="res://scenes/ui/menus/PauseMenu.tscn" id="15_u8lgh"]
-[ext_resource type="Script" path="res://scripts/Camera/BackdropFader.cs" id="16_fader"]
+[ext_resource type="Script" uid="uid://csglc355w00d7" path="res://scripts/Camera/BackdropFader.cs" id="16_fader"]
 
 [node name="Main" type="Node3D" unique_id=2133792107]
 
@@ -32,7 +32,7 @@ directional_shadow_pancake_size = 2.0
 [node name="CameraRig" parent="." unique_id=1938777184 instance=ExtResource("3_q24mn")]
 TargetPath = NodePath("../Marble")
 PitchDegrees = -30.0
-Distance = 15.0
+Distance = 30.0
 
 [node name="BackdropFader" type="Node" parent="." unique_id=1730492815]
 script = ExtResource("16_fader")
