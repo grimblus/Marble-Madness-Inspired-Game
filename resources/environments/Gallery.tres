@@ -12,6 +12,7 @@ ssr_enabled = true
 ssao_enabled = true
 glow_enabled = true
 glow_intensity = 0.6
+glow_strength = 0.5
 glow_bloom = 0.05
 fog_enabled = true
 fog_light_color = Color(0.9607843, 0.93333334, 0.89411765, 1)
