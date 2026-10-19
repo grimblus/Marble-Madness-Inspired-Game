@@ -1,4 +1,7 @@
 [gd_resource type="StandardMaterial3D" format=3 uid="uid://b4w8vtjak5wqf"]
 
 [resource]
-albedo_color = Color(0.9607843, 0.7882353, 0.15686275, 1)
+resource_name = "Muted brass"
+albedo_color = Color(0.7, 0.55, 0.33, 1)
+metallic = 0.9
+roughness = 0.3
