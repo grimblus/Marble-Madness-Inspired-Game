@@ -11,8 +11,9 @@ colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_jfkr6"]
 gradient = SubResource("Gradient_vpcuk")
 fill = 1
-fill_from = Vector2(0.481982, 0.4954955)
+fill_from = Vector2(0.3, 0.3)
 fill_to = Vector2(1, 0.5135135)
+metadata/_snap_enabled = true
 
 [sub_resource type="Gradient" id="Gradient_pn7hp"]
 offsets = PackedFloat32Array(0, 0.16042781, 0.8395722, 1)

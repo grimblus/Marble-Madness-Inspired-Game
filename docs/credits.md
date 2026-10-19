@@ -22,6 +22,7 @@ Third-party art assets used in the project, their source, author and licence. Re
 | `assets/models/props/egyptian_cat_statue.glb` | [Sketchfab](https://sketchfab.com/3d-models/egyptian-cat-statue-6500c27f06fc4ed191fabc9dd0d8b1f2) | Egyptian Cat Statue | dayuchuu | [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) |
 | `assets/models/props/decimated_priest_ahmose.glb` | [Sketchfab](https://sketchfab.com/3d-models/priest-ahmose-3e9b65db4bb14928b75eb8b72feb7491) | Priest Ahmose | Geoffrey Marchal | [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/) |
 | `assets/models/props/decimated_egyptian_sculpture.glb` | [Sketchfab](https://sketchfab.com/3d-models/egyptian-sculpture-8cbce0aa2022498b818de2c3e40ceab0) | Egyptian sculpture | Tim Granlund Marsden (scanned with Scaniverse) | [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/) |
+| `assets/models/hazards/trampoline.glb` | [Sketchfab](https://sketchfab.com/3d-models/trampoline-331ab2d43b9d43aeb7b511969089f6fc) | Trampoline | Mazn.AR | [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) |
 
 Marcus Aurelius, the Horse Head, Amenemhat III and the Roman Well-head are 3D scans of objects in the British Museum's collection, published via the museum's Sketchfab account. The Egyptian Head is a scan of an object from the Indianapolis Public Library collection, published by IU Indianapolis University Library.
 
