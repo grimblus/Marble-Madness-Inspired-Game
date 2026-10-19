@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dqf4gf8pht5fa" path="res://scripts/Hazards/BlowerHazard.cs" id="1_k6kd8"]
 [ext_resource type="PackedScene" uid="uid://vuy40tqed518" path="res://assets/models/hazards/decimated_well.glb" id="2_sag4y"]
-[ext_resource type="PackedScene" uid="uid://b427ksvcju8c5" path="res://scenes/hazards/vfx_vacuum_wind.tscn" id="3_d4baf"]
+[ext_resource type="PackedScene" uid="uid://bs4pdbqqygpid" path="res://scenes/hazards/vfx_blower_wind.tscn" id="3_irrii"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_voxn2"]
 radius = 0.95
@@ -27,11 +27,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.018298745, 0.040141106, 0)
 collision_layer = 4
 collision_mask = 2
 
-[node name="VFX_VacuumWind" parent="BlowArea" unique_id=1389202507 instance=ExtResource("3_d4baf")]
-transform = Transform3D(1.2, 0, 0, 0, 0.0067307553, -1.1999812, 0, 1.1999812, 0.0067307553, -0.015124679, 1.9423659, 4.7683716e-07)
-
-[node name="AnimationPlayer" parent="BlowArea/VFX_VacuumWind" index="1" unique_id=118210307]
-autoplay = &"Blow"
+[node name="VFX_VacuumWind" parent="BlowArea" unique_id=1389202507 instance=ExtResource("3_irrii")]
+transform = Transform3D(1.2, 0, 0, 0, 0.0062831547, -1.1999836, 0, 1.1999836, 0.0062831547, -0.015, 1.942, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="BlowArea" unique_id=561210245]
 transform = Transform3D(2, 0, 0, 0, -2, 3.019916e-07, 0, -3.019916e-07, -2, 0.018, 2.413, 0)
@@ -39,5 +36,3 @@ shape = SubResource("ConvexPolygonShape3D_mykdv")
 
 [connection signal="body_entered" from="BlowArea" to="." method="OnBlowerEnter"]
 [connection signal="body_exited" from="BlowArea" to="." method="OnBlowerExit"]
-
-[editable path="BlowArea/VFX_VacuumWind"]
