@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://u6ot1n5doe8l" path="res://scripts/Hazards/TrampolineHazard.cs" id="1_i3nyw"]
 [ext_resource type="PackedScene" uid="uid://dp5abeejncg3h" path="res://assets/models/hazards/trampoline.glb" id="2_yr1b0"]
+[ext_resource type="AudioStream" path="res://assets/audio/sfx/phaseJump1.ogg" id="3_jump"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_2h47e"]
 height = 0.08
@@ -20,4 +21,8 @@ shape = SubResource("CylinderShape3D_2h47e")
 [node name="Sketchfab_Scene" parent="." unique_id=261209560 instance=ExtResource("2_yr1b0")]
 transform = Transform3D(0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, 0, 0, 0)
 
+[node name="BounceSound" type="AudioStreamPlayer" parent="." unique_id=1548213907]
+stream = ExtResource("3_jump")
+
 [connection signal="body_entered" from="." to="." method="OnBodyEntered"]
+[connection signal="body_entered" from="." to="BounceSound" method="play" unbinds=1]

@@ -66,6 +66,7 @@ All recordings sourced from [Musopen](https://musopen.org). The compositions the
 | `assets/audio/sfx/click_003.ogg` | UI click | [UI Audio](https://kenney.nl/assets/ui-audio) by Kenney | [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/) (no attribution required) | Every menu button (`UiSounds` autoload) |
 | `assets/audio/sfx/impactGlass_medium_002.ogg`, `_003.ogg`, `_004.ogg` | Glass impacts | [Impact Sounds](https://kenney.nl/assets/impact-sounds) by Kenney | [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/) (no attribution required) | Vase impacts (`VaseBase.tscn` → `ImpactSound`, via `GlassImpacts.tres`) |
 | `assets/audio/sfx/impactSoft_medium_004.ogg` | Soft impact | [Impact Sounds](https://kenney.nl/assets/impact-sounds) by Kenney | [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/) (no attribution required) | Wet-floor sign impacts (`stationary_hazard.tscn` → `ImpactSound`, via `SoftImpacts.tres`) |
+| `assets/audio/sfx/phaseJump1.ogg` | Phase jump | [Digital Audio](https://kenney.nl/assets/digital-audio) by Kenney | [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/) (no attribution required) | Trampoline bounce (`trampoline_hazard.tscn` → `BounceSound`) |
 | `assets/audio/sfx/240313__dsg__marble-drop.wav` | marble drop | [Freesound #240313](https://freesound.org/s/240313/) by D.S.G. | [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/) (no attribution required) | Marble landing clunk (`Marble.tscn` → `ImpactSound`) |
 
 ## Textures
