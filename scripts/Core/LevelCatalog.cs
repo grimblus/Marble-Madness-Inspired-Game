@@ -16,10 +16,9 @@ public static class LevelCatalog
 	public static readonly LevelEntry[] Levels =
 	{
 		// Use Level01.tscn here instead if you are using the newer level 1 layout.
-		new("level_01", "GALLERY 01", "res://scenes/levels/level_01/Level01Old.tscn"),
+		new("level_01", "GALLERY 01", "res://scenes/levels/level_01/Level01.tscn"),
 		new("level_02", "GALLERY 02", "res://scenes/levels/level_02/Level02.tscn"),
-		// Work in progress: add the scene path here when level 3 is ready.
-		new("level_03", "GALLERY 03", "")
+		new("level_03", "GALLERY 03", "res://scenes/levels/level_03/Level03.tscn")
 	};
 
 	// Position of a level in Levels, or -1 if the id isn't in the list.

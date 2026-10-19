@@ -1,27 +1,19 @@
 using Godot;
+using LevelEntry = LevelCatalog.LevelEntry;
 
 // Level select screen (scenes/ui/menus/LevelSelect.tscn): one level card in the
 // middle, switched with the < and > buttons, the dots, or the Left / Right keys.
 //
-// To add a level, add a line to Levels below. Leave the scene path empty for a
-// placeholder: shows as "Coming soon" until we add a real scene.
+// To add a level, add a line to Levels in LevelCatalog.cs (scripts/Core). Leave
+// the scene path empty for a placeholder: shows as "Coming soon" until we add a real scene.
 // Best times and stars come from ProgressStore, using each level's Id (the same
 // LevelId you set on the ResultScreen in that level).
 
 public partial class LevelSelect : Control
 {
-	private sealed record LevelEntry(string Id, string Label, string ScenePath);
-
-	private static readonly LevelEntry[] Levels =
-	{
-		// Each path is the level's own scene (tiles, goal, hazards), not Main.tscn.
-		// Main.tscn is the shared scene the chosen level gets loaded into.
-		new("level_01", "GALLERY 01", "res://scenes/levels/level_01/Level01.tscn"),
-		// Check this path: right-click your playable level 2 scene > Copy Path.
-		new("level_02", "GALLERY 02", "res://scenes/levels/level_02/Level02.tscn"),
-		// Work in progress: add the scene path here when level 3 is ready.
-		new("level_03", "GALLERY 03", "")
-	};
+	// The level list lives in LevelCatalog so the result screen's Next Level and
+	// Previous buttons use the same order.
+	private static LevelEntry[] Levels => LevelCatalog.Levels;
 
 	// Fake progress used while ShowSampleProgress is on, so you can check how
 	// every state looks before the real levels exist.
@@ -124,12 +116,20 @@ public partial class LevelSelect : Control
 
 	private int GetStars(int index)
 	{
-		return ShowSampleProgress ? SampleStars[index] : ProgressStore.GetBestStars(Levels[index].Id);
+		if (ShowSampleProgress)
+		{
+			return index < SampleStars.Length ? SampleStars[index] : 0;
+		}
+		return ProgressStore.GetBestStars(Levels[index].Id);
 	}
 
 	private float? GetBestTime(int index)
 	{
-		return ShowSampleProgress ? SampleTimes[index] : ProgressStore.GetBestTime(Levels[index].Id);
+		if (ShowSampleProgress)
+		{
+			return index < SampleTimes.Length ? SampleTimes[index] : null;
+		}
+		return ProgressStore.GetBestTime(Levels[index].Id);
 	}
 
 	// The first level is always open; each later one opens when the one before it has at least 1 star.
