@@ -99,4 +99,4 @@ mesh = ExtResource("3_7f23y")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=118210307]
 libraries/ = SubResource("AnimationLibrary_uuagn")
-autoplay = &"Suck"
+autoplay = &"Blow"
