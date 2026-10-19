@@ -7,9 +7,11 @@ using System.Collections.Generic;
 // floor it's rolling on; this clears the view of the area around it.
 //
 // Each top-level child of the current level's "Backdrop" node is treated as
-// one prop. A prop fades when its bounding box covers a circle around the
-// marble on screen and part of it is nearer the camera than the marble.
-// Only the backdrop is affected, so tiles, vases and hazards stay solid.
+// one prop. A prop fades when its actual mesh covers a circle around the
+// marble on screen, nearer the camera than the marble: rays are cast towards
+// the camera from the marble and from two rings of points around it. A quick
+// bounding-box check first skips props that are nowhere near. Only the
+// backdrop is affected, so tiles, vases and hazards stay solid.
 public partial class BackdropFader : Node
 {
 	[Export] public NodePath CameraPath = "../CameraRig/Camera3D";
@@ -19,7 +21,7 @@ public partial class BackdropFader : Node
 	[Export] public NodePath LevelRootPath = "../LevelLoader";
 
 	// Radius, in metres, of the area around the marble that's kept clear.
-	[Export] public float ClearRadius = 3.0f;
+	[Export] public float ClearRadius = 2.0f;
 
 	// Transparency of a faded prop (0 = solid, 1 = invisible).
 	[Export] public float FadedTransparency = 0.8f;
@@ -30,6 +32,8 @@ public partial class BackdropFader : Node
 	private sealed class Prop
 	{
 		public readonly List<GeometryInstance3D> Meshes = new();
+		// Triangles of each mesh, for the exact ray test.
+		public readonly List<(MeshInstance3D Instance, TriangleMesh Triangles)> Shapes = new();
 		public Vector3[] Corners;
 		public float Transparency;
 	}
@@ -39,6 +43,10 @@ public partial class BackdropFader : Node
 	private Node _levelRoot;
 	private Node3D _backdrop;
 	private readonly List<Prop> _props = new();
+
+	// Ray origins around the marble, as fractions of ClearRadius on screen:
+	// the centre, then rings at half and full radius.
+	private static readonly Vector2[] SamplePattern = BuildSamplePattern();
 
 	public override void _Ready()
 	{
@@ -73,7 +81,8 @@ public partial class BackdropFader : Node
 
 		foreach (Prop prop in _props)
 		{
-			float target = Blocks(prop, toCamera, marble) ? FadedTransparency : 0.0f;
+			bool blocks = NearMarble(prop, toCamera, marble) && CoversMarble(prop);
+			float target = blocks ? FadedTransparency : 0.0f;
 			if (Mathf.IsEqualApprox(prop.Transparency, target))
 			{
 				continue;
@@ -87,7 +96,10 @@ public partial class BackdropFader : Node
 		}
 	}
 
-	private bool Blocks(Prop prop, Transform3D toCamera, Vector3 marble)
+	// Quick check: does the prop's bounding box overlap the clear area on
+	// screen, with part of it in front of the marble? Boxes are much bigger
+	// than the props seen at an angle, so this only rules props out.
+	private bool NearMarble(Prop prop, Transform3D toCamera, Vector3 marble)
 	{
 		Vector3 min = Vector3.Inf;
 		Vector3 max = -Vector3.Inf;
@@ -110,6 +122,46 @@ public partial class BackdropFader : Node
 		return dx * dx + dy * dy < ClearRadius * ClearRadius;
 	}
 
+	// Exact check: does any ray from the clear area towards the camera hit
+	// the prop's triangles? Props with no mesh data rely on the box check.
+	private bool CoversMarble(Prop prop)
+	{
+		if (prop.Shapes.Count == 0)
+		{
+			return true;
+		}
+
+		Basis camera = _camera.GlobalBasis;
+		Vector3 towardCamera = camera.Z;
+		foreach (Vector2 offset in SamplePattern)
+		{
+			Vector3 origin = _marble.GlobalPosition
+				+ (camera.X * offset.X + camera.Y * offset.Y) * ClearRadius;
+			foreach (var (instance, triangles) in prop.Shapes)
+			{
+				Transform3D toLocal = instance.GlobalTransform.AffineInverse();
+				if (triangles.IntersectRay(toLocal * origin, toLocal.Basis * towardCamera).Count > 0)
+				{
+					return true;
+				}
+			}
+		}
+		return false;
+	}
+
+	private static Vector2[] BuildSamplePattern()
+	{
+		var points = new List<Vector2> { Vector2.Zero };
+		foreach (float radius in new[] { 0.5f, 1.0f })
+		{
+			for (int i = 0; i < 8; i++)
+			{
+				points.Add(Vector2.FromAngle(Mathf.Tau * i / 8) * radius);
+			}
+		}
+		return points.ToArray();
+	}
+
 	private void FindProps()
 	{
 		_props.Clear();
@@ -128,12 +180,14 @@ public partial class BackdropFader : Node
 			{
 				var mesh = (GeometryInstance3D)node;
 				prop.Meshes.Add(mesh);
+				AddShape(prop, mesh);
 				Aabb box = mesh.GlobalTransform * mesh.GetAabb();
 				bounds = bounds?.Merge(box) ?? box;
 			}
 			if (child is GeometryInstance3D self)
 			{
 				prop.Meshes.Add(self);
+				AddShape(prop, self);
 				Aabb box = self.GlobalTransform * self.GetAabb();
 				bounds = bounds?.Merge(box) ?? box;
 			}
@@ -148,6 +202,20 @@ public partial class BackdropFader : Node
 				prop.Corners[i] = bounds.Value.GetEndpoint(i);
 			}
 			_props.Add(prop);
+		}
+	}
+
+	// Builds the triangle data once per mesh when the level loads, so the
+	// per-frame ray test is cheap.
+	private static void AddShape(Prop prop, GeometryInstance3D geometry)
+	{
+		if (geometry is MeshInstance3D { Mesh: not null } instance)
+		{
+			TriangleMesh triangles = instance.Mesh.GenerateTriangleMesh();
+			if (triangles != null)
+			{
+				prop.Shapes.Add((instance, triangles));
+			}
 		}
 	}
 }
