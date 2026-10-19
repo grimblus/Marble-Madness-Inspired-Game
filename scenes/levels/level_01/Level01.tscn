@@ -51,8 +51,9 @@ metadata/_editor_floor_ = Vector3(0, 0, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 45, -9, 10)
 
 [node name="Checkpoint" parent="." unique_id=1005557379 instance=ExtResource("3_ro5ca")]
-transform = Transform3D(-1.3047848e-07, 0, 1, 0, 1.91, 0, -2.985, 0, -4.371139e-08, 27.355255, 0, 5.0832176)
+transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, 27.35525, 0, 5.083218)
 visible = false
+Size = Vector3(5.97, 5.73, 0.5)
 
 [node name="KillZone" parent="." unique_id=1018422379 instance=ExtResource("4_i5t0w")]
 transform = Transform3D(3.67, 0, 0, 0, 3.67, 0, 0, 0, 3.67, 0, -27.264576, 0)
@@ -127,7 +128,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 0, -10)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, -1)
 
 [node name="Vase1Blue2" parent="Vase" unique_id=1118963950 instance=ExtResource("15_lcygm")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.3532953, 0, -2)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.3532953, 0, -3)
 
 [node name="Vase1Beige5" parent="Vase" unique_id=1700173125 instance=ExtResource("14_jd7cq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 44, -7, 7.4087963)
@@ -225,10 +226,16 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.507049, 0, 14.473017)
 [node name="Hazards" type="Node3D" parent="." unique_id=1113835028]
 
 [node name="MovingHazard" parent="Hazards" unique_id=341274520 instance=ExtResource("22_msf3c")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 3, 5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 3.1888, 6)
 
 [node name="MovingHazard2" parent="Hazards" unique_id=1774810691 instance=ExtResource("22_msf3c")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -3, 3, 3)
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -3, 3.1888, 4)
+
+[node name="MovingHazard3" parent="Hazards" unique_id=1484946704 instance=ExtResource("22_msf3c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19, 0.1888001, 6)
+
+[node name="MovingHazard4" parent="Hazards" unique_id=1329675534 instance=ExtResource("22_msf3c")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 19, 0.1888001, 4)
 
 [node name="StationaryHazard" parent="Hazards" unique_id=249923646 instance=ExtResource("21_xoel3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5992737, 0, -3)

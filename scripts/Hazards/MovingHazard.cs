@@ -14,6 +14,12 @@ public partial class MovingHazard : RigidBody3D
 	
 	//so the path3d increases with scale
 	private Transform3D pathTransform;
+
+	// Shifts the whole path so it starts exactly where the hazard was placed
+	// in the level. The path's first point doesn't sit on the Path3D's
+	// origin, so following the raw path made every hazard jump up off the
+	// floor when the level started.
+	private Vector3 pathStartOffset;
 	
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
@@ -44,6 +50,11 @@ public partial class MovingHazard : RigidBody3D
 		
 		spawnPosition = GlobalPosition;
 		spawnRotation = GlobalRotation.Y;
+
+		if (Pattern != null && patternLength > 0)
+		{
+			pathStartOffset = GlobalPosition - pathTransform * Pattern.SampleBaked(0.0f);
+		}
 		
 		marble = GetNode<MarbleController>("/root/Main/Marble");
 				
@@ -67,7 +78,7 @@ public partial class MovingHazard : RigidBody3D
 		Vector3 rotatedOffset = localOffset.Rotated(Vector3.Up, spawnRotation);
 
 		//GlobalPosition = spawnPosition + rotatedOffset;
-		GlobalPosition = pathTransform * Pattern.SampleBaked(distanceTravelled);
+		GlobalPosition = pathTransform * Pattern.SampleBaked(distanceTravelled) + pathStartOffset;
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.

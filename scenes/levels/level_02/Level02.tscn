@@ -58,19 +58,19 @@ visible = false
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -45.061783, -6.2323313, -35.98738)
 
 [node name="MovingHazard" parent="." unique_id=341274520 instance=ExtResource("5_cs3t4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.976, -1.25, -41.271)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.976, -0.8113, -41.271)
 PatternSpeed = 1.5
 
 [node name="MovingHazard2" parent="." unique_id=2089880379 instance=ExtResource("5_cs3t4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -31.976, -1.25, -41.271)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -31.976, -0.8113, -41.271)
 PatternSpeed = 1.5
 
 [node name="MovingHazard4" parent="." unique_id=603429204 instance=ExtResource("5_cs3t4")]
-transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, -1, -35.056, -1.25, -30.951)
+transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, -1, -35.056, -0.8113, -30.951)
 PatternSpeed = 1.5
 
 [node name="MovingHazard5" parent="." unique_id=85083422 instance=ExtResource("5_cs3t4")]
-transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, -1, -29.008, -1.25, -30.951)
+transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, -1, -29.008, -0.8113, -30.951)
 PatternSpeed = 1.5
 
 [node name="VacuumHazard" parent="." unique_id=832618694 instance=ExtResource("6_mqcmt")]
