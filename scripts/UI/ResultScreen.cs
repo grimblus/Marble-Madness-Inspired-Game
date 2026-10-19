@@ -32,11 +32,9 @@ public partial class ResultScreen : CanvasLayer
 	[Export(PropertyHint.File, "*.tscn")]
 	public string MainMenuScenePath { get; set; } = "res://scenes/ui/menus/startMenu.tscn";
 
-	// Leave these empty until the level select and level order exist;
-	// The matching buttons stay disabled while they are empty.
+	// Scene the Level Select button opens; the button stays disabled while this is empty.
+	// Next Level and Previous don't need a path: they use the order in LevelCatalog.
 	[Export(PropertyHint.File, "*.tscn")] public string LevelSelectScenePath { get; set; } = "";
-	[Export(PropertyHint.File, "*.tscn")] public string NextLevelScenePath { get; set; } = "";
-	[Export(PropertyHint.File, "*.tscn")] public string PreviousLevelScenePath { get; set; } = "";
 
 	private Control _root;
 	private PanelContainer _winPanel;
@@ -117,8 +115,8 @@ public partial class ResultScreen : CanvasLayer
 		_winLevelLabel.Text = LevelLabel;
 		_loseLevelLabel.Text = LevelLabel;
 
-		_nextButton.Pressed += () => GoTo(NextLevelScenePath);
-		_previousButton.Pressed += () => GoTo(PreviousLevelScenePath);
+		_nextButton.Pressed += OnNextPressed;
+		_previousButton.Pressed += OnPreviousPressed;
 		_levelSelectButton.Pressed += () => GoTo(LevelSelectScenePath);
 		_loseLevelSelectButton.Pressed += () => GoTo(LevelSelectScenePath);
 		_retryButton.Pressed += OnRetryPressed;
@@ -126,8 +124,10 @@ public partial class ResultScreen : CanvasLayer
 		_winMenuButton.Pressed += OnMenuPressed;
 		_loseMenuButton.Pressed += OnMenuPressed;
 
-		_nextButton.Disabled = string.IsNullOrEmpty(NextLevelScenePath);
-		_previousButton.Disabled = string.IsNullOrEmpty(PreviousLevelScenePath);
+		// LevelId is set by the LevelLoader before this runs, so the catalog can tell
+		// which levels come before and after this one.
+		_nextButton.Disabled = LevelCatalog.NextPlayable(LevelId) == null;
+		_previousButton.Disabled = LevelCatalog.PreviousPlayable(LevelId) == null;
 		_levelSelectButton.Disabled = string.IsNullOrEmpty(LevelSelectScenePath);
 		_loseLevelSelectButton.Disabled = string.IsNullOrEmpty(LevelSelectScenePath);
 
@@ -273,6 +273,29 @@ public partial class ResultScreen : CanvasLayer
 
 	private void OnRetryPressed()
 	{
+		GetTree().Paused = false;
+		GetTree().ReloadCurrentScene();
+	}
+
+	private void OnNextPressed()
+	{
+		GoToLevel(LevelCatalog.NextPlayable(LevelId));
+	}
+
+	private void OnPreviousPressed()
+	{
+		GoToLevel(LevelCatalog.PreviousPlayable(LevelId));
+	}
+
+	// Picks the level, then reloads Main so the LevelLoader loads it.
+	private void GoToLevel(LevelCatalog.LevelEntry level)
+	{
+		if (level == null)
+		{
+			return;
+		}
+
+		GameSession.Select(level.ScenePath, level.Id, level.Label);
 		GetTree().Paused = false;
 		GetTree().ReloadCurrentScene();
 	}
