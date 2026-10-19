@@ -1,7 +1,9 @@
 [gd_scene format=3 uid="uid://b6gxh3ddrqwbp"]
 
 [ext_resource type="Script" uid="uid://bnlpltint1ou8" path="res://scripts/UI/LevelSelect.cs" id="1_select"]
+[ext_resource type="Texture2D" uid="uid://q2ir325xenli" path="res://assets/level_previews/level_01.png" id="2_46wl2"]
 [ext_resource type="Script" uid="uid://c4igst8qdtjct" path="res://scripts/UI/StarIcon.cs" id="2_star"]
+[ext_resource type="Texture2D" uid="uid://u7k2bmyu0v2d" path="res://assets/level_previews/level_02.png" id="3_21uwp"]
 [ext_resource type="Script" uid="uid://bo4oex41yk611" path="res://scripts/UI/LevelPreview.cs" id="3_preview"]
 [ext_resource type="Script" uid="uid://jhp8gu780bxo" path="res://scripts/UI/GalleryBackdrop.cs" id="4_backdrop"]
 
@@ -242,6 +244,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = SubResource("Theme_menu")
 script = ExtResource("1_select")
+Screenshots = Array[Texture2D]([ExtResource("2_46wl2"), ExtResource("3_21uwp")])
 
 [node name="Backdrop" type="Control" parent="." unique_id=1327654333]
 layout_mode = 1
