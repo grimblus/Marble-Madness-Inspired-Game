@@ -10,6 +10,68 @@ radius = 0.95
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_mykdv"]
 points = PackedVector3Array(-0.00019574165, 1, -0.00019574165, 0.19498825, -1, -0.9808144, -0.00019574165, -1, -1, -0.19518405, -1, -0.9808144, -0.382733, -1, -0.92404073, -0.5555991, -1, -0.83163667, -0.7071261, -1, -0.7071261, -0.83163667, -1, -0.5555991, -0.92404073, -1, -0.382733, -0.9808144, -1, -0.19518405, -1, -1, -0.00019574165, -0.9808144, -1, 0.19498825, -0.92404073, -1, 0.38253725, -0.83163667, -1, 0.55540323, -0.7071261, -1, 0.7069303, -0.5555991, -1, 0.8314409, -0.382733, -1, 0.92384493, -0.19518405, -1, 0.9806186, -0.00019574165, -1, 1, 0.19498825, -1, 0.9806186, 0.38253725, -1, 0.92384493, 0.55540323, -1, 0.8314409, 0.7069303, -1, 0.7069303, 0.8314409, -1, 0.55540323, 0.92384493, -1, 0.38253725, 0.9806186, -1, 0.19498825, 1, -1, -0.00019574165, 0.9806186, -1, -0.19518405, 0.92384493, -1, -0.382733, 0.8314409, -1, -0.5555991, 0.7069303, -1, -0.7071261, 0.55540323, -1, -0.83163667, 0.38253725, -1, -0.92404073)
 
+[sub_resource type="Animation" id="Animation_2noby"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("decimated_well:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("VacuumArea/VFX_VacuumWind:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1.5651873, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_mykdv"]
+resource_name = "spin"
+length = 3.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("decimated_well:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 6.2831855, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("VacuumArea/VFX_VacuumWind:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(1.5651873, 0, 0), Vector3(1.5655603, 6.2831855, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_uetwf"]
+_data = {
+&"RESET": SubResource("Animation_2noby"),
+&"spin": SubResource("Animation_mykdv")
+}
+
 [node name="VacuumHazard" type="RigidBody3D" unique_id=832618694 node_paths=PackedStringArray("VacuumArea")]
 collision_layer = 4
 collision_mask = 2
@@ -35,7 +97,9 @@ transform = Transform3D(1.2, 0, 0, 0, 0.0067307553, -1.1999812, 0, 1.1999812, 0.
 transform = Transform3D(2, 0, 0, 0, -2, 3.019916e-07, 0, -3.019916e-07, -2, 0.018, 2.413, 0)
 shape = SubResource("ConvexPolygonShape3D_mykdv")
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1585310636]
+libraries/ = SubResource("AnimationLibrary_uetwf")
+autoplay = &"spin"
+
 [connection signal="body_entered" from="VacuumArea" to="." method="OnVacuumEnter"]
 [connection signal="body_exited" from="VacuumArea" to="." method="OnVacuumExit"]
-
-[editable path="VacuumArea/VFX_VacuumWind"]

@@ -19,6 +19,44 @@ _data = {
 }
 point_count = 3
 
+[sub_resource type="Animation" id="Animation_fetpp"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("statuepivot:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_fhxtb"]
+resource_name = "spin"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("statuepivot:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 6.2831855, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3y3wm"]
+_data = {
+&"RESET": SubResource("Animation_fetpp"),
+&"spin": SubResource("Animation_fhxtb")
+}
+
 [node name="MovingHazard" type="RigidBody3D" unique_id=341274520 node_paths=PackedStringArray("PatternPath") groups=["enemies"]]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
 collision_layer = 4
@@ -38,7 +76,14 @@ shape = SubResource("CylinderShape3D_voxn2")
 [node name="Path3D" type="Path3D" parent="." unique_id=264172916]
 curve = SubResource("Curve3D_qkm1d")
 
-[node name="photorealistic_statue_of_kariatida" parent="." unique_id=2041163934 instance=ExtResource("2_fetpp")]
-transform = Transform3D(-0.74101764, 0, -0.5107767, 0, 0.9, 0, 0.5107767, 0, -0.74101764, -0.055083275, -0.63773715, 0)
+[node name="statuepivot" type="Node3D" parent="." unique_id=852084557]
+
+[node name="photorealistic_statue_of_kariatida" parent="statuepivot" unique_id=2041163934 instance=ExtResource("2_fetpp")]
+transform = Transform3D(-0.74101764, 0, -0.5107767, 0, 0.90000004, 0, 0.5107767, 0, -0.74101764, -0.055083275, -0.6377372, 0)
+rotation_edit_mode = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1802670822]
+libraries/ = SubResource("AnimationLibrary_3y3wm")
+autoplay = &"spin"
 
 [connection signal="body_entered" from="." to="." method="OnBodyEntered"]
