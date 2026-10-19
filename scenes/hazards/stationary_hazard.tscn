@@ -6,9 +6,11 @@
 [ext_resource type="AudioStream" path="res://assets/audio/sfx/SoftImpacts.tres" id="4_soft"]
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_2wkuj"]
-points = PackedVector3Array(0, 0.5, 0.5, 0.5, -0.5, 0.5, 0, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5)
+points = PackedVector3Array(0, 0.4275, 0.2475, 0.2475, -0.4275, 0.2475, 0, 0.4275, -0.2475, -0.2475, -0.4275, 0.2475, 0.2475, -0.4275, -0.2475, -0.2475, -0.4275, -0.2475)
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_44oka"]
+height = 0.05
+radius = 1.0
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_8qqct"]
 
@@ -26,15 +28,16 @@ normal_texture = SubResource("NoiseTexture2D_pmhb3")
 script = ExtResource("1_2wkuj")
 
 [node name="WetFloorSign" type="RigidBody3D" parent="." unique_id=1704472615]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4260559, 0)
 collision_layer = 4
 collision_mask = 3
 mass = 0.15
 
 [node name="wet_floor_sign" parent="WetFloorSign" unique_id=542248263 instance=ExtResource("1_is51q")]
-transform = Transform3D(0.01, 0, 0, 0, 0.01, 0, 0, 0, 0.01, 0, 0, 0)
+transform = Transform3D(0.015, 0, 0, 0, 0.015, 0, 0, 0, 0.015, 0, 0, 0)
 
 [node name="CollisionShape3D3" type="CollisionShape3D" parent="WetFloorSign" unique_id=1340480687]
-transform = Transform3D(0.32999998, 0, 0, 0, 0.57, 0, 0, 0, 0.32999998, 0, -0.003487058, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.005230587, 0)
 shape = SubResource("ConvexPolygonShape3D_2wkuj")
 
 [node name="ImpactSound" type="AudioStreamPlayer" parent="WetFloorSign" unique_id=1584203317]
@@ -43,17 +46,23 @@ max_polyphony = 3
 script = ExtResource("3_sound")
 
 [node name="Puddle" type="Area3D" parent="." unique_id=1339410679 groups=["enemies", "stationary"]]
-transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0.14810961, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.72403723, 0)
 collision_layer = 4
 collision_mask = 2
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="Puddle" unique_id=73088745]
-transform = Transform3D(4, 0, 0, 0, 0.05, 0, 0, 0, 4, 0, -1.44, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.72, 0)
 shape = SubResource("CylinderShape3D_44oka")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Puddle" unique_id=1693555418]
-transform = Transform3D(4, 0, 0, 0, 0.01, 0, 0, 0, 4, 0, -1.45, 0)
+transform = Transform3D(2, 0, 0, 0, 0.005, 0, 0, 0, 2, 0, -0.725, 0)
 mesh = SubResource("CylinderMesh_8qqct")
 surface_material_override/0 = SubResource("StandardMaterial3D_dveib")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=604246857]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="StaticBody3D" unique_id=1495699640]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, 0)
+size = Vector3(0.5, 0.5, 0.5)
 
 [connection signal="body_entered" from="Puddle" to="." method="OnPuddleEnter"]
