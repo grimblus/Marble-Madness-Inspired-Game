@@ -101,7 +101,7 @@ All four are individually graded rubric items — none can be skipped or left th
 
 1. **Design document** — concept, level design rationale, physics/control design decisions, team role breakdown, playtesting notes and what changed as a result.
 2. **README** — setup/run instructions (Godot version, how to open and run the project), controls, known issues.
-3. **Milestone presentation** — details to be released by the course coordinator at a later stage; prepare a short deck covering progress, design decisions, and demo footage.
+3. **Milestone presentation** — details to be released by the course coordinator at a later stage; prepare a short deck covering progress, design decisions, and demo footage. (Given in person in class; see §8.)
 4. **Video demonstration** — clean, edited gameplay footage covering all levels, narrated or captioned to explain features being shown (not a raw unedited screen recording).
 
 ## 6. Out of Scope (explicitly, to protect timeline)

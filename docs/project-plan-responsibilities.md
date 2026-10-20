@@ -47,14 +47,14 @@
 
 ## 2. Milestones
 
-| Week | Dates | Milestone | Status (20 Oct) |
+| Week | Dates | Milestone | Status (21 Oct) |
 |---|---|---|---|
 | 1 | 17–23 Sep | Prototyping: basic marble controller (Donovan), tile system + repo/project structure set up (Aaron), basic hazard prototype (Andrew), UI wireframes + asset gathering (Jayden). Control scheme locked in by end of week. | Done. Direct-force control locked in. |
 | 2 | 24–30 Sep | Core systems integrated into one test level. Camera finalized. | Done. |
 | 3 | 1–7 Oct | Level 1 complete and fully playable (physics, hazards, checkpoints, timer, win/lose all working end-to-end). | Done. Level 1 is playable end-to-end with its hazards placed. |
 | 4 | 8–14 Oct | Level 2 built; Level 3 blocked out. Audio and UI polish pass begins. Design document drafting starts. | Done. |
 | 5 | 15–21 Oct | Level 3 complete. Full polish pass (audio, visuals, juice). Playtesting across all levels. README and design doc finished. Milestone presentation prepared. | Done. Level 3 is built, all sound effects are in, the README and design document are complete, and a code and documentation audit was run against the requirements. The milestone presentation was given in person in class. |
-| 6 | 22–25 Oct | Buffer for bug fixes only — no new features. Video demonstration recorded and edited. Fresh clone tested end-to-end to confirm it runs cleanly for the marker. Submission. | In progress. Video demonstration recorded (`VIDEO_DEMO.mp4` in the repository root). Next: the fresh-clone test with [qa-checklist.md](qa-checklist.md), and submission. |
+| 6 | 22–25 Oct | Buffer for bug fixes only — no new features. Video demonstration recorded and edited. Fresh clone tested end-to-end to confirm it runs cleanly for the marker. Submission. | Done. Video demonstration recorded (`VIDEO_DEMO.mp4` in the repository root), and a fresh clone tested end-to-end with [qa-checklist.md](qa-checklist.md). |
 
 Week 6 is deliberately kept as pure buffer — no feature work should be scheduled into it.
 
@@ -70,4 +70,4 @@ To keep the critical path resilient to any one person's availability slipping:
 
 ## 4. Individual Contribution Tracking
 
-Since this is graded with individual responsibility, keep a lightweight running log (commit history + a shared doc noting who did what each week) from Week 1 — much easier than reconstructing it in Week 6 for the documentation deliverable.
+Since this is graded with individual responsibility, individual contributions are tracked through the commit history, with each member's owned systems listed in the design document §14.
