@@ -52,6 +52,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 2, 3)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 89, -10, 3)
 
 [node name="Checkpoint" type="Node3D" parent="." unique_id=999631987]
+visible = false
 
 [node name="Checkpoint" parent="Checkpoint" unique_id=1268723365 instance=ExtResource("12_cp")]
 transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, 14, -1.5, 3)
