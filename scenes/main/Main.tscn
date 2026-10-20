@@ -10,9 +10,10 @@
 [ext_resource type="PackedScene" uid="uid://ch72h63cbdnl3" path="res://scenes/ui/menus/PauseMenu.tscn" id="15_u8lgh"]
 [ext_resource type="Script" uid="uid://csglc355w00d7" path="res://scripts/Camera/BackdropFader.cs" id="16_fader"]
 [ext_resource type="Script" path="res://scripts/Audio/GameSounds.cs" id="17_gsfx"]
-[ext_resource type="AudioStream" uid="uid://cuxb3qcv78xda" path="res://assets/audio/sfx/confirmation_001.ogg" id="sfx_checkpoint"]
-[ext_resource type="AudioStream" uid="uid://xpwm5wwbs2vu" path="res://assets/audio/sfx/jingles_PIZZI02.ogg" id="sfx_win"]
-[ext_resource type="AudioStream" uid="uid://cg35u6554u0h2" path="res://assets/audio/sfx/jingles_PIZZI01.ogg" id="sfx_lose"]
+[ext_resource type="AudioStream" uid="uid://b281m0n8pbphd" path="res://assets/audio/sfx/jingles_STEEL08.ogg" id="sfx_checkpoint"]
+[ext_resource type="AudioStream" uid="uid://dxoc82sq05vyx" path="res://assets/audio/sfx/jingles_STEEL02.ogg" id="sfx_win"]
+[ext_resource type="AudioStream" uid="uid://cfh5mqrk3k0ua" path="res://assets/audio/sfx/jingles_STEEL07.ogg" id="sfx_lose"]
+[ext_resource type="AudioStream" uid="uid://dgs7nevcjnqv" path="res://assets/audio/sfx/jingles_STEEL01.ogg" id="sfx_fall"]
 [ext_resource type="AudioStream" uid="uid://dicttjivg7pc7" path="res://assets/audio/sfx/impactPunch_heavy_000.ogg" id="sfx_hit"]
 [ext_resource type="AudioStream" uid="uid://ccqhh0mhc4lpn" path="res://assets/audio/sfx/drop_002.ogg" id="sfx_slip"]
 
@@ -48,15 +49,15 @@ script = ExtResource("17_gsfx")
 
 [node name="Checkpoint" type="AudioStreamPlayer" parent="GameSounds" unique_id=1959167398]
 stream = ExtResource("sfx_checkpoint")
-volume_db = -6
+volume_db = -4
 
 [node name="Win" type="AudioStreamPlayer" parent="GameSounds" unique_id=1302102035]
 stream = ExtResource("sfx_win")
-volume_db = -3
+volume_db = -6.1
 
 [node name="Lose" type="AudioStreamPlayer" parent="GameSounds" unique_id=1940099285]
 stream = ExtResource("sfx_lose")
-volume_db = -3
+volume_db = -6.1
 
 [node name="Hit" type="AudioStreamPlayer" parent="GameSounds" unique_id=1777652994]
 stream = ExtResource("sfx_hit")
@@ -65,6 +66,10 @@ volume_db = -4
 [node name="Slip" type="AudioStreamPlayer" parent="GameSounds" unique_id=1099975904]
 stream = ExtResource("sfx_slip")
 volume_db = -6
+
+[node name="Fall" type="AudioStreamPlayer" parent="GameSounds" unique_id=1773711575]
+stream = ExtResource("sfx_fall")
+volume_db = -9.1
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1363924070]
 environment = ExtResource("11_qkm1d")
