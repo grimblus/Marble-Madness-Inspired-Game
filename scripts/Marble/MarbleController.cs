@@ -1,12 +1,33 @@
 using Godot;
 
+// The player's marble (scenes/marble/Marble.tscn): a RigidBody3D rolled by
+// forces from the move input, relative to the camera. Other systems talk to
+// it rather than the other way round:
+// - hazards call GetHitPhys (knockback), GetHit (slip) and GetHitTramp
+//   (bounce), so no hazard needs to know how the marble moves;
+// - kill zones call Die, which respawns it at the last checkpoint;
+// - it raises Hit, Slipped and Died for sounds and effects, and reads
+//   GameStateManager.IsEnded itself to stop once the level is won or lost.
+// Its sounds live in child nodes that only read its physics state.
 public partial class MarbleController : RigidBody3D
 {
+	// Rolling force from full input, in newtons.
 	[Export] public float MoveForce = 12.0f;
+
+	// Speed, in m/s, above which input can steer and brake but not speed the
+	// marble up any further.
 	[Export] public float MaxSpeed = 8.0f;
-	//just the default value, the real value is in each gethit method
-	[Export] public float SpinoutTime = 0.0f;
+
+	// Seconds without control after a caryatid knocks the marble back.
+	[Export] public float KnockbackSpinoutSeconds = 0.6f;
+
+	// Seconds without control after rolling through a wet floor.
+	[Export] public float SlipSpinoutSeconds = 1.0f;
+
+	// Impulse away from a caryatid when it hits the marble, in N·s.
 	[Export] public float KnockbackForce = 2.0f;
+
+	// Upward impulse from a trampoline, in N·s.
 	[Export] public float TrampolineForce = 6.0f;
 
 	// Raised whenever the marble is sent back to a checkpoint. Listen to
@@ -14,8 +35,19 @@ public partial class MarbleController : RigidBody3D
 	// the death (a kill zone today, a hazard later).
 	[Signal] public delegate void DiedEventHandler();
 
+	// Raised when a caryatid knocks the marble back.
+	[Signal] public delegate void HitEventHandler();
+
+	// Raised when the marble rolls through a wet floor and loses control.
+	[Signal] public delegate void SlippedEventHandler();
+
 	private GameStateManager _gameState;
-	private bool _inSpinout = false;
+	private CheckpointManager _checkpoints;
+	private bool _inSpinout;
+
+	// Counts spin-outs, so a timer from an earlier hit can't end a later
+	// spin-out early: only the timer of the latest one clears it.
+	private int _spinoutCount;
 
 	public override void _Ready()
 	{
@@ -24,9 +56,9 @@ public partial class MarbleController : RigidBody3D
 		// Every fresh load of the marble (level start or retry) begins a
 		// new run: clear any leftover checkpoint and fall back to
 		// wherever the level placed the marble until a real one is hit.
-		var checkpoints = GetNode<CheckpointManager>("/root/CheckpointManager");
-		checkpoints.Reset();
-		checkpoints.SetStartPoint(GlobalPosition);
+		_checkpoints = GetNode<CheckpointManager>("/root/CheckpointManager");
+		_checkpoints.Reset();
+		_checkpoints.SetStartPoint(GlobalPosition);
 
 		// The win/lose flag lives on an autoload, so it survives the scene
 		// change from a result screen (retry, level select, menu). Clear it
@@ -39,25 +71,31 @@ public partial class MarbleController : RigidBody3D
 	{
 		// Stop responding to input once the level has ended, win or lose,
 		// so the marble doesn't keep rolling around behind a win/lose screen.
-		if (_gameState.IsEnded)
+		if (_gameState.IsEnded || _inSpinout)
 		{
 			return;
 		}
 
-		if (_inSpinout) 
-		{
-			return;
-		}
-		
 		Vector2 input = Input.GetVector("move_left", "move_right", "move_forward", "move_back");
 		Vector3 force = GetCameraRelativeDirection(input) * MoveForce;
 
-		if (LinearVelocity.Length() < MaxSpeed)
+		// At the speed cap, drop only the part of the push that would add
+		// speed. Ignoring input altogether would also stop the player
+		// steering or braking after a fast drop.
+		Vector3 velocity = LinearVelocity;
+		if (velocity.Length() >= MaxSpeed)
 		{
-			ApplyCentralForce(force);
+			Vector3 heading = velocity.Normalized();
+			float speedingUp = force.Dot(heading);
+			if (speedingUp > 0.0f)
+			{
+				force -= heading * speedingUp;
+			}
 		}
+
+		ApplyCentralForce(force);
 	}
-	
+
 	// Maps input onto the ground plane relative to the active camera, so W
 	// rolls the marble up the screen rather than along world -Z (which reads
 	// as diagonal under the rig's 45-degree isometric yaw). The camera's
@@ -80,117 +118,67 @@ public partial class MarbleController : RigidBody3D
 		return right * input.X - forward * input.Y;
 	}
 
+	// Called by a caryatid on contact: knocks the marble straight away from
+	// it and takes control away briefly.
 	public void GetHitPhys(Vector3 hazardPosition)
 	{
-		if (_gameState.IsEnded) 
+		if (_gameState.IsEnded || _inSpinout)
 		{
 			return;
 		}
-		
-		if (_inSpinout) 
-		{
-			return;
-		}
-		_inSpinout = true;
-		
-		//Gets pushed directly away when touching physical hazard
-		//vector from hazard to marble
+
 		Vector3 pushDirection = GlobalPosition - hazardPosition;
 		pushDirection.Y = 0;
-		if (pushDirection.LengthSquared() > 0.0001f)
-		{
-			pushDirection = pushDirection.Normalized();
-		}
-		else
-		{
-			pushDirection = Vector3.Forward;
-		}
+		pushDirection = pushDirection.LengthSquared() > 0.0001f
+			? pushDirection.Normalized()
+			: Vector3.Forward;
+
 		ApplyCentralImpulse(pushDirection * KnockbackForce);
-		
-		SpinoutTime = 0.6f;
-				
-		GetTree().CreateTimer(SpinoutTime).Timeout += () =>
-		{
-			_inSpinout = false;
-		};
+		StartSpinout(KnockbackSpinoutSeconds);
+		EmitSignal(SignalName.Hit);
 	}
-	
+
+	// Called by a trampoline: launches the marble upwards, with a slight
+	// nudge away from the trampoline's centre so it carries on forwards.
 	public void GetHitTramp(Vector3 hazardPosition)
 	{
-		if (_gameState.IsEnded) 
+		if (_gameState.IsEnded)
 		{
 			return;
 		}
-		
-		//vector from hazard to marble
+
 		Vector3 pushDirection = GlobalPosition - hazardPosition;
 		pushDirection.Y = 0;
-		//slight push so the marble gets moved where it needs to go
-		if (pushDirection.LengthSquared() > 0.0001f)
-		{
-			pushDirection = pushDirection.Normalized() * 0.3f;
-		}
-		else
-		{
-			pushDirection = Vector3.Zero;
-		}
-		
-		//direction where marble will be launched
+		pushDirection = pushDirection.LengthSquared() > 0.0001f
+			? pushDirection.Normalized() * 0.3f
+			: Vector3.Zero;
+
 		Vector3 launch = (Vector3.Up + pushDirection).Normalized();
-		
-		//makes every bounce the same height
-		Vector3 v = LinearVelocity;
-		if (v.Y < 0)
+
+		// Cancel any downward speed first, so every bounce reaches the same
+		// height however far the marble fell onto the trampoline.
+		Vector3 velocity = LinearVelocity;
+		if (velocity.Y < 0)
 		{
-			v.Y = 0;
+			velocity.Y = 0;
 		}
-		LinearVelocity = v;
-		
+		LinearVelocity = velocity;
+
 		Sleeping = false;
 		ApplyCentralImpulse(launch * TrampolineForce);
 	}
-	
+
+	// Called by a wet floor: the marble keeps its speed but can't be steered
+	// for a moment.
 	public void GetHit()
 	{
-		if (_gameState.IsEnded) 
+		if (_gameState.IsEnded || _inSpinout)
 		{
 			return;
 		}
-		
-		if (_inSpinout) 
-		{
-			return;
-		}
-		_inSpinout = true;
-		
-		SpinoutTime = 1.0f;
-		
-		GetTree().CreateTimer(SpinoutTime).Timeout += () =>
-		{
-			_inSpinout = false;
-		};
-	}
-	
-	private void HurtboxAreaHit(Area3D area) {
-		if (area.IsInGroup("enemies") && area.IsInGroup("stationary"))
-		{
-			GetHit();
-		}
-		else if (area.IsInGroup("enemies"))
-		{
-			GetHitPhys(area.GlobalPosition);
-		}
-	}
-	
-	private void HurtboxBodyHit(Node3D body) {
-		if (body.IsInGroup("enemies") && body.IsInGroup("stationary"))
-		{
-			GetHit();
-		}
-		else if (body.IsInGroup("enemies"))
-		{
-			GetHitPhys(body.GlobalPosition);
-		}
+
+		StartSpinout(SlipSpinoutSeconds);
+		EmitSignal(SignalName.Slipped);
 	}
 
 	// Sends the marble back to its last checkpoint. A kill zone calls
@@ -206,15 +194,31 @@ public partial class MarbleController : RigidBody3D
 			return;
 		}
 
-		var checkpoints = GetNode<CheckpointManager>("/root/CheckpointManager");
-		Vector3 respawnPosition = checkpoints.GetRespawnPosition();
-
-		GlobalTransform = new Transform3D(Basis.Identity, respawnPosition);
+		GlobalTransform = new Transform3D(Basis.Identity, _checkpoints.GetRespawnPosition());
 		LinearVelocity = Vector3.Zero;
 		AngularVelocity = Vector3.Zero;
 		Sleeping = false;
+
+		// Cancels any spin-out still running.
 		_inSpinout = false;
+		_spinoutCount++;
 
 		EmitSignal(SignalName.Died);
+	}
+
+	private void StartSpinout(float seconds)
+	{
+		_inSpinout = true;
+		int spinout = ++_spinoutCount;
+
+		// The timer pauses with the game, so a spin-out doesn't run out behind
+		// the pause menu.
+		GetTree().CreateTimer(seconds, processAlways: false).Timeout += () =>
+		{
+			if (spinout == _spinoutCount)
+			{
+				_inSpinout = false;
+			}
+		};
 	}
 }
