@@ -13,6 +13,12 @@
 [ext_resource type="PackedScene" uid="uid://di3r1eaoorp6y" path="res://scenes/triggers/Goal.tscn" id="11_goal"]
 [ext_resource type="PackedScene" uid="uid://byxgfkifyqgjg" path="res://scenes/triggers/Checkpoint.tscn" id="12_cp"]
 [ext_resource type="PackedScene" uid="uid://bugcc03pvuea" path="res://scenes/triggers/KillZone.tscn" id="13_kill"]
+[ext_resource type="PackedScene" uid="uid://53251d8f23c0" path="res://assets/models/props/decimated_egyptian_head.glb" id="14_vmoth"]
+[ext_resource type="PackedScene" uid="uid://gj3ihcr7g0tt" path="res://assets/models/props/decimated_amenemhat.glb" id="15_e5ys3"]
+[ext_resource type="PackedScene" uid="uid://ddgurlhw8wqaj" path="res://scenes/hazards/moving_hazard.tscn" id="hz_moving"]
+[ext_resource type="PackedScene" uid="uid://bfanh2jadvega" path="res://scenes/hazards/stationary_hazard.tscn" id="hz_stationary"]
+[ext_resource type="PackedScene" uid="uid://dt5y5j8mdjqgb" path="res://scenes/hazards/trampoline_hazard.tscn" id="hz_trampoline"]
+[ext_resource type="PackedScene" uid="uid://bwg0tt0ohoa3v" path="res://scenes/hazards/vacuum_hazard.tscn" id="hz_vacuum"]
 [ext_resource type="PackedScene" path="res://scenes/props/vases/Vase1Beige.tscn" id="v_vase1beige"]
 [ext_resource type="PackedScene" path="res://scenes/props/vases/Vase1Blue.tscn" id="v_vase1blue"]
 [ext_resource type="PackedScene" path="res://scenes/props/vases/Vase1Red.tscn" id="v_vase1red"]
@@ -65,110 +71,122 @@ visible = false
 
 [node name="Hazards" type="Node3D" parent="." unique_id=1118022223]
 
-[node name="TrampolineSpot1" type="Marker3D" parent="Hazards" unique_id=1443724115]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23, -3, 3)
+[node name="TrampolineHazard" parent="Hazards" unique_id=795425564 instance=ExtResource("hz_trampoline")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23, -2.767, 3)
 
-[node name="TrampolineSpot2" type="Marker3D" parent="Hazards" unique_id=1347370366]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 64, -5, 3)
+[node name="TrampolineHazard2" parent="Hazards" unique_id=423946139 instance=ExtResource("hz_trampoline")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 64, -4.767, 3)
 
-[node name="VacuumSpot1" type="Marker3D" parent="Hazards" unique_id=240722156]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 48, -3, -6)
+[node name="VacuumHazard" parent="Hazards" unique_id=947876999 instance=ExtResource("hz_vacuum")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 48, -2, -6)
 
-[node name="VacuumSpot2" type="Marker3D" parent="Hazards" unique_id=1400515102]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 48, -3, 2)
+[node name="VacuumHazard2" parent="Hazards" unique_id=1497871144 instance=ExtResource("hz_vacuum")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 48, -2, 2)
 
-[node name="WetFloorSpot" type="Marker3D" parent="Hazards" unique_id=128278034]
+[node name="StationaryHazard" parent="Hazards" unique_id=203694312 instance=ExtResource("hz_stationary")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 51, -5, 9)
 
-[node name="CaryatidSpot1" type="Marker3D" parent="Hazards" unique_id=1898451156]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 78, -6, 3)
+[node name="MovingHazard" parent="Hazards" unique_id=255555737 instance=ExtResource("hz_moving")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 78, -2.811, -2)
 
-[node name="CaryatidSpot2" type="Marker3D" parent="Hazards" unique_id=1107668780]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 82, -6, 3)
+[node name="MovingHazard2" parent="Hazards" unique_id=1863673106 instance=ExtResource("hz_moving")]
+transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, -1, 82, -2.811, 8)
 
 [node name="Backdrop" type="Node3D" parent="." unique_id=1790511352]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 33)
 
 [node name="Column5" parent="Backdrop" unique_id=1444429344 instance=ExtResource("4_ku1u4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.5, -20, -15.500001)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26, -16, -15.500001)
 
 [node name="Column15" parent="Backdrop" unique_id=122690924 instance=ExtResource("4_ku1u4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.4999993, -20, -14.000002)
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -2.5000005, -20, -12.000001)
 
 [node name="Column4" parent="Backdrop" unique_id=990061280 instance=ExtResource("4_ku1u4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, -20, -22.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 38.5, -20, -10)
 
 [node name="Column10" parent="Backdrop" unique_id=1678471468 instance=ExtResource("4_ku1u4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.4999986, -20, -38)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.500002, -20, -22)
 
 [node name="Column11" parent="Backdrop" unique_id=1463882735 instance=ExtResource("4_ku1u4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.4999986, -20, -38)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34.5, -20, -22)
 
 [node name="Column" parent="Backdrop" unique_id=404998499 instance=ExtResource("5_gfc0i")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -20, -5)
 
 [node name="Column2" parent="Backdrop" unique_id=553902157 instance=ExtResource("5_gfc0i")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.5, -20, -18.000002)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31.5, -20, -2.000002)
 
 [node name="Column12" parent="Backdrop" unique_id=1137547182 instance=ExtResource("5_gfc0i")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.4999995, -20, -22.000002)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31.5, -20, -6.000002)
 
 [node name="Column13" parent="Backdrop" unique_id=1913718381 instance=ExtResource("5_gfc0i")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.499999, -20, -25.500004)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31.5, -20, -9.500004)
 
 [node name="Column16" parent="Backdrop" unique_id=1260626640 instance=ExtResource("5_gfc0i")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.5, -20, -18.000004)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.5, -20, -2.0000038)
 
 [node name="Column17" parent="Backdrop" unique_id=1473325708 instance=ExtResource("5_gfc0i")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.499999, -20, -22.000004)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.5, -20, -6.000004)
 
 [node name="Column18" parent="Backdrop" unique_id=141031022 instance=ExtResource("5_gfc0i")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.499999, -20, -25.500004)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.5, -20, -9.500004)
 
 [node name="Column19" parent="Backdrop" unique_id=464581822 instance=ExtResource("5_gfc0i")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.5, -20, -18.000004)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.5, -20, -2.0000038)
 
 [node name="Column20" parent="Backdrop" unique_id=1784464932 instance=ExtResource("5_gfc0i")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.499998, -20, -22.000004)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.500002, -20, -6.000004)
 
 [node name="Column21" parent="Backdrop" unique_id=1195273102 instance=ExtResource("5_gfc0i")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.499998, -20, -25.500004)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.500002, -20, -9.500004)
 
 [node name="Column3" parent="Backdrop" unique_id=390961555 instance=ExtResource("5_gfc0i")]
 transform = Transform3D(-4.371138e-08, 0, 1, 0, 1, 0, -1, 0, -4.371138e-08, -22.499996, -20, -38.330494)
 
 [node name="Column6" parent="Backdrop" unique_id=1356174285 instance=ExtResource("6_lddp6")]
-transform = Transform3D(-4.371138e-08, 0, 1, 0, 1, 0, -1, 0, -4.371138e-08, -22.499992, -20, -30.330498)
+transform = Transform3D(1, 0, -7.1054274e-15, 0, 1, 0, 7.1054274e-15, 0, 1, 17.331919, -20, -22.998577)
 
 [node name="Column8" parent="Backdrop" unique_id=127137631 instance=ExtResource("6_lddp6")]
-transform = Transform3D(-4.371138e-08, 0, 1, 0, 1, 0, -1, 0, -4.371138e-08, -22.499996, -20, -22.830498)
+transform = Transform3D(1, 0, -7.1054274e-15, 0, 1, 0, 7.1054274e-15, 0, 1, 9.831919, -20, -22.99858)
 
 [node name="Column9" parent="Backdrop" unique_id=1337099055 instance=ExtResource("6_lddp6")]
-transform = Transform3D(-4.371138e-08, 0, 1, 0, 1, 0, -1, 0, -4.371138e-08, -22.499994, -20, -14.830498)
+transform = Transform3D(1, 0, -7.1054274e-15, 0, 1, 0, 7.1054274e-15, 0, 1, 1.8319182, -20, -22.99858)
 
 [node name="Column7" parent="Backdrop" unique_id=2001118152 instance=ExtResource("6_lddp6")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 13.5, -20, -7.5)
 
 [node name="Column14" parent="Backdrop" unique_id=332740477 instance=ExtResource("6_lddp6")]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -3.0000007, -20, 1.4999981)
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 44.25, -20, -20.25)
 
 [node name="decimated_priest_ahmose" parent="Backdrop" unique_id=525048004 instance=ExtResource("7_0v1yd")]
-transform = Transform3D(-0.51763815, 0, 1.9318516, 0, 2, 0, -1.9318516, 0, -0.51763815, -2.5, 0.5, 1.5)
+transform = Transform3D(2.8977773, 0, 0.7764572, 0, 3, 0, -0.7764572, 0, 2.8977773, 44.25, 3.5, -19.75)
 
 [node name="Sketchfab_Scene" parent="Backdrop" unique_id=1771484037 instance=ExtResource("8_w8l0o")]
-transform = Transform3D(0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, -2.5, -5, -14)
+transform = Transform3D(-4.371139e-09, 0, 0.1, 0, 0.1, 0, -0.1, 0, -4.371139e-09, -2.4999986, -5, -12)
+
+[node name="Sketchfab_Scene5" parent="Backdrop" unique_id=2088201283 instance=ExtResource("8_w8l0o")]
+transform = Transform3D(6.5567085e-09, 0, -0.05, 0, 0.05, 0, 0.05, 0, 6.5567085e-09, 38.5, -5, -10)
 
 [node name="Sketchfab_Scene2" parent="Backdrop" unique_id=1666665471 instance=ExtResource("9_j8n7s")]
-transform = Transform3D(-1.3113416e-08, 0, 0.29999998, 0, 0.29999998, 0, -0.29999998, 0, -1.3113416e-08, -22, -5, -15)
+transform = Transform3D(0.29999998, 0, -8.881784e-16, 0, 0.29999998, 0, 8.881784e-16, 0, 0.29999998, 2.0014205, -5, -22.498585)
 
 [node name="Sketchfab_Scene3" parent="Backdrop" unique_id=126093273 instance=ExtResource("9_j8n7s")]
-transform = Transform3D(-1.3113416e-08, 0, 0.29999998, 0, 0.29999998, 0, -0.29999998, 0, -1.3113416e-08, -22, -5, -23)
+transform = Transform3D(0.29999998, 0, -8.881784e-16, 0, 0.29999998, 0, 8.881784e-16, 0, 0.29999998, 10.001421, -5, -22.498585)
 
 [node name="Sketchfab_Scene4" parent="Backdrop" unique_id=2144178054 instance=ExtResource("9_j8n7s")]
-transform = Transform3D(-1.3113416e-08, 0, 0.29999998, 0, 0.29999998, 0, -0.29999998, 0, -1.3113416e-08, -22, -5, -30.5)
+transform = Transform3D(0.29999998, 0, -8.881784e-16, 0, 0.29999998, 0, 8.881784e-16, 0, 0.29999998, 17.501421, -5, -22.498585)
+
+[node name="Sketchfab_Scene6" parent="Backdrop" unique_id=1662732084 instance=ExtResource("9_j8n7s")]
+transform = Transform3D(0.29999998, 0, -8.881784e-16, 0, 0.29999998, 0, 8.881784e-16, 0, 0.29999998, 35.00142, -5, -22.498585)
 
 [node name="decimated_egyptian_sculpture" parent="Backdrop" unique_id=1156155771 instance=ExtResource("10_3w8d2")]
-transform = Transform3D(12, 0, 0, 0, 12, 0, 0, 0, 12, 15, -5.5, -17)
+transform = Transform3D(12, 0, 0, 0, 12, 0, 0, 0, 12, 25.5, -1.5, -17)
+
+[node name="decimated_egyptian_head" parent="Backdrop" unique_id=1155987405 instance=ExtResource("14_vmoth")]
+transform = Transform3D(0.04, 0, 2.220446e-16, 0, 0.04, 0, -2.220446e-16, 0, 0.04, 14.5, -5.5, -8.5)
+
+[node name="decimated_amenemhat" parent="Backdrop" unique_id=121913221 instance=ExtResource("15_e5ys3")]
+transform = Transform3D(-1.732051, 0, 0.99999976, 0, 2, 0, -0.99999976, 0, -1.732051, 27.5, -7, -6.5)
 
 [node name="Vase" type="Node3D" parent="." unique_id=656958498]
 
