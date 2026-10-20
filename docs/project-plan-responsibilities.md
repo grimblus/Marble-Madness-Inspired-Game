@@ -12,7 +12,7 @@
 - Sets and enforces the "core game feel" bar — reviews any PR that touches marble physics or camera
 - Performance profiling of the core gameplay loop (marble + camera + physics tick)
 - Coordinates milestone presentation content and final documentation compilation
-- Also built the knock-over props, the see-through marble and backdrop fading, the game-event sounds, the Gallery 03 layout, and the later development of all three galleries (vases and hazard placement), and ran the pre-submission code audit (see [contributions-donovan.md](contributions-donovan.md))
+- Also built the knock-over props, the see-through marble and backdrop fading, the game-event sounds, the Gallery 03 layout, and the later development of all three galleries (vases and hazard placement), and ran the pre-submission code audit
 
 ### Aaron Tran — Technical Lead / Level Systems
 - Owns the tile/level system: the modular tile kit and the GridMap mesh libraries that levels are built from
@@ -29,7 +29,7 @@
   - the **trampoline**, which launches the marble upwards
 - Owns how the marble reacts to hazards: on contact, the marble briefly loses control and gets knocked away
 - Sourced the hazard models (Roman well-head, Kariatida statue, wet floor sign)
-- Owns the timer, checkpoint and win/lose rules. The base versions were built early by Donovan to unblock testing (see [contributions-donovan.md](contributions-donovan.md))
+- Owns the timer, checkpoint and win/lose rules. The base versions were built early by Donovan to unblock testing
 
 ### Jayden Bach — Polish, UI & Support
 - Owns all UI and menus:

@@ -381,7 +381,7 @@ Changes made in response to testing, in roughly chronological order:
 | **Andrew Loi** | Gameplay systems | Caryatid, vacuum well, blower, trampoline and wet-floor hazards and their VFX; how the marble reacts to hazards; hazard models |
 | **Jayden Bach** | Polish, UI and support | Start menu, level select, HUD, pause menu, results screen and progress saving, level loading, menu backdrop, audio polish |
 
-Work was done on feature branches per system and merged to `main` once reviewed. Individual contributions are recorded in a separate contribution document and in the commit history.
+Work was done on feature branches per system and merged to `main` once reviewed. Individual contributions are recorded in the commit history.
 
 ## 15. Scope
 
