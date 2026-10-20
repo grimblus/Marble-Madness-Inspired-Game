@@ -3,6 +3,7 @@
 **Course:** COSC2349 Games Studio 2, Assignment 3
 **Team (Group 5):** Donovan Ong, Aaron Tran, Andrew Loi, Jayden Bach
 **Engine:** Godot 4.7.1 (.NET), gameplay code in C#
+**Video demonstration:** [`VIDEO_DEMO.mp4`](../VIDEO_DEMO.mp4) in the repository root
 
 ## 1. Concept
 

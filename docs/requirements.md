@@ -127,4 +127,4 @@ The spec above is kept as written. This section records where the game differs f
 | 3.8 | Sound effects for hazard death, checkpoint, victory and UI | **Met.** Rolling, landing, prop impacts, UI clicks, trampoline bounces, checkpoints, victory, game over, hazard hits, wet-floor slips and falls off the level all have sounds, plus per-scene music. |
 | 4 | Agree a shared C# style | Written up in [code-style.md](code-style.md). |
 | 4 | Documented QA checklist before submission (stretch) | [qa-checklist.md](qa-checklist.md). |
-| 5 | Milestone presentation and video demonstration | **Not started.** Link both from the README once made. |
+| 5 | Milestone presentation and video demonstration | **Video done:** `VIDEO_DEMO.mp4` in the repository root, linked from the README. **Still to do:** the milestone presentation; link it from the README once it's made. |

@@ -47,7 +47,7 @@ See [docs/design-document.md](docs/design-document.md) for the game design, [doc
 
 ## Videos and presentation
 
-- Video demonstration: *link to be added*
+- Video demonstration: [`VIDEO_DEMO.mp4`](VIDEO_DEMO.mp4) in the repository root (7 minutes, 1080p). Open it from your clone of the repository, or download it from the repository page.
 - Milestone presentation: *link to be added*
 
 ## Project Structure
@@ -58,6 +58,7 @@ resources/   Data resources (environments, tile definitions)
 scenes/      .tscn scene files, grouped by system
 scripts/     C# scripts, grouped by system
 docs/        Design, requirements, planning and credits documentation
+VIDEO_DEMO.mp4  Video demonstration
 ```
 
 Folder-to-system mapping follows [docs/requirements.md §3](docs/requirements.md#3-core-systems--functional-requirements):
