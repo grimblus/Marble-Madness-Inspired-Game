@@ -20,7 +20,7 @@ The original game's isometric view, time pressure and hazards that push the marb
 
 ### Visual style and lighting
 
-- **Look:** a bright, high-key museum gallery in warm light. The course is built from colour-coded tiles (blue floors, purple slopes, green hole tiles, yellow rails, red arches) that read clearly against pale columns and exhibits, with the blue marble and the red goal flag standing out.
+- **Look:** a bright, high-key museum gallery in warm light. The course is built from colour-coded tiles (blue floors, purple slopes, green hole tiles, yellow rails, red arches) that read clearly against pale columns and exhibits, with the blue marble and the red goal flag standing out. The flat, bright colours give the course an almost abstract-art feel, a deliberate contrast with the classical statues and museum objects around it.
 - **Lighting:** one low, warm directional sun (about 40° above the horizon) casts long diagonal shadows across the tiles. A shared environment (`resources/environments/Gallery.tres`) adds a warm procedural sky for ambient and reflected light, SSAO for contact shadows in corners and under arches, a light glow, and height fog so the backdrop below the course fades into haze.
 - **Backdrop:** each level has its own exhibit backdrop below and behind the course: columns and arches with themed exhibits. Gallery 01 shows classical and Egyptian busts (Marcus Aurelius, a horse head, two Egyptian heads), Gallery 02 Greek vases and amphorae, and Gallery 03 Egyptian sculptures and cat statues. Most are photogrammetry scans.
 - **Readability:** shadows stay sharp because the orthographic camera sits close to the marble and the shadow range is tightened to the play area (§12). Wherever scenery hides the marble, it shows through as a see-through copy of itself (§4).
@@ -108,17 +108,11 @@ Ten tile types, each a scene in `scenes/tiles/`:
 | Arch | Gateway the marble rolls under; frames routes and reads as "museum" |
 | Goal | Goal platform, marked with a red flag |
 
-### 5.3 Themes and GridMap
+### 5.3 Tile library and GridMap
 
-Each theme is a `MeshLibrary` (`assets/libraries/`) built from the same ten tiles with a different material set. Levels are painted onto a Godot `GridMap` with the theme's library (cell size 1 × 0.5 × 1 m, so the 2 m tiles snap cleanly).
+The kit is a `MeshLibrary` (`assets/libraries/tile_library.tres`) built from the ten tiles, with colour-coded tiles: blue floors, purple slopes, green hole tiles, yellow rails and red arches. Levels are painted onto a Godot `GridMap` with it (cell size 1 × 0.5 × 1 m, so the 2 m tiles snap cleanly).
 
-| Library | Look | Used in |
-|---|---|---|
-| `tile_library` | Colour-coded tiles: blue floors, purple slopes, green hole tiles, yellow rails, red arches | All three galleries |
-| `marble_library` | Polished white marble with dark marble accents and gold trim | Not used |
-| `sand_library` | Sandstone floors, dark sand edges, sandstone walls, gold trim | Not used |
-
-Marble, sandstone and a muted marble-and-brass look were all tried as per-gallery themes. The team settled on the colour-coded set for every level: each tile type reads instantly at a glance, so slopes, holes and rails are easy to spot from the camera's height, and the galleries are told apart by their exhibits and music instead. The other two libraries stay in the project, and because the libraries share tile shapes, a level can switch themes later by remapping its tile IDs.
+Marble, sandstone and a muted marble-and-brass look were all tried as per-gallery themes, each as its own library. The team settled on the colour-coded set for every level, for two reasons. Each tile type reads instantly at a glance, so slopes, holes and rails are easy to spot from the camera's height. And the bright, flat colours give the course an almost abstract-art feel that contrasts with the classical statues and museum objects around it. The galleries are told apart by their exhibits and music instead. The unused marble and sandstone libraries, with their tile scenes, materials and textures, were removed before submission.
 
 Materials are shared resources in `assets/materials/`. Each one is a `StandardMaterial3D` that uses triplanar mapping with CC0 PBR textures (see `docs/credits.md`), so any tile shape textures cleanly without UV work. Each tile type has its own colour, and the goal flag is red, so the player's eye is drawn to the goal.
 
@@ -195,9 +189,9 @@ Each level holds only its own tiles, triggers, hazards, props and backdrop. The 
 | Narrowest path | 2 tiles | 1 tile with rails | 1 tile without rails |
 | Signature feature | Hole tiles | Opening maze | Route fork, steep drops |
 | Checkpoints | 1 | 3 | 3 |
-| 3 / 2 / 1-star times | 30 / 60 / 300 s | 30 / 60 / 300 s (planned: 45 / 75 / 300) | 30 / 60 / 300 s (planned: 60 / 100 / 300) |
+| 3 / 2 / 1-star times | 30 / 60 / 300 s | 50 / 80 / 300 s | 75 / 120 / 300 s |
 
-All levels currently share the same star times; the per-level values shown as planned are not set up yet. Levels unlock in order: a gallery opens once the previous one has been cleared with at least one star.
+Star times grow with each gallery's length. They are kept in `LevelCatalog`, next to each level's scene. Levels unlock in order: a gallery opens once the previous one has been cleared with at least one star.
 
 ## 7. Hazards
 
@@ -224,7 +218,7 @@ At a normal 4 m/s every vase topples and settles within a few seconds; gentle bu
 
 ## 8. Timer, checkpoints, win and lose
 
-- **Stopwatch and limit:** `LevelTimer` counts up from zero and is visible on the HUD at all times. Every level has a hard 5-minute limit: at 5:00 the run ends in a game over ("Timer expires"). Star times reward speed: under 30 s earns three stars, under 60 s two, and any finish inside the limit one. This keeps the original game's pressure to beat the clock while rewarding faster play with a grade.
+- **Stopwatch and limit:** `LevelTimer` counts up from zero and is visible on the HUD at all times. Every level has a hard 5-minute limit: at 5:00 the run ends in a game over ("Timer expires"). Star times reward speed: each gallery has its own three- and two-star times (§6), and any finish inside the limit earns one star. This keeps the original game's pressure to beat the clock while rewarding faster play with a grade.
 - **Checkpoints:** passing a checkpoint updates the respawn point in the `CheckpointManager` autoload. A fall respawns the marble there instantly; the level does not reload and the clock keeps running. Each new attempt clears the old checkpoint, so one never carries over into another run or level.
 - **Win:** reaching the goal calls `GameStateManager.Win()`. The marble stops responding, the timer freezes, and the results screen shows the grade.
 - **Lose:** reaching the 5-minute limit ends the run on the game-over panel, with Try Again, Level Select and Main Menu.
@@ -302,7 +296,7 @@ The backdrop used to live in the shell too. It moved into each level scene so ev
 
 The level select records the player's choice in `GameSession`. `LevelLoader` then loads that level into the shell, places the marble at its `PlayerStart`, and tells the HUD and results screen which level is running.
 
-Adding a gallery takes a new level scene, one line in `LevelCatalog` and a picture for its level-select card. The marble, camera and UI are never duplicated per level.
+Adding a gallery takes a new level scene, one line in `LevelCatalog` (its scene and star times) and a picture for its level-select card. The marble, camera and UI are never duplicated per level.
 
 ### 11.3 Physics layers
 
@@ -370,6 +364,7 @@ Changes made in response to testing, in roughly chronological order:
 | Large backdrop exhibits sometimes hid the tiles right next to the marble | Added backdrop fading (§4). Its first version used bounding boxes and faded a vase that wasn't near the marble at the start of Gallery 02, so it now tests each prop's actual triangles |
 | The blower's wind effect scrolled inward, so it read as suction | The blower now plays the reversed, outward animation |
 | Wells pushed and pulled the marble from any direction within 5 m, even through floors, until it had passed through their wind once | Found in a code audit: the force now applies only inside the wind cone (§7) |
+| Every gallery used Gallery 01's star times, so the longer Galleries 02 and 03 were far harder to grade well on | Star times are now set per level in `LevelCatalog`, longer for longer galleries (§6) |
 | There were no sounds for checkpoints, winning, losing or hazard hits | Added game-event sounds (§10). The first fall sound felt jarring, so all the event jingles now come from one steel drum set, with the fall sound played quieter than the rest |
 
 ## 14. Team roles

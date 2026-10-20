@@ -29,7 +29,7 @@ See [docs/design-document.md](docs/design-document.md) for the game design, [doc
 ## How to play
 
 - Roll from the start to the **goal**, the platform marked with a red flag.
-- **Time:** the stopwatch counts up. Finish under 30 s for three stars, under 60 s for two, and any time under 5:00 for one. At 5:00 the run ends in a game over.
+- **Time:** the stopwatch counts up. Each gallery has its own star times: finish under them for three or two stars (Gallery 01: 30 s and 60 s, Gallery 02: 50 s and 80 s, Gallery 03: 1:15 and 2:00), and in any time under 5:00 for one. At 5:00 the run ends in a game over.
 - **Checkpoints:** falling off the course puts you back at the last checkpoint you passed. The clock keeps running.
 - **Hazards:** a patrolling caryatid statue knocks you away, a vacuum well pulls you into its wind and a blower pushes you out of it, a trampoline launches you upwards, and a wet floor takes away your control for a moment.
 - **Vases:** you can knock them over. They slow you down a little.
@@ -48,7 +48,7 @@ See [docs/design-document.md](docs/design-document.md) for the game design, [doc
 ## Videos and presentation
 
 - Video demonstration: [`VIDEO_DEMO.mp4`](VIDEO_DEMO.mp4) in the repository root (7 minutes, 1080p). Open it from your clone of the repository, or download it from the repository page.
-- Milestone presentation: *link to be added*
+- Milestone presentation: given in person in class.
 
 ## Project Structure
 
@@ -79,8 +79,6 @@ Folder-to-system mapping follows [docs/requirements.md §3](docs/requirements.md
 
 ## Known Issues
 
-- Star times (30 / 60 s for 3 / 2 stars) are shared by every level; per-level times are planned. Every level has a 5-minute limit.
-- All three galleries use the same colour-coded tile set; each gallery is themed by its backdrop exhibits and music.
 - Saved stars and best times live in Godot's user data folder (`user://progress.cfg`). Delete that file to reset progress.
 
 ## Credits

@@ -6,19 +6,30 @@
 
 public static class LevelCatalog
 {
-	public sealed record LevelEntry(string Id, string Label, string ScenePath)
+	// ThreeStarSeconds and TwoStarSeconds: finishing under these earns three or
+	// two stars. Any other finish inside the time limit earns one.
+	public sealed record LevelEntry(string Id, string Label, string ScenePath,
+		float ThreeStarSeconds, float TwoStarSeconds)
 	{
 		public bool IsPlayable => !string.IsNullOrEmpty(ScenePath);
 	}
 
 	// Each path is the level's own scene (tiles, goal, hazards), not Main.tscn.
 	// Main.tscn is the shared scene the chosen level gets loaded into.
+	// Longer galleries get longer star times.
 	public static readonly LevelEntry[] Levels =
 	{
-		new("level_01", "GALLERY 01", "res://scenes/levels/level_01/Level01.tscn"),
-		new("level_02", "GALLERY 02", "res://scenes/levels/level_02/Level02.tscn"),
-		new("level_03", "GALLERY 03", "res://scenes/levels/level_03/Level03.tscn")
+		new("level_01", "GALLERY 01", "res://scenes/levels/level_01/Level01.tscn", 30.0f, 60.0f),
+		new("level_02", "GALLERY 02", "res://scenes/levels/level_02/Level02.tscn", 50.0f, 80.0f),
+		new("level_03", "GALLERY 03", "res://scenes/levels/level_03/Level03.tscn", 75.0f, 120.0f)
 	};
+
+	// The level with this id, or null if it isn't in the list.
+	public static LevelEntry Find(string id)
+	{
+		int index = IndexOf(id);
+		return index < 0 ? null : Levels[index];
+	}
 
 	// Position of a level in Levels, or -1 if the id isn't in the list.
 	public static int IndexOf(string id)

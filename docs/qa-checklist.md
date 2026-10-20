@@ -23,7 +23,7 @@ For each playable gallery:
 
 ## 3. Win, lose and retry
 
-- [ ] **Win:** stars match the time (under 30 s: 3 stars, under 60 s: 2, under 5:00: 1), and the best time is saved.
+- [ ] **Win:** stars match the gallery's star times in `LevelCatalog` (3 and 2 stars under 30 / 60 s, 50 / 80 s and 1:15 / 2:00 for Galleries 01–03; 1 star under 5:00), and the best time is saved.
 - [ ] **Lose:** at 5:00 the run ends with "Timer expires".
 - [ ] **Retry** restarts the level cleanly: timer at zero, marble at the start, nothing frozen.
 - [ ] **Next level** and **Level Select** work from the win screen, and the next gallery unlocks after a 1-star clear.
@@ -47,4 +47,4 @@ For each playable gallery:
 - [ ] The README's setup steps, controls and known issues match the game.
 - [ ] Every "In progress" note in the docs (`grep -n "In progress" docs/*.md`) has been either finished or moved to Known Issues.
 - [ ] Every third-party asset is in [credits.md](credits.md) with its source and licence. No "*to confirm*" entries remain.
-- [ ] The video demonstration and milestone presentation are linked from the README.
+- [ ] The video demonstration is linked from the README.

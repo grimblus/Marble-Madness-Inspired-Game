@@ -1,6 +1,0 @@
-[gd_resource type="StandardMaterial3D" format=3 uid="uid://c1qhebexsr7s0"]
-
-[ext_resource type="Texture2D" uid="uid://dn511rn3dfj5n" path="res://assets/textures/marble_107-1K/marble_107_basecolor-1K.png" id="1_awc5h"]
-
-[resource]
-albedo_texture = ExtResource("1_awc5h")

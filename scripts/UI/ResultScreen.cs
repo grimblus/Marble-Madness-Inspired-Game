@@ -4,10 +4,10 @@ using Godot;
 //
 // It listens to GameStateManager.LevelWon / LevelLost and to the LevelTimer's
 // TimeChanged signal (so it knows the final time), then shows one of two panels:
-//   - Level Complete: 3 stars under ThreeStarSeconds, 2 under TwoStarSeconds,
-//     1 under OneStarSeconds.
-//   - Game Over: finishing at or after OneStarSeconds, the timer limit running
-//     out, or the marble falling.
+//   - Level Complete: 3 stars and 2 stars under the level's star times (from
+//     LevelCatalog), 1 under OneStarSeconds.
+//   - Game Over: finishing at or after OneStarSeconds, or the timer limit
+//     running out. A fall only sends the marble back to its checkpoint.
 // The game is paused while the screen is up (it runs with Process Mode = Always).
 
 public partial class ResultScreen : CanvasLayer
@@ -22,11 +22,8 @@ public partial class ResultScreen : CanvasLayer
 	[Export] public string LevelId { get; set; } = "level_01";
 
 	[ExportGroup("Star times (seconds)")]
-	// Finishing under this time earns three stars.
-	[Export] public float ThreeStarSeconds { get; set; } = 30.0f;
-	// Finishing under this time earns two stars.
-	[Export] public float TwoStarSeconds { get; set; } = 60.0f;
 	// Finishing under this time earns one star; at or after it is a game over.
+	// The three- and two-star times are per level, in LevelCatalog.
 	[Export] public float OneStarSeconds { get; set; } = 300.0f;
 
 	[ExportGroup("Scenes")]
@@ -68,6 +65,10 @@ public partial class ResultScreen : CanvasLayer
 	private GameStateManager _gameState;
 	private float _lastTime;
 	private bool _shown;
+
+	// This level's star times, read from LevelCatalog in _Ready.
+	private float _threeStarSeconds = 30.0f;
+	private float _twoStarSeconds = 60.0f;
 
 	public override void _Ready()
 	{
@@ -128,6 +129,17 @@ public partial class ResultScreen : CanvasLayer
 
 		// LevelId is set by the LevelLoader before this runs, so the catalog can tell
 		// which levels come before and after this one.
+		LevelCatalog.LevelEntry level = LevelCatalog.Find(LevelId);
+		if (level != null)
+		{
+			_threeStarSeconds = level.ThreeStarSeconds;
+			_twoStarSeconds = level.TwoStarSeconds;
+		}
+		else
+		{
+			GD.PushWarning($"ResultScreen: level '{LevelId}' isn't in LevelCatalog, so the default star times are used.");
+		}
+
 		_nextButton.Disabled = LevelCatalog.NextPlayable(LevelId) == null;
 		_previousButton.Disabled = LevelCatalog.PreviousPlayable(LevelId) == null;
 		_levelSelectButton.Disabled = string.IsNullOrEmpty(LevelSelectScenePath);
@@ -204,7 +216,7 @@ public partial class ResultScreen : CanvasLayer
 
 	private void ShowWin()
 	{
-		int stars = _lastTime < ThreeStarSeconds ? 3 : (_lastTime < TwoStarSeconds ? 2 : 1);
+		int stars = _lastTime < _threeStarSeconds ? 3 : (_lastTime < _twoStarSeconds ? 2 : 1);
 
 		float? previousBest = ProgressStore.GetBestTime(LevelId);
 		bool newBest = !previousBest.HasValue || _lastTime < previousBest.Value;
@@ -222,8 +234,8 @@ public partial class ResultScreen : CanvasLayer
 
 		// Chips show the star times, with the earned tier highlighted.
 		SetChip(0, "1 STAR", "UNDER " + TimeFormat.Short(OneStarSeconds), stars == 1);
-		SetChip(1, "2 STARS", "UNDER " + TimeFormat.Short(TwoStarSeconds), stars == 2);
-		SetChip(2, "3 STARS", "UNDER " + TimeFormat.Short(ThreeStarSeconds), stars == 3);
+		SetChip(1, "2 STARS", "UNDER " + TimeFormat.Short(_twoStarSeconds), stars == 2);
+		SetChip(2, "3 STARS", "UNDER " + TimeFormat.Short(_threeStarSeconds), stars == 3);
 
 		Reveal(_winPanel);
 

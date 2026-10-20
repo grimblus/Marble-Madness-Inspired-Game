@@ -16,7 +16,7 @@
 
 ### Aaron Tran — Technical Lead / Level Systems
 - Owns the tile/level system: the modular tile kit and the GridMap mesh libraries that levels are built from
-- Extended the starting greybox tiles with curve, half-width, ramp-corner, steep-ramp, wall and goal pieces, in three themed sets (default, Marble, Sand), each with its own mesh library. The team later chose the default colour-coded set for every gallery
+- Extended the starting greybox tiles with curve, half-width, ramp-corner, steep-ramp, wall and goal pieces, in three themed sets (default, Marble, Sand), each with its own mesh library. The team later chose the default colour-coded set for every gallery, and the Marble and Sand sets were removed before submission
 - Owns level layout and integration: rebuilt Level 1 on a GridMap, built Level 2, and set up Level 3's GridMap and backdrop (its layout was then built by Donovan)
 - Keeps levels to the shared grid and connection rules in [tile-convention.md](tile-convention.md)
 
@@ -53,7 +53,7 @@
 | 2 | 24–30 Sep | Core systems integrated into one test level. Camera finalized. | Done. |
 | 3 | 1–7 Oct | Level 1 complete and fully playable (physics, hazards, checkpoints, timer, win/lose all working end-to-end). | Done. Level 1 is playable end-to-end with its hazards placed. |
 | 4 | 8–14 Oct | Level 2 built; Level 3 blocked out. Audio and UI polish pass begins. Design document drafting starts. | Done. |
-| 5 | 15–21 Oct | Level 3 complete. Full polish pass (audio, visuals, juice). Playtesting across all levels. README and design doc finished. Milestone presentation prepared. | Mostly done. Level 3 is built, all sound effects are in, the README and design document are complete, and a code and documentation audit was run against the requirements. The milestone presentation is still to be prepared. |
+| 5 | 15–21 Oct | Level 3 complete. Full polish pass (audio, visuals, juice). Playtesting across all levels. README and design doc finished. Milestone presentation prepared. | Done. Level 3 is built, all sound effects are in, the README and design document are complete, and a code and documentation audit was run against the requirements. The milestone presentation was given in person in class. |
 | 6 | 22–25 Oct | Buffer for bug fixes only — no new features. Video demonstration recorded and edited. Fresh clone tested end-to-end to confirm it runs cleanly for the marker. Submission. | In progress. Video demonstration recorded (`VIDEO_DEMO.mp4` in the repository root). Next: the fresh-clone test with [qa-checklist.md](qa-checklist.md), and submission. |
 
 Week 6 is deliberately kept as pure buffer — no feature work should be scheduled into it.

@@ -25,24 +25,22 @@ Each value is marked **Locked** (build against it) or **Tentative** (expected to
 ## 3. Scene structure and naming
 
 - One tile = one `.tscn`, root node named after the file.
-- File names are `<Theme>_<Type>.tscn`, with an underscore. The default theme uses the `Tile` prefix: `Tile_Flat.tscn`, `Tile_Ramp.tscn`. Themed sets use their theme name and sit in a subfolder: `Marble/Marble_Flat.tscn`, `Sand/Sand_Flat.tscn`.
+- File names are `Tile_<Type>.tscn`, with an underscore: `Tile_Flat.tscn`, `Tile_Ramp.tscn`.
 - The ten tile types are Flat, Half, Ramp, Steep, RampCorner, Curve, Hole, Wall, Arch and Goal. Every theme provides all ten.
 - Level scenes go in `scenes/levels/level_XX/`. They're painted onto a GridMap (§3.1) rather than built from hand-placed tile instances. No level-specific geometry is built directly in a level scene, except temporary experiments.
 
 ### 3.1 GridMap and mesh libraries
 
-All levels are painted onto a Godot `GridMap`, one per level, using a theme's `MeshLibrary`:
+All levels are painted onto a Godot `GridMap`, one per level, using the colour-coded `MeshLibrary`:
 
-| Theme | Source scene | Mesh library |
-|---|---|---|
-| Default (colour-coded) | `scenes/tiles/TileMap.tscn` | `assets/libraries/tile_library.tres` |
-| Marble | `scenes/tiles/Marble/MarbleTileMap.tscn` | `assets/libraries/marble_library.tres` |
-| Sand | `scenes/tiles/Sand/SandTileMap.tscn` | `assets/libraries/sand_library.tres` |
+| Source scene | Mesh library |
+|---|---|
+| `scenes/tiles/TileMap.tscn` | `assets/libraries/tile_library.tres` |
 
-All three galleries use the default library. The Marble and Sand libraries are kept but unused (see the design document §5.3). The libraries list their ten tiles in different orders, so switching a level to another library means remapping its tile IDs, not just swapping the library.
+Marble and sandstone libraries were also built during development, then removed once the colour-coded set was chosen for every gallery (see the design document §5.3).
 
-- Each source scene holds one `MeshInstance3D` per tile type, each with a `StaticBody3D` and collision shape as a child, so the library carries collision.
-- To update a library, edit the source scene, then use **Scene → Export As → MeshLibrary** and overwrite the `.tres`. Every level using it picks up the change.
+- The source scene holds one `MeshInstance3D` per tile type, each with a `StaticBody3D` and collision shape as a child, so the library carries collision.
+- To update the library, edit the source scene, then use **Scene → Export As → MeshLibrary** and overwrite the `.tres`. Every level using it picks up the change.
 - GridMap settings: **cell size 1 × 0.5 × 1 m** with cell centring off on all axes. A 2 m tile covers 2 × 2 cells, and a 1 m elevation step is two cells.
 - GridMap batches tiles into octants, which keeps draw calls low on large levels.
 - Tile visuals and physics live inside the tile scene, so changing how a tile is built (CSG, baked mesh or Blender mesh) only changes the internals of the tile and nothing that instances it.
