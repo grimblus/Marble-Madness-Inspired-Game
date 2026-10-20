@@ -28,11 +28,11 @@ Marcus Aurelius, the Horse Head, Amenemhat III and the Roman Well-head are 3D sc
 
 The Greek Vase, Greek jar, Ancient Greece pot/vase and Ancient Greek vase are backdrop props in Gallery 02. The Greek jar is based on a terracotta amphora (about 530 BC) in the Metropolitan Museum of Art. The Ancient Greece pot/vase and Ancient Greek vase are photogrammetry scans of Greek vases.
 
-The two cat statues, Priest Ahmose and the Egyptian sculpture are backdrop props in Gallery 03. Priest Ahmose is a scan of *The Priest Ahmose and his Mother Baket-re* (18th Dynasty, about 1490–1400 BC) in the Ny Carlsberg Glyptotek, Copenhagen. The Egyptian sculpture cat is a photogrammetry scan; the Egyptian Cat Statue is a modelled asset.
+The two cat statues, Priest Ahmose, the Egyptian sculpture, the Egyptian Head and Amenemhat III are backdrop props in Gallery 03; the last two also appear in Gallery 01. Priest Ahmose is a scan of *The Priest Ahmose and his Mother Baket-re* (18th Dynasty, about 1490–1400 BC) in the Ny Carlsberg Glyptotek, Copenhagen. The Egyptian sculpture cat is a photogrammetry scan; the Egyptian Cat Statue is a modelled asset.
 
 The `objects/` vases are used by the knock-over vase props (`scenes/props/vases/`). The author's terms allow using the vases in a game but prohibit uploading or redistributing the asset itself. They're stored in this private team repository only to build the game, so don't make the repository public or share the raw model files elsewhere.
 
-The `hazards/` models are used by the hazards: the Roman Well-head by the vacuum hazard (`vacuum_hazard.tscn`), the Kariatida statue by the moving hazard (`moving_hazard.tscn`), and the Wet Floor Sign by the stationary hazard (`stationary_hazard.tscn`).
+The `hazards/` models are used by the hazards: the Roman Well-head by the vacuum and blower hazards (`vacuum_hazard.tscn`, `blower_hazard.tscn`), the Kariatida statue by the moving hazard (`moving_hazard.tscn`), the Wet Floor Sign by the stationary hazard (`stationary_hazard.tscn`), and the Trampoline by the trampoline hazard (`trampoline_hazard.tscn`).
 
 **CC BY-NC-SA 4.0 terms to keep in mind** (Marcus Aurelius, Horse Head, Amenemhat III, Roman Well-head, Ancient Greek Vase, Priest Ahmose, Egyptian sculpture):
 - **Attribution** — credit given above; keep this file if any of these models ships in the final build.
@@ -80,17 +80,16 @@ All recordings sourced from [Musopen](https://musopen.org). The compositions the
 | `assets/textures/stone_wall_texture_2-1K/` | [ShareTextures](https://www.sharetextures.com/textures/wall/stone-wall-2) | Stone Wall Texture 2 | M.Tolga Arslan | [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/) |
 | `assets/textures/pexels-this-and-no-internet-25-288559-35336001` | [Pexels](https://www.pexels.com/photo/modern-art-gallery-with-abstract-blue-paintings-35336001/) | This And No Internet 25 | photoholic | [Pexels License](https://www.pexels.com/license/) (free to use, no attribution required) |
 
-**Not yet used:** the Pexels photo isn't referenced by any scene. Remove it, or note here where it's used once it is.
+Marble 107 textures the player's marble (`PlayerMarble.tres`, and its see-through copy `MarbleXRay.tres`) as well as the marble tile set. Ground 4 and Stone Wall Texture 2 are used only by the sandstone tile set, which no gallery uses any more. The Pexels photo isn't referenced by any scene.
 
-### VFX textures and meshes (sources needed)
+### VFX textures and meshes
 
-These were added for the hazard visual effects. Their sources and licences aren't recorded yet. **Andrew, please fill these in**, or mark them as made by the team if you created them.
+Made by the team (Andrew Loi) for the wind hazards, so no third-party licence applies.
 
-| Local file | Used by | Source | Licence |
-|---|---|---|---|
-| `assets/textures/T_VFX_WindNoise1.png` | Vacuum hazard wind effect (`scenes/hazards/vfx_vacuum_wind.tscn`) | *to confirm* | *to confirm* |
-| `assets/models/hazards/vacuum_wind.obj` | Vacuum hazard wind effect | *to confirm* | *to confirm* |
-| `assets/textures/T_CloudNoise_Tiled.png`, `T_Leaf_001.png`, `T_Leaf_001gray.png`, `T_NHU85.png`, `T_VFX_Noise_531.png`, `T_VFX_SparklesF21.jpg`, `T_arrows21.png` | Not used on `main` (possibly for the blower hazard on `feature/hazards`) | *to confirm* | *to confirm* |
+| Local file | Used by |
+|---|---|
+| `assets/textures/T_VFX_WindNoise1.png` | Wind effect on the vacuum well and the blower (`scenes/hazards/vfx_vacuum_wind.tscn`, `vfx_blower_wind.tscn`) |
+| `assets/models/hazards/vacuum_wind.obj` | Wind cone mesh for the same two effects |
 
 ## Fonts
 

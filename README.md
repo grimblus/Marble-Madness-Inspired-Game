@@ -1,6 +1,6 @@
 # Marble Madness 3D Clone
 
-A 3D clone of *Marble Madness* built in Godot 4.7.1 (.NET / C#) for COSC2349 Games Studio 2, Assignment 3. Roll a glass marble through the galleries of a bright museum, against the clock, past patrolling statues, suction wells and wet floors.
+A 3D clone of *Marble Madness* built in Godot 4.7.1 (.NET / C#) for COSC2349 Games Studio 2, Assignment 3. Roll a glass marble through three galleries of a bright museum, against the clock, past patrolling statues, suction wells, blowers, trampolines and wet floors.
 
 ![Gallery 01 in play](docs/images/gallery-01.png)
 
@@ -31,19 +31,19 @@ See [docs/design-document.md](docs/design-document.md) for the game design, [doc
 - Roll from the start to the **goal**, the platform marked with a red flag.
 - **Time:** the stopwatch counts up. Finish under 30 s for three stars, under 60 s for two, and any time under 5:00 for one. At 5:00 the run ends in a game over.
 - **Checkpoints:** falling off the course puts you back at the last checkpoint you passed. The clock keeps running.
-- **Hazards:** a patrolling caryatid statue knocks you away, a well pulls you towards it, and a wet floor takes away your control for a moment.
+- **Hazards:** a patrolling caryatid statue knocks you away, a vacuum well pulls you into its wind and a blower pushes you out of it, a trampoline launches you upwards, and a wet floor takes away your control for a moment.
 - **Vases:** you can knock them over. They slow you down a little.
 - Galleries unlock in order. Clearing one with at least one star opens the next.
 
 ## Features
 
 - Physics-driven marble (a real rigid body pushed by forces), with camera-relative controls
-- Isometric follow camera with five zoom levels, and a see-through marble wherever scenery hides it
-- Levels built from a shared modular tile kit on Godot GridMaps, in three material themes
-- Moving, suction and stationary hazards, checkpoints, a stopwatch with star grades, and saved best times
+- Isometric follow camera with five zoom levels; a see-through marble wherever scenery hides it, and backdrop exhibits that fade out when they cover the course around the marble
+- Three galleries built from one shared modular tile kit on Godot GridMaps, each themed by its own exhibits and music
+- Patrolling, suction, blowing, bouncing and slippery hazards, checkpoints, a stopwatch with star grades, and saved best times
 - Knock-over physics props
 - Start menu, level select, pause menu, HUD and results screen
-- Music per scene with crossfades, speed-based rolling and landing sounds, prop impact sounds and menu clicks
+- Music per scene with crossfades; speed-based rolling and landing sounds; prop impacts; menu clicks; and sounds for checkpoints, the goal, game over, hazard hits, slips, trampoline bounces and falls
 
 ## Videos and presentation
 

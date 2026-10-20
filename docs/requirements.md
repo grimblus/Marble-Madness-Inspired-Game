@@ -115,7 +115,7 @@ All four are individually graded rubric items — none can be skipped or left th
 - ~~Confirmed Classroom50 repo/invite-link setup process~~ **Resolved (20 Sep):** the Classroom50 repo was set up, and the project history was migrated into it with full commit history kept.
 - ~~Final choice of control scheme (tilt-world vs. direct-force)~~ **Resolved (Week 1):** direct-force was chosen and implemented in the first marble controller prototype. In Week 4, movement was made relative to the camera (W rolls up the screen).
 
-## 8. Status and deviations (20 Oct)
+## 8. Status and deviations (20 Oct, final pass)
 
 The spec above is kept as written. This section records where the game differs from it, and what's still outstanding.
 

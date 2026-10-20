@@ -12,7 +12,7 @@ Each value is marked **Locked** (build against it) or **Tentative** (expected to
 | Tile origin | Centre of the footprint, at the tile's base height | Locked | Centre origins make 90° rotation in place safe: a rotated tile still occupies the same cell. |
 | Flat tile surface | y = 0 (top of the walking surface) | Locked | Levels stack tiles by elevation offset, so a consistent reference height is needed. |
 | Flat tile thickness | 0.5 m (surface at y = 0, underside at y = -0.5) | Locked | Thick enough that fast-moving marbles do not tunnel through. |
-| Elevation step | 1 m | Locked | A ramp spanning one tile (2 m run) rises 1 m, a 2:1 slope of about 27°. The marble's 12 N move force climbs it from a standing start. Steeper or shallower ramps are separate tile variants (`Steep`, `Half`), not ad-hoc rotations. |
+| Elevation step | 1 m | Locked | A ramp spanning one tile (2 m run) rises 1 m, a 2:1 slope of about 27°. The marble's 12 N move force climbs it from a standing start. Steeper ramps are a separate tile variant (`Steep`), not ad-hoc rotations. `Half` is a half-width (1 × 2 m) flat slab for narrowing paths. |
 | Grid unit | GridMap cell 1 × 0.5 × 1 m | Locked | Levels are painted on a GridMap (§3.1). A tile covers 2 × 2 cells and an elevation step is two cells. |
 
 ## 2. Connection points
@@ -35,9 +35,11 @@ All levels are painted onto a Godot `GridMap`, one per level, using a theme's `M
 
 | Theme | Source scene | Mesh library |
 |---|---|---|
-| Default (greybox) | `scenes/tiles/TileMap.tscn` | `assets/libraries/tile_library.tres` |
+| Default (colour-coded) | `scenes/tiles/TileMap.tscn` | `assets/libraries/tile_library.tres` |
 | Marble | `scenes/tiles/Marble/MarbleTileMap.tscn` | `assets/libraries/marble_library.tres` |
 | Sand | `scenes/tiles/Sand/SandTileMap.tscn` | `assets/libraries/sand_library.tres` |
+
+All three galleries use the default library. The Marble and Sand libraries are kept but unused (see the design document §5.3). The libraries list their ten tiles in different orders, so switching a level to another library means remapping its tile IDs, not just swapping the library.
 
 - Each source scene holds one `MeshInstance3D` per tile type, each with a `StaticBody3D` and collision shape as a child, so the library carries collision.
 - To update a library, edit the source scene, then use **Scene → Export As → MeshLibrary** and overwrite the `.tres`. Every level using it picks up the change.
@@ -65,7 +67,7 @@ Tiles are built from CSG nodes. There are two ways to ship them, and a level can
 - For a textured look, use a `StandardMaterial3D` with albedo, roughness and normal maps from a CC0 PBR set (for example ambientCG or Poly Haven), stored in `assets/textures/`.
 - Turn on **UV1 → Triplanar** so the texture maps consistently on any CSG shape without UV setup. Leave **World Triplanar** off so the texture stays fixed to the tile when it is moved or rotated.
 - Set **UV1 Scale** for a consistent texel density across tile types, roughly one repeat per 1-2 m.
-- Keep tile types distinguishable (a tint or accent per type), since the placeholder colours currently do that job.
+- Keep tile types distinguishable (a tint or accent per type). In the shipped colour-coded set, each type has its own colour, which is what makes slopes, holes and rails readable from the camera.
 - Record the source and licence of every texture set used (a note in the docs is enough).
 - Scene lighting (`WorldEnvironment` with SSAO, glow and sky, plus shadows on the directional light) is part of the look and is set in the level or main scene, not per tile.
 

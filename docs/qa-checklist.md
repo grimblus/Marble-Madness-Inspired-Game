@@ -1,6 +1,6 @@
 # Pre-Submission QA Checklist
 
-Run this before the final submission (Week 6), and again after any late fix. It covers what a marker will do first: clone the repo fresh and play it. Tick each item; if one fails, fix it or add it to the README's Known Issues.
+Run this before the final submission (Week 6, 22–25 Oct), and again after any late fix. It covers what a marker will do first: clone the repo fresh and play it. Tick each item; if one fails, fix it or add it to the README's Known Issues.
 
 ## 1. Fresh clone
 
@@ -19,7 +19,7 @@ For each playable gallery:
 - [ ] Falling off returns the marble to the last checkpoint passed, or to the start.
 - [ ] Each hazard reacts as described in the design document §7.
 - [ ] Knock-over props topple and settle.
-- [ ] The level's music plays, and rolling and landing sounds work.
+- [ ] The level's music plays; rolling and landing sounds work; checkpoints, hazard hits, slips, trampoline bounces and falls play their sounds, and the goal and game over play their jingles.
 
 ## 3. Win, lose and retry
 
@@ -31,7 +31,7 @@ For each playable gallery:
 ## 4. Menus never dead-end
 
 - [ ] Start menu: every button works, and **Back** returns from How to Play and Settings.
-- [ ] The Settings volume slider changes the music volume.
+- [ ] The Settings volume slider changes the master volume (music and sound effects).
 - [ ] Pause (Esc): Resume, Restart and Main Menu all work. Pause is unavailable once the level has ended.
 - [ ] Every screen works with both the mouse and the keyboard.
 - [ ] The UI looks right at 1280 × 720, 1920 × 1080 and a non-16:9 window size.
