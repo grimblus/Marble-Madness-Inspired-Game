@@ -20,6 +20,7 @@ public partial class LevelSelect : Control
 	private static readonly int[] SampleStars = { 3, 2, 0 };
 	private static readonly float?[] SampleTimes = { 28.40f, 52.10f, null };
 
+	// Scene the Back button (and Esc) returns to.
 	[Export(PropertyHint.File, "*.tscn")]
 	public string MainMenuScenePath { get; set; } = "res://scenes/ui/menus/startMenu.tscn";
 
@@ -202,7 +203,7 @@ public partial class LevelSelect : Control
 		{
 			_stars[i].Filled = i < stars;
 		}
-		_bestLabel.Text = best.HasValue ? "BEST " + FormatTime(best.Value) : "BEST --:--.--";
+		_bestLabel.Text = best.HasValue ? "BEST " + TimeFormat.Clock(best.Value) : "BEST --:--.--";
 		_requirementLabel.Text = _index > 0 ? "Complete " + Levels[_index - 1].Label + " to unlock" : "";
 
 		if (!unlocked)
@@ -283,15 +284,5 @@ public partial class LevelSelect : Control
 			total += GetStars(i);
 		}
 		_counterLabel.Text = total + " / " + (Levels.Length * 3);
-	}
-
-	// mm:ss.cc, e.g. 00:27.48
-	private static string FormatTime(float seconds)
-	{
-		int centis = Mathf.FloorToInt(Mathf.Max(0.0f, seconds) * 100.0f);
-		int minutes = centis / 6000;
-		int secs = centis / 100 % 60;
-		int hundredths = centis % 100;
-		return $"{minutes:00}:{secs:00}.{hundredths:00}";
 	}
 }

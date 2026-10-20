@@ -3,7 +3,6 @@ using Godot;
 // Full-screen museum backdrop for the menus (wall, floor, arches, pedestals and
 // the marble), drawn in code. It scales to cover the whole screen at any window size.
 public partial class GalleryBackdrop : Control
-
 {
 	private const float ArtWidth = 1440.0f;
 	private const float ArtHeight = 810.0f;

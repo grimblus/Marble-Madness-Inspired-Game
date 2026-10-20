@@ -15,6 +15,8 @@ using Godot;
 
 public partial class LevelLoader : Node3D
 {
+	// Level loaded when nothing was picked, with its save id and HUD label
+	// (see LevelCatalog for the real values).
 	[Export(PropertyHint.File, "*.tscn")]
 	public string DefaultLevelScenePath { get; set; } = "res://scenes/levels/level_01/Level01.tscn";
 	[Export] public string DefaultLevelId { get; set; } = "level_01";

@@ -3,7 +3,6 @@ using Godot;
 // Win and game over screen (scenes/ui/menus/ResultScreen.tscn).
 //
 // It listens to GameStateManager.LevelWon / LevelLost and to the LevelTimer's
-
 // TimeChanged signal (so it knows the final time), then shows one of two panels:
 //   - Level Complete: 3 stars under ThreeStarSeconds, 2 under TwoStarSeconds,
 //     1 under OneStarSeconds.
@@ -23,12 +22,15 @@ public partial class ResultScreen : CanvasLayer
 	[Export] public string LevelId { get; set; } = "level_01";
 
 	[ExportGroup("Star times (seconds)")]
+	// Finishing under this time earns three stars.
 	[Export] public float ThreeStarSeconds { get; set; } = 30.0f;
+	// Finishing under this time earns two stars.
 	[Export] public float TwoStarSeconds { get; set; } = 60.0f;
-	// Finishing at or after this time is a game over.
+	// Finishing under this time earns one star; at or after it is a game over.
 	[Export] public float OneStarSeconds { get; set; } = 300.0f;
 
 	[ExportGroup("Scenes")]
+	// Scene the Main Menu buttons load.
 	[Export(PropertyHint.File, "*.tscn")]
 	public string MainMenuScenePath { get; set; } = "res://scenes/ui/menus/startMenu.tscn";
 
@@ -215,13 +217,13 @@ public partial class ResultScreen : CanvasLayer
 
 		_winMessageLabel.Text = stars == 3 ? "A flawless roll."
 			: (stars == 2 ? "Nicely rolled." : "Gallery cleared.");
-		_winTimeLabel.Text = FormatTime(_lastTime);
-		_winBestLabel.Text = newBest ? "NEW BEST" : "BEST " + FormatTime(previousBest.Value);
+		_winTimeLabel.Text = TimeFormat.Clock(_lastTime);
+		_winBestLabel.Text = newBest ? "NEW BEST" : "BEST " + TimeFormat.Clock(previousBest.Value);
 
 		// Chips show the star times, with the earned tier highlighted.
-		SetChip(0, "1 STAR", "UNDER " + ShortTime(OneStarSeconds), stars == 1);
-		SetChip(1, "2 STARS", "UNDER " + ShortTime(TwoStarSeconds), stars == 2);
-		SetChip(2, "3 STARS", "UNDER " + ShortTime(ThreeStarSeconds), stars == 3);
+		SetChip(0, "1 STAR", "UNDER " + TimeFormat.Short(OneStarSeconds), stars == 1);
+		SetChip(1, "2 STARS", "UNDER " + TimeFormat.Short(TwoStarSeconds), stars == 2);
+		SetChip(2, "3 STARS", "UNDER " + TimeFormat.Short(ThreeStarSeconds), stars == 3);
 
 		Reveal(_winPanel);
 
@@ -237,8 +239,7 @@ public partial class ResultScreen : CanvasLayer
 	private void ShowGameOver(bool finishedTooSlow)
 	{
 		// A time limit on the LevelTimer ending the run also counts as "time expired".
-		// Get() returns 0 if the property doesn't exist, so this is safe.
-		float limit = _timer != null ? _timer.Get("TimeLimitSeconds").AsSingle() : 0.0f;
+		float limit = _timer?.TimeLimitSeconds ?? 0.0f;
 		bool expired = finishedTooSlow || (limit > 0.0f && _lastTime >= limit - 0.05f);
 
 		float? best = ProgressStore.GetBestTime(LevelId);
@@ -247,8 +248,8 @@ public partial class ResultScreen : CanvasLayer
 		_loseMessageLabel.Text = expired
 			? "The gallery closed before you reached the goal."
 			: "The marble rolled off the edge.";
-		_loseTimeLabel.Text = FormatTime(_lastTime);
-		_loseBestLabel.Text = best.HasValue ? "BEST " + FormatTime(best.Value) : "BEST --:--.--";
+		_loseTimeLabel.Text = TimeFormat.Clock(_lastTime);
+		_loseBestLabel.Text = best.HasValue ? "BEST " + TimeFormat.Clock(best.Value) : "BEST --:--.--";
 
 		Reveal(_losePanel);
 		_tryAgainButton.GrabFocus();
@@ -335,22 +336,5 @@ public partial class ResultScreen : CanvasLayer
 		style.SetCornerRadiusAll(10);
 		style.SetContentMarginAll(8.0f);
 		_chips[index].AddThemeStyleboxOverride("panel", style);
-	}
-
-	// mm:ss.cc, e.g. 00:27.48
-	private static string FormatTime(float seconds)
-	{
-		int centis = Mathf.FloorToInt(Mathf.Max(0.0f, seconds) * 100.0f);
-		int minutes = centis / 6000;
-		int secs = centis / 100 % 60;
-		int hundredths = centis % 100;
-		return $"{minutes:00}:{secs:00}.{hundredths:00}";
-	}
-
-	// m:ss, e.g. 5:00
-	private static string ShortTime(float seconds)
-	{
-		int total = Mathf.RoundToInt(seconds);
-		return $"{total / 60}:{total % 60:00}";
 	}
 }

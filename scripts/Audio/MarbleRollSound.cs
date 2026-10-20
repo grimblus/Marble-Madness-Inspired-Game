@@ -16,6 +16,9 @@ public partial class MarbleRollSound : AudioStreamPlayer
 	// Linear volume at full speed. Above 1 boosts a quietly recorded clip
 	// (2 = +6 dB); watch for clipping on loud peaks.
 	[Export] public float MaxVolume = 1.0f;
+
+	// Pitch of the loop when barely moving and at FullVolumeSpeed (1 = the
+	// clip's own pitch), so the roll sounds faster as the marble speeds up.
 	[Export] public float MinPitch = 0.8f;
 	[Export] public float MaxPitch = 1.3f;
 
@@ -68,5 +71,4 @@ public partial class MarbleRollSound : AudioStreamPlayer
 		VolumeLinear = _volume;
 		PitchScale = Mathf.Lerp(MinPitch, MaxPitch, speedFraction);
 	}
-
 }

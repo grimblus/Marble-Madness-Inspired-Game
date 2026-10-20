@@ -1,9 +1,9 @@
 using Godot;
 
 // In-game HUD (scenes/ui/hud/GameHud.tscn): level label top-left, timer
-// top-right and objective bottom-centre.
-// Like TimerDisplay, it only listens to LevelTimer's TimeChanged signal and
-// never touches the timer's logic. Set TimerPath to the LevelTimer node.
+// top-right and objective bottom-centre. It only listens to LevelTimer's
+// TimeChanged signal and never touches the timer's logic. Set TimerPath to
+// the LevelTimer node.
 public partial class GameHud : CanvasLayer
 {
 	// Defaults to the LevelTimer sibling in Main.tscn.
@@ -33,7 +33,7 @@ public partial class GameHud : CanvasLayer
 
 		_levelLabel.Text = LevelLabel;
 		_objectiveLabel.Text = ObjectiveText;
-		_timeLabel.Text = FormatTime(0.0f);
+		_timeLabel.Text = TimeFormat.Clock(0.0f);
 
 		_timer = GetNodeOrNull<LevelTimer>(TimerPath);
 		if (_timer != null)
@@ -60,16 +60,6 @@ public partial class GameHud : CanvasLayer
 
 	private void OnTimeChanged(float seconds)
 	{
-		_timeLabel.Text = FormatTime(seconds);
-	}
-
-	// mm:ss.cc, e.g. 00:27.48
-	private static string FormatTime(float seconds)
-	{
-		int centis = Mathf.FloorToInt(Mathf.Max(0.0f, seconds) * 100.0f);
-		int minutes = centis / 6000;
-		int secs = centis / 100 % 60;
-		int hundredths = centis % 100;
-		return $"{minutes:00}:{secs:00}.{hundredths:00}";
+		_timeLabel.Text = TimeFormat.Clock(seconds);
 	}
 }

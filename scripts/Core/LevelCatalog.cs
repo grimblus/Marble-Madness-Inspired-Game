@@ -15,7 +15,6 @@ public static class LevelCatalog
 	// Main.tscn is the shared scene the chosen level gets loaded into.
 	public static readonly LevelEntry[] Levels =
 	{
-		// Use Level01.tscn here instead if you are using the newer level 1 layout.
 		new("level_01", "GALLERY 01", "res://scenes/levels/level_01/Level01.tscn"),
 		new("level_02", "GALLERY 02", "res://scenes/levels/level_02/Level02.tscn"),
 		new("level_03", "GALLERY 03", "res://scenes/levels/level_03/Level03.tscn")

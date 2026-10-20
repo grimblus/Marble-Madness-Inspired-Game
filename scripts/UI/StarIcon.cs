@@ -3,7 +3,6 @@ using Godot;
 // A five-point star drawn in code (no image needed), either filled gold or an
 // empty outline. Used by the result screen. Set Filled from code or the
 // Inspector; size it with the Control's Custom Minimum Size.
-
 public partial class StarIcon : Control
 {
 	private bool _filled;
@@ -14,6 +13,7 @@ public partial class StarIcon : Control
 	private Tween _popTween;
 	private Tween _loopTween;
 
+	// True draws an earned (gold) star, false an empty outline.
 	[Export]
 	public bool Filled
 	{
@@ -25,6 +25,7 @@ public partial class StarIcon : Control
 		}
 	}
 
+	// Fill and outline of an earned star, and of an empty one.
 	[Export] public Color FilledColor { get; set; } = new Color("B89A63");
 	[Export] public Color FilledOutline { get; set; } = new Color("8F7440");
 	[Export] public Color EmptyColor { get; set; } = new Color(0.145f, 0.145f, 0.145f, 0.05f);

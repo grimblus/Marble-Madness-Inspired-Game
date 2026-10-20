@@ -9,8 +9,10 @@ using Godot;
 
 public partial class LevelTimer : Node
 {
+	// Raised every frame with the time so far, in seconds.
 	[Signal] public delegate void TimeChangedEventHandler(float secondsElapsed);
 
+	// Seconds after which the level is lost (0 = no limit).
 	[Export] public float TimeLimitSeconds = 0.0f;
 
 	private float _elapsed;

@@ -6,6 +6,7 @@ using Godot;
 // references to each other or to the level.
 public partial class CheckpointManager : Node
 {
+	// Raised when the marble reaches a checkpoint it hasn't already set.
 	[Signal] public delegate void CheckpointReachedEventHandler(Vector3 position);
 
 	private Vector3 _respawnPosition = Vector3.Zero;
@@ -31,12 +32,22 @@ public partial class CheckpointManager : Node
 		}
 	}
 
+	// Called by a Checkpoint when the marble passes through it. Only a new
+	// respawn point raises CheckpointReached, so rolling back and forth
+	// through the same checkpoint doesn't replay its sound.
 	public void SetCheckpoint(Vector3 position)
 	{
+		if (_hasCheckpoint && _respawnPosition.IsEqualApprox(position))
+		{
+			return;
+		}
+
 		_respawnPosition = position;
 		_hasCheckpoint = true;
 		EmitSignal(SignalName.CheckpointReached, position);
 	}
 
+	// Where the marble should respawn: the last checkpoint reached, or the
+	// level's start point before any.
 	public Vector3 GetRespawnPosition() => _respawnPosition;
 }

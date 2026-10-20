@@ -16,6 +16,8 @@ public partial class LevelPreview : Control
 	private int _variant;
 	private bool _locked;
 
+	// Picture of the level, cropped to fill the card. Empty shows the
+	// stylised placeholder instead.
 	[Export]
 	public Texture2D Screenshot
 	{

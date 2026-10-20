@@ -1,18 +1,23 @@
 using Godot;
 
 // Saves each level's best time and best star count to user://progress.cfg.
-// The result screen writes to it; the level select screen will read from it.
-
+// The result screen records finished runs; the level select and start menu
+// read them back.
+//
+// The file is read once and then kept in memory, so the level select can
+// ask for every level's stars on each card change without touching the disk.
+// It's written back only when a run is recorded or progress is reset.
 public static class ProgressStore
 {
 	private const string SavePath = "user://progress.cfg";
 
+	private static ConfigFile _config;
 	private static bool _resetThisLaunch;
 
 	// Best (lowest) time in seconds, or null if the level has never been beaten.
 	public static float? GetBestTime(string levelId)
 	{
-		var cfg = Load();
+		ConfigFile cfg = Config;
 		if (!cfg.HasSectionKey(levelId, "best_time"))
 		{
 			return null;
@@ -23,7 +28,7 @@ public static class ProgressStore
 	// Best star count (0-3). 0 if the level has never been beaten.
 	public static int GetBestStars(string levelId)
 	{
-		var cfg = Load();
+		ConfigFile cfg = Config;
 		if (!cfg.HasSectionKey(levelId, "best_stars"))
 		{
 			return 0;
@@ -34,20 +39,18 @@ public static class ProgressStore
 	// Records a finished run, keeping whichever time and star count is better.
 	public static void Record(string levelId, float time, int stars)
 	{
-		var cfg = Load();
-
 		float? bestTime = GetBestTime(levelId);
 		if (!bestTime.HasValue || time < bestTime.Value)
 		{
-			cfg.SetValue(levelId, "best_time", time);
+			Config.SetValue(levelId, "best_time", time);
 		}
 
 		if (stars > GetBestStars(levelId))
 		{
-			cfg.SetValue(levelId, "best_stars", stars);
+			Config.SetValue(levelId, "best_stars", stars);
 		}
 
-		cfg.Save(SavePath);
+		Config.Save(SavePath);
 	}
 
 	// Deletes all saved stars and best times.
@@ -57,6 +60,7 @@ public static class ProgressStore
 		{
 			DirAccess.RemoveAbsolute(SavePath);
 		}
+		_config = new ConfigFile();
 	}
 
 	// Resets progress the first time it is called after the game launches, and does
@@ -72,10 +76,17 @@ public static class ProgressStore
 		ResetAll();
 	}
 
-	private static ConfigFile Load()
+	// The saved progress, loaded from disk on first use.
+	private static ConfigFile Config
 	{
-		var cfg = new ConfigFile();
-		cfg.Load(SavePath); // a missing file just leaves it empty
-		return cfg;
+		get
+		{
+			if (_config == null)
+			{
+				_config = new ConfigFile();
+				_config.Load(SavePath); // a missing file just leaves it empty
+			}
+			return _config;
+		}
 	}
 }

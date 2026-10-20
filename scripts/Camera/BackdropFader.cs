@@ -14,6 +14,7 @@ using System.Collections.Generic;
 // backdrop is affected, so tiles, vases and hazards stay solid.
 public partial class BackdropFader : Node
 {
+	// The gameplay camera and the marble it follows, relative to this node.
 	[Export] public NodePath CameraPath = "../CameraRig/Camera3D";
 	[Export] public NodePath MarblePath = "../Marble";
 

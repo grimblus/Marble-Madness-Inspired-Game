@@ -51,6 +51,18 @@ public partial class PropImpactSound : AudioStreamPlayer
 	{
 		_cooldown -= (float)delta;
 
+		// A sleeping prop isn't moving, so there's nothing to measure. Most
+		// props spend most of a level asleep, so this skips nearly all of the
+		// work. The first step after a hit wakes it compares against zero,
+		// which is the hit itself.
+		if (_prop.Sleeping)
+		{
+			_previousLinear = Vector3.Zero;
+			_previousAngular = Vector3.Zero;
+			_armed = true;
+			return;
+		}
+
 		// A tipping prop barely changes its linear speed when its top hits
 		// the floor, but its spin stops abruptly. Spin is converted to the
 		// speed of the prop's outer edge so both are measured in m/s.

@@ -55,6 +55,12 @@ public partial class KnockableProp : RigidBody3D
 
 	public override void _PhysicsProcess(double delta)
 	{
+		// A sleeping prop is resting on something, so it can't be falling.
+		if (Sleeping)
+		{
+			return;
+		}
+
 		if (GlobalPosition.Y < FallLimitY)
 		{
 			QueueFree();
@@ -69,13 +75,13 @@ public partial class KnockableProp : RigidBody3D
 		}
 
 		Vector3 travel = marble.LinearVelocity with { Y = 0.0f };
-		float speed = travel.Length();
-		if (speed < MinToppleSpeed)
+		if (travel.Length() < MinToppleSpeed)
 		{
 			return;
 		}
 
-		Vector3 push = travel / speed * Mass * speed * ToppleStrength;
+		// Along the marble's travel, scaled by its speed and the prop's mass.
+		Vector3 push = travel * Mass * ToppleStrength;
 		ApplyImpulse(push, GlobalBasis.Y * _shapeHeight * ToppleHeight);
 	}
 

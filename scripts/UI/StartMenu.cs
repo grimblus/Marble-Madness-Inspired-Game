@@ -2,8 +2,8 @@ using Godot;
 
 // Start menu (scenes/ui/menus/startMenu.tscn).
 // - Start Game / Level Select / How to Play / Settings / Quit
-// - Slowly crossfades through the images in Backgrounds (level screenshots) (Adding this later on
-// once the levels have all been made)
+// - Slowly crossfades through the images in Backgrounds, if any are set
+//   (one screenshot per level); otherwise the cream fallback colour shows.
 
 public partial class StartMenu : Control
 {

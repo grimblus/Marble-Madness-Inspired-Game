@@ -8,6 +8,7 @@ using Godot;
 // zoomed out) with the zoom_in / zoom_out actions; the camera eases between them.
 public partial class CameraRig : Node3D
 {
+	// The node the camera follows (the marble).
 	[Export] public NodePath TargetPath;
 
 	// Angle looking down at the marble. -35.264 is the "true" isometric angle;

@@ -6,6 +6,7 @@ using Godot;
 // Retry reload doesn't restart the music from the beginning.
 public partial class MusicCue : Node
 {
+	// Music for this scene. Leave empty to keep whatever is already playing.
 	[Export] public AudioStream Track;
 
 	public override void _Ready()
