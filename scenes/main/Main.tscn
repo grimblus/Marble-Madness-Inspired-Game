@@ -15,7 +15,6 @@
 [ext_resource type="AudioStream" uid="uid://cg35u6554u0h2" path="res://assets/audio/sfx/jingles_PIZZI01.ogg" id="sfx_lose"]
 [ext_resource type="AudioStream" uid="uid://dicttjivg7pc7" path="res://assets/audio/sfx/impactPunch_heavy_000.ogg" id="sfx_hit"]
 [ext_resource type="AudioStream" uid="uid://ccqhh0mhc4lpn" path="res://assets/audio/sfx/drop_002.ogg" id="sfx_slip"]
-[ext_resource type="AudioStream" uid="uid://dth14kjhryrpj" path="res://assets/audio/sfx/minimize_003.ogg" id="sfx_respawn"]
 
 [node name="Main" type="Node3D" unique_id=2133792107]
 
@@ -66,9 +65,6 @@ volume_db = -4
 [node name="Slip" type="AudioStreamPlayer" parent="GameSounds" unique_id=1099975904]
 stream = ExtResource("sfx_slip")
 volume_db = -6
-
-[node name="Respawn" type="AudioStreamPlayer" parent="GameSounds" unique_id=1070302523]
-stream = ExtResource("sfx_respawn")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1363924070]
 environment = ExtResource("11_qkm1d")
