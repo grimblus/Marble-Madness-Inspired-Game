@@ -238,7 +238,7 @@ The UI has its own look: cream panels, a muted gold accent, and the Diffusion ty
 |---|---|
 | **Start menu** | A live 3D gallery backdrop with a slowly drifting camera. (A crossfading screenshot slideshow is also supported, but the 3D backdrop is used instead.) Buttons: Start Game, Level Select, How to Play, Settings (master volume), Quit. |
 | **Level select** | One card per gallery, switched with the arrows, the dots, or left/right keys. Each card shows an in-game picture of the gallery, earned stars, best time, and Play / Play Again / Locked. Locked galleries show a padlock and the requirement to unlock them. A counter shows total stars out of 9. |
-| **HUD** | Gallery name top-left, stopwatch top-right (mm:ss.cc), and a "Reach the goal" objective that fades after six seconds to keep the screen clear. |
+| **HUD** | Gallery name top-left, stopwatch top-right (mm:ss.cc), and a "Reach the goal" objective that fades after six seconds to keep the screen clear. The same strip shows "Checkpoint reached" for 2.5 s at each new checkpoint. Only one message is shown at a time: a new one fades out the old one and restarts the timer, so two in quick succession never overlap or cut each other short. |
 | **Pause** | Esc dims the level and freezes the game, the timer included. Offers Resume, Restart and Main Menu. Disabled once the level has ended. |
 | **Results** | Win panel: animated stars, the time, "NEW BEST" or the previous best, and the three star thresholds with the earned tier highlighted. Game-over panel: the reason and the time. Next, Retry, Level Select and Main Menu are offered as they apply, so no screen is a dead end. |
 
