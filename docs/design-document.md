@@ -15,7 +15,7 @@ The original game's isometric view, time pressure and hazards that push the marb
 1. **Weight you can feel.** The marble is a real rigid body pushed by forces, never moved directly. Every slope, bounce and knockback comes from the physics engine, so skill means managing momentum.
 2. **Readable from above.** A fixed isometric camera, clear tile shapes and clear hazard silhouettes let the player plan a line before committing to it.
 3. **Short runs, worth replaying.** Each wing takes one to two minutes. A stopwatch, three-star grades and saved best times reward taking each course again more cleanly.
-4. **One kit, many rooms.** Every course is assembled from the same set of tiles. A new wing comes from a new layout and a new material theme, not new geometry.
+4. **One kit, many rooms.** Every course is assembled from the same set of tiles. A new wing comes from a new layout, its own exhibits and its own music, not new geometry.
 
 ### Visual style and lighting
 
@@ -111,9 +111,11 @@ Each theme is a `MeshLibrary` (`assets/libraries/`) built from the same ten tile
 
 | Library | Look | Used in |
 |---|---|---|
-| `tile_library` | Colour-coded greybox tiles. **In progress:** pale limestone material | Gallery 01 |
-| `marble_library` | Polished white marble with dark marble accents and gold trim | Gallery 02 |
-| `sand_library` | Sandstone floors, dark sand edges, sandstone walls, gold trim | Gallery 03 |
+| `tile_library` | Colour-coded tiles: blue floors, purple slopes, green hole tiles, yellow rails, red arches | All three galleries |
+| `marble_library` | Polished white marble with dark marble accents and gold trim | Not used |
+| `sand_library` | Sandstone floors, dark sand edges, sandstone walls, gold trim | Not used |
+
+Marble, sandstone and a muted marble-and-brass look were all tried as per-gallery themes. The team settled on the colour-coded set for every level: each tile type reads instantly at a glance, so slopes, holes and rails are easy to spot from the camera's height, and the galleries are told apart by their exhibits and music instead. The other two libraries stay in the project, and because the libraries share tile shapes, a level can switch themes later by remapping its tile IDs.
 
 Materials are shared resources in `assets/materials/`. Each one is a `StandardMaterial3D` that uses triplanar mapping with CC0 PBR textures (see `docs/credits.md`), so any tile shape textures cleanly without UV work. Gold is kept for trim and accents, and the goal flag is red, so the player's eye is drawn to the goal.
 
@@ -135,17 +137,14 @@ Each level holds only its own tiles, triggers, hazards, props and backdrop. The 
 ![Gallery 01 in play](images/gallery-01.png)
 ![Gallery 01 layout, top-down](images/gallery-01-map.png)
 
-- **Theme:** colour-coded greybox tiles for now (limestone material in progress), with classical busts in the backdrop.
+- **Theme:** the colour-coded tiles, with classical and Egyptian busts in the backdrop.
 - **Layout:** a 7.5 m descent across six tiers, starting at the top-floor landing and winding down via ramps, curves and hole tiles.
 - **Teaches:**
   1. Rolling and stopping on flat ground.
   2. Taking ramps under control.
   3. Avoiding the centre of hole tiles.
   4. Knocking over display vases at the first landing, which slows the marble without punishing it (§7.1).
-  5. **In progress:** meeting one of each hazard type in isolation. Level 1 currently has no hazards placed:
-     - one patrolling caryatid on an open stretch, where the knockback is easy to see and survive;
-     - one wet-floor puddle on a straight, so the loss of control is harmless;
-     - one vacuum well beside a wide section, where its pull can be felt and resisted.
+  5. Meeting the two simplest hazards: five patrolling caryatids, whose knockback is easy to see and survive, and six wet-floor puddles, where the loss of control is harmless.
 - **Checkpoint:** one, at the midpoint.
 - **Difficulty:** wide paths, few drops without a rail, generous star times.
 
@@ -154,7 +153,7 @@ Each level holds only its own tiles, triggers, hazards, props and backdrop. The 
 ![Gallery 02 in play](images/gallery-02.png)
 ![Gallery 02 layout, top-down](images/gallery-02-map.png)
 
-- **Theme:** white marble with gold trim, with Greek vases and amphorae in the backdrop.
+- **Theme:** the colour-coded tiles, with Greek vases and amphorae in the backdrop.
 - **Layout:**
   1. It opens in a walled maze on the top floor. The player must find the single exit, an arch in one corner.
   2. It then drops 4 m over three tiers to a lower hall.
@@ -162,32 +161,34 @@ Each level holds only its own tiles, triggers, hazards, props and backdrop. The 
   - Hazards are combined rather than isolated. Four caryatids patrol in two facing pairs across the lower hall, so the player has to time a gap between crossing paths.
   - A vacuum well sits beside the main route, so a knockback near it can drag the marble off the edge.
   - Paths narrow to one tile in places.
-- **Checkpoints:** two, at the maze exit and before the caryatid hall.
+- **Checkpoints:** three, including the maze exit and before the caryatid hall.
 - **Difficulty:** first real test of route-finding and timing; longer star times to fit the maze.
 
 ### Gallery 03: Egyptian Wing (mastery)
 
-**In progress.** `Level03.tscn` currently holds the sandstone GridMap, its music and its backdrop, and the level select lists it as "Coming soon". The layout, start marker, goal, checkpoints and hazards below are the plan.
-
-- **Theme:** sandstone, with Egyptian scans in the backdrop: Priest Ahmose and his mother, an Egyptian sculpture and two cat statues.
-- **Layout:** the tallest and longest course. Steep tiles and ramp corners give fast, committed drops. One-tile bridges with no rails cross open space.
-- **Fork:** midway the route splits around a central obelisk court.
-  - The short route crosses a narrow bridge between two vacuum wells.
-  - The long route is wider and safer, but passes a wet floor at the foot of a steep ramp, where losing control is most dangerous.
-  - The two routes meet again before the final descent.
-- **Escalation:** every hazard type appears together, at speed. Caryatids patrol the final approach to the goal, so the run ends with the hardest timing check.
-- **Checkpoints:** three: after the first steep drop, at the fork, and after the routes rejoin.
-- **Difficulty:** tightest margins in the game; three stars requires the short route.
+- **Theme:** the colour-coded tiles, with Egyptian scans in the backdrop: Priest Ahmose and his mother, an Egyptian sculpture, Egyptian heads, Amenemhat III and cat statues.
+- **Layout:** the longest course, about 92 m from the start room to the goal, dropping 8 m to the goal's rim:
+  1. A walled start room exits through two arches onto a corridor and the first steep 2 m drop.
+  2. **Trampoline pit:** the route drops 1 m into a walled pit. The exit ledge is back at the entry height, so the only way out is a trampoline bounce, and a missed bounce can simply be retried.
+  3. A ramp leads down into a central court with three hole tiles.
+- **Fork:** the court has two exits.
+  - The short route crosses a one-tile bridge with no rails, between two vacuum wells on their own pads. Their wind cones point at the bridge from either side, so any drift is pulled further off line.
+  - The long route is wider and railed, but drops down a steep ramp onto a flat run with a wet floor at its foot, where losing control is most dangerous.
+  - The two routes meet again in a hall.
+- **Trampoline gap:** from the hall, a take-off tile with a trampoline launches the marble across a 2 m gap to a ledge 1 m higher.
+- **Escalation:** every hazard type appears together. Two caryatids cross the final hall in opposite directions, just before the last steep drop to the goal.
+- **Checkpoints:** three: after the first steep drop, at the court entrance, and where the routes rejoin.
+- **Difficulty:** tightest margins in the game; the short route is faster but riskier.
 
 ### Difficulty progression
 
 | | Gallery 01 | Gallery 02 | Gallery 03 |
 |---|---|---|---|
-| Hazards | 1 caryatid, 1 well, 1 puddle (**in progress**; currently knock-over vases only) | 4 caryatids, 1 well | Caryatids, 2 wells, puddles (planned) |
+| Hazards | 5 caryatids, 6 wet floors | 6 caryatids, 4 vacuum wells, 3 blowers, 14 trampolines, 1 wet floor | 2 caryatids, 2 vacuum wells, 2 trampolines, 1 wet floor |
 | Hazards combined? | No, one at a time | Paired caryatids; knockback near a well | All types together |
 | Narrowest path | 2 tiles | 1 tile with rails | 1 tile without rails |
 | Signature feature | Hole tiles | Opening maze | Route fork, steep drops |
-| Checkpoints | 1 | 2 | 3 |
+| Checkpoints | 1 | 3 | 3 |
 | 3 / 2 / 1-star times | 30 / 60 / 300 s | 30 / 60 / 300 s (planned: 45 / 75 / 300) | 30 / 60 / 300 s (planned: 60 / 100 / 300) |
 
 All levels currently share the same star times; the per-level values shown as planned are not set up yet. Levels unlock in order: a gallery opens once the previous one has been cleared with at least one star.
@@ -244,7 +245,8 @@ All screens use Godot containers and anchors, so they scale across common deskto
 | **Landing** | A clunk that plays when the marble goes from airborne to grounded. Its volume scales with impact speed and its pitch varies randomly, so repeated bounces don't sound identical. Respawns are filtered out. |
 | **Props** | Vases play a random glass clink, and the wet-floor sign a soft knock, whenever they're jolted: hit by the marble, hitting the floor as they topple, or bumping each other. Volume scales with the jolt and pitch varies per hit. A prop stays silent until it has first come to rest, so a level full of vases doesn't clink as it loads. |
 | **UI** | A click on every button press. A `UiSounds` autoload connects the click to each button as it's added to the scene tree, so no menu needs its own audio code and new buttons get it automatically. It sits above the current scene so the click isn't cut off when a button changes scene, and keeps processing while the game is paused. |
-| **Hazard, checkpoint, victory** | **In progress**, not implemented yet. Planned as short cues triggered by the existing signals: `MarbleController.Died`, `CheckpointManager.CheckpointReached` and `GameStateManager.LevelWon`. |
+| **Game events** | A `GameSounds` node in `Main.tscn` plays a chime at a new checkpoint, a pizzicato jingle on victory and a falling one on game over, a thump when a caryatid knocks the marble back, a light drop when it slips on a wet floor, and a swoosh on respawn. It only listens to existing signals (`CheckpointManager.CheckpointReached`, `GameStateManager.LevelWon`/`LevelLost`, and the marble's `Hit`, `Slipped` and `Died`), so no gameplay script contains audio code. Re-crossing a checkpoint that's already set stays silent. It keeps processing while paused, because the result screen pauses the game as the jingle starts. |
+| **Trampoline** | A springy jump sound, played by the trampoline's own sound player from its existing contact signal. |
 | **Music** | A `MusicPlayer` autoload crossfades between tracks as scenes change, and keeps playing through retries and pauses. Each scene names its track with a `MusicCue` node. |
 
 Music is public-domain-era piano repertoire, chosen to suit a quiet gallery and to tell the wings apart:
@@ -266,12 +268,12 @@ Each system is a separate script, in a folder named after the system. Systems ta
 
 | System | Key scripts | Talks to others via |
 |---|---|---|
-| Marble | `MarbleController` | Reads the camera from the viewport; exposes `Die()`, `GetHit()`, `GetHitPhys()`; emits `Died` |
-| Camera | `CameraRig` | Follows a target `NodePath` only |
+| Marble | `MarbleController` | Reads the camera from the viewport; exposes `Die()`, `GetHit()`, `GetHitPhys()`, `GetHitTramp()`; emits `Hit`, `Slipped` and `Died` |
+| Camera | `CameraRig`, `BackdropFader` | The rig follows a target `NodePath`; the fader reads the camera, marble and level backdrop |
 | Level | `LevelLoader`, `Checkpoint`, `Goal`, `KillZone`, `LevelTimer` | Calls the autoloads; the timer emits `TimeChanged` |
-| Hazards | `MovingHazard`, `VacuumHazard`, `StationaryHazard` | Call the marble's reaction methods |
+| Hazards | `MovingHazard`, `RadialForceHazard` (base of `VacuumHazard` and `BlowerHazard`), `StationaryHazard`, `TrampolineHazard` | Call the marble's reaction methods, or apply forces while it's in their area |
 | UI | `StartMenu`, `LevelSelect`, `GameHud`, `PauseMenu`, `ResultScreen` | Listen to `TimeChanged`, `LevelWon` and `LevelLost`; read `ProgressStore` |
-| Audio | `MusicPlayer`, `MusicCue`, `UiSounds`, `MarbleRollSound`, `MarbleImpactSound`, `PropImpactSound` | Child nodes read the marble's physics state; music is cued by scenes |
+| Audio | `MusicPlayer`, `MusicCue`, `UiSounds`, `GameSounds`, `MarbleRollSound`, `MarbleImpactSound`, `PropImpactSound` | Child nodes read the marble's physics state; `GameSounds` listens to game signals; music is cued by scenes |
 | Props | `KnockableProp` | Physics only; recognises the marble by its `marble` group |
 | Core (autoloads) | `GameStateManager`, `CheckpointManager`, `MusicPlayer`, `UiSounds` | Signals; state shared by the whole level |
 
@@ -305,15 +307,26 @@ Adding a gallery takes a new level scene and one line in the level select. The m
 
 ## 12. Performance
 
-Measured on 17 Oct on an Apple M4 laptop (16 GB) at 1920 × 1080 with vsync off, playing each level for 30 s with the marble rolling:
+Measured on 20 Oct, after all three levels were built and populated, on an Apple M4 laptop (16 GB) at 1920 × 1080 with vsync off, playing each level for 20 s with the marble rolling:
 
 | Level | Average FPS | 1% low | Minimum | Draw calls (avg) | Triangles (peak) |
 |---|---|---|---|---|---|
-| Gallery 01 | 162 | 147 | 117 | 129 | 187k |
-| Gallery 02 | 157 | 133 | 121 | 105 | 241k |
-| Gallery 03 | **In progress:** measure once built | | | | |
+| Gallery 01 | 146 | 131 | 31 | 170 | 372k |
+| Gallery 02 | 145 | 111 | 109 | 184 | 360k |
+| Gallery 03 | 155 | 146 | 78 | 111 | 138k |
 
-Both built levels stay well above the 60 FPS target, even at their worst frame. Gallery 02 was re-measured after five Greek vase scans were added to its backdrop. Its average went from 180 to 157 FPS. A 181k-triangle Borghese vase scan was swapped for a 2.8k-triangle vase during this pass, and the heaviest remaining scan, the Ancient Greek vase at 99k, is used only once. The triangle column is the peak in any single frame. It isn't the sum of the models: Godot generates lower-detail versions of every imported model and uses them when a model is small on screen, and shadows draw some objects twice, so the count depends on where the camera is. Zoomed out over the whole level, all five vases together cost about 53k triangles.
+All three levels stay well above the 60 FPS target: even the 1% lows are above 110 FPS. The minimum column is a single worst frame, and the occasional dip below 60 is an isolated one-frame hitch rather than sustained slowdown. Repeat runs put it at different moments, so it isn't tied to one spot in a level. On 17 Oct, with fewer props and hazards, Galleries 01 and 02 averaged 162 and 157 FPS.
+
+**Optimisation candidates.** Each was measured on its own against the same baseline, toggled at runtime:
+
+| Change | Gallery 01 | Gallery 02 | Gallery 03 | Verdict |
+|---|---|---|---|---|
+| Screen-space reflections off | 148 → 166 (+12%) | 147 → 183 (+24%) | 160 → 203 (+27%) | Largest gain; the tiles are matte, so reflections add little |
+| Soft shadow filter High → Low | 148 → 161 (+9%) | 147 → 151 (+3%) | 160 → 170 (+6%) | Small gain, slightly harder shadow edges |
+| Backdrop props cast no shadows | 148 → 148 | 147 → 140 | 160 → 160 | No gain: shadow geometry isn't the bottleneck |
+| Physics at 60 Hz instead of 120 Hz | 148 → 135 | 147 → 154 | 160 → 159 | No gain: rendering, not physics, is the bottleneck |
+
+Gallery 02 was re-measured on 17 Oct after five Greek vase scans were added to its backdrop. Its average went from 180 to 157 FPS. A 181k-triangle Borghese vase scan was swapped for a 2.8k-triangle vase during this pass, and the heaviest remaining scan, the Ancient Greek vase at 99k, is used only once. The triangle column is the peak in any single frame. It isn't the sum of the models: Godot generates lower-detail versions of every imported model and uses them when a model is small on screen, and shadows draw some objects twice, so the count depends on where the camera is. Zoomed out over the whole level, all five vases together cost about 53k triangles.
 
 - **Model budget:** an early measurement found the "decimated" hazard models still had over 1 million triangles each, about ten times the statue props. The well was re-decimated in Blender from 1.25 M to 37.6 k triangles (−97%, 41.8 MB → 1.9 MB) and replaced under the same import ID, so no scenes changed. The largest models in play are now the Marcus Aurelius bust (104k triangles), the horse head (69k) and the caryatid (44k, four of them in Gallery 02). The vases are 1.7k–3.4k each.
 - **GridMap:** levels render tiles in batched octants instead of hundreds of separate nodes, which keeps draw calls low on large layouts.

@@ -19,8 +19,6 @@ The shared conventions for gameplay code, as asked for in [requirements.md §4](
 | Signals | PascalCase delegate ending in `EventHandler` | `DiedEventHandler`, raised with `EmitSignal(SignalName.Died)` |
 | Input actions | `snake_case` | `move_forward`, `zoom_in` |
 
-A few older hazard scripts use plain `camelCase` private fields. New code should use the `_camelCase` form.
-
 ## Comments
 
 - **Header comment on every script:** what the node is for, which scene it belongs to, and how it connects to other systems. It goes above the class.

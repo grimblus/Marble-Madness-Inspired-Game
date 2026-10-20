@@ -78,11 +78,8 @@ Folder-to-system mapping follows [docs/requirements.md §3](docs/requirements.md
 
 ## Known Issues
 
-- Levels 1 and 2 are playable. Level 3 is not built yet and shows as "Coming soon" in the level select.
-- Level 1 has no hazards placed yet, only knock-over vases.
 - Star times (30 / 60 s for 3 / 2 stars) are shared by every level; per-level times are planned. Every level has a 5-minute limit.
-- Sound effects cover marble rolling and landing, prop impacts and menu clicks. Hazard, checkpoint and victory sounds are still to come.
-- Gallery 01 still uses the colour-coded greybox tile materials. Gallery 02 has its final marble materials.
+- All three galleries use the same colour-coded tile set; each gallery is themed by its backdrop exhibits and music.
 - Saved stars and best times live in Godot's user data folder (`user://progress.cfg`). Delete that file to reset progress.
 
 ## Credits
