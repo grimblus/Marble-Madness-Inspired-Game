@@ -45,7 +45,7 @@ stream = ExtResource("4_soft")
 max_polyphony = 3
 script = ExtResource("3_sound")
 
-[node name="Puddle" type="Area3D" parent="." unique_id=1339410679 groups=["enemies", "stationary"]]
+[node name="Puddle" type="Area3D" parent="." unique_id=1339410679]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.72403723, 0)
 collision_layer = 4
 collision_mask = 2

@@ -1,28 +1,17 @@
 using Godot;
-using System;
 
+// Trampoline hazard (scenes/hazards/trampoline_hazard.tscn). Rolling onto it
+// launches the marble upwards (MarbleController.GetHitTramp), so levels can
+// put ledges and gaps that are only reachable with a bounce. The bounce sound
+// is a child AudioStreamPlayer played from the same body_entered signal.
 public partial class TrampolineHazard : Area3D
 {
-	private MarbleController marble;
-	
-	// Called when the node enters the scene tree for the first time.
-	public override void _Ready()
-	{
-		marble = GetNode<MarbleController>("/root/Main/Marble");
-				
-		AddToGroup("enemies");
-	}
-
-	// Called every frame. 'delta' is the elapsed time since the previous frame.
-	public override void _Process(double delta)
-	{
-	}
-	
+	// Connected to this area's own body_entered signal in the scene.
 	private void OnBodyEntered(Node3D body)
 	{
-		if (body is MarbleController marbleController)
+		if (body is MarbleController marble)
 		{
-			marbleController.GetHitTramp(GlobalPosition);
+			marble.GetHitTramp(GlobalPosition);
 		}
 	}
 }

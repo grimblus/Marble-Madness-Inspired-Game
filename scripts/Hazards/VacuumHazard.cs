@@ -1,69 +1,22 @@
 using Godot;
-using System;
 
-public partial class VacuumHazard : RigidBody3D
+// Vacuum well hazard (scenes/hazards/vacuum_hazard.tscn): a well that pulls
+// the marble in along its wind cone (VacuumArea), so a careless line drags
+// it off the edge. The force logic is shared with the blower in
+// RadialForceHazard.
+public partial class VacuumHazard : RadialForceHazard
 {
-	[Export] public Area3D VacuumArea;
+	// Pull at the well's mouth, in newtons. Fades out towards VacuumRadius.
 	[Export] public float VacuumForce = 20.0f;
+
+	// Horizontal distance, in metres, at which the pull fades to nothing.
 	[Export] public float VacuumRadius = 5.0f;
-	
-	private MarbleController marble;
 
-	// Called when the node enters the scene tree for the first time.
-	public override void _Ready()
-	{
-		Freeze = true;
-		FreezeMode = RigidBody3D.FreezeModeEnum.Static;
-		
-		marble = GetNode<MarbleController>("/root/Main/Marble");
-				
-		AddToGroup("enemies");
-		
-		//VacuumArea.BodyEntered += OnVacuumEnter;
-		//VacuumArea.BodyExited += OnVacuumExit;
-	}
+	protected override float Force => VacuumForce;
+	protected override float Radius => VacuumRadius;
+	protected override float Direction => -1.0f;
 
-	// Called every frame. 'delta' is the elapsed time since the previous frame.
-	public override void _Process(double delta)
-	{
-	}
-	
-	public void OnVacuumEnter(Node3D body)
-	{
-		if (body is MarbleController marbleController)
-		{
-			marble = marbleController;
-		}
-	}
-	
-	public void OnVacuumExit(Node3D body)
-	{
-		if (body == marble)
-		{
-			marble = null;
-		}
-	}
-	
-	public override void _PhysicsProcess(double delta)
-	{
-		if (marble == null)
-		{
-			return;
-		}
-
-		Vector3 toVacuum = GlobalPosition - marble.GlobalPosition;
-		toVacuum.Y = 0;
-		float distance = toVacuum.Length();
-
-		if (distance < 0.01f)
-		{
-			return;
-		}
-
-		//Closer player is, stronger the suc
-		float strength = Mathf.Clamp(1.0f - distance / VacuumRadius, 0.0f, 1.0f);
-
-		marble.Sleeping = false;
-		marble.ApplyCentralForce(toVacuum.Normalized() * VacuumForce * strength);
-	}
+	// Connected to VacuumArea's body_entered and body_exited in the scene.
+	public void OnVacuumEnter(Node3D body) => Track(body);
+	public void OnVacuumExit(Node3D body) => Untrack(body);
 }

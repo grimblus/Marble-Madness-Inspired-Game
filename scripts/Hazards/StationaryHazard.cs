@@ -1,28 +1,16 @@
 using Godot;
-using System;
 
+// Wet-floor hazard (scenes/hazards/stationary_hazard.tscn): a puddle beside a
+// knock-over warning sign. Rolling through the puddle makes the marble lose
+// control for a moment (MarbleController.GetHit), while it keeps its speed.
 public partial class StationaryHazard : Node3D
 {
-	private MarbleController marble;
-	
-	// Called when the node enters the scene tree for the first time.
-	public override void _Ready()
-	{
-		marble = GetNode<MarbleController>("/root/Main/Marble");
-		//AddToGroup("enemies");
-		//AddToGroup("stationary");
-	}
-
-	// Called every frame. 'delta' is the elapsed time since the previous frame.
-	public override void _Process(double delta)
-	{
-	}
-	
+	// Connected to the Puddle area's body_entered signal in the scene.
 	public void OnPuddleEnter(Node3D body)
 	{
-		if (body is MarbleController marbleController)
+		if (body is MarbleController marble)
 		{
-			marbleController.GetHit();
+			marble.GetHit();
 		}
 	}
 }

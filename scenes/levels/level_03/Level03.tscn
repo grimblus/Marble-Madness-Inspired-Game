@@ -81,7 +81,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 64, -4.767, 3)
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 48, -2, -6)
 
 [node name="VacuumHazard2" parent="Hazards" unique_id=1497871144 instance=ExtResource("hz_vacuum")]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 48, -2, 2)
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 48, -2, 2)
 
 [node name="StationaryHazard" parent="Hazards" unique_id=203694312 instance=ExtResource("hz_stationary")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 51, -5, 9)

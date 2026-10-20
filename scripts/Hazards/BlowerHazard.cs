@@ -1,69 +1,21 @@
 using Godot;
-using System;
 
-public partial class BlowerHazard : RigidBody3D
+// Wind blower hazard (scenes/hazards/blower_hazard.tscn): a well that blows
+// the marble away along its wind cone (BlowArea). The force logic is shared
+// with the vacuum well in RadialForceHazard.
+public partial class BlowerHazard : RadialForceHazard
 {
-	[Export] public Area3D BlowArea;
+	// Push at the blower's mouth, in newtons. Fades out towards BlowRadius.
 	[Export] public float BlowForce = 20.0f;
+
+	// Horizontal distance, in metres, at which the push fades to nothing.
 	[Export] public float BlowRadius = 5.0f;
-	
-	private MarbleController marble;
 
-	// Called when the node enters the scene tree for the first time.
-	public override void _Ready()
-	{
-		Freeze = true;
-		FreezeMode = RigidBody3D.FreezeModeEnum.Static;
-		
-		marble = GetNode<MarbleController>("/root/Main/Marble");
-				
-		AddToGroup("enemies");
-		
-		//VacuumArea.BodyEntered += OnVacuumEnter;
-		//VacuumArea.BodyExited += OnVacuumExit;
-	}
+	protected override float Force => BlowForce;
+	protected override float Radius => BlowRadius;
+	protected override float Direction => 1.0f;
 
-	// Called every frame. 'delta' is the elapsed time since the previous frame.
-	public override void _Process(double delta)
-	{
-	}
-	
-	public void OnBlowerEnter(Node3D body)
-	{
-		if (body is MarbleController marbleController)
-		{
-			marble = marbleController;
-		}
-	}
-	
-	public void OnBlowerExit(Node3D body)
-	{
-		if (body == marble)
-		{
-			marble = null;
-		}
-	}
-	
-	public override void _PhysicsProcess(double delta)
-	{
-		if (marble == null)
-		{
-			return;
-		}
-
-		Vector3 awayBlow = marble.GlobalPosition - GlobalPosition;
-		awayBlow.Y = 0;
-		float distance = awayBlow.Length();
-
-		if (distance < 0.01f)
-		{
-			return;
-		}
-
-		//Closer player is, stronger the suc
-		float strength = Mathf.Clamp(1.0f - distance / BlowRadius, 0.0f, 1.0f);
-
-		marble.Sleeping = false;
-		marble.ApplyCentralForce(awayBlow.Normalized() * BlowForce * strength);
-	}
+	// Connected to BlowArea's body_entered and body_exited in the scene.
+	public void OnBlowerEnter(Node3D body) => Track(body);
+	public void OnBlowerExit(Node3D body) => Untrack(body);
 }

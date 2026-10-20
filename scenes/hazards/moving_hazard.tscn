@@ -58,7 +58,7 @@ _data = {
 &"spin": SubResource("Animation_fhxtb")
 }
 
-[node name="MovingHazard" type="RigidBody3D" unique_id=341274520 node_paths=PackedStringArray("PatternPath") groups=["enemies"]]
+[node name="MovingHazard" type="RigidBody3D" unique_id=341274520 node_paths=PackedStringArray("PatternPath")]
 collision_layer = 4
 collision_mask = 2
 script = ExtResource("1_chwjj")

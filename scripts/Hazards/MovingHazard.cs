@@ -1,96 +1,86 @@
 using Godot;
-using System;
 
+// Patrolling caryatid hazard (scenes/hazards/moving_hazard.tscn). The statue
+// walks along a patrol path at a steady speed and loops back to the start at
+// the end; touching it knocks the marble back (MarbleController.GetHitPhys).
+//
+// It's a frozen kinematic RigidBody3D moved by position each physics step:
+// kinematic bodies are meant to be moved directly, and they still push the
+// marble aside physically as they pass.
 public partial class MovingHazard : RigidBody3D
 {
+	// Patrol shape, used only when PatternPath isn't set. Points are relative
+	// to the hazard's starting position.
 	[Export] public Curve3D Pattern;
+
+	// Walking speed along the patrol, in metres per second.
 	[Export] public float PatternSpeed = 0.75f;
+
+	// Path3D whose curve is the patrol. Normally the hazard's own child, so the
+	// patrol scales and rotates with the hazard when it's placed in a level.
 	[Export] public Path3D PatternPath;
-	private Vector3 spawnPosition;
-	private float spawnRotation;
-	private float distanceTravelled = 0.0f;
-	private float patternLength;
-	private MarbleController marble;
-	
-	//so the path3d increases with scale
-	private Transform3D pathTransform;
+
+	private float _distanceTravelled;
+	private float _patternLength;
+
+	// The patrol path's transform, captured once at the start. The Path3D is a
+	// child of the hazard, so reading it live would move the path along with
+	// the statue it's guiding.
+	private Transform3D _pathTransform;
 
 	// Shifts the whole path so it starts exactly where the hazard was placed
 	// in the level. The path's first point doesn't sit on the Path3D's
 	// origin, so following the raw path made every hazard jump up off the
 	// floor when the level started.
-	private Vector3 pathStartOffset;
-	
-	// Called when the node enters the scene tree for the first time.
+	private Vector3 _pathStartOffset;
+
 	public override void _Ready()
 	{
-		if (PatternPath != null && PatternPath.Curve != null)
+		Freeze = true;
+		FreezeMode = FreezeModeEnum.Kinematic;
+
+		// A RigidBody3D only reports body_entered with contact monitoring on.
+		ContactMonitor = true;
+		MaxContactsReported = 4;
+
+		if (PatternPath?.Curve != null)
 		{
 			Pattern = PatternPath.Curve;
-			pathTransform = PatternPath.GlobalTransform;
+			_pathTransform = PatternPath.GlobalTransform;
 		}
 		else
 		{
-			pathTransform = GlobalTransform;
+			_pathTransform = GlobalTransform;
 		}
-		
-		if (Pattern != null)
-			patternLength = Pattern.GetBakedLength();
-			
-		if (PatternPath != null)
-		{
-			Pattern = PatternPath.Curve;
-			patternLength = Pattern.GetBakedLength();
-		}
-		
-		Freeze = true;
-		FreezeMode = RigidBody3D.FreezeModeEnum.Kinematic;
-		ContactMonitor = true;
-		MaxContactsReported = 4;
-		
-		spawnPosition = GlobalPosition;
-		spawnRotation = GlobalRotation.Y;
 
-		if (Pattern != null && patternLength > 0)
+		if (Pattern == null)
 		{
-			pathStartOffset = GlobalPosition - pathTransform * Pattern.SampleBaked(0.0f);
+			return;
 		}
-		
-		marble = GetNode<MarbleController>("/root/Main/Marble");
-				
-		AddToGroup("enemies");
+
+		_patternLength = Pattern.GetBakedLength();
+		_pathStartOffset = GlobalPosition - _pathTransform * Pattern.SampleBaked(0.0f);
 	}
-	
+
 	public override void _PhysicsProcess(double delta)
 	{
-		if (Pattern == null || patternLength <= 0)
-			return;
-
-		distanceTravelled += PatternSpeed * (float)delta;
-
-		if (distanceTravelled >= patternLength)
+		if (_patternLength <= 0.0f)
 		{
-			distanceTravelled = 0f;
 			return;
 		}
-		
-		Vector3 localOffset = Pattern.SampleBaked(distanceTravelled);
-		Vector3 rotatedOffset = localOffset.Rotated(Vector3.Up, spawnRotation);
 
-		//GlobalPosition = spawnPosition + rotatedOffset;
-		GlobalPosition = pathTransform * Pattern.SampleBaked(distanceTravelled) + pathStartOffset;
+		// Wrap rather than reset to zero, so looping back to the start doesn't
+		// lose the distance covered in this step.
+		_distanceTravelled = Mathf.PosMod(_distanceTravelled + PatternSpeed * (float)delta, _patternLength);
+		GlobalPosition = _pathTransform * Pattern.SampleBaked(_distanceTravelled) + _pathStartOffset;
 	}
 
-	// Called every frame. 'delta' is the elapsed time since the previous frame.
-	public override void _Process(double delta)
-	{
-	}
-	
+	// Connected to this body's own body_entered signal in the scene.
 	private void OnBodyEntered(Node3D body)
 	{
-		if (body is MarbleController marbleController)
+		if (body is MarbleController marble)
 		{
-			marbleController.GetHitPhys(GlobalPosition);
+			marble.GetHitPhys(GlobalPosition);
 		}
 	}
 }
