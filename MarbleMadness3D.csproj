@@ -3,4 +3,9 @@
     <TargetFramework>net8.0</TargetFramework>
     <EnableDynamicLoading>true</EnableDynamicLoading>
   </PropertyGroup>
+
+  <ItemGroup>
+    <!-- The unit tests are their own project, not part of the game. -->
+    <Compile Remove="tests/unit/**" />
+  </ItemGroup>
 </Project>

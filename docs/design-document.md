@@ -307,6 +307,15 @@ Adding a gallery takes a new level scene, one line in `LevelCatalog` (its scene 
 | 3 | Hazards | Caryatids, vacuum wells, blowers, wet floors, trampolines | Marble |
 | 4 | Triggers | Goal, checkpoints, kill zones | Marble |
 
+### 11.4 Automated tests
+
+GitHub Actions runs two test suites on every push and pull request (`docs/testing.md`):
+
+- **Unit tests** (`tests/unit/`, xUnit) check the level list and star times, star grading at its boundaries, time formatting, and that every `res://` path in the project points to a file that exists.
+- **A headless smoke test** (`tests/smoke/`) loads each level into the real `Main.tscn` shell and checks its start marker, checkpoint, kill zone and goal, then opens both menus. Any error or warning Godot logs fails the test.
+
+Star grading was moved out of the result screen into `LevelCatalog.LevelEntry.StarsFor` so it could be unit-tested without the engine. The tests cover wiring and data, not feel: route difficulty and hazard tuning stay on the manual QA checklist.
+
 ## 12. Performance
 
 Final measurement, 20 Oct, with all three levels finished, on an Apple M4 laptop (16 GB) at 1920 × 1080 with vsync off, playing each level for 20 s with the marble rolling:
@@ -385,6 +394,7 @@ Work was done on feature branches per system and merged to `main` once reviewed.
 - Photogrammetry models: British Museum and IU Indianapolis scans used as backdrop props and hazards (§3.3).
 - Level progression with locks and star grades.
 - Physics-interactive obstacles: knock-over vases that the marble can topple, and trampolines that launch it (§3.4's physics-interactive stretch goal).
+- QA beyond the checklist: unit tests and a headless smoke test that run automatically on every push (§11.4).
 
 **Deliberately left out**, to protect polish on the three galleries:
 - Phone-gyroscope tilt control.

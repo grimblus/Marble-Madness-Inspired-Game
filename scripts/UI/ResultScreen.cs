@@ -66,9 +66,8 @@ public partial class ResultScreen : CanvasLayer
 	private float _lastTime;
 	private bool _shown;
 
-	// This level's star times, read from LevelCatalog in _Ready.
-	private float _threeStarSeconds = 30.0f;
-	private float _twoStarSeconds = 60.0f;
+	// This level's entry in LevelCatalog, for its star times. Set in _Ready.
+	private LevelCatalog.LevelEntry _level;
 
 	public override void _Ready()
 	{
@@ -129,15 +128,11 @@ public partial class ResultScreen : CanvasLayer
 
 		// LevelId is set by the LevelLoader before this runs, so the catalog can tell
 		// which levels come before and after this one.
-		LevelCatalog.LevelEntry level = LevelCatalog.Find(LevelId);
-		if (level != null)
-		{
-			_threeStarSeconds = level.ThreeStarSeconds;
-			_twoStarSeconds = level.TwoStarSeconds;
-		}
-		else
+		_level = LevelCatalog.Find(LevelId);
+		if (_level == null)
 		{
 			GD.PushWarning($"ResultScreen: level '{LevelId}' isn't in LevelCatalog, so the default star times are used.");
+			_level = new LevelCatalog.LevelEntry(LevelId, LevelLabel, "", 30.0f, 60.0f);
 		}
 
 		_nextButton.Disabled = LevelCatalog.NextPlayable(LevelId) == null;
@@ -216,7 +211,7 @@ public partial class ResultScreen : CanvasLayer
 
 	private void ShowWin()
 	{
-		int stars = _lastTime < _threeStarSeconds ? 3 : (_lastTime < _twoStarSeconds ? 2 : 1);
+		int stars = _level.StarsFor(_lastTime);
 
 		float? previousBest = ProgressStore.GetBestTime(LevelId);
 		bool newBest = !previousBest.HasValue || _lastTime < previousBest.Value;
@@ -234,8 +229,8 @@ public partial class ResultScreen : CanvasLayer
 
 		// Chips show the star times, with the earned tier highlighted.
 		SetChip(0, "1 STAR", "UNDER " + TimeFormat.Short(OneStarSeconds), stars == 1);
-		SetChip(1, "2 STARS", "UNDER " + TimeFormat.Short(_twoStarSeconds), stars == 2);
-		SetChip(2, "3 STARS", "UNDER " + TimeFormat.Short(_threeStarSeconds), stars == 3);
+		SetChip(1, "2 STARS", "UNDER " + TimeFormat.Short(_level.TwoStarSeconds), stars == 2);
+		SetChip(2, "3 STARS", "UNDER " + TimeFormat.Short(_level.ThreeStarSeconds), stars == 3);
 
 		Reveal(_winPanel);
 

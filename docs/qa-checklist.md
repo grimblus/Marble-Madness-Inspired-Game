@@ -48,3 +48,4 @@ For each playable gallery:
 - [x] Every "In progress" note in the docs (`grep -n "In progress" docs/*.md`) has been either finished or moved to Known Issues.
 - [x] Every third-party asset is in [credits.md](credits.md) with its source and licence. No "*to confirm*" entries remain.
 - [x] The video demonstration is linked from the README.
+- [ ] The **Tests** workflow is green for the final commit on GitHub (both the unit tests and the Godot smoke test). See [testing.md](testing.md).

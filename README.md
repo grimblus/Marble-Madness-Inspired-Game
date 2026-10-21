@@ -4,7 +4,7 @@ A 3D clone of *Marble Madness* built in Godot 4.7.1 (.NET / C#) for COSC2349 Gam
 
 ![Gallery 01 in play](docs/images/gallery-01.png)
 
-See [docs/design-document.md](docs/design-document.md) for the game design, [docs/requirements.md](docs/requirements.md) for the full requirements spec, [docs/project-plan-responsibilities.md](docs/project-plan-responsibilities.md) for team roles and the milestone schedule, [docs/tile-convention.md](docs/tile-convention.md) for the tile grid and level-building rules, [docs/code-style.md](docs/code-style.md) for the shared C# conventions, and [docs/qa-checklist.md](docs/qa-checklist.md) for the pre-submission checks.
+See [docs/design-document.md](docs/design-document.md) for the game design, [docs/requirements.md](docs/requirements.md) for the full requirements spec, [docs/project-plan-responsibilities.md](docs/project-plan-responsibilities.md) for team roles and the milestone schedule, [docs/tile-convention.md](docs/tile-convention.md) for the tile grid and level-building rules, [docs/code-style.md](docs/code-style.md) for the shared C# conventions, [docs/qa-checklist.md](docs/qa-checklist.md) for the pre-submission checks, and [docs/testing.md](docs/testing.md) for the automated tests.
 
 ## Requirements
 
@@ -50,6 +50,18 @@ See [docs/design-document.md](docs/design-document.md) for the game design, [doc
 - Video demonstration: [`VIDEO_DEMO.mp4`](VIDEO_DEMO.mp4) in the repository root (7 minutes, 1080p). Open it from your clone of the repository, or download it from the repository page.
 - Milestone presentation: given in person in class.
 
+## Tests
+
+Unit tests and a headless Godot smoke test run automatically on every push and pull request through GitHub Actions. To run them locally:
+
+```bash
+dotnet test tests/unit
+dotnet build MarbleMadness3D.csproj
+godot --headless --path . res://tests/smoke/SmokeTest.tscn
+```
+
+See [docs/testing.md](docs/testing.md) for what each suite checks.
+
 ## Project Structure
 
 ```
@@ -57,7 +69,9 @@ assets/      Art, models, textures, materials, audio, fonts, tile mesh libraries
 resources/   Data resources (environments, tile definitions)
 scenes/      .tscn scene files, grouped by system
 scripts/     C# scripts, grouped by system
-docs/        Design, requirements, planning and credits documentation
+docs/        Design, requirements, planning, testing and credits documentation
+tests/       Unit tests (tests/unit) and the headless Godot smoke test (tests/smoke)
+.github/     GitHub Actions workflow that runs the tests on every push
 VIDEO_DEMO.mp4  Video demonstration
 ```
 

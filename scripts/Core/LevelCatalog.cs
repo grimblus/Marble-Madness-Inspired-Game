@@ -12,6 +12,11 @@ public static class LevelCatalog
 		float ThreeStarSeconds, float TwoStarSeconds)
 	{
 		public bool IsPlayable => !string.IsNullOrEmpty(ScenePath);
+
+		// Stars for a finish in this many seconds. Finishing past the time
+		// limit is a game over, which the result screen checks first.
+		public int StarsFor(float seconds) =>
+			seconds < ThreeStarSeconds ? 3 : (seconds < TwoStarSeconds ? 2 : 1);
 	}
 
 	// Each path is the level's own scene (tiles, goal, hazards), not Main.tscn.
