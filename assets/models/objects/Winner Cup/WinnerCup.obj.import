@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://buco0f35m0mqb"
+path="res://.godot/imported/WinnerCup.obj-6a0ab1014aa9e19b9e796fcf9be8ca0f.mesh"
+
+[deps]
+
+files=["res://.godot/imported/WinnerCup.obj-6a0ab1014aa9e19b9e796fcf9be8ca0f.mesh"]
+
+source_file="res://assets/models/objects/Winner Cup/WinnerCup.obj"
+dest_files=["res://.godot/imported/WinnerCup.obj-6a0ab1014aa9e19b9e796fcf9be8ca0f.mesh", "res://.godot/imported/WinnerCup.obj-6a0ab1014aa9e19b9e796fcf9be8ca0f.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false

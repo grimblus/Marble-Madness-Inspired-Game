@@ -18,6 +18,7 @@
 [ext_resource type="PackedScene" uid="uid://kmylw618uxdp" path="res://assets/models/props/ancient_greece_potvase_3d_scan.glb" id="14_qjw57"]
 [ext_resource type="PackedScene" uid="uid://dqvd753a56e2g" path="res://assets/models/props/greek_jar.glb" id="15_ivhmq"]
 [ext_resource type="PackedScene" uid="uid://cb0p8xuklcyr2" path="res://assets/models/props/greek_vase.glb" id="15_ncame"]
+[ext_resource type="PackedScene" uid="uid://bx38f1pwf1w5e" path="res://scenes/props/Collectible.tscn" id="26_sh2u8"]
 [ext_resource type="PackedScene" path="res://scenes/props/vases/Vase1Beige.tscn" id="v_vase1beige"]
 [ext_resource type="PackedScene" path="res://scenes/props/vases/Vase1Blue.tscn" id="v_vase1blue"]
 [ext_resource type="PackedScene" path="res://scenes/props/vases/Vase1Red.tscn" id="v_vase1red"]
@@ -380,3 +381,7 @@ transform = Transform3D(0.0590845, 0, -0.998253, 0, 1, 0, 0.998253, 0, 0.0590845
 
 [node name="Vase2Blue7" parent="Vase" unique_id=469111627 instance=ExtResource("v_vase2blue")]
 transform = Transform3D(-0.648764, 0, 0.76099, 0, 1, 0, -0.76099, 0, -0.648764, -41, -4, -37.25)
+
+[node name="Collectible" parent="." unique_id=621634366 instance=ExtResource("26_sh2u8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.233666, -1.1113526, -35.65869)
+levelId = "level_02"

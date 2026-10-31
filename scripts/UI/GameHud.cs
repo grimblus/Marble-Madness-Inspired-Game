@@ -23,8 +23,14 @@ public partial class GameHud : CanvasLayer
 	// Text shown in the same strip when a new checkpoint is reached.
 	[Export] public string CheckpointText { get; set; } = "CHECKPOINT REACHED";
 
+	// Text shown in the strip when a trophy is collected
+	[Export] public string TrophyText { get; set; } ="TROPHY FOUND!";
+
 	// How long the checkpoint message stays up before fading out, in seconds.
 	[Export] public float CheckpointVisibleSeconds { get; set; } = 2.5f;
+	
+	// How long the checkpoint message stays up before fading out, in seconds.
+	[Export] public float TrophyVisibleSeconds { get; set; } = 2.5f;
 
 	// Seconds to fade a message in or out. A message that replaces another
 	// fades the old text out and the new text in, each this long.
@@ -61,6 +67,8 @@ public partial class GameHud : CanvasLayer
 			_checkpoints.CheckpointReached += OnCheckpointReached;
 		}
 
+		TrophyManager.Instance.TrophyUnlocked += OnTrophyUnlocked;
+		
 		// The objective is already showing when the level appears, so it
 		// starts at full opacity rather than fading in.
 		_objectiveLabel.Text = ObjectiveText;
@@ -105,11 +113,20 @@ public partial class GameHud : CanvasLayer
 		{
 			_checkpoints.CheckpointReached -= OnCheckpointReached;
 		}
+		if (TrophyManager.Instance != null) 
+		{
+			TrophyManager.Instance.TrophyUnlocked -= OnTrophyUnlocked;
+		}
 	}
 
 	private void OnCheckpointReached(Vector3 position)
 	{
 		ShowMessage(CheckpointText, CheckpointVisibleSeconds);
+	}
+
+	private void OnTrophyUnlocked(string levelId)
+	{
+		ShowMessage(TrophyText, TrophyVisibleSeconds);
 	}
 
 	private void OnTimeChanged(float seconds)

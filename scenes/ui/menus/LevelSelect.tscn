@@ -340,6 +340,25 @@ theme_override_font_sizes/font_size = 30
 text = "GALLERY 01"
 horizontal_alignment = 1
 
+[node name="TrophyLabel" type="Label" parent="Layout/Row/Card/VBox/TitleLabel" unique_id=325062935]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 85.5
+offset_top = -21.0
+offset_right = 124.5
+offset_bottom = 21.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 30
+text = "🏆"
+horizontal_alignment = 1
+
 [node name="StatBox" type="VBoxContainer" parent="Layout/Row/Card/VBox" unique_id=1003624440]
 custom_minimum_size = Vector2(0, 58)
 layout_mode = 2

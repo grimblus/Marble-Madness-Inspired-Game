@@ -22,6 +22,7 @@
 [ext_resource type="PackedScene" path="res://scenes/props/vases/Vase3Beige.tscn" id="20_dpcam"]
 [ext_resource type="PackedScene" uid="uid://bfanh2jadvega" path="res://scenes/hazards/stationary_hazard.tscn" id="21_xoel3"]
 [ext_resource type="PackedScene" uid="uid://ddgurlhw8wqaj" path="res://scenes/hazards/moving_hazard.tscn" id="22_msf3c"]
+[ext_resource type="PackedScene" uid="uid://bx38f1pwf1w5e" path="res://scenes/props/Collectible.tscn" id="23_msf3c"]
 
 [node name="Level01" type="Node3D" unique_id=617545788]
 
@@ -257,3 +258,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.400726, -3, 8)
 
 [node name="StationaryHazard4" parent="Hazards" unique_id=1492853663 instance=ExtResource("21_xoel3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 45.400726, -7, 6)
+
+[node name="Collectible" parent="." unique_id=621634366 instance=ExtResource("23_msf3c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19, -2, 5)

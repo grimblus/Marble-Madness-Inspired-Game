@@ -38,6 +38,7 @@ public partial class LevelSelect : Control
 	private LevelPreview _preview;
 	private PanelContainer _card;
 	private Label _titleLabel;
+	private Label _trophyLabel;
 	private Control _unlockedBox;
 	private Control _lockedBox;
 	private StarIcon[] _stars;
@@ -61,6 +62,7 @@ public partial class LevelSelect : Control
 		_preview = GetNode<LevelPreview>("%Preview");
 		_card = GetNode<PanelContainer>("%Card");
 		_titleLabel = GetNode<Label>("%TitleLabel");
+		_trophyLabel = GetNode<Label>("%TrophyLabel");
 		_unlockedBox = GetNode<Control>("%UnlockedBox");
 		_lockedBox = GetNode<Control>("%LockedBox");
 		_stars = new[]
@@ -191,7 +193,10 @@ public partial class LevelSelect : Control
 		float? best = GetBestTime(_index);
 
 		_titleLabel.Text = level.Label;
-
+		
+		// Show the trophy symbol only if this level's trophy has been found.
+		_trophyLabel.Visible = TrophyManager.Instance != null && TrophyManager.Instance.HasTrophy(level.Id);
+		
 		_preview.Variant = _index;
 		_preview.Locked = !unlocked;
 		_preview.Screenshot = (Screenshots != null && _index < Screenshots.Length) ? Screenshots[_index] : null;

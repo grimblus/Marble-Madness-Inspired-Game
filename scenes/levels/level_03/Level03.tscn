@@ -16,6 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://bugcc03pvuea" path="res://scenes/triggers/KillZone.tscn" id="13_kill"]
 [ext_resource type="PackedScene" uid="uid://53251d8f23c0" path="res://assets/models/props/decimated_egyptian_head.glb" id="14_vmoth"]
 [ext_resource type="PackedScene" uid="uid://gj3ihcr7g0tt" path="res://assets/models/props/decimated_amenemhat.glb" id="15_e5ys3"]
+[ext_resource type="PackedScene" uid="uid://bx38f1pwf1w5e" path="res://scenes/props/Collectible.tscn" id="28_xuarr"]
 [ext_resource type="PackedScene" uid="uid://ddgurlhw8wqaj" path="res://scenes/hazards/moving_hazard.tscn" id="hz_moving"]
 [ext_resource type="PackedScene" uid="uid://bfanh2jadvega" path="res://scenes/hazards/stationary_hazard.tscn" id="hz_stationary"]
 [ext_resource type="PackedScene" uid="uid://dt5y5j8mdjqgb" path="res://scenes/hazards/trampoline_hazard.tscn" id="hz_trampoline"]
@@ -377,9 +378,6 @@ transform = Transform3D(0.881943, 0, -0.471356, 0, 1, 0, 0.471356, 0, 0.881943, 
 [node name="Vase2Blue7" parent="Vase" unique_id=1822782152 instance=ExtResource("v_vase2blue")]
 transform = Transform3D(0.913685, 0, 0.406423, 0, 1, 0, -0.406423, 0, 0.913685, 54.979458, -5, 9.90433)
 
-[node name="Vase3Beige7" parent="Vase" unique_id=1323193247 instance=ExtResource("v_vase3beige")]
-transform = Transform3D(0.992016, 0, 0.126115, 0, 1, 0, -0.126115, 0, 0.992016, 58.04066, -5, 6.980542)
-
 [node name="Vase2Beige7" parent="Vase" unique_id=605992577 instance=ExtResource("v_vase2beige")]
 transform = Transform3D(0.154431, -0.044459306, -0.9870023, -0.015579576, 0.99875325, -0.04742624, 0.9878802, 0.022701181, 0.1535458, 55.75201, -5, 9)
 
@@ -439,3 +437,7 @@ transform = Transform3D(-0.728426, 0, -0.685125, 0, 1, 0, 0.685125, 0, -0.728426
 
 [node name="Vase1Blue6" parent="Vase" unique_id=1025976809 instance=ExtResource("v_vase1blue")]
 transform = Transform3D(-0.999026, 0, -0.0441364, 0, 1, 0, 0.0441364, 0, -0.999026, 84.44411, -6, 4.124452)
+
+[node name="Collectible" parent="." unique_id=621634366 instance=ExtResource("28_xuarr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 57.96146, -4.364913, 6.956073)
+levelId = "level_03"

@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://bx38f1pwf1w5e"]
+
+[ext_resource type="Script" uid="uid://ce1lsnggailoo" path="res://scripts/Props/Trophy.cs" id="1_08ya2"]
+[ext_resource type="PackedScene" uid="uid://cloxeah7fbbal" path="res://assets/models/objects/Winner Cup/WinnerCup.fbx" id="2_b5wj2"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_w8k6l"]
+radius = 0.7
+
+[node name="Collectible" type="Area3D" unique_id=621634366]
+collision_layer = 4
+collision_mask = 3
+script = ExtResource("1_08ya2")
+
+[node name="WinnerCup" parent="." unique_id=1678935873 instance=ExtResource("2_b5wj2")]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=927477093]
+shape = SubResource("SphereShape3D_w8k6l")

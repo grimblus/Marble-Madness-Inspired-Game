@@ -20,6 +20,7 @@ CheckpointManager="*res://scripts/Core/CheckpointManager.cs"
 GameStateManager="*res://scripts/Core/GameStateManager.cs"
 MusicPlayer="*res://scripts/Audio/MusicPlayer.cs"
 UiSounds="*res://scripts/Audio/UiSounds.cs"
+TrophyManager="*uid://c1xb5m2c4f37g"
 
 [dotnet]
 
