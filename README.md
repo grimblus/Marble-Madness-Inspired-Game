@@ -105,3 +105,6 @@ Third-party assets (3D models, textures, music, sound effects and fonts), with t
 - Andrew Loi
 - Donovan Ong
 - Jayden Bach
+
+## EXTENSION DETAILS
+During the duration of Assessment 3, I, Aaron, requested an extension during the finalization week of work. Because of this, instead of participating in the final stages of development, I have added a trophy/collectible feature to the game on top of my contributions to level design and implementation to make up for my absence during the final week. This implementation includes the addition of a trophy located in each level, which displays a message upon collection, and its collection status is reflected in the level select.
